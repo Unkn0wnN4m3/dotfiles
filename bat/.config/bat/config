@@ -1,0 +1,5 @@
+# Specify desired highlighting theme
+#--theme="gruvbox-dark" # This theme is for gruvbox color scheme
+#--theme="base16" # Thid theme is for iceberg color scheme
+--theme="Solarized (dark)"
+# --theme="ansi"
