@@ -3,18 +3,8 @@ if not status_ok then
   return
 end
 
-vim.opt.list = true
-vim.opt.listchars = {
-  eol = '↲',
-  tab = '▸ ',
-  extends = '»',
-  precedes = '«',
-  space = '⋅',
-  -- trail = '•'
-}
-
-indent_blankline.setup {
-  char = '▏',
+indent_blankline.setup({
+  char = "▏",
   filetype = {
     "javascript",
     "javascriptreact",
@@ -25,14 +15,22 @@ indent_blankline.setup {
     "scss",
     "dockerfile",
     "json",
+    "htmldjango",
   },
   buftype_exclude = {
     "terminal",
     "TelescopePrompt",
+    "toggleterm",
     "NvimTree",
-    "Trouble"
+    "Trouble",
+    "lspinfo",
+    "packer",
+    "checkhealth",
+    "help",
+    "man",
+    "",
   },
   show_end_of_line = true,
   space_char_blankline = " ",
-  treesitter = true
-}
+  treesitter = true,
+})

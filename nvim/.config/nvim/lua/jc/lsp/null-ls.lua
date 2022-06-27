@@ -8,15 +8,30 @@ local formatting = null_ls.builtins.formatting
 -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
 local diagnostics = null_ls.builtins.diagnostics
 
--- https://github.com/prettier-solidity/prettier-plugin-solidity
-null_ls.setup {
+null_ls.setup({
   debug = false,
   sources = {
-    formatting.prettier.with {
-      extra_filetypes = { "toml" },
-      extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" },
-    },
-    formatting.black.with { extra_args = { "--fast" } },
+    -- formatting.prettier.with {
+    --   extra_filetypes = { "toml" },
+    --   extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" },
+    -- },
+
+    -- Lua
+    formatting.stylua.with({
+      extra_args = {
+        "--indent-type",
+        "Spaces",
+        "--indent-width",
+        "2",
+      },
+    }),
+
+    -- Python
+    formatting.black.with({ extra_args = { "--fast" } }),
     diagnostics.flake8,
+
+    -- Jinja2
+    diagnostics.djlint,
+    formatting.djlint,
   },
-}
+})

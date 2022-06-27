@@ -2,10 +2,10 @@
 vim.api.nvim_create_autocmd({ "FileType" }, {
   pattern = { "qf", "help", "man", "lspinfo", "spectre_panel", "lir" },
   callback = function()
-    vim.cmd [[
+    vim.cmd([[
       nnoremap <silent> <buffer> q :close<CR>
       set nobuflisted
-    ]]
+    ]])
   end,
 })
 
@@ -13,10 +13,10 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 vim.api.nvim_create_autocmd({ "User" }, {
   pattern = { "AlphaReady" },
   callback = function()
-    vim.cmd [[
+    vim.cmd([[
       set showtabline=0 | autocmd BufUnload <buffer> set showtabline=2
       set laststatus=0 | autocmd BufUnload <buffer> set laststatus=3
-    ]]
+    ]])
   end,
 })
 
@@ -29,22 +29,21 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   end,
 })
 
-vim.cmd "autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif"
+vim.cmd("autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif")
 
 -- Fixes Autocomment
 vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
   callback = function()
-    vim.cmd "set formatoptions-=cro"
+    vim.cmd("set formatoptions-=cro")
   end,
 })
 
 -- Highlight Yanked Text
 vim.api.nvim_create_autocmd({ "TextYankPost" }, {
   callback = function()
-    vim.highlight.on_yank { higroup = "Visual", timeout = 200 }
+    vim.highlight.on_yank({ higroup = "Visual", timeout = 200 })
   end,
 })
-
 
 -- Only highlight current line for active window.
 -- see http://vim.wikia.com/wiki/Highlight_current_line
@@ -63,15 +62,6 @@ vim.cmd([[
     au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
   endif
 ]])
--- You can split a window into sections by typing `:split` or `:vsplit`.
--- Display cursorline and cursorcolumn ONLY in active window.
-vim.cmd([[
-augroup cursor_off
-    autocmd!
-    autocmd WinLeave * set nocursorline
-    autocmd WinEnter * set cursorline
-augroup END
-]])
 
 -- TrimWhiteSpace function by the Primeagen
 -- By the primeagen. https://www.youtube.com/watch?v=DogKdiRx7ls
@@ -86,3 +76,16 @@ augroup THE_PRIMEAGEN_MODIFIED
     autocmd BufWritePre * :call TrimWhiteSpace()
 augroup END
 ]])
+
+-- Auto format on exit
+local status_ok, _ = pcall(require, "lspconfig")
+if not status_ok then
+  return
+end
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = { "*.py", "*.go", "*.html" },
+  callback = function()
+    vim.lsp.buf.formatting_sync(nil, 500)
+  end,
+})

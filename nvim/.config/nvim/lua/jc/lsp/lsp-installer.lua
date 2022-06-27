@@ -9,11 +9,7 @@ local servers = {
   "html",
   "tsserver",
   "pyright",
-  "bashls",
   "jsonls",
-  "yamlls",
-  "vimls",
-  "clangd",
   "gopls"
 }
 
