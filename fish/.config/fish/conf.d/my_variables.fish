@@ -14,28 +14,23 @@ set -gx VISUAL nvim
 
 # User Private binaries
 if test -d $HOME/.config/local/bin
-  set -gx PATH $PATH $HOME/.config/local/bin
+  fish_add_path $HOME/.config/local/bin
 end
 
 if test -d $HOME/.local/bin
-  set -gx PATH $PATH $HOME/.local/bin
+  fish_add_path $HOME/.local/bin
 end
 
 # Cargo bin
 if test -d $HOME/.cargo/bin
-  set -gx PATH $PATH $HOME/.cargo/bin
+  fish_add_path $HOME/.cargo/bin
 end
 
 # Go
 if test -d /usr/local/go/bin
   set -gx GOPATH $HOME/go
   set -gx GOBIN $GOPATH/bin
-  set -gx PATH /usr/local/go/bin/ $GOBIN $PATH
-else if test -d $HOME/go/bin
-  set -gx GOPATH $HOME/.gopath
-  set -gx GOROOT $HOME/.go
-  set -gx GOBIN $GOPATH/bin
-  set -gx PATH $GOPATH/bin $PATH
+  fish_add_path /usr/local/go/bin/ $GOBIN
 end
 
 # Other
