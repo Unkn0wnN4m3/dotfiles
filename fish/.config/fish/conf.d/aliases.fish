@@ -8,9 +8,9 @@ if command -s exa > /dev/null
   alias ll="exa -lgF --icons --group-directories-first"
   alias la="exa -aF --icons --group-directories-first"
 else
-  alias ll="/bin/ls -lhF --color=auto --group-directories-first"
-  alias la="/bin/ls -AF --color=auto --group-directories-first"
-  alias lsa="/bin/ls -lhAF --color=auto --group-directories-first"
+  alias ll="/usr/bin/ls -lhF --color=auto --group-directories-first"
+  alias la="/usr/bin/ls -AF --color=auto --group-directories-first"
+  alias lsa="/usr/bin/ls -lhAF --color=auto --group-directories-first"
 end
 
 # Grep
@@ -50,6 +50,7 @@ alias gd='git diff'
 alias gco='git checkout '
 alias gr='git remote'
 alias glol='git log --graph --oneline --decorate'
+alias lg='lazygit'
 
 # Programming languages
 alias py="python3"
@@ -59,6 +60,3 @@ alias jac="javac"
 # bw generate passwords
 alias bw-genp="bw generate --passphrase --words 6 --separator -"
 alias bw-genw="bw generate -ulns --length 50"
-
-# sumeko-lua
-alias luamake="/home/julio/Downloads/lua-language-server/3rd/luamake/luamake"
