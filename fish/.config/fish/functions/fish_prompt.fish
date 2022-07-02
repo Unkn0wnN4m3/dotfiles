@@ -1,5 +1,3 @@
-#!/usr/bin/fish
-
 # From https://github.com/oh-my-fish/theme-cbjohnson
 function fish_prompt
   # Cache exit status
@@ -39,7 +37,7 @@ function fish_prompt
   end
 
   # Top
-  echo -n $cyan$USER$normal@$green$__fish_prompt_hostname$normal in $bred(prompt_pwd)$normal
+  echo -n $cyan$USER$normal@$green$__fish_prompt_hostname$normal in $cyan(prompt_pwd)$normal
   __fish_git_prompt
 
   echo
