@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 
 # Colors
 
@@ -48,47 +48,6 @@ function make_missing_dirs() {
   done
 }
 
-function make_existing_dirs() {
-  local existing_dir_array=("$@")
-
-  if [ ! -d "$bkp_path" ]; then
-    echo -e "\n${CR}NO BACKUP!${reset}"
-    echo -n "Backup directory will be here: $bkp_path "
-    mkdir -p "$bkp_path" 2>/dev/null
-    check_status "$?" "Can't create backup dir"
-  fi
-
-  for dir in "${existing_dir_array[@]}"; do
-    if [ -d "$xdg_path/$dir" ]; then
-      echo -e "\n${CR}$dir${reset} This directory already exists!"
-      if [ ! -L "$xdg_path/$dir" ]; then
-        if [ ! -d "$bkp_path/$dir" ]; then
-          echo "Making a copy '$dir' to '$bkp_path' "
-          cp -r "$xdg_path/$dir" "$bkp_path/$dir" 2>/dev/null
-          check_status "$?" "Can't make a copy"
-
-          echo "Making '$dir' empty directory in '$xdg_path'"
-          rm -rf "$xdg_path/$dir"
-          mkdir -p "$xdg_path/$dir" 2>/dev/null
-          check_status "$?" "Can't make a directory"
-        else
-          echo -e "${CG}The backup alredy exists!${reset}"
-
-          echo "Making '$dir' empty directory in '$xdg_path'"
-          rm -rf "$xdg_path/$dir"
-          mkdir -p "$xdg_path/$dir" 2>/dev/null
-          check_status "$?" "Can't make a directory"
-        fi
-      else
-        echo "Removing symlink and making new directory "
-        rm -rf "$xdg_path/$dir"
-        mkdir -p "$xdg_path/$dir" 2>/dev/null
-        check_status "$?" "Can't make a directory"
-      fi
-    fi
-  done
-}
-
 function start_stow() {
   local stow_array=("$@")
   for dir in "${stow_array[@]}"; do
@@ -132,7 +91,6 @@ echo -e "\n${CY}[+] Checking directories...${reset}"; sleep 0.5
 xdg_dirs=( "nvim" "zsh" "bat" "kitty" "fish" )
 
 make_missing_dirs "${xdg_dirs[@]}"
-make_existing_dirs "${xdg_dirs[@]}"
 
 # Making soft links whith stow
 start_stow "${xdg_dirs[@]}"
