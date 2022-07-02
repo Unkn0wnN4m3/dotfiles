@@ -10,13 +10,24 @@ end
 
 local tree_cb = nvim_tree_config.nvim_tree_callback
 
-nvim_tree.setup {
+nvim_tree.setup({
+  update_cwd = true,
+  respect_buf_cwd = true,
   update_focused_file = {
     enable = true,
     update_cwd = true,
   },
   renderer = {
     root_folder_modifier = ":t",
+    indent_markers = {
+      enable = true,
+      icons = {
+        corner = "└ ",
+        edge = "│ ",
+        item = "│ ",
+        none = "  ",
+      },
+    },
     icons = {
       glyphs = {
         default = "",
@@ -54,15 +65,16 @@ nvim_tree.setup {
     },
   },
   view = {
+    hide_root_folder = true,
     width = 30,
     height = 30,
     side = "left",
     mappings = {
       list = {
-        { key = { "l", "<CR>", "o" }, cb = tree_cb "edit" },
-        { key = "h", cb = tree_cb "close_node" },
-        { key = "v", cb = tree_cb "vsplit" },
+        { key = { "l", "<CR>", "o" }, cb = tree_cb("edit") },
+        { key = "h", cb = tree_cb("close_node") },
+        { key = "v", cb = tree_cb("vsplit") },
       },
     },
   },
-}
+})

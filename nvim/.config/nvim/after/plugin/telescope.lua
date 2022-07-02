@@ -28,15 +28,6 @@ telescope.setup({
         override_file_sorter = true, -- override the file sorter
         case_mode = "smart_case", -- or "ignore_case" or "respect_case" the default case_mode is "smart_case"
       },
-      project = {
-        base_dirs = {
-          { path = "~/go_exercises", max_depth = 2 },
-          { path = "~/python_exercises", max_depth = 2 },
-          { path = "~/Sqlite3_exercises/", max_depth = 2 },
-          { path = "~/.dotfiles" },
-        },
-        hidden_files = true,
-      },
     },
   },
 })
