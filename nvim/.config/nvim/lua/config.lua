@@ -62,5 +62,5 @@ vim.opt.fillchars = {
   eob = " "
 }
 
-vim.g.python3_host_prog = vim.fn.expand('$HOME/.virtualenvs/neovim/bin/python3')
+vim.g.python3_host_prog = vim.fn.expand('$HOME/.virtualenvs/neovim/venv/bin/python3')
 

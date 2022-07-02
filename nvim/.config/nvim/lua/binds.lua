@@ -35,7 +35,8 @@ vim.g.mapleader = " "
 keymap('n', '<leader>ww', ':w<CR>', opts)
 
 -- Exit
-keymap('n', '<leader>q', ':q<CR>', opts)
+keymap('n', '<leader>qq', ':q<CR>', opts)
+keymap('n', '<leader>qa', ':qa<CR>', opts)
 
 -- exit insert mode
 keymap('i', 'jk', '<ESC>', opts)
@@ -50,12 +51,6 @@ keymap('n', 'O', 'O<ESC>', opts)
 keymap('v', 'J', ':m \'>+1<CR>gv=gv', term_opts)
 keymap('v', 'K', ':m \'<-2<CR>gv=gv', term_opts)
 
--- Resizing
-keymap('n', '<C-Up>',    ':resize -2<CR>', opts)
-keymap('n', '<C-Down>',  ':resize +2<CR>', opts)
-keymap('n', '<C-Left>',  ':vertical resize -2<CR>', opts)
-keymap('n', '<C-Right>', ':vertical resize +2<CR>', opts)
-
 -- You can split the window in Vim by typing :split or :vsplit.
 -- Navigate the split view easier by pressing CTRL+j, CTRL+k, CTRL+h, or CTRL+l.
 keymap('n', '<C-j>', '<C-w>j', term_opts)
@@ -63,21 +58,31 @@ keymap('n', '<C-k>', '<C-w>k', term_opts)
 keymap('n', '<C-h>', '<C-w>h', term_opts)
 keymap('n', '<C-l>', '<C-w>l', term_opts)
 
+-- Resizing Windows
+keymap('n', '<C-Up>',    ':resize -2<CR>', opts)
+keymap('n', '<C-Down>',  ':resize +2<CR>', opts)
+keymap('n', '<C-Left>',  ':vertical resize -2<CR>', opts)
+keymap('n', '<C-Right>', ':vertical resize +2<CR>', opts)
+
+-- Navigate buffers
+keymap("n", "<S-l>", ":bnext<CR>", opts)
+keymap("n", "<S-h>", ":bprevious<CR>", opts)
+
+-- Close buffers
+keymap("n", "<S-q>", "<cmd>Bdelete!<CR>", opts)
+
+-- Navigate Tabs
+keymap("n", "<Tab>", ":tabNext<CR>", opts)
+keymap("n", "<S-Tab>", ":tabprevious<CR>", opts)
+keymap("n", "te", ":tabedit<CR>", opts)
+keymap("n", "tc", ":tabclose<CR>", opts)
+
 -- Place semi-colon at EOL
 keymap('i', ';;', '<Esc>A;<Esc>', term_opts)
 
 -- Better tabing
 keymap('v', '<', '<gv',  opts)
 keymap('v', '>', '>gv',  opts)
-
--- Navigate buffers
-keymap("n", "<S-l>", ":bnext<CR>", opts)
-keymap("n", "<S-h>", ":bprevious<CR>", opts)
-
-keymap('n', '<leader>M', ':BufferLinePick<CR>', opts)
-
--- Close buffers
-keymap("n", "<S-q>", "<cmd>Bdelete!<CR>", opts)
 
 -- Clear highlights
 keymap("n", "<leader>h", "<cmd>nohlsearch<CR>", opts)
