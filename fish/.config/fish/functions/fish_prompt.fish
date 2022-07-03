@@ -36,8 +36,15 @@ function fish_prompt
     set pcolor $bred
   end
 
+  if test $VIRTUAL_ENV
+    set pyenv (basename "$VIRTUAL_ENV")
+    set env "($pyenv)"
+  end
+
   # Top
-  echo -n $cyan$USER$normal@$green$__fish_prompt_hostname$normal in $cyan(prompt_pwd)$normal
+  echo
+
+  echo -n $yellow$env$normal $cyan$USER$normal@$green$__fish_prompt_hostname$normal in $cyan(prompt_pwd)$normal
   __fish_git_prompt
 
   echo

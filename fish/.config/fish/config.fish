@@ -1,6 +1,8 @@
 if status --is-login
     set -U fish_greeting
 
+    set -gx VIRTUAL_ENV_DISABLE_PROMPT 1
+
     # Terminal
     set -gx TERM xterm-256color
     set -gx DOTFILES $HOME/.dotfiles
@@ -60,7 +62,7 @@ if status --is-interactive
         eval (dircolors -c $DOTFILES_ZSH/.dir_colors)
     end
 
-    if command -s zoxide > /dev/null
+    if command -s zoxide >/dev/null
         zoxide init fish | source
     end
 end
