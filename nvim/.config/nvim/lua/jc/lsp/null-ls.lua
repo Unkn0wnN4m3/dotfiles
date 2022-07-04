@@ -14,10 +14,19 @@ null_ls.setup({
 	debug = false,
 	sources = {
 		-- prettier
-		formatting.prettier.with {
-		  extra_filetypes = { "toml" },
-		  extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" },
-		},
+		formatting.prettier.with({
+			prefer_local = "node_modules/.bin",
+			extra_filetypes = { "toml" },
+			extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" },
+			condition = function(utils)
+				return utils.root_has_file({
+					"package.json",
+					"jsconfig.json",
+					"tsconfig.json",
+					".git",
+				})
+			end,
+		}),
 
 		-- Lua
 		formatting.stylua.with({
@@ -33,13 +42,23 @@ null_ls.setup({
 		formatting.yapf.with({
 			command = virtualenvs .. "yapf",
 		}),
+		formatting.djhtml.with({
+			command = virtualenvs .. "djhtml",
+		}),
 		diagnostics.flake8.with({
 			command = virtualenvs .. "flake8",
-			cwd = function(params)
-				-- falls back to root if return value is nil
-				return params.root:match("Pipfile")
+			condition = function(utils)
+				return utils.root_has_file({
+					"setup.py",
+					"setup.cfg",
+					"Pipfile",
+					"requirements.txt",
+					"pyproject.toml",
+				})
 			end,
 		}),
-		formatting.fish_indent
+
+		-- Fish
+		formatting.fish_indent,
 	},
 })
