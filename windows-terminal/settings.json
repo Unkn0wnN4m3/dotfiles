@@ -1,11 +1,9 @@
 {
     "$help": "https://aka.ms/terminal-documentation",
     "$schema": "https://aka.ms/terminal-profiles-schema",
-    "actions":
-    [
+    "actions": [
         {
-            "command":
-            {
+            "command": {
                 "action": "splitPane",
                 "split": "right",
                 "splitMode": "duplicate"
@@ -13,8 +11,7 @@
             "keys": "alt+shift+p"
         },
         {
-            "command":
-            {
+            "command": {
                 "action": "copy",
                 "singleLine": false
             },
@@ -25,16 +22,14 @@
             "keys": "ctrl+shift+v"
         },
         {
-            "command":
-            {
+            "command": {
                 "action": "resizePane",
                 "direction": "up"
             },
             "keys": "alt+shift+k"
         },
         {
-            "command":
-            {
+            "command": {
                 "action": "moveFocus",
                 "direction": "right"
             },
@@ -45,24 +40,21 @@
             "keys": "ctrl+shift+f"
         },
         {
-            "command":
-            {
+            "command": {
                 "action": "moveFocus",
                 "direction": "up"
             },
             "keys": "alt+k"
         },
         {
-            "command":
-            {
+            "command": {
                 "action": "resizePane",
                 "direction": "right"
             },
             "keys": "alt+shift+l"
         },
         {
-            "command":
-            {
+            "command": {
                 "action": "splitPane",
                 "split": "auto",
                 "splitMode": "duplicate"
@@ -70,24 +62,21 @@
             "keys": "alt+shift+d"
         },
         {
-            "command":
-            {
+            "command": {
                 "action": "moveFocus",
                 "direction": "down"
             },
             "keys": "alt+j"
         },
         {
-            "command":
-            {
+            "command": {
                 "action": "resizePane",
                 "direction": "left"
             },
             "keys": "alt+shift+h"
         },
         {
-            "command":
-            {
+            "command": {
                 "action": "splitPane",
                 "split": "down",
                 "splitMode": "duplicate"
@@ -95,16 +84,14 @@
             "keys": "alt+shift+o"
         },
         {
-            "command":
-            {
+            "command": {
                 "action": "moveFocus",
                 "direction": "left"
             },
             "keys": "alt+h"
         },
         {
-            "command":
-            {
+            "command": {
                 "action": "resizePane",
                 "direction": "down"
             },
@@ -115,10 +102,8 @@
     "copyOnSelect": true,
     "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
     "launchMode": "default",
-    "profiles":
-    {
-        "defaults":
-        {
+    "profiles": {
+        "defaults": {
             "bellStyle": "window",
             "colorScheme": "Campbell",
             "opacity": 90,
@@ -126,8 +111,7 @@
             "useAcrylic": true
         }
     },
-    "schemes":
-    [
+    "schemes": [
         {
             "background": "#0C0C0C",
             "black": "#282C34",
@@ -153,26 +137,26 @@
         },
         {
             "background": "#002B36",
-            "black": "#002831",
-            "blue": "#2176C7",
+            "black": "#073642",
+            "blue": "#268BD2",
             "brightBlack": "#475B62",
             "brightBlue": "#708284",
             "brightCyan": "#819090",
             "brightGreen": "#475B62",
-            "brightPurple": "#5956BA",
-            "brightRed": "#BD3613",
+            "brightPurple": "#6C71C4",
+            "brightRed": "#CB4B16",
             "brightWhite": "#FCF4DC",
             "brightYellow": "#536870",
             "cursorColor": "#708284",
-            "cyan": "#259286",
-            "foreground": "#708284",
-            "green": "#738A05",
+            "cyan": "#2AA198",
+            "foreground": "#EEE8D5",
+            "green": "#859900",
             "name": "Solarized Dark - Patched",
-            "purple": "#C61C6F",
-            "red": "#D11C24",
+            "purple": "#D33682",
+            "red": "#DC322F",
             "selectionBackground": "#002831",
             "white": "#EAE3CB",
-            "yellow": "#A57706"
+            "yellow": "#B58900"
         }
     ],
     "startOnUserLogin": true,
