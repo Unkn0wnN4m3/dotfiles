@@ -92,28 +92,30 @@ cmp.setup({
 			"s",
 		}),
 	}),
-  formatting = {
-    format = function(entry, vim_item)
-      -- Kind icons
-      vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
-      -- Source
-      vim_item.menu = ({
-        nvim_lsp = "[LSP]",
-        nvim_lua = "[Lua]",
-        luasnip = "[Snip]",
-        nvim_lsp_signature_help = "[SIG]",
-        path = "[Path]",
-        buffer = "[Buffer]",
-      })[entry.source.name]
-      return vim_item
-    end
-  },
+	formatting = {
+		format = function(entry, vim_item)
+			-- Kind icons
+			vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
+			-- Source
+			vim_item.menu = ({
+				nvim_lsp = "[LSP]",
+				nvim_lua = "[Lua]",
+				luasnip = "[Snip]",
+				nvim_lsp_signature_help = "[SIG]",
+				path = "[Path]",
+				buffer = "[Buffer]",
+				spell = "[Spell]",
+			})[entry.source.name]
+			return vim_item
+		end,
+	},
 	sources = {
-		{ name = "nvim_lsp" },
+		{ name = "nvim_lsp", priority = 1 },
 		{ name = "nvim_lua" },
 		{ name = "luasnip" },
 		{ name = "buffer", keyword_length = 5 },
 		{ name = "path" },
+		{ name = "spell", keyword_length = 5, max_item_count = 5 },
 	},
 	confirm_opts = {
 		behavior = cmp.ConfirmBehavior.Replace,
