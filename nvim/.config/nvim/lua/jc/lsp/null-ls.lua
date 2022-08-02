@@ -8,8 +8,6 @@ local formatting = null_ls.builtins.formatting
 -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
 local diagnostics = null_ls.builtins.diagnostics
 
-local virtualenvs = vim.fn.expand("~/.virtualenvs/python-lsp/venv/bin/")
-
 null_ls.setup({
 	debug = false,
 	sources = {
@@ -23,7 +21,6 @@ null_ls.setup({
 					"package.json",
 					"jsconfig.json",
 					"tsconfig.json",
-					".git",
 				})
 			end,
 		}),
@@ -39,14 +36,9 @@ null_ls.setup({
 		}),
 
 		-- Python
-		formatting.yapf.with({
-			command = virtualenvs .. "yapf",
-		}),
-		formatting.djhtml.with({
-			command = virtualenvs .. "djhtml",
-		}),
-		diagnostics.flake8.with({
-			command = virtualenvs .. "flake8",
+		formatting.yapf,
+
+		diagnostics.mypy.with({
 			condition = function(utils)
 				return utils.root_has_file({
 					"setup.py",
