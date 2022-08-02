@@ -110,12 +110,12 @@ cmp.setup({
 		end,
 	},
 	sources = {
-		{ name = "nvim_lsp", priority = 1 },
+		{ name = "nvim_lsp" },
 		{ name = "nvim_lua" },
 		{ name = "luasnip" },
 		{ name = "buffer", keyword_length = 5 },
 		{ name = "path" },
-		{ name = "spell", keyword_length = 5, max_item_count = 5 },
+		{ name = "spell", keyword_length = 5, max_item_count = 5, priority = 15 },
 	},
 	confirm_opts = {
 		behavior = cmp.ConfirmBehavior.Replace,
