@@ -10,6 +10,7 @@
 -- General
 
 vim.opt.backup = false                          -- creates a backup file
+vim.opt.fileformats = "unix,mac,dos"            -- This gives the end-of-line (<EOL>) formats that will be tried when starting to edit a new buffer
 vim.opt.clipboard = "unnamedplus"               -- allows neovim to access the system clipboard
 vim.opt.cmdheight = 1                           -- more space in the neovim command line for displaying messages
 vim.opt.completeopt = { "menuone", "noselect" } -- mostly just for cmp
@@ -42,25 +43,24 @@ vim.opt.ruler = false
 vim.opt.numberwidth = 4                         -- set number column width to 2 {default 4}
 vim.opt.signcolumn = "yes"                      -- always show the sign column, otherwise it would shift the text each time
 vim.opt.wrap = false                            -- display lines as one long line
-vim.opt.scrolloff = 15                          -- left 15 lines top and buttom
+vim.opt.scrolloff = 15                          -- left 15 lines top and button
 vim.opt.foldenable = true                       -- Folds
-vim.opt.foldmethod = 'marker'
+vim.opt.foldmethod = "marker"
 vim.opt.sidescrolloff = 8
-vim.opt.fillchars.eob=" "
-vim.opt.shortmess:append "c"
+vim.opt.fillchars.eob = " "
+vim.opt.shortmess:append("c")
 vim.opt.whichwrap:append("<,>,[,],h,l")
 vim.opt.iskeyword:append("-")
 vim.opt.list = true
 vim.opt.listchars = {
-  eol = '↲',
-  tab = '→ ',
-  extends = '»',
-  precedes = '«',
-  -- space = '⋅',
+	eol = "↲",
+	tab = '→ ',
+	extends = "»",
+	precedes = "«",
+	space = "⋅",
 }
 vim.opt.fillchars = {
-  eob = " "
+	eob = " ",
 }
 
-vim.g.python3_host_prog = vim.fn.expand('$HOME/.virtualenvs/neovim/venv/bin/python3')
-
+vim.g.python3_host_prog = vim.fn.expand("$HOME/.virtualenvs/neovim/venv/bin/python3")
