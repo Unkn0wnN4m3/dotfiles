@@ -4,7 +4,7 @@ if status --is-login
     set -gx VIRTUAL_ENV_DISABLE_PROMPT 1
 
     # Terminal
-    set -gx TERM xterm-256color
+    # set -gx TERM xterm-256color
     set -gx DOTFILES $HOME/.dotfiles
     set -gx DOTFILES_ZSH $DOTFILES/zsh/.config/zsh
     set -gx DOTFILES_NVIM $DOTFILES/nvim/.config/nvim
@@ -30,6 +30,10 @@ if status --is-login
 
     # Cargo bin
     fish_add_path -a $HOME/.cargo/bin
+
+    # bun
+    set -Ux BUN_INSTALL "/home/julio/.bun"
+    fish_add_path "/home/julio/.bun/bin"
 
     # Other
     set -gx GPG_TTY (tty)
@@ -64,5 +68,9 @@ if status --is-interactive
 
     if command -s zoxide >/dev/null
         zoxide init fish | source
+    end
+
+    if command -s starship >/dev/null
+        starship init fish | source
     end
 end
