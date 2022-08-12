@@ -31,6 +31,10 @@ configs.setup({
 		enable = true,
 		disable = {},
 	},
+	indent = {
+		enable = true,
+		disable = { "python", "css" }
+	},
 	refactor = {
 		highlight_definitions = { enable = true },
 		highlight_current_scope = { enable = false },

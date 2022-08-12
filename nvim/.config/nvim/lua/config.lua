@@ -51,6 +51,9 @@ vim.opt.fillchars.eob = " "
 vim.opt.shortmess:append("c")
 vim.opt.whichwrap:append("<,>,[,],h,l")
 vim.opt.iskeyword:append("-")
+vim.opt.backspace = { 'start', 'eol', 'indent' }
+vim.opt.path:append { '**' } -- Finding files - Search down into subfolders
+vim.opt.wildignore:append { '*/node_modules/*' }
 vim.opt.list = true
 vim.opt.listchars = {
 	eol = "↲",

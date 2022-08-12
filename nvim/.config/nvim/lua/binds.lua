@@ -77,9 +77,6 @@ keymap("n", "<S-Tab>", ":tabprevious<CR>", opts)
 keymap("n", "te", ":tabedit<CR>", opts)
 keymap("n", "tc", ":tabclose<CR>", opts)
 
--- Place semi-colon at EOL
-keymap('i', ';;', '<Esc>A;<Esc>', term_opts)
-
 -- Better tabing
 keymap('v', '<', '<gv',  opts)
 keymap('v', '>', '>gv',  opts)
@@ -88,7 +85,7 @@ keymap('v', '>', '>gv',  opts)
 keymap("n", "<leader>h", "<cmd>nohlsearch<CR>", opts)
 
 -- NvimTree
-keymap("n", "<F3>", ":NvimTreeToggle<CR>", opts)
+-- keymap("n", "<F3>", ":NvimTreeToggle<CR>", opts)
 
 -- Telescope
 keymap("n", "<leader>tf", ":Telescope find_files<CR>", opts)
