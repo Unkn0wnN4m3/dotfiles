@@ -1,0 +1,1 @@
+function Apagar { shutdown -s -t 0 }

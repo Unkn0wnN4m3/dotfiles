@@ -1,0 +1,1 @@
+function Reiniciar { shutdown -r -t 0 }
