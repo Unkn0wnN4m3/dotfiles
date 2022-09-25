@@ -1,0 +1,68 @@
+{
+    "buckets": [
+        {
+            "Name": "main",
+            "Source": "https://github.com/ScoopInstaller/Main",
+            "Updated": "2022-09-19T15:29:56-05:00",
+            "Manifests": 1083
+        }
+    ],
+    "apps": [
+        {
+            "Source": "main",
+            "Info": "",
+            "Version": "0.22.1",
+            "Updated": "2022-09-11T09:56:55.0468469-05:00",
+            "Name": "bat"
+        },
+        {
+            "Source": "main",
+            "Info": "",
+            "Version": "8.4.0",
+            "Updated": "2022-09-11T10:05:52.2592018-05:00",
+            "Name": "fd"
+        },
+        {
+            "Source": "main",
+            "Info": "",
+            "Version": "1.31.1",
+            "Updated": "2022-09-15T17:09:17.4412976-05:00",
+            "Name": "fnm"
+        },
+        {
+            "Source": "main",
+            "Info": "",
+            "Version": "0.33.0",
+            "Updated": "2022-09-10T17:02:35.9318836-05:00",
+            "Name": "fzf"
+        },
+        {
+            "Source": "main",
+            "Info": "",
+            "Version": "1.6",
+            "Updated": "2022-09-11T09:53:55.1026703-05:00",
+            "Name": "jq"
+        },
+        {
+            "Source": "main",
+            "Info": "",
+            "Version": "0.7.2",
+            "Updated": "2022-09-15T16:06:23.1818572-05:00",
+            "Name": "neovim"
+        },
+        {
+            "Source": "main",
+            "Info": "",
+            "Version": "1.10.3",
+            "Updated": "2022-09-10T17:02:17.99486-05:00",
+            "Name": "starship"
+        },
+        {
+            "Source": "main",
+            "Info": "",
+            "Version": "0.8.3",
+            "Updated": "2022-09-10T17:02:36.7282731-05:00",
+            "Name": "zoxide"
+        }
+    ]
+}
