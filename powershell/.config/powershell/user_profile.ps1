@@ -1,6 +1,12 @@
 using namespace System.Management.Automation
 using namespace System.Management.Automation.Language
 
+# Environment variables
+$Env:BAT_THEME = 'base16'
+$Env:FZF_DEFAULT_OPTS = '--height 50% --layout=reverse
+--color fg:-1,bg:-1,hl:33,fg+:254,bg+:235,hl+:33
+--color info:136,prompt:136,pointer:230,marker:230,spinner:136'
+
 # Powershell configuration directory
 $__CUSTOMPSHOME = "$ENV:USERPROFILE\\.config\\powershell"
 
@@ -10,7 +16,9 @@ function Invoke-Starship-PreCommand {
 }
 
 # Prompt
-Invoke-Expression (&starship init powershell)
+if (Get-Command starship -ErrorAction SilentlyContinue) {
+    Invoke-Expression (&starship init powershell)
+}
 
 # Functions
 foreach ($PFunction in Get-ChildItem "$__CUSTOMPSHOME\\functions") {
