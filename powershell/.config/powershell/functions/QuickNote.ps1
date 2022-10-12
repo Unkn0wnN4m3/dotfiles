@@ -1,6 +1,7 @@
 function QuickNote {
     param (
         [ValidateNotNull()]
+        [Parameter(Position = 0)]
         [string[]]
         $Title = (Get-Date -Format "MM-dd-yyyy-HH-mm-ss"),
 
@@ -12,30 +13,21 @@ function QuickNote {
     $notes_path = "$env:USERPROFILE\Documents\QuickNotes\"
 
     function CheckPath {
-        if ( Test-Path -Path $notes_path ) {
-            return $true
-        }
-        else {
-            New-Item -ItemType Directory -Path $notes_path
+        if ( -not ( Test-Path -Path $notes_path ) ) {
+            New-Item -ItemType Directory -Path $notes_path -ErrorAction Stop
         }
 
-        if (!$?) {
-            Write-Output "Can't create a directory in $notes_path`n"; return $false
-        }
-        else {
-            Write-Output "New notes will be stored in $notes_path`n", return $true
-        }
+        return $true
     }
 
     function CreateNote {
         $new_note = ( -join ( "$notes_path\$Title", ".txt" ) )
 
         if ( Test-Path "$new_note" -PathType Leaf ) {
-            Write-Output "Error: The note already exists!`n"; return $false
+            return Write-Host "Error: The note already exists!`n" -f Red
         }
-        else {
-            Write-Output "$Title`n`n$Body" >> "$new_note"
-        }
+
+        Write-Output "$Title`n`n$Body" >> "$new_note"
     }
 
     if (CheckPath) {
