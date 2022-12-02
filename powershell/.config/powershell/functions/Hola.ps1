@@ -1,1 +1,0 @@
-function Hola { Write-Host "hola $ENV:USERNAME" }
