@@ -10,8 +10,8 @@ if ( -not ( $Env:FZF_DEFAULT_OPTS ) ) {
     [Environment]::SetEnvironmentVariable(
         'FZF_DEFAULT_OPTS',
         '--height 50% --layout=reverse
-# --color fg:-1,bg:-1,hl:33,fg+:254,bg+:235,hl+:33
-# --color info:136,prompt:136,pointer:230,marker:230,spinner:136',
+--color fg:-1,bg:-1,hl:33,fg+:254,bg+:235,hl+:33
+--color info:136,prompt:136,pointer:230,marker:230,spinner:136',
         'user')
 }
 
