@@ -10,7 +10,8 @@ function QuickNote {
         $Body
     )
 
-    $notes_path = "$env:USERPROFILE\Documents\QuickNotes\"
+    $my_documents_path = [Environment]::GetFolderPath("MyDocuments")
+    $notes_path = "$my_documents_path\QuickNotes\"
 
     function CheckPath {
         if ( -not ( Test-Path -Path $notes_path ) ) {
