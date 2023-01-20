@@ -1,74 +1,82 @@
 local status_ok, telescope = pcall(require, "telescope")
 if not status_ok then
-	return
+    return
 end
 
 local actions = require("telescope.actions")
 local function telescope_buffer_dir()
-	return vim.fn.expand("%:p:h")
+    return vim.fn.expand("%:p:h")
 end
-local fb_actions = telescope.extensions.file_browser.actions
+
+local projects_path vim.fn.expand("$HOME/Documents/Projects/")
+if vim.fn.has 'win32' == 1 then
+    projects_path = "D:\\Julio\\Documents\\Projects\\"
+end
+-- local linux_projects = "D:\\Julio\\Documents\\Projects\\"
 
 telescope.setup({
-	defaults = {
-
-		prompt_prefix = " ",
-		selection_caret = " ",
-		path_display = { "smart" },
-		file_ignore_patterns = { ".git/", "node_modules", "venv", "__pycache__" },
-
-		mappings = {
-			i = {
-				["<Down>"] = actions.cycle_history_next,
-				["<Up>"] = actions.cycle_history_prev,
-				-- ["<C-j>"] = actions.move_selection_next,
-				-- ["<C-k>"] = actions.move_selection_previous,
-			},
-		},
-	},
-	extensions = {
-		fzf = {
-			fuzzy = true, -- false will only do exact matching
-			override_generic_sorter = true, -- override the generic sorter
-			override_file_sorter = true, -- override the file sorter
-			case_mode = "smart_case", -- or "ignore_case" or "respect_case" the default case_mode is "smart_case"
-		},
-		file_browser = {
-			theme = "dropdown",
-			-- disables netrw and use telescope-file-browser in its place
-			hijack_netrw = true,
-			mappings = {
-				-- your custom insert mode mappings
-				["i"] = {
-					["<C-w>"] = function()
-						vim.cmd("normal vbd")
-					end,
-				},
-				["n"] = {
-					-- your custom normal mode mappings
-					["N"] = fb_actions.create,
-					["h"] = fb_actions.goto_parent_dir,
-					["/"] = function()
-						vim.cmd("startinsert")
-					end,
-				},
-			},
-		},
-	},
+    defaults = {
+        prompt_prefix = " ",
+        selection_caret = " ",
+        path_display = { "smart" },
+        file_ignore_patterns = { ".git", "node_modules", "venv", "__pycache__" },
+        mappings = {
+            i = {
+                ["<Down>"] = actions.cycle_history_next,
+                ["<Up>"] = actions.cycle_history_prev,
+                -- ["<C-j>"] = actions.move_selection_next,
+                -- ["<C-k>"] = actions.move_selection_previous,
+            },
+        },
+    },
+    extensions = {
+        file_browser = {
+            theme = "dropdown",
+            previewer = false,
+            -- disables netrw and use telescope-file-browser in its place
+            hijack_netrw = true,
+            mappings = {
+                ["n"] = {
+                    ["/"] = function()
+                        vim.cmd("startinsert")
+                    end,
+                },
+            },
+        },
+        project = {
+            base_dirs = {
+                {
+                    path = projects_path .. "Scripts",
+                    max_depth = 3
+                },
+                {
+                    path = projects_path .. "WebDevelopment",
+                    max_depth = 3
+                },
+            },
+        },
+    },
 })
 
-telescope.load_extension("fzf")
 telescope.load_extension("file_browser")
+telescope.load_extension('project')
 
-vim.keymap.set("n", "<leader>te", function()
-	telescope.extensions.file_browser.file_browser({
-		path = "%:p:h",
-		cwd = telescope_buffer_dir(),
-		respect_gitignore = false,
-		hidden = true,
-		grouped = true,
-		previewer = false,
-		initial_mode = "normal",
-		layout_config = { height = 40 },
-	})
+local keymap = vim.keymap.set
+local opts = { noremap = true, silent = true }
+
+keymap("n", "<leader>te", function()
+    telescope.extensions.file_browser.file_browser({
+        path = "%:p:h",
+        cwd = telescope_buffer_dir(),
+        respect_gitignore = false,
+        hidden = true,
+        grouped = true,
+        previewer = false,
+        initial_mode = "normal",
+        layout_config = { height = 40 },
+    })
 end)
+keymap("n", "<leader>tf", ":Telescope find_files<CR>", opts)
+keymap("n", "<leader>tg", ":Telescope live_grep theme=ivy<CR>", opts)
+keymap("n", "<leader>tp", ":Telescope projects<CR>", opts)
+keymap("n", "<leader>tb", ":Telescope buffers<CR>", opts)
