@@ -1,8 +1,8 @@
 # change user profile configuration
 $new_userprofile = '. $ENV:USERPROFILE\.config\powershell\user_profile.ps1'
 
-if ( -not ( $(Get-Content $PROFILE.CurrentUserCurrentHost) -match $new_userprofile ) ) {
-    Write-Output $new_userprofile >> $PROFILE.CurrentUserCurrentHost
+if ( -not ( Test-Path $PROFILE.CurrentUserCurrentHost) ) {
+    New-Item -ItemType File -Path "$PROFILE.CurrentUserCurrentHost" -Value "$new_userprofile"
 }
 
 # Set everything inside config directory
