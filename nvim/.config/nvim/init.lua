@@ -33,6 +33,6 @@ vim.opt.rtp:prepend(lazypath)
 -- }}}
 
 require("binds")
-require("lazy").setup("plugins")
 require("config")
 require("autocommands")
+require("lazy").setup("plugins")
