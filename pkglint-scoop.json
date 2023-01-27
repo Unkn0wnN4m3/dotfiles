@@ -3,66 +3,87 @@
         {
             "Name": "main",
             "Source": "https://github.com/ScoopInstaller/Main",
-            "Updated": "2022-09-19T15:29:56-05:00",
-            "Manifests": 1083
+            "Updated": "2023-01-26T14:25:55-06:00",
+            "Manifests": 1149
         }
     ],
     "apps": [
         {
+            "Updated": "2023-01-12T16:56:27.7502267-06:00",
+            "Version": "22.01",
+            "Name": "7zip",
             "Source": "main",
-            "Info": "",
+            "Info": ""
+        },
+        {
+            "Updated": "2022-12-03T00:20:26.3932651-06:00",
             "Version": "0.22.1",
-            "Updated": "2022-09-11T09:56:55.0468469-05:00",
-            "Name": "bat"
+            "Name": "bat",
+            "Source": "main",
+            "Info": ""
         },
         {
+            "Updated": "2023-01-26T16:16:15.2437724-06:00",
+            "Version": "1.30.0",
+            "Name": "deno",
             "Source": "main",
-            "Info": "",
-            "Version": "8.4.0",
-            "Updated": "2022-09-11T10:05:52.2592018-05:00",
-            "Name": "fd"
+            "Info": ""
         },
         {
+            "Updated": "2022-12-09T13:47:42.8154483-06:00",
+            "Version": "8.6.0",
+            "Name": "fd",
             "Source": "main",
-            "Info": "",
-            "Version": "1.31.1",
-            "Updated": "2022-09-15T17:09:17.4412976-05:00",
-            "Name": "fnm"
+            "Info": ""
         },
         {
+            "Updated": "2023-01-25T14:05:56.974013-06:00",
+            "Version": "0.37.0",
+            "Name": "fzf",
             "Source": "main",
-            "Info": "",
-            "Version": "0.33.0",
-            "Updated": "2022-09-10T17:02:35.9318836-05:00",
-            "Name": "fzf"
+            "Info": ""
         },
         {
-            "Source": "main",
-            "Info": "",
+            "Updated": "2022-12-03T00:20:34.535224-06:00",
             "Version": "1.6",
-            "Updated": "2022-09-11T09:53:55.1026703-05:00",
-            "Name": "jq"
+            "Name": "jq",
+            "Source": "main",
+            "Info": ""
         },
         {
+            "Updated": "2023-01-19T21:37:04.2328949-06:00",
+            "Version": "0.8.2",
+            "Name": "neovim",
             "Source": "main",
-            "Info": "",
-            "Version": "0.7.2",
-            "Updated": "2022-09-15T16:06:23.1818572-05:00",
-            "Name": "neovim"
+            "Info": "Held package"
         },
         {
+            "Updated": "2023-01-19T20:01:12.2996971-06:00",
+            "Version": "18.13.0",
+            "Name": "nodejs-lts",
             "Source": "main",
-            "Info": "",
-            "Version": "1.10.3",
-            "Updated": "2022-09-10T17:02:17.99486-05:00",
-            "Name": "starship"
+            "Info": ""
         },
         {
+            "Updated": "2022-12-03T01:25:59.2206409-06:00",
+            "Version": "13.0.0",
+            "Name": "ripgrep",
             "Source": "main",
-            "Info": "",
-            "Version": "0.8.3",
-            "Updated": "2022-09-10T17:02:36.7282731-05:00",
-            "Name": "zoxide"
+            "Info": ""
+        },
+        {
+            "Updated": "2022-12-14T00:03:58.800713-06:00",
+            "Version": "1.12.0",
+            "Name": "starship",
+            "Source": "main",
+            "Info": ""
+        },
+        {
+            "Updated": "2023-01-12T16:51:57.4087774-06:00",
+            "Version": "0.9.0",
+            "Name": "zoxide",
+            "Source": "main",
+            "Info": ""
         }
     ]
 }
