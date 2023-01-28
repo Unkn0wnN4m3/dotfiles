@@ -2,7 +2,12 @@ return {
     {
         "lewis6991/gitsigns.nvim",
         tag = "v0.6",
-        config = true
+        config = true,
+        cond = function()
+            local filepath = vim.fn.expand('%:p:h')
+            local gitdir = vim.fn.finddir('.git', filepath .. ';')
+            return gitdir and #gitdir > 0 and #gitdir < #filepath
+        end,
     },
     {
         "folke/trouble.nvim",

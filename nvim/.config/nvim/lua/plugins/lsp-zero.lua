@@ -75,7 +75,10 @@ return {
             lsp.ensure_installed({
                 'sumneko_lua',
                 'pyright',
-                'tsserver'
+                'tsserver',
+                'jsonls',
+                'html',
+                'cssls'
             })
 
             lsp.configure('pyright', {
