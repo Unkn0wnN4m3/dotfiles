@@ -20,7 +20,7 @@ return {
         keys = {
             { "<leader>tf", "<CMD>Telescope find_files<CR>", desc = "Find project files" },
             { "<leader>tg", "<CMD>Telescope live_grep theme=ivy<CR>", },
-            { "<leader>tp", "<CMD>Telescope projects<CR>" },
+            { "<leader>tp", "<CMD>Telescope project<CR>" },
             { "<leader>tb", "<CMD>Telescope buffers<CR>" },
             {
                 "<leader>te", function()
@@ -47,9 +47,6 @@ return {
             local actions = require("telescope.actions")
 
             local projects_path = vim.fn.expand("$HOME/Documents/Projects/")
-            if vim.fn.has 'win32' == 1 then
-                projects_path = "D:\\Julio\\Documents\\Projects\\"
-            end
 
             telescope.setup({
                 defaults = {

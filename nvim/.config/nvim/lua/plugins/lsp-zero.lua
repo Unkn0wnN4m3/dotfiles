@@ -68,9 +68,13 @@ return {
             },
         },
         config = function()
-            local lsp = require('lsp-zero')
             local util = require('lspconfig.util')
-            lsp.preset('recommended')
+            local lsp = require('lsp-zero').preset({
+                name = 'recommended',
+                -- set_lsp_keymaps = true,
+                -- manage_nvim_cmp = true,
+                suggest_lsp_servers = false,
+            })
 
             lsp.ensure_installed({
                 'sumneko_lua',
@@ -86,23 +90,25 @@ return {
                     python = {
                         analysis = {
                             typeCheckingMode = "basic",
-                            autoSearchPaths = true,
-                            useLibraryCodeForTypes = true,
-                            diagnosticMode = "workspace",
                         },
+                        venvPath = vim.fn.expand("$WORKON_HOME")
                     },
                 },
+            })
+
+            lsp.configure('html', {
+                filetypes = { 'html', 'jinja.html' }
             })
 
             lsp.configure('tsserver', {
                 root_dir = util.root_pattern("package.json"),
                 single_file_support = false,
             })
-
-            lsp.configure('denols', {
-                root_dir = util.root_pattern("deno.json", "deno.jsonc"),
-                single_file_support = false,
-            })
+            --
+            -- lsp.configure('denols', {
+            --     root_dir = util.root_pattern("deno.json", "deno.jsonc"),
+            --     single_file_support = false,
+            -- })
 
             -- Configure lua language server for neovim
             lsp.nvim_workspace()
@@ -158,6 +164,7 @@ return {
                     }),
                     formatting.yapf,
                     formatting.isort,
+                    formatting.djlint,
                     formatting.fish_indent
                 }
             })
