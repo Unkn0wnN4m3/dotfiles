@@ -12,7 +12,6 @@
 vim.opt.backup = false -- creates a backup file
 vim.opt.clipboard = "unnamedplus" -- allows neovim to access the system clipboard
 vim.opt.cmdheight = 2 -- more space in the neovim command line for displaying messages
--- vim.opt.completeopt = { "menuone", "noselect" } -- mostly just for cmp
 vim.opt.fileencoding = "utf-8" -- the encoding written to a file
 vim.opt.hlsearch = true -- highlight all matches on previous search pattern
 vim.opt.ignorecase = true -- ignore case in search patterns
@@ -49,7 +48,7 @@ vim.opt.whichwrap:append("<,>,[,],h,l")
 vim.opt.iskeyword:append("-")
 vim.opt.backspace = { 'start', 'eol', 'indent' }
 vim.opt.path:append { '**' } -- Finding files - Search down into subfolders
-vim.opt.wildignore:append { '*/node_modules/*', '*.pyc', '__pycache__', '.git' }
+vim.opt.wildignore:append { '*/node_modules/*', '*.pyc', '*/__pycache__/*', '.git' }
 vim.opt.list = true
 vim.opt.listchars = {
     eol = "↲",

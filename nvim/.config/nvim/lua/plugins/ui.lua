@@ -8,6 +8,7 @@ return {
         config = function()
             -- load the colorscheme here
             require("rose-pine").setup({
+                disable_italics = true,
                 dark_variant = 'moon',
                 disable_background = true,
             })
@@ -60,8 +61,8 @@ return {
         tag = "v2.2.1",
         keys = {
             { "<C-t>", "<CMD>ToggleTerm<CR>", mode = { "n", "t" } },
-            { "<C-j>", [[<C-\><C-n><C-W>j]], mode = "t" },
-            { "<C-k>", [[<C-\><C-n><C-W>k]], mode = "t" },
+            { "<C-j>", [[<C-\><C-n><C-W>j]],  mode = "t" },
+            { "<C-k>", [[<C-\><C-n><C-W>k]],  mode = "t" },
         },
         config = function()
             local toggleterm = require("toggleterm")
@@ -102,7 +103,7 @@ return {
                 },
                 sections = {
                     lualine_c = {
-                        { 'filename', path = 1 },
+                        { 'filename',  path = 1 },
                         { mixedIndent, color = 'red' }
                     },
 
