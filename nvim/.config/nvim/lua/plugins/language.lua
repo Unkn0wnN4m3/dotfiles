@@ -6,7 +6,7 @@ return {
         ft = "python",
         config = function()
             vim.cmd([[
-            let g:python_highlight_all = -1
+            let g:python_highlight_all = 1
             ]])
         end
     },
@@ -14,6 +14,11 @@ return {
         'Vimjas/vim-python-pep8-indent',
         ft = "python",
         commit = "60ba5e11a61618c0344e2db190210145083c91f8"
+    },
+    {
+        'Glench/Vim-Jinja2-Syntax',
+        ft = { "html", "jinja.html" },
+        commit = '2c17843b074b06a835f88587e1023ceff7e2c7d1'
     },
     {
         "HerringtonDarkholme/yats.vim",
@@ -30,4 +35,19 @@ return {
         ft = "lua",
         commit = "fa810f85437525bcea0fc4ff22c634935721d86d"
     },
+    {
+        "evanleck/vim-svelte",
+        ft = "svelte",
+        commit = "0e93ec53c3667753237282926fec626785622c1c",
+        dependencies = {
+            {
+                "othree/html5.vim",
+                tag = "0.27"
+            },
+            {
+                "pangloss/vim-javascript",
+                tag = "v1.2.2"
+            }
+        }
+    }
 }
