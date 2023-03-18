@@ -8,13 +8,13 @@ if ( -not ( $env:BAT_THEME ) ) {
 
 if ( -not ( $Env:FZF_DEFAULT_OPTS ) ) {
     [Environment]::SetEnvironmentVariable(
-        'FZF_DEFAULT_OPTS',
-        '--height 50% --layout=reverse
---color=fg:#e0def4,bg:#2a273f,hl:#6e6a86
---color=fg+:#908caa,bg+:#232136,hl+:#908caa
---color=info:#9ccfd8,prompt:#f6c177,pointer:#c4a7e7
---color=marker:#ea9a97,spinner:#eb6f92,header:#ea9a97',
-        'user')
+            'FZF_DEFAULT_OPTS',
+            '--height 50% --layout=reverse
+            --color=fg:#e0def4,bg:#2a273f,hl:#6e6a86
+            --color=fg+:#908caa,bg+:#232136,hl+:#908caa
+            --color=info:#9ccfd8,prompt:#f6c177,pointer:#c4a7e7
+            --color=marker:#ea9a97,spinner:#eb6f92,header:#ea9a97',
+            'user')
 }
 
 [String[]]$c_extension = ".json", ".jsonc", ".yaml", ".toml", ".xml"
@@ -33,13 +33,19 @@ $psStyle.FileInfo.Directory = "`e[35;1m"
 # Powershell configuration directory
 $CUSTOMPSHOME = "$ENV:USERPROFILE\\.config\\powershell"
 
-# Setting the terminal title
-function Invoke-Starship-PreCommand {
-    $host.ui.Write("`e]0; PS> $env:USERNAME@$env:COMPUTERNAME`: $pwd `a")
-}
-
 # Prompt
 if (Get-Command starship -ErrorAction SilentlyContinue) {
+    function Invoke-Starship-PreCommand {
+        $loc = $executionContext.SessionState.Path.CurrentLocation;
+        $prompt = "$([char]27)]9;12$([char]7)"
+            if ($loc.Provider.Name -eq "FileSystem")
+            {
+                $prompt += "$([char]27)]9;9;`"$($loc.ProviderPath)`"$([char]27)\"
+            }
+        $host.ui.Write($prompt)
+    }
+
+    # Setting the terminal title
     Invoke-Expression (&starship init powershell)
 }
 
@@ -77,8 +83,7 @@ Set-Alias -Name Salir -Value __SALR
 Set-Alias -Name la -Value __SHL
 Set-Alias -Name which -Value Get-Command
 Set-Alias -Name grep -Value findstr
-Set-Alias -Name less -Value "$env:USERPROFILE\AppData\Local\Programs\Git\usr\bin\less.exe"
-Set-Alias -Name lg -Value "$env:USERPROFILE\go\bin\lazygit.exe"
+Set-Alias -Name less -Value "C:\Program Files\Git\usr\bin\less.exe"
+# Set-Alias -Name lg -Value "$env:USERPROFILE\go\bin\lazygit.exe"
 Set-Alias -Name n -Value nvim
 Set-Alias -Name nvimn -Value __NVIMN
-Set-Alias -Name py -Value python
