@@ -36,6 +36,13 @@ return {
         commit = "fa810f85437525bcea0fc4ff22c634935721d86d"
     },
     {
+        "iamcco/markdown-preview.nvim",
+        tag = "v0.0.10",
+        build = "cd app && npm install",
+        init = function() vim.g.mkdp_filetypes = { "markdown" } end,
+        ft = "markdown"
+    },
+    {
         "evanleck/vim-svelte",
         ft = "svelte",
         commit = "0e93ec53c3667753237282926fec626785622c1c",

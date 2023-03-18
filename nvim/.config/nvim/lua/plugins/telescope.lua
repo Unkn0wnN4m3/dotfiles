@@ -24,22 +24,21 @@ return {
             { "<leader>tb", "<CMD>Telescope buffers<CR>" },
             {
                 "<leader>te", function()
-                    local function telescope_buffer_dir()
-                        return vim.fn.expand("%:p:h")
-                    end
-
-                    require("telescope").extensions.file_browser.file_browser({
-                        path = "%:p:h",
-                        cwd = telescope_buffer_dir(),
-                        respect_gitignore = false,
-                        hidden = true,
-                        grouped = true,
-                        previewer = false,
-                        initial_mode = "normal",
-                        layout_config = { height = 40 },
-                    })
-
+                local function telescope_buffer_dir()
+                    return vim.fn.expand("%:p:h")
                 end
+
+                require("telescope").extensions.file_browser.file_browser({
+                    path = "%:p:h",
+                    cwd = telescope_buffer_dir(),
+                    respect_gitignore = false,
+                    hidden = true,
+                    grouped = true,
+                    previewer = false,
+                    initial_mode = "normal",
+                    layout_config = { height = 40 },
+                })
+            end
             },
         },
         config = function()
@@ -53,7 +52,7 @@ return {
                     prompt_prefix = " ",
                     selection_caret = " ",
                     path_display = { "smart" },
-                    file_ignore_patterns = { ".git", "node_modules", "venv", "__pycache__" },
+                    file_ignore_patterns = { ".git", "node_modules", ".venv", "__pycache__" },
                     mappings = {
                         i = {
                             ["<Down>"] = actions.cycle_history_next,

@@ -10,7 +10,7 @@ return {
             require("rose-pine").setup({
                 disable_italics = true,
                 dark_variant = 'moon',
-                disable_background = true,
+                disable_background = false,
             })
             vim.cmd('colorscheme rose-pine')
         end,
@@ -97,6 +97,12 @@ return {
                 return mixed and "MI" or ""
             end
 
+            local navic = require("nvim-navic")
+            local function nv()
+                return navic.get_location()
+            end
+
+
             require('lualine').setup({
                 options = {
                     theme = 'rose-pine-alt'
@@ -108,6 +114,11 @@ return {
                     },
 
                     lualine_x = { 'o:shiftwidth', 'encoding', 'fileformat', 'filetype' },
+                },
+                winbar = {
+                    lualine_c = {
+                        { nv }
+                    }
                 },
                 extensions = {
                     'quickfix',

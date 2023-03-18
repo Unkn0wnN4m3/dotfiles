@@ -27,6 +27,10 @@ return {
                     tag = "v0.1.2"
                 },
             },
+            {
+                "SmiteshP/nvim-navic",
+                commit = "cdd24539bcf114a499827e9b32869fe74836efe7",
+            },
 
             -- Autocompletion
             {
@@ -85,12 +89,24 @@ return {
                 'cssls'
             })
 
+            local navic = require("nvim-navic")
+
+            lsp.on_attach(function(client, bufnr)
+                if client.server_capabilities.documentSymbolProvider then
+                    navic.attach(client, bufnr)
+                end
+            end)
+
             lsp.configure('pyright', {
                 settings = {
                     python = {
                         analysis = {
                             typeCheckingMode = "basic",
+                            autoSearchPaths = true,
+                            useLibraryCodeForTypes = true,
+                            diagnosticMode = 'workspace',
                         },
+                        disableOrganizeImports = true,
                         venvPath = vim.fn.expand("$WORKON_HOME")
                     },
                 },
@@ -115,14 +131,14 @@ return {
 
             lsp.setup()
 
-            vim.diagnostic.config({
-                virtual_text = {
-                    source = "if_many",
-                    severity = { min = vim.diagnostic.severity.WARN },
-                    spacing = 2,
-                    prefix = "",
-                },
-            })
+            -- vim.diagnostic.config({
+            --     virtual_text = {
+            --         source = "if_many",
+            --         severity = { min = vim.diagnostic.severity.WARN },
+            --         spacing = 2,
+            --         prefix = "",
+            --     },
+            -- })
 
             local null_ls = require('null-ls')
             local null_opts = lsp.build_options('null-ls', {})

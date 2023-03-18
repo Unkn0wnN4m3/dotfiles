@@ -64,18 +64,10 @@ keymap("n", "<C-Down>", ":resize +2<CR>", opts)
 keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
--- Navigate buffers
-keymap("n", "<S-l>", ":bnext<CR>", opts)
-keymap("n", "<S-h>", ":bprevious<CR>", opts)
-
--- Close buffers
-keymap("n", "<S-q>", "<cmd>bdelete<CR>", opts)
-
 -- Navigate Tabs
-keymap("n", "<Tab>", ":tabNext<CR>", opts)
-keymap("n", "<S-Tab>", ":tabprevious<CR>", opts)
-keymap("n", "te", ":tabedit<CR>", opts)
-keymap("n", "tc", ":tabclose<CR>", opts)
+keymap("n", "gn", "<CMD>tabnext<CR>", opts)
+keymap("n", "gp", "<CMD>tabprevious<CR>", opts)
+keymap("n", "tc", "<CMD>tabclose<CR>", opts)
 
 -- Better tabing
 keymap("v", "<", "<gv", opts)
