@@ -2,7 +2,7 @@ return {
     {
         "rose-pine/neovim",
         name = 'rose-pine',
-        lazy = false, -- make sure we load this during startup if it is your main colorscheme
+        lazy = false,    -- make sure we load this during startup if it is your main colorscheme
         priority = 1000, -- make sure to load this before all the other start plugins
         tag = "v1.1.0",
         config = function()
@@ -41,9 +41,9 @@ return {
                     show_buffer_close_icons = false,
                     show_close_icon = false,
                     color_icons = true,
-                    close_command = "bdelete", -- can be a string | function, see "Mouse actions"
+                    close_command = "bdelete",       -- can be a string | function, see "Mouse actions"
                     right_mouse_command = "bdelete", -- can be a string | function, see "Mouse actions"
-                    separator_style = { "|", "|" }, -- | "thick" | "thin" | { 'any', 'any' },
+                    separator_style = { "|", "|" },  -- | "thick" | "thin" | { 'any', 'any' },
                     indicator = {
                         style = "none",
                     },
@@ -86,6 +86,15 @@ return {
         end
     },
     {
+        "folke/noice.nvim",
+        tag = "v1.9.4",
+        config = true,
+        dependencies = {
+            { "MunifTanjim/nui.nvim", commit = "0dc148c6ec06577fcf06cbab3b7dac96d48ba6be" },
+            { "rcarriga/nvim-notify", tag = "v3.11.0" }
+        }
+    },
+    {
         'nvim-lualine/lualine.nvim',
         dependencies = 'nvim-tree/nvim-web-devicons',
         commit = "0050b308552e45f7128f399886c86afefc3eb988",
@@ -97,11 +106,7 @@ return {
                 return mixed and "MI" or ""
             end
 
-            local navic = require("nvim-navic")
-            local function nv()
-                return navic.get_location()
-            end
-
+            -- local navic = require("nvim-navic")
 
             require('lualine').setup({
                 options = {
@@ -109,17 +114,16 @@ return {
                 },
                 sections = {
                     lualine_c = {
-                        { 'filename',  path = 1 },
+                        { 'filename',  path = 0 },
                         { mixedIndent, color = 'red' }
                     },
-
                     lualine_x = { 'o:shiftwidth', 'encoding', 'fileformat', 'filetype' },
                 },
-                winbar = {
-                    lualine_c = {
-                        { nv }
-                    }
-                },
+                -- winbar = {
+                --     lualine_c = {
+                --         { navic.get_location, cond = navic.is_avaible }
+                --     }
+                -- },
                 extensions = {
                     'quickfix',
                     'toggleterm',

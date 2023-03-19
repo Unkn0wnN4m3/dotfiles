@@ -57,11 +57,7 @@ return {
         tag = "v2.2"
     },
     {
-        "ggandor/leap.nvim",
-        dependencies = "tpope/vim-repeat",
-        commit = "f74473d23ebf60957e0db3ff8172349a82e5a442",
-        config = function()
-            require('leap').add_default_mappings()
-        end
-    },
+        "tpope/vim-obsession",
+        commit = "fe9d3e1a9a50171e7d316a52e1e56d868e4c1fe5"
+    }
 }

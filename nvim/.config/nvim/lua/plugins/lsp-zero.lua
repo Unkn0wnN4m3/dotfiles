@@ -3,6 +3,7 @@ return {
     {
         'VonHeikemen/lsp-zero.nvim',
         branch = "v1.x",
+        priority = 999, -- make sure to load this before all the other start plugins
         dependencies = {
 
             -- LSP Support
@@ -26,10 +27,6 @@ return {
                     "nvim-lua/plenary.nvim",
                     tag = "v0.1.2"
                 },
-            },
-            {
-                "SmiteshP/nvim-navic",
-                commit = "cdd24539bcf114a499827e9b32869fe74836efe7",
             },
 
             -- Autocompletion
@@ -89,11 +86,9 @@ return {
                 'cssls'
             })
 
-            local navic = require("nvim-navic")
-
             lsp.on_attach(function(client, bufnr)
-                if client.server_capabilities.documentSymbolProvider then
-                    navic.attach(client, bufnr)
+                if client.server_capabilities["documentSymbolProvider"] then
+                    require("nvim-navic").attach(client, bufnr)
                 end
             end)
 
@@ -120,11 +115,6 @@ return {
                 root_dir = util.root_pattern("package.json"),
                 single_file_support = false,
             })
-            --
-            -- lsp.configure('denols', {
-            --     root_dir = util.root_pattern("deno.json", "deno.jsonc"),
-            --     single_file_support = false,
-            -- })
 
             -- Configure lua language server for neovim
             lsp.nvim_workspace()
@@ -183,6 +173,37 @@ return {
                     formatting.djlint,
                     formatting.fish_indent
                 }
+            })
+        end
+    },
+
+    -- Interface
+    {
+        "utilyre/barbecue.nvim",
+        name = "barbecue",
+        tag = "v0.4.2",
+        dependencies = {
+            {
+                "SmiteshP/nvim-navic",
+                commit = "cdd24539bcf114a499827e9b32869fe74836efe7",
+            },
+            { "nvim-tree/nvim-web-devicons" }
+        },
+        config = function()
+            require("barbecue").setup({
+                create_autocmd = false,
+                attach_navic = false,
+            })
+
+            vim.api.nvim_create_autocmd({
+                "BufWinEnter",
+                "CursorHold",
+                "InsertLeave",
+            }, {
+                group = vim.api.nvim_create_augroup("barbecue.updater", {}),
+                callback = function()
+                    require("barbecue.ui").update()
+                end,
             })
         end
     },
