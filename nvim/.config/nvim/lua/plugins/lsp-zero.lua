@@ -3,21 +3,21 @@ return {
     {
         'VonHeikemen/lsp-zero.nvim',
         branch = "v1.x",
-        priority = 999, -- make sure to load this before all the other start plugins
+        -- priority = 999, -- make sure to load this before all the other start plugins
         dependencies = {
 
             -- LSP Support
             {
                 'neovim/nvim-lspconfig',
-                tag = "v0.1.5"
+                tag = "v0.1.6"
             },
             {
                 'williamboman/mason.nvim',
-                commit = "5e78970539d937b7aef7a4e10b219d60da0b1425"
+                commit = "fdf33558c4386516150748670fde10ea39a7d86f"
             },
             {
                 'williamboman/mason-lspconfig.nvim',
-                commit = "610f5919fe633ac872239a0ab786572059f0d91d"
+                commit = "b64fdede85fd5e0b720ce722919e0a9b95ed6547"
             },
             {
                 'jose-elias-alvarez/null-ls.nvim',
@@ -27,6 +27,13 @@ return {
                     "nvim-lua/plenary.nvim",
                     tag = "v0.1.2"
                 },
+            },
+
+            -- Style
+            {
+                "j-hui/fidget.nvim",
+                commit = "0ba1e16d07627532b6cae915cc992ecac249fb97",
+                config = true
             },
 
             -- Autocompletion
@@ -78,7 +85,6 @@ return {
             })
 
             lsp.ensure_installed({
-                'sumneko_lua',
                 'pyright',
                 'tsserver',
                 'jsonls',
@@ -117,7 +123,7 @@ return {
             })
 
             -- Configure lua language server for neovim
-            lsp.nvim_workspace()
+            -- lsp.nvim_workspace()
 
             lsp.setup()
 

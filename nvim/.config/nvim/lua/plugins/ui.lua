@@ -86,15 +86,6 @@ return {
         end
     },
     {
-        "folke/noice.nvim",
-        tag = "v1.9.4",
-        config = true,
-        dependencies = {
-            { "MunifTanjim/nui.nvim", commit = "0dc148c6ec06577fcf06cbab3b7dac96d48ba6be" },
-            { "rcarriga/nvim-notify", tag = "v3.11.0" }
-        }
-    },
-    {
         'nvim-lualine/lualine.nvim',
         dependencies = 'nvim-tree/nvim-web-devicons',
         commit = "0050b308552e45f7128f399886c86afefc3eb988",
