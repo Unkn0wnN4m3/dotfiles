@@ -110,16 +110,48 @@ return {
                     },
                     lualine_x = { 'o:shiftwidth', 'encoding', 'fileformat', 'filetype' },
                 },
-                -- winbar = {
-                --     lualine_c = {
-                --         { navic.get_location, cond = navic.is_avaible }
-                --     }
-                -- },
                 extensions = {
                     'quickfix',
                     'toggleterm',
                 }
             })
         end
-    }
+    },
+
+    -- Style
+    {
+        "j-hui/fidget.nvim",
+        commit = "0ba1e16d07627532b6cae915cc992ecac249fb97",
+        config = true,
+        event = "LspAttach"
+    },
+    {
+        "utilyre/barbecue.nvim",
+        name = "barbecue",
+        tag = "v0.4.2",
+        dependencies = {
+            {
+                "SmiteshP/nvim-navic",
+                commit = "cdd24539bcf114a499827e9b32869fe74836efe7",
+            },
+            { "nvim-tree/nvim-web-devicons" }
+        },
+        config = function()
+            require("barbecue").setup({
+                create_autocmd = false,
+                attach_navic = false,
+            })
+
+            vim.api.nvim_create_autocmd({
+                "BufWinEnter",
+                "CursorHold",
+                "InsertLeave",
+            }, {
+                group = vim.api.nvim_create_augroup("barbecue.updater", {}),
+                callback = function()
+                    require("barbecue.ui").update()
+                end,
+            })
+        end
+    },
 }

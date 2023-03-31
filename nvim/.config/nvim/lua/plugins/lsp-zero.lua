@@ -1,24 +1,17 @@
 return {
-    -- Lsp
     {
         'VonHeikemen/lsp-zero.nvim',
-        branch = "v1.x",
-        -- priority = 999, -- make sure to load this before all the other start plugins
+        branch = 'v2.x',
         dependencies = {
-
             -- LSP Support
-            {
-                'neovim/nvim-lspconfig',
-                tag = "v0.1.6"
-            },
+            { 'neovim/nvim-lspconfig', },
             {
                 'williamboman/mason.nvim',
-                commit = "fdf33558c4386516150748670fde10ea39a7d86f"
+                build = function()
+                    pcall(vim.cmd, 'MasonUpdate')
+                end,
             },
-            {
-                'williamboman/mason-lspconfig.nvim',
-                commit = "b64fdede85fd5e0b720ce722919e0a9b95ed6547"
-            },
+            {'williamboman/mason-lspconfig.nvim'},
             {
                 'jose-elias-alvarez/null-ls.nvim',
                 commit = '7bd74a821d991057ca1c0ca569d8252c4f89f860',
@@ -29,76 +22,38 @@ return {
                 },
             },
 
-            -- Style
-            {
-                "j-hui/fidget.nvim",
-                commit = "0ba1e16d07627532b6cae915cc992ecac249fb97",
-                config = true
-            },
-
             -- Autocompletion
-            {
-                'hrsh7th/nvim-cmp',
-                tag = "v0.0.1",
-                dependencies = {
-                    {
-                        'hrsh7th/cmp-nvim-lsp',
-                        commit = "59224771f91b86d1de12570b4070fe4ad7cd1eeb",
-                    },
-                    {
-                        'hrsh7th/cmp-buffer',
-                        commit = "3022dbc9166796b644a841a02de8dd1cc1d311fa",
-                    },
-                    {
-                        'hrsh7th/cmp-path',
-                        commit = "91ff86cd9c29299a64f968ebb45846c485725f23",
-                    },
-                    {
-                        'saadparwaiz1/cmp_luasnip',
-                        commit = "18095520391186d634a0045dacaa346291096566",
-                    },
-                    {
-                        'hrsh7th/cmp-nvim-lua',
-                        commit = "f3491638d123cfd2c8048aefaf66d246ff250ca6",
-                    },
-
-                    -- Snippets
-                    {
-                        'L3MON4D3/LuaSnip',
-                        tag = "v1.1.0",
-                    },
-                    {
-                        'rafamadriz/friendly-snippets',
-                        commit = "320865dfe76c03a5c60513d4f34ca22effae56f2",
-                    },
-
-                }
-            },
+            {'hrsh7th/nvim-cmp'},
+            {'hrsh7th/cmp-nvim-lsp'},
+            {'L3MON4D3/LuaSnip'},
         },
         config = function()
-            local util = require('lspconfig.util')
-            local lsp = require('lsp-zero').preset({
-                name = 'recommended',
-                -- set_lsp_keymaps = true,
-                -- manage_nvim_cmp = true,
-                suggest_lsp_servers = false,
-            })
-
-            lsp.ensure_installed({
-                'pyright',
-                'tsserver',
-                'jsonls',
-                'html',
-                'cssls'
-            })
+            local util = require 'lspconfig.util'
+            local lsp = require('lsp-zero').preset({})
 
             lsp.on_attach(function(client, bufnr)
+                lsp.default_keymaps({buffer = bufnr})
+
                 if client.server_capabilities["documentSymbolProvider"] then
                     require("nvim-navic").attach(client, bufnr)
                 end
             end)
 
-            lsp.configure('pyright', {
+            -- Python
+
+            local root_files = {
+                'pyproject.toml',
+                'setup.py',
+                'setup.cfg',
+                'requirements.txt',
+                'Pipfile',
+                'pyrightconfig.json',
+                '.git'
+            }
+
+            require('lspconfig').pyright.setup({
+                single_file_support = true,
+                root_dir = util.root_pattern(unpack(root_files)),
                 settings = {
                     python = {
                         analysis = {
@@ -113,28 +68,31 @@ return {
                 },
             })
 
-            lsp.configure('html', {
-                filetypes = { 'html', 'jinja.html' }
+            -- tsserver
+
+            require('lspconfig').tsserver.setup({
+                init_options = { hostInfo = 'neovim' },
+                filetypes = {
+                    'javascript',
+                    'javascriptreact',
+                    'javascript.jsx',
+                    'typescript',
+                    'typescriptreact',
+                    'typescript.tsx',
+                },
+                root_dir = function(fname)
+                    return util.root_pattern 'tsconfig.json'(fname)
+                    or util.root_pattern('package.json', 'jsconfig.json', '.git')(fname)
+                end,
+                single_file_support = true
             })
 
-            lsp.configure('tsserver', {
-                root_dir = util.root_pattern("package.json"),
-                single_file_support = false,
-            })
-
-            -- Configure lua language server for neovim
-            -- lsp.nvim_workspace()
+            require('lspconfig').jsonls.setup({})
+            require('lspconfig').cssls.setup({})
+            require('lspconfig').html.setup({})
+            require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
 
             lsp.setup()
-
-            -- vim.diagnostic.config({
-            --     virtual_text = {
-            --         source = "if_many",
-            --         severity = { min = vim.diagnostic.severity.WARN },
-            --         spacing = 2,
-            --         prefix = "",
-            --     },
-            -- })
 
             local null_ls = require('null-ls')
             local null_opts = lsp.build_options('null-ls', {})
@@ -181,36 +139,5 @@ return {
                 }
             })
         end
-    },
-
-    -- Interface
-    {
-        "utilyre/barbecue.nvim",
-        name = "barbecue",
-        tag = "v0.4.2",
-        dependencies = {
-            {
-                "SmiteshP/nvim-navic",
-                commit = "cdd24539bcf114a499827e9b32869fe74836efe7",
-            },
-            { "nvim-tree/nvim-web-devicons" }
-        },
-        config = function()
-            require("barbecue").setup({
-                create_autocmd = false,
-                attach_navic = false,
-            })
-
-            vim.api.nvim_create_autocmd({
-                "BufWinEnter",
-                "CursorHold",
-                "InsertLeave",
-            }, {
-                group = vim.api.nvim_create_augroup("barbecue.updater", {}),
-                callback = function()
-                    require("barbecue.ui").update()
-                end,
-            })
-        end
-    },
+    }
 }
