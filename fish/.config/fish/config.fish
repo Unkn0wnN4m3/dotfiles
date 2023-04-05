@@ -28,7 +28,15 @@ if status --is-interactive
     end
 
     if test -d /home/linuxbrew/.linuxbrew/bin
-        eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+        /home/linuxbrew/.linuxbrew/bin/brew shellenv | source
+    end
+
+    if test -d (brew --prefix)"/share/fish/completions"
+        set -gx fish_complete_path $fish_complete_path (brew --prefix)/share/fish/completions
+    end
+
+    if test -d (brew --prefix)"/share/fish/vendor_completions.d"
+        set -gx fish_complete_path $fish_complete_path (brew --prefix)/share/fish/vendor_completions.d
     end
 
     if command -s zoxide >/dev/null
