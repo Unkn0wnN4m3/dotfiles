@@ -27,15 +27,15 @@ if status --is-interactive
         eval (dircolors -c $DOTFILES_ZSH/.dir_colors)
     end
 
+    if test -d /home/linuxbrew/.linuxbrew/bin
+        eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+    end
+
     if command -s zoxide >/dev/null
         zoxide init fish | source
     end
 
     if command -s starship >/dev/null
         starship init fish | source
-    end
-
-    if test -f /home/linuxbrew/.linuxbrew/bin
-        eval "(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
     end
 end
