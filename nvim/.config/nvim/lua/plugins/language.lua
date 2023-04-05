@@ -4,16 +4,17 @@ return {
         'vim-python/python-syntax',
         commit = "2cc00ba72929ea5f9456a26782db57fb4cc56a65",
         ft = "python",
-        config = function()
+        init = function()
             vim.cmd([[
             let g:python_highlight_all = 1
             ]])
-        end
-    },
-    {
-        'Vimjas/vim-python-pep8-indent',
-        ft = "python",
-        commit = "60ba5e11a61618c0344e2db190210145083c91f8"
+        end,
+        dependencies = {
+            {
+                'Vimjas/vim-python-pep8-indent',
+                commit = "60ba5e11a61618c0344e2db190210145083c91f8"
+            },
+        }
     },
     {
         'Glench/Vim-Jinja2-Syntax',
@@ -23,12 +24,24 @@ return {
     {
         "HerringtonDarkholme/yats.vim",
         ft = { "typescript", "typescriptreact" },
-        commit = "4bf3879055847e675335f1c3050bd2dd11700c7e"
+        commit = "1be1f3afc06108d210a7725217f9a1e50f93808f"
     },
     {
         "pangloss/vim-javascript",
         ft = { "javascript", "javascriptreact" },
-        tag = "v1.2.2"
+        tag = "v1.2.2",
+        dependencies = {
+            {
+                "neoclide/vim-jsx-improve",
+                tag = "0.0.1"
+            },
+
+        }
+    },
+    {
+        "neoclide/jsonc.vim",
+        ft = { "json", "jsonc" },
+        commit = "6fb92460f9e50505c9b93181a00f27d10c9b383f"
     },
     {
         "tbastos/vim-lua",
@@ -37,24 +50,26 @@ return {
     },
     {
         "iamcco/markdown-preview.nvim",
+        ft = "markdown",
         tag = "v0.0.10",
         build = "cd app && npm install",
-        init = function() vim.g.mkdp_filetypes = { "markdown" } end,
-        ft = "markdown"
+        init = function() vim.g.mkdp_filetypes = { "markdown" } end
     },
     {
-        "evanleck/vim-svelte",
-        ft = "svelte",
-        commit = "0e93ec53c3667753237282926fec626785622c1c",
-        dependencies = {
-            {
-                "othree/html5.vim",
-                tag = "0.27"
-            },
-            {
-                "pangloss/vim-javascript",
-                tag = "v1.2.2"
-            }
-        }
+        "mattn/emmet-vim",
+        commit = "def5d57a1ae5afb1b96ebe83c4652d1c03640f4d",
+        ft = {
+            "html",
+            "jinja.html",
+            "javascriptreact",
+            "typescriptreact",
+            "javascript",
+            "typescript"
+        },
+        init = function()
+            vim.cmd([[
+           let g:user_emmet_leader_key='<C-Z>'
+           ]])
+        end
     }
 }

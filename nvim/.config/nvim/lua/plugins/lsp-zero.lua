@@ -11,7 +11,7 @@ return {
                     pcall(vim.cmd, 'MasonUpdate')
                 end,
             },
-            {'williamboman/mason-lspconfig.nvim'},
+            { 'williamboman/mason-lspconfig.nvim' },
             {
                 'jose-elias-alvarez/null-ls.nvim',
                 commit = '7bd74a821d991057ca1c0ca569d8252c4f89f860',
@@ -23,16 +23,16 @@ return {
             },
 
             -- Autocompletion
-            {'hrsh7th/nvim-cmp'},
-            {'hrsh7th/cmp-nvim-lsp'},
-            {'L3MON4D3/LuaSnip'},
+            { 'hrsh7th/nvim-cmp' },
+            { 'hrsh7th/cmp-nvim-lsp' },
+            { 'L3MON4D3/LuaSnip' },
         },
         config = function()
             local util = require 'lspconfig.util'
             local lsp = require('lsp-zero').preset({})
 
             lsp.on_attach(function(client, bufnr)
-                lsp.default_keymaps({buffer = bufnr})
+                lsp.default_keymaps({ buffer = bufnr })
 
                 if client.server_capabilities["documentSymbolProvider"] then
                     require("nvim-navic").attach(client, bufnr)
@@ -81,15 +81,15 @@ return {
                     'typescript.tsx',
                 },
                 root_dir = function(fname)
-                    return util.root_pattern 'tsconfig.json'(fname)
-                    or util.root_pattern('package.json', 'jsconfig.json', '.git')(fname)
+                    return util.root_pattern 'tsconfig.json' (fname)
+                        or util.root_pattern('package.json', 'jsconfig.json', '.git')(fname)
                 end,
                 single_file_support = true
             })
 
             require('lspconfig').jsonls.setup({})
             require('lspconfig').cssls.setup({})
-            require('lspconfig').html.setup({})
+            require('lspconfig').html.setup({ filetypes = { 'html', 'jinja.html' } })
             require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
 
             lsp.setup()
