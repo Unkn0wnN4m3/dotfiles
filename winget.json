@@ -1,0 +1,56 @@
+{
+    "$schema": "https://aka.ms/winget-packages.schema.2.0.json",
+    "CreationDate": "2023-04-04T19:15:12.878-00:00",
+    "Sources": [
+        {
+            "Packages": [
+                {
+                    "PackageIdentifier": "Docker.DockerDesktop"
+                },
+                {
+                    "PackageIdentifier": "Git.Git"
+                },
+                {
+                    "PackageIdentifier": "GnuPG.Gpg4win"
+                },
+                {
+                    "PackageIdentifier": "Mozilla.Thunderbird"
+                },
+                {
+                    "PackageIdentifier": "Ookla.Speedtest.CLI"
+                },
+                {
+                    "PackageIdentifier": "JannisX11.Blockbench"
+                },
+                {
+                    "PackageIdentifier": "Axosoft.GitKraken"
+                },
+                {
+                    "PackageIdentifier": "Google.Drive"
+                },
+                {
+                    "PackageIdentifier": "GitHub.cli"
+                },
+                {
+                    "PackageIdentifier": "Microsoft.VisualStudioCode"
+                },
+                {
+                    "PackageIdentifier": "TheDocumentFoundation.LibreOffice"
+                },
+                {
+                    "PackageIdentifier": "KeePassXCTeam.KeePassXC"
+                },
+                {
+                    "PackageIdentifier": "Cryptomator.Cryptomator"
+                }
+            ],
+            "SourceDetails": {
+                "Argument": "https://cdn.winget.microsoft.com/cache",
+                "Identifier": "Microsoft.Winget.Source_8wekyb3d8bbwe",
+                "Name": "winget",
+                "Type": "Microsoft.PreIndexed.Package"
+            }
+        }
+    ],
+    "WinGetVersion": "1.4.10173"
+}

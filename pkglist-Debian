@@ -1,9 +1,0 @@
-curl
-zsh
-zsh-syntax-highlighting
-zsh-autosuggestions
-fzf
-tree
-stow
-build-essential
-libssl-dev

@@ -1,0 +1,15 @@
+curl
+wget
+unzip
+p7zip
+fzf
+zoxide
+ripgrep
+fd-find
+tree
+stow
+build-essential
+python3-poetry
+python3-pynvim
+jq
+bat

@@ -1,0 +1,12 @@
+7zip
+bat
+fd
+jq
+neovim
+nodejs-lts
+pnpm
+pyenv
+ripgrep
+sqlite
+starship
+zoxide
