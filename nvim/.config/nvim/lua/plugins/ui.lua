@@ -1,36 +1,48 @@
 return {
     {
-        "rose-pine/neovim",
-        name = 'rose-pine',
-        lazy = false,    -- make sure we load this during startup if it is your main colorscheme
-        priority = 1000, -- make sure to load this before all the other start plugins
-        tag = "v1.1.0",
+        "catppuccin/nvim",
+        name = "catppuccin",
+        lazy = false,
+        priority = 1000,
+        tag = "v1.1.1",
         config = function()
-            -- load the colorscheme here
-            require("rose-pine").setup({
-                disable_italics = true,
-                dark_variant = 'moon',
-                disable_background = false,
+            require("catppuccin").setup({
+                flavour = "macchiato",
+                no_italic = true,
+                integrations = {
+                    cmp = true,
+                    gitsigns = true,
+                    telescope = true,
+                    markdown = true,
+                    mason = true,
+                    illuminate = true,
+                    barbecue = {
+                        dim_dirname = true,
+                        bold_basename = true,
+                        dim_context = false,
+                    },
+                    navic = {
+                        enabled = false,
+                        custom_bg = "NONE",
+                    },
+                    fidget = true,
+                    native_lsp = {
+                        enabled = true,
+                        underlines = {
+                            errors = { "underline" },
+                            hints = { "underline" },
+                            warnings = { "underline" },
+                            information = { "underline" },
+                        },
+                    },
+                },
             })
-            vim.cmd('colorscheme rose-pine')
-        end,
+            vim.cmd.colorscheme "catppuccin"
+        end
     },
-    -- {
-    --     "folke/tokyonight.nvim",
-    --     lazy = false, -- make sure we load this during startup if it is your main colorscheme
-    --     priority = 1000, -- make sure to load this before all the other start plugins
-    --     tag = "v1.0.0",
-    --     config = function()
-    --         -- load the colorscheme here
-    --         require("tokyonight").setup({
-    --             style = "moon",
-    --             transparent = true
-    --         })
-    --         vim.cmd('colorscheme tokyonight')
-    --     end,
-    -- },
     {
         "akinsho/bufferline.nvim",
+        after = "catppuccin",
         tag = "v3.1.0",
         dependencies = "nvim-tree/nvim-web-devicons",
         config = function()
@@ -48,11 +60,7 @@ return {
                         style = "none",
                     },
                 },
-                highlights = {
-                    buffer_selected = {
-                        bold = true,
-                    },
-                },
+                highlights = require("catppuccin.groups.integrations.bufferline").get()
             })
         end,
     },
@@ -97,11 +105,9 @@ return {
                 return mixed and "MI" or ""
             end
 
-            -- local navic = require("nvim-navic")
-
             require('lualine').setup({
                 options = {
-                    theme = 'rose-pine-alt'
+                    theme = "catppuccin"
                 },
                 sections = {
                     lualine_c = {
@@ -113,6 +119,7 @@ return {
                 extensions = {
                     'quickfix',
                     'toggleterm',
+                    'man',
                 }
             })
         end
@@ -122,8 +129,12 @@ return {
     {
         "j-hui/fidget.nvim",
         commit = "0ba1e16d07627532b6cae915cc992ecac249fb97",
-        config = true,
-        event = "LspAttach"
+        event = "LspAttach",
+        opts = {
+            window = {
+                blend = 0,
+            },
+        }
     },
     {
         "utilyre/barbecue.nvim",
@@ -133,11 +144,15 @@ return {
             {
                 "SmiteshP/nvim-navic",
                 commit = "cdd24539bcf114a499827e9b32869fe74836efe7",
+                opts = {
+                    highlight = true
+                }
             },
             { "nvim-tree/nvim-web-devicons" }
         },
         config = function()
             require("barbecue").setup({
+                theme = "catppuccin",
                 create_autocmd = false,
                 attach_navic = false,
             })
@@ -154,4 +169,16 @@ return {
             })
         end
     },
+    {
+        "RRethy/vim-illuminate",
+        commit = "a2907275a6899c570d16e95b9db5fd921c167502",
+        event = "LspAttach",
+        config = function()
+            require('illuminate').configure({
+                providers = {
+                    'lsp',
+                },
+            })
+        end
+    }
 }

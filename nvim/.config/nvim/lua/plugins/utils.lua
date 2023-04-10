@@ -32,7 +32,7 @@ return {
             { "<leader>xx", "<CMD>Trouble<CR>" },
             { "<leader>xw", "<CMD>Trouble workspace_diagnostics<CR>" },
             { "<leader>xd", "<CMD>Trouble document_diagnostics<CR>" },
-            { "<leader>xt", "<CMD>TodoTrouble<CR>", desc = "Show todo-comments in trouble.nvim" },
+            { "<leader>xt", "<CMD>TodoTrouble<CR>",                  desc = "Show todo-comments in trouble.nvim" },
             { "gR",         "<CMD>Trouble lsp_references<CR>" },
         }
     },
@@ -59,5 +59,5 @@ return {
     {
         "tpope/vim-obsession",
         commit = "fe9d3e1a9a50171e7d316a52e1e56d868e4c1fe5"
-    }
+    },
 }

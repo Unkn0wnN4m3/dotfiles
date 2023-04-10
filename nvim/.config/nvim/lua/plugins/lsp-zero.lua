@@ -87,8 +87,8 @@ return {
                 single_file_support = true
             })
 
-            require('lspconfig').jsonls.setup({})
             require('lspconfig').cssls.setup({})
+            require('lspconfig').jsonls.setup({})
             require('lspconfig').html.setup({ filetypes = { 'html', 'jinja.html' } })
             require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
 
