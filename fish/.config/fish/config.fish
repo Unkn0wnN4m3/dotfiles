@@ -46,4 +46,8 @@ if status --is-interactive
     if command -s starship >/dev/null
         starship init fish | source
     end
+
+    if command -s fnm >/dev/null
+        fnm env --use-on-cd | source
+    end
 end
