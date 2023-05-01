@@ -14,11 +14,11 @@ return {
             { 'williamboman/mason-lspconfig.nvim' },
             {
                 'jose-elias-alvarez/null-ls.nvim',
-                commit = '7bd74a821d991057ca1c0ca569d8252c4f89f860',
+                branch = "0.7-compat",
                 dependencies =
                 {
                     "nvim-lua/plenary.nvim",
-                    tag = "v0.1.2"
+                    version = "v0.*"
                 },
             },
 
@@ -72,6 +72,14 @@ return {
 
             require('lspconfig').tsserver.setup({
                 init_options = { hostInfo = 'neovim' },
+                handlers = {
+                    ["textDocument/publishDiagnostics"] = vim.lsp.with(
+                        vim.lsp.diagnostic.on_publish_diagnostics, {
+                            -- Disable virtual_text
+                            virtual_text = false
+                        }
+                    ),
+                },
                 filetypes = {
                     'javascript',
                     'javascriptreact',
@@ -87,12 +95,53 @@ return {
                 single_file_support = true
             })
 
+            local eslint_root_file = {
+                '.eslintrc',
+                '.eslintrc.js',
+                '.eslintrc.cjs',
+                '.eslintrc.yaml',
+                '.eslintrc.yml',
+                '.eslintrc.json',
+                'eslint.config.js',
+            }
+
+            require 'lspconfig'.eslint.setup({
+                root_dir = function(fname)
+                    eslint_root_file = util.insert_package_json(eslint_root_file, 'eslintConfig', fname)
+                    return util.root_pattern(unpack(eslint_root_file))(fname)
+                end,
+                settings = {
+                    packageManager = 'pnpm',
+                    codeActionOnSave = {
+                        enable = false,
+                        mode = 'all',
+                    },
+                    format = false,
+                    codeAction = {
+                        disableRuleComment = {
+                            enable = true,
+                            location = 'separateLine',
+                        },
+                        showDocumentation = {
+                            enable = true,
+                        },
+                    }
+                },
+            })
+
             require('lspconfig').cssls.setup({})
             require('lspconfig').jsonls.setup({})
             require('lspconfig').html.setup({ filetypes = { 'html', 'jinja.html' } })
             require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
 
             lsp.setup()
+
+            -- vim.diagnostic.config({
+            --     virtual_text = {
+            --         severity = vim.diagnostic.severity.ERROR,
+            --         source = "if_many"
+            --     },
+            -- })
 
             local null_ls = require('null-ls')
             local null_opts = lsp.build_options('null-ls', {})
@@ -123,7 +172,7 @@ return {
                     })
                 end,
                 sources = {
-                    --- Replace these with the tools you have installed
+                    -- Replace these with the tools you have installed
                     formatting.prettier.with({
                         prefer_local = prettier_local,
                         condition = function(utils)

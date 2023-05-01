@@ -1,12 +1,12 @@
 return {
     {
         "nvim-telescope/telescope.nvim",
-        tag = "0.1.0",
+        version = "0.*",
         lazy = false,
         dependencies = {
             {
                 "nvim-lua/plenary.nvim",
-                tag = "v0.1.2"
+                version = "v0.*"
             },
             {
                 "nvim-telescope/telescope-file-browser.nvim",
@@ -18,7 +18,7 @@ return {
             },
         },
         keys = {
-            { "<leader>tf", "<CMD>Telescope find_files<CR>", desc = "Find project files" },
+            { "<leader>tf", "<CMD>Telescope find_files<CR>",          desc = "Find project files" },
             { "<leader>tg", "<CMD>Telescope live_grep theme=ivy<CR>", },
             { "<leader>tp", "<CMD>Telescope project<CR>" },
             { "<leader>tb", "<CMD>Telescope buffers<CR>" },

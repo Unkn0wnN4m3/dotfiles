@@ -4,11 +4,21 @@ return {
         name = "catppuccin",
         lazy = false,
         priority = 1000,
-        tag = "v1.1.1",
+        version = "v1.*",
         config = function()
             require("catppuccin").setup({
-                flavour = "macchiato",
-                no_italic = true,
+                flavour = "frappe",
+                -- :h background
+                background = {
+                    light = "latte",
+                    dark = "frappe",
+                },
+                -- no_italic = true,
+                dim_inactive = {
+                    enabled = true,
+                    shade = "dark",
+                    percentage = 0.15,
+                },
                 integrations = {
                     cmp = true,
                     gitsigns = true,
@@ -42,8 +52,7 @@ return {
     },
     {
         "akinsho/bufferline.nvim",
-        after = "catppuccin",
-        tag = "v3.1.0",
+        version = "v4.*",
         dependencies = "nvim-tree/nvim-web-devicons",
         config = function()
             require("bufferline").setup({
@@ -66,7 +75,7 @@ return {
     },
     {
         "akinsho/toggleterm.nvim",
-        tag = "v2.2.1",
+        version = "v2.*",
         keys = {
             { "<C-t>", "<CMD>ToggleTerm<CR>", mode = { "n", "t" } },
             { "<C-j>", [[<C-\><C-n><C-W>j]],  mode = "t" },
@@ -139,7 +148,7 @@ return {
     {
         "utilyre/barbecue.nvim",
         name = "barbecue",
-        tag = "v0.4.2",
+        version = "v0.4.*",
         dependencies = {
             {
                 "SmiteshP/nvim-navic",

@@ -1,7 +1,7 @@
 return {
     {
         "lewis6991/gitsigns.nvim",
-        tag = "v0.6",
+        version = "v0.*",
         config = true,
         cond = function()
             local filepath = vim.fn.expand('%:p:h')
@@ -18,15 +18,15 @@ return {
                 dependencies = {
                     {
                         "nvim-lua/plenary.nvim",
-                        tag = "v0.1.2"
+                        version = "v0.*"
                     },
                 },
-                tag = "v1.0.0",
+                version = "v1.*",
                 config = true,
             },
 
         },
-        tag = "v1.0.0",
+        version = "v1.*",
         config = true,
         keys = {
             { "<leader>xx", "<CMD>Trouble<CR>" },
@@ -38,7 +38,7 @@ return {
     },
     {
         "numToStr/Comment.nvim",
-        tag = "v0.7.0",
+        version = "v0.*",
         opts = {
             ignore = '^$'
         }
@@ -54,7 +54,7 @@ return {
     },
     {
         "tpope/vim-surround",
-        tag = "v2.2"
+        version = "v2.*"
     },
     {
         "tpope/vim-obsession",
