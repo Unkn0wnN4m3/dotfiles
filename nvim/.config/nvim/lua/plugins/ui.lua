@@ -7,11 +7,11 @@ return {
         version = "v1.*",
         config = function()
             require("catppuccin").setup({
-                flavour = "frappe",
+                flavour = "mocha",
                 -- :h background
                 background = {
                     light = "latte",
-                    dark = "frappe",
+                    dark = "mocha",
                 },
                 -- no_italic = true,
                 dim_inactive = {
@@ -61,10 +61,7 @@ return {
                     always_show_bufferline = false,
                     show_buffer_close_icons = false,
                     show_close_icon = false,
-                    color_icons = true,
-                    close_command = "bdelete",       -- can be a string | function, see "Mouse actions"
-                    right_mouse_command = "bdelete", -- can be a string | function, see "Mouse actions"
-                    separator_style = { "|", "|" },  -- | "thick" | "thin" | { 'any', 'any' },
+                    separator_style = { "|", "|" }, -- | "thick" | "thin" | { 'any', 'any' },
                     indicator = {
                         style = "none",
                     },
@@ -77,9 +74,9 @@ return {
         "akinsho/toggleterm.nvim",
         version = "v2.*",
         keys = {
-            { "<C-t>", "<CMD>ToggleTerm<CR>", mode = { "n", "t" } },
-            { "<C-j>", [[<C-\><C-n><C-W>j]],  mode = "t" },
-            { "<C-k>", [[<C-\><C-n><C-W>k]],  mode = "t" },
+            { "<C-\\>", "<CMD>ToggleTerm<CR>", mode = "n" },
+            { "<C-j>",  [[<C-\><C-n><C-W>j]],  mode = "t" },
+            { "<C-k>",  [[<C-\><C-n><C-W>k]],  mode = "t" },
         },
         config = function()
             local toggleterm = require("toggleterm")
@@ -90,6 +87,7 @@ return {
             end
 
             toggleterm.setup({
+                open_mapping = [[<c-\>]],
                 hide_numbers = true,
                 shade_terminals = true,
                 shading_factor = 2,
@@ -105,7 +103,7 @@ return {
     {
         'nvim-lualine/lualine.nvim',
         dependencies = 'nvim-tree/nvim-web-devicons',
-        commit = "0050b308552e45f7128f399886c86afefc3eb988",
+        commit = "05d78e9fd0cdfb4545974a5aa14b1be95a86e9c9",
         config = function()
             local function mixedIndent()
                 local space_indent = vim.fn.search([[\v^ +]], "nw") > 0

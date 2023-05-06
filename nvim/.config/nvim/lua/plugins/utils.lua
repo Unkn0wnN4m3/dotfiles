@@ -27,12 +27,16 @@ return {
 
         },
         version = "v1.*",
-        config = true,
+        config = function()
+            require("trouble").setup({
+                use_diagnostic_signs = true
+            })
+        end,
         keys = {
             { "<leader>xx", "<CMD>Trouble<CR>" },
             { "<leader>xw", "<CMD>Trouble workspace_diagnostics<CR>" },
             { "<leader>xd", "<CMD>Trouble document_diagnostics<CR>" },
-            { "<leader>xt", "<CMD>TodoTrouble<CR>",                  desc = "Show todo-comments in trouble.nvim" },
+            { "<leader>xt", "<CMD>TodoTrouble<CR>", },
             { "gR",         "<CMD>Trouble lsp_references<CR>" },
         }
     },
