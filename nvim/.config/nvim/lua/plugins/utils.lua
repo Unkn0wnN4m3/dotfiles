@@ -64,4 +64,14 @@ return {
         "tpope/vim-obsession",
         commit = "fe9d3e1a9a50171e7d316a52e1e56d868e4c1fe5"
     },
+    {
+        "nanotee/zoxide.vim",
+        commit = "7582d5441f68c46b8fbd42a8721cde0c0dfe344b",
+        dependencies = {
+            {
+                "junegunn/fzf",
+                version = "0.*"
+            }
+        }
+    }
 }

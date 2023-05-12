@@ -1,12 +1,15 @@
 return {
-    {
-        'Glench/Vim-Jinja2-Syntax',
-        ft = { "html", "jinja.html" },
-        commit = '2c17843b074b06a835f88587e1023ceff7e2c7d1'
-    },
+    -- {
+    --     'Glench/Vim-Jinja2-Syntax',
+    --     ft = { "html", "jinja.html" },
+    --     commit = '2c17843b074b06a835f88587e1023ceff7e2c7d1'
+    -- },
     {
         "sheerun/vim-polyglot",
         version = "v4.*",
+        init = function()
+            vim.g.polyglot_disabled = { "ftdetect" }
+        end
     },
     {
         "iamcco/markdown-preview.nvim",
@@ -28,6 +31,7 @@ return {
         ft = {
             "html",
             "jinja.html",
+            "htmldjango",
             "javascriptreact",
             "typescriptreact",
             "javascript",
