@@ -7,6 +7,7 @@ return {
     {
         "sheerun/vim-polyglot",
         version = "v4.*",
+        event = { 'BufReadPre', 'BufNewFile' },
         init = function()
             vim.g.polyglot_disabled = { "ftdetect" }
         end
