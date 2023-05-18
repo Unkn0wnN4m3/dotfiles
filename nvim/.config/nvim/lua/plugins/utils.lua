@@ -60,9 +60,21 @@ return {
         "tpope/vim-surround",
         version = "v2.*"
     },
+    -- {
+    --     "tpope/vim-obsession",
+    --     commit = "fe9d3e1a9a50171e7d316a52e1e56d868e4c1fe5"
+    -- },
     {
-        "tpope/vim-obsession",
-        commit = "fe9d3e1a9a50171e7d316a52e1e56d868e4c1fe5"
+        "folke/persistence.nvim",
+        version = "v1.*",
+        event = "BufReadPre",
+        module = "persistence",
+        config = true,
+        keys = {
+            { "qs", "<CMD>lua require('persistence').load()<CR>",                mode = "n" },
+            { "ql", "<CMD>lua require('persistence').load({ last = true })<CR>", mode = "n" },
+            { "qd", "<CMD>lua require('persistence').stop()<CR>",                mode = "n" }
+        }
     },
     {
         "nanotee/zoxide.vim",

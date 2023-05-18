@@ -119,7 +119,7 @@ return {
                 sections = {
                     lualine_c = {
                         { 'filename',  path = 0 },
-                        "%{ObsessionStatus('', '󰏥')}",
+                        -- "%{ObsessionStatus('', '󰏥')}",
                         { mixedIndent, color = 'red' }
                     },
                     lualine_x = { 'o:shiftwidth', 'encoding', 'fileformat', 'filetype' },
