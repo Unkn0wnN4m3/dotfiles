@@ -10,10 +10,9 @@ if ( -not ( $Env:FZF_DEFAULT_OPTS ) ) {
     [Environment]::SetEnvironmentVariable(
             'FZF_DEFAULT_OPTS',
             '--height 50% --layout=reverse
-            --color=fg:#e0def4,bg:#2a273f,hl:#6e6a86
-            --color=fg+:#908caa,bg+:#232136,hl+:#908caa
-            --color=info:#9ccfd8,prompt:#f6c177,pointer:#c4a7e7
-            --color=marker:#ea9a97,spinner:#eb6f92,header:#ea9a97',
+            --color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8
+            --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc
+            --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8',
             'user')
 }
 
@@ -45,7 +44,7 @@ if (Get-Command starship -ErrorAction SilentlyContinue) {
         $host.ui.Write($prompt)
     }
 
-    # Setting the terminal title
+# Setting the terminal title
     Invoke-Expression (&starship init powershell)
 }
 
@@ -73,6 +72,7 @@ foreach ($PConfig in Get-ChildItem "$CUSTOMPSHOME\\conf") {
 # Alias
 function __SHL { param( $path ) Get-ChildItem -Path $path -Name }
 function __NVIMN { param ( $path ) nvim --noplugin -u NONE $path }
+function __NQLIGHT { param ( $path )  nvim-qt -- -c "set background=light" $path }
 function __APGR { shutdown -s -t 0 }
 function __RSRT { shutdown -r -t 0 }
 function __SALR { shutdown -l }
@@ -86,4 +86,7 @@ Set-Alias -Name grep -Value findstr
 Set-Alias -Name less -Value "C:\Program Files\Git\usr\bin\less.exe"
 # Set-Alias -Name lg -Value "$env:USERPROFILE\go\bin\lazygit.exe"
 Set-Alias -Name n -Value nvim
+Set-Alias -Name q -Value nvim-qt
 Set-Alias -Name nvimn -Value __NVIMN
+Set-Alias -Name ql -Value __NQLIGHT
+Set-Alias -Name pnpm -Value pnpm-win-x64
