@@ -10,6 +10,15 @@ return {
         end,
     },
     {
+        "tpope/vim-fugitive",
+        version = "v3.*",
+        cond = function()
+            local filepath = vim.fn.expand('%:p:h')
+            local gitdir = vim.fn.finddir('.git', filepath .. ';')
+            return gitdir and #gitdir > 0 and #gitdir < #filepath
+        end,
+    },
+    {
         "folke/trouble.nvim",
         dependencies = {
             { "nvim-tree/nvim-web-devicons" },
@@ -43,6 +52,7 @@ return {
     {
         "numToStr/Comment.nvim",
         version = "v0.*",
+        event = "BufReadPre",
         opts = {
             ignore = '^$'
         }
@@ -58,6 +68,7 @@ return {
     },
     {
         "tpope/vim-surround",
+        event = "BufReadPre",
         version = "v2.*"
     },
     -- {
@@ -68,7 +79,6 @@ return {
         "folke/persistence.nvim",
         version = "v1.*",
         event = "BufReadPre",
-        module = "persistence",
         config = true,
         keys = {
             { "qs", "<CMD>lua require('persistence').load()<CR>",                mode = "n" },
@@ -79,6 +89,7 @@ return {
     {
         "nanotee/zoxide.vim",
         commit = "7582d5441f68c46b8fbd42a8721cde0c0dfe344b",
+        event = "BufReadPre",
         dependencies = {
             {
                 "junegunn/fzf",

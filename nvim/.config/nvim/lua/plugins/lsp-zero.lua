@@ -148,23 +148,6 @@ return {
                     eslint_root_file = util.insert_package_json(eslint_root_file, 'eslintConfig', fname)
                     return util.root_pattern(unpack(eslint_root_file))(fname)
                 end,
-                settings = {
-                    -- packageManager = 'pnpm',
-                    -- codeActionOnSave = {
-                    --     enable = false,
-                    --     mode = 'all',
-                    -- },
-                    format = false,
-                    -- codeAction = {
-                    --     disableRuleComment = {
-                    --         enable = true,
-                    --         location = 'separateLine',
-                    --     },
-                    --     showDocumentation = {
-                    --         enable = true,
-                    --     },
-                    -- }
-                },
             })
 
             require('lspconfig').cssls.setup({})

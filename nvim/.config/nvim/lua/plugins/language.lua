@@ -10,6 +10,14 @@ return {
         event = { 'BufReadPre', 'BufNewFile' },
         init = function()
             vim.g.polyglot_disabled = { "ftdetect" }
+
+            -- https://vim.fandom.com/wiki/Folding
+            vim.cmd([[
+            augroup javascript_folding
+                au!
+                au FileType javascript setlocal foldmethod=syntax
+            augroup END
+                ]])
         end
     },
     {

@@ -54,6 +54,7 @@ return {
         "akinsho/bufferline.nvim",
         version = "v4.*",
         dependencies = "nvim-tree/nvim-web-devicons",
+        event = "BufReadPre",
         config = function()
             require("bufferline").setup({
                 options = {
@@ -73,10 +74,10 @@ return {
     {
         "akinsho/toggleterm.nvim",
         version = "v2.*",
+        event = "BufReadPre",
         keys = {
-            { "<C-\\>", "<CMD>ToggleTerm<CR>", mode = "n" },
-            { "<C-j>",  [[<C-\><C-n><C-W>j]],  mode = "t" },
-            { "<C-k>",  [[<C-\><C-n><C-W>k]],  mode = "t" },
+            { "<C-j>", [[<C-\><C-n><C-W>j]], mode = "t" },
+            { "<C-k>", [[<C-\><C-n><C-W>k]], mode = "t" },
         },
         config = function()
             local toggleterm = require("toggleterm")
@@ -147,6 +148,7 @@ return {
     {
         "utilyre/barbecue.nvim",
         name = "barbecue",
+        event = "BufReadPre",
         version = "v0.4.*",
         dependencies = {
             {
