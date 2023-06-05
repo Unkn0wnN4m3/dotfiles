@@ -33,6 +33,7 @@ vim.g.mapleader = " "
 
 -- Saving
 keymap("n", "<leader>ww", ":w<CR>", opts)
+keymap("n", "<leader>wa", ":confirm wa<CR>", opts)
 
 -- Exit
 keymap("n", "<leader>qq", ":confirm q<CR>", opts)
@@ -65,8 +66,10 @@ keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
 -- Navigate Tabs
-keymap("n", "gn", "<CMD>tabnext<CR>", opts)
-keymap("n", "gp", "<CMD>tabprevious<CR>", opts)
+
+-- It's better if gt or gT to navigate between tabs
+-- keymap("n", "gn", "<CMD>tabnext<CR>", opts)
+-- keymap("n", "gp", "<CMD>tabprevious<CR>", opts)
 keymap("n", "tc", "<CMD>tabclose<CR>", opts)
 
 -- Better tabing
