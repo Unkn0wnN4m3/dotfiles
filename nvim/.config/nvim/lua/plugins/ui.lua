@@ -104,7 +104,7 @@ return {
     {
         'nvim-lualine/lualine.nvim',
         dependencies = 'nvim-tree/nvim-web-devicons',
-        commit = "05d78e9fd0cdfb4545974a5aa14b1be95a86e9c9",
+        tag = "compat-nvim-0.6",
         config = function()
             local function mixedIndent()
                 local space_indent = vim.fn.search([[\v^ +]], "nw") > 0
@@ -153,7 +153,7 @@ return {
         dependencies = {
             {
                 "SmiteshP/nvim-navic",
-                commit = "cdd24539bcf114a499827e9b32869fe74836efe7",
+                commit = "15704c607569d6c5cfeab486d3ef9459645a70ce",
                 opts = {
                     highlight = true
                 }

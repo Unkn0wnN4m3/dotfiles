@@ -59,7 +59,7 @@ return {
     },
     {
         "windwp/nvim-autopairs",
-        commit = "f00eb3b766c370cb34fdabc29c760338ba9e4c6c",
+        commit = "59df87a84c80a357ca8d8fe86e451b93ac476ccc",
         config = true,
         event = "InsertEnter",
         opts = {
@@ -86,15 +86,4 @@ return {
             { "qd", "<CMD>lua require('persistence').stop()<CR>",                mode = "n" }
         }
     },
-    {
-        "nanotee/zoxide.vim",
-        commit = "7582d5441f68c46b8fbd42a8721cde0c0dfe344b",
-        event = "BufReadPre",
-        dependencies = {
-            {
-                "junegunn/fzf",
-                version = "0.*"
-            }
-        }
-    }
 }

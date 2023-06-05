@@ -10,7 +10,7 @@ return {
             },
             {
                 "nvim-telescope/telescope-file-browser.nvim",
-                commit = "304508fb7bea78e3c0eeddd88c4837501e403ae8"
+                commit = "6cf29d5139601993343c4e70ee2d1f67959d9cc5"
             },
             {
                 "nvim-telescope/telescope-project.nvim",
@@ -18,7 +18,7 @@ return {
             },
         },
         keys = {
-            { "<leader>tf", "<CMD>Telescope find_files<CR>",          desc = "Find project files" },
+            { "<leader>tf", "<CMD>Telescope find_files<CR>", },
             { "<leader>tg", "<CMD>Telescope live_grep theme=ivy<CR>", },
             { "<leader>tp", "<CMD>Telescope project<CR>" },
             { "<leader>tb", "<CMD>Telescope buffers<CR>" },
