@@ -4,9 +4,7 @@ return {
         branch = 'v2.x',
         lazy = true,
         config = function()
-            -- This is where you modify the settings for lsp-zero
             -- Note: autocompletion settings will not take effect
-
             require('lsp-zero.settings').preset({})
         end
     },
@@ -22,7 +20,6 @@ return {
             -- Here is where you configure the autocompletion settings.
             -- The arguments for .extend() have the same shape as `manage_nvim_cmp`:
             -- https://github.com/VonHeikemen/lsp-zero.nvim/blob/v2.x/doc/md/api-reference.md#manage_nvim_cmp
-
             require('lsp-zero.cmp').extend()
 
             -- And you can configure cmp even more, if you want to.
@@ -30,6 +27,18 @@ return {
             local cmp_action = require('lsp-zero.cmp').action()
 
             cmp.setup({
+                window = {
+                    -- completion = cmp.config.window.bordered(),
+                    documentation = cmp.config.window.bordered(),
+                },
+                formatting = {
+                    fields = { 'abbr', 'kind', 'menu' },
+                    format = require('lspkind').cmp_format({
+                        -- mode = 'symbol', -- show only symbol annotations
+                        maxwidth = 50,
+                        ellipsis_char = '...',
+                    })
+                },
                 mapping = {
                     ['<C-Space>'] = cmp.mapping.complete(),
                     ['<C-f>'] = cmp_action.luasnip_jump_forward(),
@@ -46,6 +55,10 @@ return {
         event = { 'BufReadPre', 'BufNewFile' },
         dependencies = {
             { 'hrsh7th/cmp-nvim-lsp' },
+            {
+                "onsails/lspkind.nvim",
+                commit = "57610d5ab560c073c465d6faf0c19f200cb67e6e"
+            },
             { 'williamboman/mason-lspconfig.nvim' },
             {
                 'williamboman/mason.nvim',
