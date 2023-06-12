@@ -63,9 +63,9 @@ return {
                     show_buffer_close_icons = false,
                     show_close_icon = false,
                     separator_style = { "|", "|" }, -- | "thick" | "thin" | { 'any', 'any' },
-                    indicator = {
-                        style = "none",
-                    },
+                    -- indicator = {
+                    --     style = "none",
+                    -- },
                 },
                 highlights = require("catppuccin.groups.integrations.bufferline").get()
             })
@@ -104,7 +104,7 @@ return {
     {
         'nvim-lualine/lualine.nvim',
         dependencies = 'nvim-tree/nvim-web-devicons',
-        tag = "compat-nvim-0.6",
+        commit = "05d78e9fd0cdfb4545974a5aa14b1be95a86e9c9",
         config = function()
             local function mixedIndent()
                 local space_indent = vim.fn.search([[\v^ +]], "nw") > 0
@@ -190,5 +190,15 @@ return {
                 },
             })
         end
+    },
+    {
+        "lukas-reineke/indent-blankline.nvim",
+        version = "v2.*",
+        event = "BufReadPre",
+        opts = {
+            show_end_of_line = true,
+            show_first_indent_level = false,
+            show_trailing_blankline_indent = false
+        }
     }
 }
