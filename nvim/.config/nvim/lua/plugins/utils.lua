@@ -86,4 +86,11 @@ return {
             { "qd", "<CMD>lua require('persistence').stop()<CR>",                mode = "n" }
         }
     },
+    {
+        "ggandor/leap.nvim",
+        commit = "14b5a65190fe69388a8f59c695ed3394a10d6af8",
+        config = function()
+            require('leap').add_default_mappings()
+        end
+    }
 }
