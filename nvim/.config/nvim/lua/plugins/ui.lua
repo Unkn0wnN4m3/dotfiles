@@ -7,7 +7,6 @@ return {
         version = "v1.*",
         config = function()
             require("catppuccin").setup({
-                flavour = "mocha",
                 -- :h background
                 background = {
                     light = "latte",
@@ -18,6 +17,20 @@ return {
                     enabled = true,
                     shade = "dark",
                     percentage = 0.15,
+                },
+                styles = {
+                    comments = { "italic" },
+                    conditionals = { "italic" },
+                    loops = { "bold" },
+                    functions = { "bold" },
+                    keywords = { "bold" },
+                    strings = {},
+                    variables = {},
+                    numbers = { "bold" },
+                    booleans = { "italic" },
+                    properties = {},
+                    types = { "bold" },
+                    operators = {},
                 },
                 integrations = {
                     cmp = true,
@@ -45,6 +58,7 @@ return {
                             information = { "underline" },
                         },
                     },
+                    leap = false
                 },
             })
             vim.cmd.colorscheme "catppuccin"
@@ -119,11 +133,10 @@ return {
                 },
                 sections = {
                     lualine_c = {
-                        { 'filename',  path = 0 },
-                        -- "%{ObsessionStatus('', '󰏥')}",
                         { mixedIndent, color = 'red' }
                     },
-                    lualine_x = { 'o:shiftwidth', 'encoding', 'fileformat', 'filetype' },
+                    lualine_x = { 'o:shiftwidth', 'encoding', { 'fileformat', symbols = { unix = "LF", dos = "CRLF" } },
+                        'filetype' },
                 },
                 extensions = {
                     'quickfix',
@@ -165,6 +178,8 @@ return {
                 theme = "catppuccin",
                 create_autocmd = false,
                 attach_navic = false,
+                show_modified = true,
+                show_dirname = false,
             })
 
             vim.api.nvim_create_autocmd({
@@ -197,7 +212,7 @@ return {
         event = "BufReadPre",
         opts = {
             show_end_of_line = true,
-            show_first_indent_level = false,
+            show_first_indent_level = true,
             show_trailing_blankline_indent = false
         }
     }
