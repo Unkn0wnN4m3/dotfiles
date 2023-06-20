@@ -19,11 +19,11 @@ return {
                     percentage = 0.15,
                 },
                 styles = {
-                    comments = { "italic" },
+                    comments = {},
                     conditionals = { "italic" },
                     loops = { "bold" },
                     functions = { "bold" },
-                    keywords = { "bold" },
+                    keywords = { "italic" },
                     strings = {},
                     variables = {},
                     numbers = { "bold" },
@@ -179,7 +179,7 @@ return {
                 create_autocmd = false,
                 attach_navic = false,
                 show_modified = true,
-                show_dirname = false,
+                show_dirname = true,
             })
 
             vim.api.nvim_create_autocmd({
