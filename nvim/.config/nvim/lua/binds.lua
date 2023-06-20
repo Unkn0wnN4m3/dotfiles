@@ -94,3 +94,5 @@ function! s:ZoomToggle() abort
 endfunction
 command! ZoomToggle call s:ZoomToggle()
 ]])
+
+vim.api.nvim_create_user_command('ShowLocation', 'echo @%', {})
