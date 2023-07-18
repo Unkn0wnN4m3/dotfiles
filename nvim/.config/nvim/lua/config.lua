@@ -72,3 +72,10 @@ if (vim.fn.has 'win32' == 1) then
 else
     vim.g.python3_host_prog = vim.fn.expand("/usr/bin/python3")
 end
+
+-- set dark or light background theme
+if (vim.env.NVIM_BACKGROUND == "light") then
+    vim.o.background = "light"
+else
+    vim.o.background = "dark"
+end

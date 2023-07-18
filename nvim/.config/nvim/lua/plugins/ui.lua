@@ -215,5 +215,10 @@ return {
             show_first_indent_level = true,
             show_trailing_blankline_indent = false
         }
+    },
+    {
+        "prichrd/netrw.nvim",
+        commit = "596435bd2f5b0162b86c97ca8244e2b0862d3a4a",
+        config = true
     }
 }

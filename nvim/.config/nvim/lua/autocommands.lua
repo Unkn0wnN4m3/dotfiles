@@ -86,3 +86,20 @@ if vim.fn.has 'win32' == 1 then
         end
     })
 end
+
+local auto_rel_numbers = vim.api.nvim_create_augroup("autonumbers", { clear = true })
+vim.api.nvim_create_autocmd("InsertEnter", {
+    desc = "set relative numbers in normal mode",
+    group = auto_rel_numbers,
+    callback = function()
+        vim.opt_local.relativenumber = false
+    end
+})
+
+vim.api.nvim_create_autocmd({ "InsertLeave", "VimEnter", "BufWinEnter", "WinEnter" }, {
+    desc = "set normal numbers in insert mode",
+    group = auto_rel_numbers,
+    callback = function()
+        vim.opt_local.relativenumber = true
+    end
+})
