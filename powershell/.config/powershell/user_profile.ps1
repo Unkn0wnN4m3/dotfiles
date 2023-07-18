@@ -1,6 +1,24 @@
 using namespace System.Management.Automation
 using namespace System.Management.Automation.Language
 
+# Prompt
+oh-my-posh init pwsh --config "~/.config/custom-catppuccin.omp.json" | Invoke-Expression
+
+# if (Get-Command starship -ErrorAction SilentlyContinue) {
+#     function Invoke-Starship-PreCommand {
+#         $host.ui.RawUI.WindowTitle = "$env:USERNAME@$env:COMPUTERNAME`: $pwd `a"
+#     }
+
+#     function Invoke-Starship-TransientFunction {
+#         &starship module character
+#     }
+
+#     # Setting the terminal title
+#     Invoke-Expression (&starship init powershell)
+
+#     Enable-TransientPrompt
+# }
+
 # Environment variables
 if ( -not ( $env:BAT_THEME ) ) {
     [Environment]::SetEnvironmentVariable('BAT_THEME', 'base16', 'user')
@@ -32,22 +50,6 @@ $psStyle.FileInfo.Directory = "`e[35;1m"
 # Powershell configuration directory
 $CUSTOMPSHOME = "$ENV:USERPROFILE\\.config\\powershell"
 
-# Prompt
-if (Get-Command starship -ErrorAction SilentlyContinue) {
-    function Invoke-Starship-PreCommand {
-        $loc = $executionContext.SessionState.Path.CurrentLocation;
-        $prompt = "$([char]27)]9;12$([char]7)"
-            if ($loc.Provider.Name -eq "FileSystem")
-            {
-                $prompt += "$([char]27)]9;9;`"$($loc.ProviderPath)`"$([char]27)\"
-            }
-        $host.ui.Write($prompt)
-    }
-
-# Setting the terminal title
-    Invoke-Expression (&starship init powershell)
-}
-
 # Functions
 foreach ($PFunction in Get-ChildItem "$CUSTOMPSHOME\\functions") {
     if ($PFunction.name -match "\\*.ps1") {
@@ -71,8 +73,6 @@ foreach ($PConfig in Get-ChildItem "$CUSTOMPSHOME\\conf") {
 
 # Alias
 function __SHL { param( $path ) Get-ChildItem -Path $path -Name }
-function __NVIMN { param ( $path ) nvim --noplugin -u NONE $path }
-function __NQLIGHT { param ( $path )  nvim-qt -- -c "set background=light" $path }
 function __APGR { shutdown -s -t 0 }
 function __RSRT { shutdown -r -t 0 }
 function __SALR { shutdown -l }
@@ -84,9 +84,6 @@ Set-Alias -Name la -Value __SHL
 Set-Alias -Name which -Value Get-Command
 Set-Alias -Name grep -Value findstr
 Set-Alias -Name less -Value "C:\Program Files\Git\usr\bin\less.exe"
-# Set-Alias -Name lg -Value "$env:USERPROFILE\go\bin\lazygit.exe"
+Set-Alias -Name lg -Value lazygit
 Set-Alias -Name n -Value nvim
-Set-Alias -Name q -Value nvim-qt
-Set-Alias -Name nvimn -Value __NVIMN
-Set-Alias -Name ql -Value __NQLIGHT
-Set-Alias -Name pnpm -Value pnpm-win-x64
+Set-Alias -Name jq -Value jq-win64
