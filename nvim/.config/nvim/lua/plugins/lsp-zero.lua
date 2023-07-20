@@ -139,11 +139,8 @@ return {
                     'typescriptreact',
                     'typescript.tsx',
                 },
-                root_dir = function(fname)
-                    return util.root_pattern 'tsconfig.json' (fname)
-                        or util.root_pattern('package.json', 'jsconfig.json', '.git')(fname)
-                end,
-                single_file_support = true
+                root_dir = util.root_pattern("package.json"),
+                single_file_support = false
             })
 
             local eslint_root_file = {
@@ -163,9 +160,10 @@ return {
                 end,
             })
 
+            require('lspconfig').denols.setup({ root_dir = util.root_pattern("deno.json", "deno.jsonc") })
             require('lspconfig').cssls.setup({})
             require('lspconfig').jsonls.setup({})
-            require('lspconfig').html.setup({ filetypes = { 'html', 'jinja.html', 'htmldjango' } })
+            require('lspconfig').html.setup({})
             require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
 
             lsp.format_mapping('gq', {
@@ -186,7 +184,7 @@ return {
                         "markdown",
                         "html",
                         "jinja.html",
-                        "htmldjango"
+                        "htmldjango",
                     },
                     ["lua_ls"] = { "lua" }
                 }
