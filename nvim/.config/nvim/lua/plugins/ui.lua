@@ -68,7 +68,7 @@ return {
         "akinsho/bufferline.nvim",
         version = "v4.*",
         dependencies = "nvim-tree/nvim-web-devicons",
-        event = "BufReadPre",
+        event = "VeryLazy",
         config = function()
             require("bufferline").setup({
                 options = {
@@ -88,7 +88,7 @@ return {
     {
         "akinsho/toggleterm.nvim",
         version = "v2.*",
-        event = "BufReadPre",
+        event = "VeryLazy",
         keys = {
             { "<C-j>", [[<C-\><C-n><C-W>j]], mode = "t" },
             { "<C-k>", [[<C-\><C-n><C-W>k]], mode = "t" },
@@ -161,7 +161,7 @@ return {
     {
         "utilyre/barbecue.nvim",
         name = "barbecue",
-        event = "BufReadPre",
+        event = { "BufReadPre", "BufWinEnter" },
         version = "v0.4.*",
         dependencies = {
             {
@@ -180,6 +180,8 @@ return {
                 attach_navic = false,
                 show_modified = true,
                 show_dirname = true,
+                exclude_filetypes = { "netrw", "toggleterm" },
+
             })
 
             vim.api.nvim_create_autocmd({
@@ -209,7 +211,7 @@ return {
     {
         "lukas-reineke/indent-blankline.nvim",
         version = "v2.*",
-        event = "BufReadPre",
+        event = "VeryLazy",
         opts = {
             show_end_of_line = true,
             show_first_indent_level = true,

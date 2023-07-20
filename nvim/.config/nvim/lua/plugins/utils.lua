@@ -8,15 +8,12 @@ return {
             local gitdir = vim.fn.finddir('.git', filepath .. ';')
             return gitdir and #gitdir > 0 and #gitdir < #filepath
         end,
-    },
-    {
-        "tpope/vim-fugitive",
-        version = "v3.*",
-        cond = function()
-            local filepath = vim.fn.expand('%:p:h')
-            local gitdir = vim.fn.finddir('.git', filepath .. ';')
-            return gitdir and #gitdir > 0 and #gitdir < #filepath
-        end,
+        dependencies = {
+            {
+                "tpope/vim-fugitive",
+                version = "v3.*",
+            }
+        }
     },
     {
         "folke/trouble.nvim",
@@ -52,7 +49,7 @@ return {
     {
         "numToStr/Comment.nvim",
         version = "v0.*",
-        event = "BufReadPre",
+        event = "VeryLazy",
         opts = {
             ignore = '^$'
         }
@@ -68,7 +65,7 @@ return {
     },
     {
         "tpope/vim-surround",
-        event = "BufReadPre",
+        event = "VeryLazy",
         version = "v2.*"
     },
     -- {
@@ -78,7 +75,7 @@ return {
     {
         "folke/persistence.nvim",
         version = "v1.*",
-        event = "BufReadPre",
+        event = "VeryLazy",
         config = true,
         keys = {
             { "qs", "<CMD>lua require('persistence').load()<CR>",                mode = "n" },
@@ -88,9 +85,10 @@ return {
     },
     {
         "ggandor/leap.nvim",
+        event = "VeryLazy",
         commit = "14b5a65190fe69388a8f59c695ed3394a10d6af8",
         config = function()
             require('leap').add_default_mappings()
         end
-    }
+    },
 }

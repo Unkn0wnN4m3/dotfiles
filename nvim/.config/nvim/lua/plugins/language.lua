@@ -1,9 +1,4 @@
 return {
-    -- {
-    --     'Glench/Vim-Jinja2-Syntax',
-    --     ft = { "html", "jinja.html" },
-    --     commit = '2c17843b074b06a835f88587e1023ceff7e2c7d1'
-    -- },
     {
         "sheerun/vim-polyglot",
         version = "v4.*",
@@ -43,5 +38,5 @@ return {
            let g:user_emmet_leader_key='<C-Z>'
            ]])
         end
-    }
+    },
 }
