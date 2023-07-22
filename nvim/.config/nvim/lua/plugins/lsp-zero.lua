@@ -69,11 +69,6 @@ return {
             {
                 'jose-elias-alvarez/null-ls.nvim',
                 branch = "0.7-compat",
-                dependencies =
-                {
-                    "nvim-lua/plenary.nvim",
-                    version = "v0.*"
-                },
             },
         },
         config = function()

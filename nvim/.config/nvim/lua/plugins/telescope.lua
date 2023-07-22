@@ -6,10 +6,6 @@ return {
         event = "VeryLazy",
         dependencies = {
             {
-                "nvim-lua/plenary.nvim",
-                version = "v0.*"
-            },
-            {
                 "nvim-telescope/telescope-project.nvim",
                 commit = "8e8ee37b7210761502cdf2c3a82b5ba8fb5b2972"
             },

@@ -10,7 +10,7 @@ return {
                 -- :h background
                 background = {
                     light = "latte",
-                    dark = "mocha",
+                    dark = "frappe",
                 },
                 -- no_italic = true,
                 dim_inactive = {
@@ -64,10 +64,30 @@ return {
             vim.cmd.colorscheme "catppuccin"
         end
     },
+    -- {
+    --     "rmehri01/onenord.nvim",
+    --     commit = "222839e392a79c48ce0f52d754cccbc79322c01f",
+    --     lazy = false,
+    --     priority = 1000,
+    --     config = function()
+    --         require("onenord").setup({
+    --             fade_nc = true,
+    --             styles = {
+    --                 comments = "NONE",
+    --                 strings = "NONE",
+    --                 keywords = "italic",
+    --                 functions = "bold",
+    --                 variables = "NONE",
+    --                 diagnostics = "underline",
+    --                 conditionals = "italic"
+    --             },
+    --         })
+    --     end
+
+    -- },
     {
         "akinsho/bufferline.nvim",
         version = "v4.*",
-        dependencies = "nvim-tree/nvim-web-devicons",
         event = "VeryLazy",
         config = function()
             require("bufferline").setup({
@@ -117,7 +137,6 @@ return {
     },
     {
         'nvim-lualine/lualine.nvim',
-        dependencies = 'nvim-tree/nvim-web-devicons',
         commit = "05d78e9fd0cdfb4545974a5aa14b1be95a86e9c9",
         config = function()
             local function mixedIndent()
@@ -127,15 +146,25 @@ return {
                 return mixed and "MI" or ""
             end
 
+            local function showIndent()
+                local width = vim.o.shiftwidth
+                if vim.o.expandtab then
+                    return "spaces: " .. width
+                else
+                    return "tabs: " .. width
+                end
+            end
+
             require('lualine').setup({
                 options = {
                     theme = "catppuccin"
+                    -- theme = "onenord"
                 },
                 sections = {
                     lualine_c = {
                         { mixedIndent, color = 'red' }
                     },
-                    lualine_x = { 'o:shiftwidth', 'encoding', { 'fileformat', symbols = { unix = "LF", dos = "CRLF" } },
+                    lualine_x = { showIndent, { 'fileformat', symbols = { unix = "LF", dos = "CRLF" } }, 'encoding',
                         'filetype' },
                 },
                 extensions = {
@@ -150,8 +179,9 @@ return {
     -- Style
     {
         "j-hui/fidget.nvim",
-        commit = "0ba1e16d07627532b6cae915cc992ecac249fb97",
+        tag = "legacy",
         event = "LspAttach",
+        -- config = true
         opts = {
             window = {
                 blend = 0,
@@ -161,17 +191,16 @@ return {
     {
         "utilyre/barbecue.nvim",
         name = "barbecue",
-        event = { "BufReadPre", "BufWinEnter" },
+        event = "VeryLazy",
         version = "v0.4.*",
         dependencies = {
             {
                 "SmiteshP/nvim-navic",
-                commit = "15704c607569d6c5cfeab486d3ef9459645a70ce",
+                commit = "9c89730da6a05acfeb6a197e212dfadf5aa60ca0",
                 opts = {
                     highlight = true
                 }
             },
-            { "nvim-tree/nvim-web-devicons" }
         },
         config = function()
             require("barbecue").setup({

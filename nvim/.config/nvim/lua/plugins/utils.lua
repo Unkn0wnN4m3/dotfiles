@@ -3,11 +3,7 @@ return {
         "lewis6991/gitsigns.nvim",
         version = "v0.*",
         config = true,
-        cond = function()
-            local filepath = vim.fn.expand('%:p:h')
-            local gitdir = vim.fn.finddir('.git', filepath .. ';')
-            return gitdir and #gitdir > 0 and #gitdir < #filepath
-        end,
+        event = "VeryLazy",
         dependencies = {
             {
                 "tpope/vim-fugitive",
@@ -18,15 +14,8 @@ return {
     {
         "folke/trouble.nvim",
         dependencies = {
-            { "nvim-tree/nvim-web-devicons" },
             {
                 "folke/todo-comments.nvim",
-                dependencies = {
-                    {
-                        "nvim-lua/plenary.nvim",
-                        version = "v0.*"
-                    },
-                },
                 version = "v1.*",
                 config = true,
             },
@@ -68,10 +57,6 @@ return {
         event = "VeryLazy",
         version = "v2.*"
     },
-    -- {
-    --     "tpope/vim-obsession",
-    --     commit = "fe9d3e1a9a50171e7d316a52e1e56d868e4c1fe5"
-    -- },
     {
         "folke/persistence.nvim",
         version = "v1.*",
@@ -91,4 +76,10 @@ return {
             require('leap').add_default_mappings()
         end
     },
+    { "nvim-tree/nvim-web-devicons" },
+    {
+        "nvim-lua/plenary.nvim",
+        version = "v0.*"
+    },
+
 }

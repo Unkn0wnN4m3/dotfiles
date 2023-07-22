@@ -87,6 +87,7 @@ if vim.fn.has 'win32' == 1 then
     })
 end
 
+-- auto relative numbers
 local auto_rel_numbers = vim.api.nvim_create_augroup("autonumbers", { clear = true })
 vim.api.nvim_create_autocmd("InsertEnter", {
     desc = "set relative numbers in normal mode",
@@ -101,5 +102,15 @@ vim.api.nvim_create_autocmd({ "InsertLeave", "VimEnter", "BufWinEnter", "WinEnte
     group = auto_rel_numbers,
     callback = function()
         vim.opt_local.relativenumber = true
+    end
+})
+
+-- hide numbers in terminal buffer
+local hide_term_numbers = vim.api.nvim_create_augroup("hide_tnumbers", { clear = true })
+vim.api.nvim_create_autocmd("TermOpen", {
+    desc = "Hide relative numbers in terminal",
+    group = hide_term_numbers,
+    callback = function()
+        vim.cmd("setlocal nonumber norelativenumber")
     end
 })
