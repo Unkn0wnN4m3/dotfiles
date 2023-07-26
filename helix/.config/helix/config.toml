@@ -1,0 +1,35 @@
+theme = "solarized_dark"
+
+[editor]
+cursorline = true
+line-number = "relative"
+color-modes = true
+bufferline = "multiple"
+idle-timeout = 150
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.file-picker]
+hidden = false
+
+[editor.statusline]
+left = ["mode", "spacer" ,"version-control"]
+center = ["file-name", "file-modification-indicator"]
+right = ["spinner", "spacer" ,"diagnostics", "file-encoding", "file-line-ending", "file-type", "position-percentage", "position"]
+
+[editor.whitespace.render]
+tab = "all"
+newline = "all"
+
+[editor.indent-guides]
+render = true
+
+[editor.lsp]
+display-messages = true
+
+[keys.insert]
+j = { k = "normal_mode" }
+k = { j = "normal_mode" }
