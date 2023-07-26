@@ -1,90 +1,27 @@
 return {
     {
-        "catppuccin/nvim",
-        name = "catppuccin",
+        "svrana/neosolarized.nvim",
+        version = "v1.0.*",
         lazy = false,
         priority = 1000,
-        version = "v1.*",
+        dependencies = {
+            {
+                "tjdevries/colorbuddy.nvim",
+                commit = "cdb5b0654d3cafe61d2a845e15b2b4b0e78e752a"
+            }
+        },
         config = function()
-            require("catppuccin").setup({
-                -- :h background
-                background = {
-                    light = "latte",
-                    dark = "frappe",
-                },
-                -- no_italic = true,
-                dim_inactive = {
-                    enabled = true,
-                    shade = "dark",
-                    percentage = 0.15,
-                },
-                styles = {
-                    comments = {},
-                    conditionals = { "italic" },
-                    loops = { "bold" },
-                    functions = { "bold" },
-                    keywords = { "italic" },
-                    strings = {},
-                    variables = {},
-                    numbers = { "bold" },
-                    booleans = { "italic" },
-                    properties = {},
-                    types = { "bold" },
-                    operators = {},
-                },
-                integrations = {
-                    cmp = true,
-                    gitsigns = true,
-                    telescope = true,
-                    markdown = true,
-                    mason = true,
-                    illuminate = true,
-                    barbecue = {
-                        dim_dirname = true,
-                        bold_basename = true,
-                        dim_context = false,
-                    },
-                    navic = {
-                        enabled = false,
-                        custom_bg = "NONE",
-                    },
-                    fidget = true,
-                    native_lsp = {
-                        enabled = true,
-                        underlines = {
-                            errors = { "underline" },
-                            hints = { "underline" },
-                            warnings = { "underline" },
-                            information = { "underline" },
-                        },
-                    },
-                    leap = false
-                },
+            local n = require("neosolarized").setup({
+                comment_italics = false,
+                background_set = false,
             })
-            vim.cmd.colorscheme "catppuccin"
+
+            n.Group.new("CursorLineNr", n.colors.yellow, n.colors.none, n.styles.bold)
+            n.Group.new("Function", n.colors.blue, n.colors.none, n.styles.bold)
+            n.Group.new("Conditional", n.colors.green, n.colors.none, n.styles.italic)
+            n.Group.new("Boolean", n.colors.green, n.colors.none, n.styles.italic)
         end
     },
-    -- {
-    --     "rmehri01/onenord.nvim",
-    --     commit = "222839e392a79c48ce0f52d754cccbc79322c01f",
-    --     lazy = false,
-    --     priority = 1000,
-    --     config = function()
-    --         require("onenord").setup({
-    --             fade_nc = true,
-    --             styles = {
-    --                 comments = "NONE",
-    --                 strings = "NONE",
-    --                 keywords = "italic",
-    --                 functions = "bold",
-    --                 variables = "NONE",
-    --                 diagnostics = "underline",
-    --                 conditionals = "italic"
-    --             },
-    --         })
-    --     end
-
-    -- },
     {
         "akinsho/bufferline.nvim",
         version = "v4.*",
@@ -96,12 +33,8 @@ return {
                     always_show_bufferline = false,
                     show_buffer_close_icons = false,
                     show_close_icon = false,
-                    separator_style = { "|", "|" }, -- | "thick" | "thin" | { 'any', 'any' },
-                    -- indicator = {
-                    --     style = "none",
-                    -- },
+                    separator_style = { "|", "|" },
                 },
-                highlights = require("catppuccin.groups.integrations.bufferline").get()
             })
         end,
     },
@@ -157,14 +90,15 @@ return {
 
             require('lualine').setup({
                 options = {
-                    theme = "catppuccin"
-                    -- theme = "onenord"
+                    theme = "solarized",
+                    section_separators = "",
+                    component_separators = ""
                 },
                 sections = {
                     lualine_c = {
                         { mixedIndent, color = 'red' }
                     },
-                    lualine_x = { showIndent, { 'fileformat', symbols = { unix = "LF", dos = "CRLF" } }, 'encoding',
+                    lualine_x = { showIndent, { 'fileformat', symbols = { unix = "lf", dos = "crlf" } }, 'encoding',
                         'filetype' },
                 },
                 extensions = {
@@ -181,7 +115,6 @@ return {
         "j-hui/fidget.nvim",
         tag = "legacy",
         event = "LspAttach",
-        -- config = true
         opts = {
             window = {
                 blend = 0,
@@ -204,7 +137,7 @@ return {
         },
         config = function()
             require("barbecue").setup({
-                theme = "catppuccin",
+                -- theme = "catppuccin",
                 create_autocmd = false,
                 attach_navic = false,
                 show_modified = true,
