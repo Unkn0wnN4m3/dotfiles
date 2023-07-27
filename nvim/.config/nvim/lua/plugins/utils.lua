@@ -21,7 +21,7 @@ return {
             },
 
         },
-        version = "v1.*",
+        version = "v2.*",
         config = function()
             require("trouble").setup({
                 use_diagnostic_signs = true
