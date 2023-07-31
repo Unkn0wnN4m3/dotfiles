@@ -12,9 +12,9 @@ return {
         },
         config = function()
             local n = require("neosolarized").setup({
-                comment_italics = false,
-                background_set = false,
-            })
+                    comment_italics = false,
+                    background_set = false,
+                })
 
             n.Group.new("CursorLineNr", n.colors.yellow, n.colors.none, n.styles.bold)
             n.Group.new("Function", n.colors.blue, n.colors.none, n.styles.bold)
@@ -28,14 +28,14 @@ return {
         event = "VeryLazy",
         config = function()
             require("bufferline").setup({
-                options = {
-                    mode = "tabs",
-                    always_show_bufferline = false,
-                    show_buffer_close_icons = false,
-                    show_close_icon = false,
-                    separator_style = { "|", "|" },
-                },
-            })
+                    options = {
+                        mode = "tabs",
+                        always_show_bufferline = false,
+                        show_buffer_close_icons = false,
+                        show_close_icon = false,
+                        separator_style = { "|", "|" },
+                    },
+                })
         end,
     },
     {
@@ -55,22 +55,22 @@ return {
             end
 
             toggleterm.setup({
-                open_mapping = [[<c-\>]],
-                hide_numbers = true,
-                shade_terminals = true,
-                shading_factor = 2,
-                start_in_insert = true,
-                insert_mappings = true,
-                persist_size = true,
-                direction = "horizontal",
-                close_on_exit = true,
-                shell = select_shell
-            })
+                    open_mapping = [[<c-\>]],
+                    hide_numbers = true,
+                    shade_terminals = true,
+                    shading_factor = 2,
+                    start_in_insert = true,
+                    insert_mappings = true,
+                    persist_size = true,
+                    direction = "horizontal",
+                    close_on_exit = true,
+                    shell = select_shell
+                })
         end
     },
     {
         'nvim-lualine/lualine.nvim',
-        commit = "e80465d721bdafcd234e890d1677ca4afb905144",
+        commit = "05d78e9fd0cdfb4545974a5aa14b1be95a86e9c9",
         config = function()
             local function mixedIndent()
                 local space_indent = vim.fn.search([[\v^ +]], "nw") > 0
