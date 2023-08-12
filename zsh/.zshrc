@@ -55,11 +55,11 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='nvim'
+fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -70,8 +70,13 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+command -v nvim >/dev/null && alias n="nvim"
+command -v zellij >/dev/null && alias zj="zellij"
+
+if [ $(command -v exa) ]; then
+  alias ls="exa -F --group-directories-first --icons"
+  alias la="exa -ahlF --group-directories-first --icons"
+fi
 #
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
