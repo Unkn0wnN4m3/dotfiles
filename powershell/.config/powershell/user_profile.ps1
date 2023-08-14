@@ -55,7 +55,7 @@ foreach ($PFunction in Get-ChildItem "$CUSTOMPSHOME\\functions") {
 }
 
 # Modules
-[String[]]$PSGalleryModules = "PSReadLine", "posh-git", "npm-completion"
+[String[]]$PSGalleryModules = "PSReadLine", "posh-git"
 
 foreach ($PModule in $PSGalleryModules) {
     Import-Module $PModule -ErrorAction SilentlyContinue
@@ -69,18 +69,12 @@ foreach ($PConfig in Get-ChildItem "$CUSTOMPSHOME\\conf") {
 }
 
 # Alias
-function __SHL { param( $path ) Get-ChildItem -Path $path -Name }
-function __APGR { shutdown -s -t 0 }
-function __RSRT { shutdown -r -t 0 }
-function __SALR { shutdown -l }
+function __SHL { param( $path ) Get-ChildItem -Path $path | Format-Wide }
 
-Set-Alias -Name Apagar -Value __APGR
-Set-Alias -Name Reiniciar -Value __RSRT
-Set-Alias -Name Salir -Value __SALR
-Set-Alias -Name la -Value __SHL
+Set-Alias -Name ls -Value __SHL
+Set-Alias -Name la -Value Get-ChildItem
 Set-Alias -Name which -Value Get-Command
+Set-Alias -Name open -Value Invoke-Item
 Set-Alias -Name grep -Value findstr
 Set-Alias -Name less -Value "C:\Program Files\Git\usr\bin\less.exe"
-Set-Alias -Name lg -Value lazygit
 Set-Alias -Name n -Value nvim
-Set-Alias -Name jq -Value jq-win64
