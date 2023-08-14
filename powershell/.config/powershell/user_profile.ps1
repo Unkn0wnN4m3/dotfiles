@@ -69,7 +69,7 @@ foreach ($PConfig in Get-ChildItem "$CUSTOMPSHOME\\conf") {
 }
 
 # Alias
-function __SHL { param( $path ) Get-ChildItem -Path $path | Format-Wide }
+function __SHL { param( $path ) Get-ChildItem -Path $path | Format-Wide -AutoSize }
 
 Set-Alias -Name ls -Value __SHL
 Set-Alias -Name la -Value Get-ChildItem
