@@ -2,7 +2,7 @@ using namespace System.Management.Automation
 using namespace System.Management.Automation.Language
 
 # Prompt
-oh-my-posh init pwsh --config "~/.config/custom-catppuccin.omp.json" | Invoke-Expression
+oh-my-posh init pwsh --config "~/.config/custom.omp.json" | Invoke-Expression
 
 # if (Get-Command starship -ErrorAction SilentlyContinue) {
 #     function Invoke-Starship-PreCommand {
