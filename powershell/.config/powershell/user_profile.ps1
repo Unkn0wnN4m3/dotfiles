@@ -2,7 +2,7 @@ using namespace System.Management.Automation
 using namespace System.Management.Automation.Language
 
 # Prompt
-oh-my-posh init pwsh --config "~/.config/custom-catppuccin.omp.json" | Invoke-Expression
+oh-my-posh init pwsh --config "~/.config/custom.omp.json" | Invoke-Expression
 
 # if (Get-Command starship -ErrorAction SilentlyContinue) {
 #     function Invoke-Starship-PreCommand {
@@ -69,7 +69,7 @@ foreach ($PConfig in Get-ChildItem "$CUSTOMPSHOME\\conf") {
 }
 
 # Alias
-function __SHL { param( $path ) Get-ChildItem -Path $path | Format-Wide }
+function __SHL { param( $path ) Get-ChildItem -Path $path | Format-Wide -AutoSize }
 
 Set-Alias -Name ls -Value __SHL
 Set-Alias -Name la -Value Get-ChildItem
