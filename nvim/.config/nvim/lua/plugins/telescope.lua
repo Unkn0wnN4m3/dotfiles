@@ -1,7 +1,7 @@
 return {
     {
         "nvim-telescope/telescope.nvim",
-        version = "0.*",
+        version = "0.1.*",
         -- lazy = false,
         event = "VeryLazy",
         dependencies = {

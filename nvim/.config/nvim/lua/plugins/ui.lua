@@ -1,7 +1,7 @@
 return {
     {
         "svrana/neosolarized.nvim",
-        version = "v1.0.*",
+        version = "v1.*",
         lazy = false,
         priority = 1000,
         dependencies = {
@@ -80,7 +80,7 @@ return {
     },
     {
         'nvim-lualine/lualine.nvim',
-        commit = "05d78e9fd0cdfb4545974a5aa14b1be95a86e9c9",
+        commit = "45e27ca739c7be6c49e5496d14fcf45a303c3a63",
         config = function()
             local function mixedIndent()
                 local space_indent = vim.fn.search([[\v^ +]], "nw") > 0
@@ -138,11 +138,11 @@ return {
         "utilyre/barbecue.nvim",
         name = "barbecue",
         event = "VeryLazy",
-        version = "v0.4.*",
+        version = "v1.2.*",
         dependencies = {
             {
                 "SmiteshP/nvim-navic",
-                commit = "9c89730da6a05acfeb6a197e212dfadf5aa60ca0",
+                commit = "0ffa7ffe6588f3417e680439872f5049e38a24db",
                 opts = {
                     highlight = true
                 }
@@ -173,7 +173,7 @@ return {
     },
     {
         "RRethy/vim-illuminate",
-        commit = "a2907275a6899c570d16e95b9db5fd921c167502",
+        commit = "3bd2ab64b5d63b29e05691e624927e5ebbf0fb86",
         event = "LspAttach",
         config = function()
             require('illuminate').configure({
