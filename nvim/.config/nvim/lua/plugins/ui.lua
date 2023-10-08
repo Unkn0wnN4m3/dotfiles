@@ -12,14 +12,24 @@ return {
         },
         config = function()
             local n = require("neosolarized").setup({
-                    comment_italics = false,
-                    background_set = false,
-                })
+                comment_italics = false,
+                background_set = false,
+            })
+
+            local cb = require('colorbuddy.init')
+            local Color = cb.Color
+
+            Color.new('illmt', '#19404a')
 
             n.Group.new("CursorLineNr", n.colors.yellow, n.colors.none, n.styles.bold)
             n.Group.new("Function", n.colors.blue, n.colors.none, n.styles.bold)
             n.Group.new("Conditional", n.colors.green, n.colors.none, n.styles.italic)
             n.Group.new("Boolean", n.colors.green, n.colors.none, n.styles.italic)
+            n.Group.new("IlluminatedWord", n.colors.none, n.colors.illmt, n.styles.none)
+            n.Group.new("IlluminatedCurWord", n.colors.none, n.colors.illmt, n.styles.none)
+            n.Group.new("IlluminatedWordText", n.colors.none, n.colors.illmt, n.styles.none)
+            n.Group.new("IlluminatedWordRead", n.colors.none, n.colors.illmt, n.styles.none)
+            n.Group.new("IlluminatedWordWrite", n.colors.none, n.colors.illmt, n.styles.none)
         end
     },
     {
@@ -28,14 +38,14 @@ return {
         event = "VeryLazy",
         config = function()
             require("bufferline").setup({
-                    options = {
-                        mode = "tabs",
-                        always_show_bufferline = false,
-                        show_buffer_close_icons = false,
-                        show_close_icon = false,
-                        separator_style = { "|", "|" },
-                    },
-                })
+                options = {
+                    mode = "tabs",
+                    always_show_bufferline = false,
+                    show_buffer_close_icons = false,
+                    show_close_icon = false,
+                    separator_style = { "|", "|" },
+                },
+            })
         end,
     },
     {
@@ -55,17 +65,17 @@ return {
             end
 
             toggleterm.setup({
-                    open_mapping = [[<c-\>]],
-                    hide_numbers = true,
-                    shade_terminals = true,
-                    shading_factor = 2,
-                    start_in_insert = true,
-                    insert_mappings = true,
-                    persist_size = true,
-                    direction = "horizontal",
-                    close_on_exit = true,
-                    shell = select_shell
-                })
+                open_mapping = [[<c-\>]],
+                hide_numbers = true,
+                shade_terminals = true,
+                shading_factor = 2,
+                start_in_insert = true,
+                insert_mappings = true,
+                persist_size = true,
+                direction = "horizontal",
+                close_on_exit = true,
+                shell = select_shell
+            })
         end
     },
     {
@@ -168,19 +178,21 @@ return {
         config = function()
             require('illuminate').configure({
                 providers = {
-                    'lsp',
+                    'lsp'
                 },
             })
         end
     },
     {
         "lukas-reineke/indent-blankline.nvim",
-        version = "v2.*",
+        version = "v3.2.*",
         event = "VeryLazy",
+        main = "ibl",
         opts = {
-            show_end_of_line = true,
-            show_first_indent_level = true,
-            show_trailing_blankline_indent = false
+            whitespace = {
+                remove_blankline_trail = true,
+            },
+            scope = { enabled = false },
         }
     },
     {
