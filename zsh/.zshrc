@@ -1,10 +1,3 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 # Set block cursor for normal mode and beam for insert mode
 VI_MODE_SET_CURSOR=true
 
@@ -15,7 +8,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="powerlevel10k/powerlevel10k"
+ZSH_THEME=""
 
 # Uncomment the following line if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS="true"
@@ -49,6 +42,9 @@ plugins=(git zsh-autosuggestions zoxide vi-mode zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
+#Star Ship
+eval "$(starship init zsh)"
+
 # User configuration
 
 # You may need to manually set your language environment
@@ -73,12 +69,8 @@ fi
 command -v nvim >/dev/null && alias n="nvim"
 command -v zellij >/dev/null && alias zj="zellij"
 
-if [ $(command -v exa) ]; then
-  alias ls="exa -F --group-directories-first --icons"
-  alias la="exa -ahlF --group-directories-first --icons"
+if [ $(command -v eza) ]; then
+  alias ls="eza -F --group-directories-first --icons"
+  alias la="eza -ahlF --group-directories-first --icons"
 fi
-#
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
