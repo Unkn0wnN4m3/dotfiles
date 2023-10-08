@@ -4,7 +4,45 @@ return {
         version = "v4.*",
         -- event = { 'BufReadPre', 'BufNewFile' },
         init = function()
-            vim.g.polyglot_disabled = { "ftdetect" }
+            vim.g.polyglot_disabled = {
+                "ftdetect",
+                "query",
+                "markdown.plugin",
+                "vim.plugin",
+                "vimdoc.plugin",
+                "lua.plugin",
+                "c.plugin",
+                "python.plugin"
+            }
+        end
+    },
+    {
+        "nvim-treesitter/nvim-treesitter",
+        version = "v0.9.*",
+        build = ":TSUpdate",
+        config = function()
+            require("nvim-treesitter.configs").setup({
+                ensure_installed = {
+                    "c",
+                    "python",
+                    "lua",
+                    "vim",
+                    "markdown",
+                    "vimdoc",
+                    "query"
+                },
+                auto_install = false,
+                highlight = {
+                    enable = true,
+                    disable = function(lang, buf)
+                        local max_filesize = 100 * 1024 -- 100 KB
+                        local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+                        if ok and stats and stats.size > max_filesize then
+                            return true
+                        end
+                    end,
+                },
+            })
         end
     },
     {
