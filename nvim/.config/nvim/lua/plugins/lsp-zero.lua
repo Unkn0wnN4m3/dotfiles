@@ -85,7 +85,8 @@ return {
                     "clangd",
                     "html",
                     "cssls",
-                    "jsonls"
+                    "jsonls",
+                    "marksman"
                 },
                 handlers = {
                     lsp_zero.default_setup,

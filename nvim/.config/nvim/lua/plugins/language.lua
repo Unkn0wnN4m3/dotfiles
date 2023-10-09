@@ -12,7 +12,9 @@ return {
                 "vimdoc.plugin",
                 "lua.plugin",
                 "c.plugin",
-                "python.plugin"
+                "python.plugin",
+                "javascript.plugin",
+                "typescript.plugin"
             }
         end
     },
@@ -25,6 +27,9 @@ return {
                 ensure_installed = {
                     "c",
                     "python",
+                    "typescript",
+                    "tsx",
+                    "javascript",
                     "lua",
                     "vim",
                     "markdown",
@@ -73,8 +78,23 @@ return {
         },
         init = function()
             vim.cmd([[
-           let g:user_emmet_leader_key='<C-Z>'
+                let g:user_emmet_leader_key='<C-Z>'
            ]])
         end
     },
+    {
+        "mhartington/formatter.nvim",
+        commit = "34dcdfa0c75df667743b2a50dd99c84a557376f0",
+        event = "LspAttach",
+        config = function()
+            require("formatter").setup({
+                filetype = {
+                    python = {
+                        require("formatter.filetypes.python").yapf,
+                        require("formatter.filetypes.python").isort,
+                    }
+                }
+            })
+        end
+    }
 }
