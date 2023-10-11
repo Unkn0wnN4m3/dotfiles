@@ -1,9 +1,0 @@
-7zip
-bat
-fd
-jq
-neovim
-nodejs-lts
-ripgrep
-sqlite
-starship
