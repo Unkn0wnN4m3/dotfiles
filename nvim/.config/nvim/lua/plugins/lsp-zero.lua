@@ -29,6 +29,7 @@ return {
         },
         config = function()
             local cmp = require('cmp')
+            local cmp_action = require('lsp-zero').cmp_action()
 
             cmp.setup({
                 preselect = 'item',
@@ -46,6 +47,12 @@ return {
                         ellipsis_char = '...',
                     })
                 },
+                mapping = cmp.mapping.preset.insert({
+                    ['<C-u>'] = cmp.mapping.scroll_docs(-4),
+                    ['<C-d>'] = cmp.mapping.scroll_docs(4),
+                    ['<C-f>'] = cmp_action.luasnip_jump_forward(),
+                    ['<C-b>'] = cmp_action.luasnip_jump_backward(),
+                })
             })
         end
     },
@@ -82,20 +89,23 @@ return {
                     "pyright",
                     "tsserver",
                     "eslint",
-                    "clangd",
                     "html",
                     "cssls",
                     "jsonls",
-                    "marksman"
+                    "marksman",
+                    "lua_ls"
                 },
                 handlers = {
                     lsp_zero.default_setup,
                     lua_ls = function()
                         local lua_opts = lsp_zero.nvim_lua_ls()
-                        require('lspconfig').lua_ls.setup(lua_opts)
-                    end,
+                        require("lspconfig").lua_ls.setup(lua_opts)
+                    end
                 }
             })
-        end
+
+            -- clangd manual config
+            require("lspconfig").clangd.setup({})
+        end,
     }
 }

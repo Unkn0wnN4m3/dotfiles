@@ -32,9 +32,9 @@ return {
                     "javascript",
                     "lua",
                     "vim",
-                    "markdown",
                     "vimdoc",
-                    "query"
+                    "markdown",
+                    "latex"
                 },
                 auto_install = false,
                 highlight = {
@@ -92,6 +92,9 @@ return {
                     python = {
                         require("formatter.filetypes.python").yapf,
                         require("formatter.filetypes.python").isort,
+                    },
+                    c = {
+                        require("formatter.filetypes.c").clangformat
                     }
                 }
             })
