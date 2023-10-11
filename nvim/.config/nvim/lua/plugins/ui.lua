@@ -58,11 +58,6 @@ return {
         },
         config = function()
             local toggleterm = require("toggleterm")
-            local select_shell = vim.o.shell
-
-            if vim.fn.has 'win32' == 1 then
-                select_shell = "pwsh"
-            end
 
             toggleterm.setup({
                 open_mapping = [[<c-\>]],
@@ -74,7 +69,7 @@ return {
                 persist_size = true,
                 direction = "horizontal",
                 close_on_exit = true,
-                shell = select_shell
+                shell = vim.o.shell
             })
         end
     },
@@ -160,9 +155,11 @@ return {
             })
 
             vim.api.nvim_create_autocmd({
+                "WinScrolled",
                 "BufWinEnter",
                 "CursorHold",
                 "InsertLeave",
+                "BufModifiedSet",
             }, {
                 group = vim.api.nvim_create_augroup("barbecue.updater", {}),
                 callback = function()

@@ -29,7 +29,7 @@ vim.opt.writebackup = false    -- if a file is being edited by another program (
 vim.opt.expandtab = true       -- convert tabs to spaces
 -- vim.opt.shiftwidth = 4         -- the number of spaces inserted for each indentation
 -- vim.opt.tabstop = 4            -- insert 4 spaces for a tab
-vim.opt.number = true          -- set numbered lines
+vim.opt.number = true -- set numbered lines
 vim.opt.laststatus = 3
 -- vim.opt.showcmd = false
 vim.opt.ruler = false
@@ -56,26 +56,25 @@ vim.opt.listchars = {
 vim.opt.fillchars = {
     eob = " ",
 }
+vim.g.python3_host_prog = vim.fn.expand("/usr/bin/python3")
 
-if (vim.fn.has 'win32' == 1) then
-    vim.g.python3_host_prog = vim.fn.expand("$WORKON_HOME/neovim/python3-venv/Scripts/python")
+-- if (vim.fn.has 'win32' == 1) then
+--     vim.cmd([[
+-- 		let &shell = executable('pwsh') ? 'pwsh' : 'powershell'
+-- 		let &shellcmdflag = '-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;'
+-- 		let &shellredir = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
+-- 		let &shellpipe = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
+-- 		set shellquote= shellxquote=
 
-    vim.cmd([[
-		let &shell = executable('pwsh') ? 'pwsh' : 'powershell'
-		let &shellcmdflag = '-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;'
-		let &shellredir = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
-		let &shellpipe = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
-		set shellquote= shellxquote=
-
-        :tnoremap <Esc><Esc> <C-\><C-n>
-    ]])
-else
-    vim.g.python3_host_prog = vim.fn.expand("/usr/bin/python3")
-end
+--         :tnoremap <Esc><Esc> <C-\><C-n>
+--     ]])
+-- else
+--     vim.g.python3_host_prog = vim.fn.expand("/usr/bin/python3")
+-- end
 
 -- set dark or light background theme
-if (vim.env.NVIM_BACKGROUND == "light") then
-    vim.o.background = "light"
-else
-    vim.o.background = "dark"
-end
+-- if (vim.env.NVIM_BACKGROUND == "light") then
+--     vim.o.background = "light"
+-- else
+--     vim.o.background = "dark"
+-- end

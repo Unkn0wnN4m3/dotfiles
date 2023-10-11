@@ -20,7 +20,7 @@ return {
             local telescope = require("telescope")
             local actions = require("telescope.actions")
 
-            local projects_path = vim.fn.expand("$HOME/Documents/Projects/")
+            local projects_path = vim.fn.expand("$HOME/Projects/")
 
             telescope.setup({
                 defaults = {
