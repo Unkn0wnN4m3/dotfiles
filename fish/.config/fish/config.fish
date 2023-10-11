@@ -22,22 +22,10 @@ if status --is-login
 end
 
 if status --is-interactive
-    # Custom dircolors
-    if test -f $DOTFILES_ZSH/.dir_colors
-        eval (dircolors -c $DOTFILES_ZSH/.dir_colors)
-    end
-
-    if test -d /home/linuxbrew/.linuxbrew/bin
-        /home/linuxbrew/.linuxbrew/bin/brew shellenv | source
-    end
-
-    if test -d (brew --prefix)"/share/fish/completions"
-        set -gx fish_complete_path $fish_complete_path (brew --prefix)/share/fish/completions
-    end
-
-    if test -d (brew --prefix)"/share/fish/vendor_completions.d"
-        set -gx fish_complete_path $fish_complete_path (brew --prefix)/share/fish/vendor_completions.d
-    end
+    # # Custom dircolors
+    # if test -f $DOTFILES_ZSH/.dir_colors
+    #     eval (dircolors -c $DOTFILES_ZSH/.dir_colors)
+    # end
 
     if command -s zoxide >/dev/null
         zoxide init fish | source
