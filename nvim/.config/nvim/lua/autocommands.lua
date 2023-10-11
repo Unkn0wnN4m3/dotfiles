@@ -107,8 +107,9 @@ vim.api.nvim_create_autocmd({ "InsertLeave", "VimEnter", "BufWinEnter", "WinEnte
 
 -- hide numbers in terminal buffer
 local hide_term_numbers = vim.api.nvim_create_augroup("hide_tnumbers", { clear = true })
-vim.api.nvim_create_autocmd("TermOpen", {
+vim.api.nvim_create_autocmd({ "TermOpen", "FileType" }, {
     desc = "Hide relative numbers in terminal",
+    pattern = { "toggleterm", "terminal" },
     group = hide_term_numbers,
     callback = function()
         vim.cmd("setlocal nonumber norelativenumber")
