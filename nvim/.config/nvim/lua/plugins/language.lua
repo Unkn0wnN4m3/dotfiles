@@ -6,7 +6,6 @@ return {
         init = function()
             vim.g.polyglot_disabled = {
                 "ftdetect",
-                "query",
                 "markdown.plugin",
                 "vim.plugin",
                 "vimdoc.plugin",
@@ -14,7 +13,11 @@ return {
                 "c.plugin",
                 "python.plugin",
                 "javascript.plugin",
-                "typescript.plugin"
+                "typescript.plugin",
+                "html.plugin",
+                "css.plugin",
+                "json.plugin",
+                "jsonc.plugin"
             }
         end
     },
@@ -34,7 +37,11 @@ return {
                     "vim",
                     "vimdoc",
                     "markdown",
-                    "latex"
+                    "latex",
+                    "html",
+                    "css",
+                    "json",
+                    "jsonc"
                 },
                 auto_install = false,
                 highlight = {
@@ -53,15 +60,14 @@ return {
     {
         "iamcco/markdown-preview.nvim",
         ft = "markdown",
-        version = "v0.*",
-        build = "cd app && npm install",
+        version = "v0.0.*",
+        -- build = "cd app && npm install",
+        build = function()
+            vim.fn["mkdp#util#install"]()
+        end,
         init = function()
             vim.g.mkdp_filetypes = { "markdown" }
             vim.g.mkdp_echo_preview_url = 1
-
-            if (vim.fn.has "win32" == 1) then
-                vim.g.mkdp_browser = "C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe"
-            end
         end
     },
     {

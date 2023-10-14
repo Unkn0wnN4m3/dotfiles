@@ -53,8 +53,9 @@ return {
         version = "v2.*",
         event = "VeryLazy",
         keys = {
-            { "<C-j>", [[<C-\><C-n><C-W>j]], mode = "t" },
-            { "<C-k>", [[<C-\><C-n><C-W>k]], mode = "t" },
+            { "<C-j>",      [[<C-\><C-n><C-W>j]], mode = "t" },
+            { "<C-k>",      [[<C-\><C-n><C-W>k]], mode = "t" },
+            { "<esc><esc>", [[<C-\><C-n>]],       mode = "t" },
         },
         config = function()
             local toggleterm = require("toggleterm")
