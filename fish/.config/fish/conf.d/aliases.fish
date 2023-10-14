@@ -4,13 +4,11 @@
 alias ls="ls --group-directories-first"
 
 if command -s exa > /dev/null
-  alias lsa="exa -lagF --icons --group-directories-first"
-  alias ll="exa -lgF --icons --group-directories-first"
-  alias la="exa -aF --icons --group-directories-first"
+  alias la="exa -lagF --icons --group-directories-first"
+  alias ls="exa -aF --icons --group-directories-first"
 else
-  alias ll="/usr/bin/ls -lhF --color=auto --group-directories-first"
-  alias la="/usr/bin/ls -AF --color=auto --group-directories-first"
-  alias lsa="/usr/bin/ls -lhAF --color=auto --group-directories-first"
+  alias ls="/usr/bin/ls -AF --color=auto --group-directories-first"
+  alias la="/usr/bin/ls -lhAF --color=auto --group-directories-first"
 end
 
 # Grep
@@ -60,3 +58,5 @@ alias jac="javac"
 # bw generate passwords
 alias bw-genp="bw generate --passphrase --words 6 --separator -"
 alias bw-genw="bw generate -ulns --length 50"
+
+alias md="mkdir"
