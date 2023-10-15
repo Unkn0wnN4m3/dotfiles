@@ -24,14 +24,14 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 })
 
 -- Fixes Autocomment
-local fix_comments = vim.api.nvim_create_augroup("fixcomments", { clear = true })
-vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
-    desc = "If you are in a comment line, don't add new comment line after <CR>",
-    group = fix_comments,
-    callback = function()
-        vim.cmd("set formatoptions-=cro")
-    end,
-})
+-- local fix_comments = vim.api.nvim_create_augroup("fixcomments", { clear = true })
+-- vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
+--     desc = "If you are in a comment line, don't add new comment line after <CR>",
+--     group = fix_comments,
+--     callback = function()
+--         vim.cmd("set formatoptions-=cro")
+--     end,
+-- })
 
 -- Highlight Yanked Text
 local h_yank = vim.api.nvim_create_augroup("hyank", { clear = true })
@@ -53,14 +53,6 @@ vim.cmd([[
   augroup END
 ]])
 
--- Remember last file edit position on open.
--- See http://askubuntu.com/questions/202075/how-do-i-get-vim-to-remember-the-line-i-was-on-when-i-reopen-a-file
--- vim.cmd([[
---   if has("autocmd")
---     au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
---   endif
--- ]])
-
 -- TrimWhiteSpace function by the Primeagen
 -- By the primeagen. https://www.youtube.com/watch?v=DogKdiRx7ls
 vim.cmd([[
@@ -76,16 +68,24 @@ augroup END
 ]])
 
 -- Reset to vertical cursor when leave nvim on windws
-if vim.fn.has 'win32' == 1 then
-    local reset_cursor = vim.api.nvim_create_augroup("resetcursor", { clear = true })
-    vim.api.nvim_create_autocmd("VimLeave", {
-        desc = "Reset cursor from block to beam",
-        group = reset_cursor,
-        callback = function()
-            vim.opt.guicursor = "a:ver10-blinkon1"
-        end
-    })
-end
+-- if vim.fn.has 'win32' == 1 then
+--     local reset_cursor = vim.api.nvim_create_augroup("resetcursor", { clear = true })
+--     vim.api.nvim_create_autocmd("VimLeave", {
+--         desc = "Reset cursor from block to beam",
+--         group = reset_cursor,
+--         callback = function()
+--             vim.opt.guicursor = "a:ver10-blinkon1"
+--         end
+--     })
+-- end
+local reset_cursor = vim.api.nvim_create_augroup("resetcursor", { clear = true })
+vim.api.nvim_create_autocmd("VimLeave", {
+    desc = "Reset cursor from block to beam",
+    group = reset_cursor,
+    callback = function()
+        vim.opt.guicursor = "a:ver10-blinkon1"
+    end
+})
 
 -- auto relative numbers
 local auto_rel_numbers = vim.api.nvim_create_augroup("autonumbers", { clear = true })
