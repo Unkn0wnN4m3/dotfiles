@@ -128,6 +128,10 @@ return {
             window = {
                 blend = 0,
             },
+            text = {
+                spinner = "dots_pulse",
+                done = "✔",
+            },
         }
     },
     {
