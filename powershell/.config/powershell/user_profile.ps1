@@ -31,19 +31,6 @@ if ( -not ( $Env:FZF_DEFAULT_OPTS ) ) {
             'user')
 }
 
-[String[]]$c_extension = ".json", ".jsonc", ".yaml", ".toml", ".xml"
-[String[]]$p_extension = ".py", ".js", ".jsx", ".java", ".go", ".ts", ".tsx", ".bat", ".ps1"
-
-foreach ( $cvalue in $c_extension ) {
-    $PSStyle.FileInfo.Extension["$cvalue"] = "`e[33;1m"
-}
-
-foreach ( $pvalue in $p_extension ) {
-    $PSStyle.FileInfo.Extension["$pvalue"] = "`e[34;1m"
-}
-
-$psStyle.FileInfo.Directory = "`e[35;1m"
-
 # Powershell configuration directory
 $CUSTOMPSHOME = "$ENV:USERPROFILE\\.config\\powershell"
 
@@ -55,7 +42,7 @@ foreach ($PFunction in Get-ChildItem "$CUSTOMPSHOME\\functions") {
 }
 
 # Modules
-[String[]]$PSGalleryModules = "PSReadLine", "posh-git"
+[String[]]$PSGalleryModules = "PSReadLine", "posh-git", "Terminal-Icons"
 
 foreach ($PModule in $PSGalleryModules) {
     Import-Module $PModule -ErrorAction SilentlyContinue
@@ -78,3 +65,5 @@ Set-Alias -Name open -Value Invoke-Item
 Set-Alias -Name grep -Value findstr
 Set-Alias -Name less -Value "C:\Program Files\Git\usr\bin\less.exe"
 Set-Alias -Name n -Value nvim
+Set-Alias -Name jq -Value jq-Win64
+Set-Alias -Name pd -Value podman
