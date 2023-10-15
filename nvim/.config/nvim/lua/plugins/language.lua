@@ -37,6 +37,7 @@ return {
                     "vim",
                     "vimdoc",
                     "markdown",
+                    "markdown_inline",
                     "latex",
                     "html",
                     "css",
