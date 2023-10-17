@@ -30,6 +30,7 @@ return {
             n.Group.new("IlluminatedWordText", n.colors.none, n.colors.illmt, n.styles.none)
             n.Group.new("IlluminatedWordRead", n.colors.none, n.colors.illmt, n.styles.none)
             n.Group.new("IlluminatedWordWrite", n.colors.none, n.colors.illmt, n.styles.none)
+            n.Group.new("Visual", n.colors.none, n.colors.base03, n.styles.reverse)
         end
     },
     {
@@ -102,10 +103,10 @@ return {
                 },
                 sections = {
                     lualine_c = {
-                        { mixedIndent, color = 'red' }
+                        { mixedIndent, color = 'red' },
+                        { "buffers",   mode = 4 }
                     },
-                    lualine_x = { showIndent, { 'fileformat', symbols = { unix = "lf", dos = "crlf" } }, 'encoding',
-                        'filetype' },
+                    lualine_x = { showIndent, { 'fileformat', symbols = { unix = "lf", dos = "crlf" } }, 'filetype' },
                 },
                 extensions = {
                     'quickfix',
@@ -153,7 +154,7 @@ return {
                 -- theme = "catppuccin",
                 create_autocmd = false,
                 attach_navic = false,
-                show_modified = true,
+                show_modified = false,
                 show_dirname = true,
                 exclude_filetypes = { "netrw", "toggleterm" },
 
