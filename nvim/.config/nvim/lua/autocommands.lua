@@ -36,13 +36,13 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
     end,
 })
 
--- Fixes Autocomment
+-- Fixes auto comment when <C-o>
 local fix_comments = vim.api.nvim_create_augroup("fixcomments", { clear = true })
 vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
-    desc = "If you are in a comment line, don't add new comment line after <CR>",
+    desc = "If you are in a comment line, don't add new comment line after <C-o>",
     group = fix_comments,
     callback = function()
-        vim.cmd("set formatoptions-=cro")
+        vim.cmd("set formatoptions-=o")
     end,
 })
 
@@ -112,11 +112,15 @@ vim.api.nvim_create_autocmd({ "BufEnter", "FocusGained", "InsertLeave", "Cmdline
 
 -- hide numbers in terminal buffer
 local hide_term_numbers = vim.api.nvim_create_augroup("hide_tnumbers", { clear = true })
-vim.api.nvim_create_autocmd({ "TermOpen" }, {
+vim.api.nvim_create_autocmd({ "TermOpen", "TermEnter" }, {
     desc = "Hide relative numbers in terminal",
     pattern = { "*" },
     group = hide_term_numbers,
-    callback = function()
-        vim.cmd("setlocal nonumber norelativenumber")
-    end
+    command = "setlocal nonumber norelativenumber"
+})
+
+-- form devaslife
+vim.api.nvim_create_autocmd("InsertLeave", {
+    pattern = "*",
+    command = "set nopaste"
 })
