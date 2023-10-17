@@ -56,21 +56,11 @@ vim.opt.listchars = {
 vim.opt.fillchars = {
     eob = " ",
 }
-vim.g.python3_host_prog = vim.fn.expand("/usr/bin/python3")
-
--- if (vim.fn.has 'win32' == 1) then
---     vim.cmd([[
--- 		let &shell = executable('pwsh') ? 'pwsh' : 'powershell'
--- 		let &shellcmdflag = '-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;'
--- 		let &shellredir = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
--- 		let &shellpipe = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
--- 		set shellquote= shellxquote=
-
---         :tnoremap <Esc><Esc> <C-\><C-n>
---     ]])
--- else
---     vim.g.python3_host_prog = vim.fn.expand("/usr/bin/python3")
--- end
+vim.go.python3_host_prog = vim.fn.expand("/usr/bin/python3")
+-- vim.go.node_host_prog = vim.fn.expand("~/.binaries/neovim-node/node_modules/.bin/neovim-node-host")
+vim.cmd("let g:node_host_prog = '~/.binaries/neovim-node/node_modules/.bin/neovim-node-host'")
+vim.cmd("let g:loaded_perl_provider = 0")
+vim.cmd("let g:loaded_ruby_provider = 0")
 
 -- set dark or light background theme
 -- if (vim.env.NVIM_BACKGROUND == "light") then
