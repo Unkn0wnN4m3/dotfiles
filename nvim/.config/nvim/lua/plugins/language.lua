@@ -2,24 +2,6 @@ return {
     {
         "sheerun/vim-polyglot",
         version = "v4.*",
-        -- event = { 'BufReadPre', 'BufNewFile' },
-        init = function()
-            vim.g.polyglot_disabled = {
-                "ftdetect",
-                "markdown.plugin",
-                "vim.plugin",
-                "vimdoc.plugin",
-                "lua.plugin",
-                "c.plugin",
-                "python.plugin",
-                "javascript.plugin",
-                "typescript.plugin",
-                "html.plugin",
-                "css.plugin",
-                "json.plugin",
-                "jsonc.plugin"
-            }
-        end
     },
     {
         "nvim-treesitter/nvim-treesitter",
@@ -46,16 +28,21 @@ return {
                 },
                 auto_install = false,
                 highlight = {
+                    enable = false,
+                },
+                incremental_selection = {
                     enable = true,
-                    disable = function(lang, buf)
-                        local max_filesize = 100 * 1024 -- 100 KB
-                        local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-                        if ok and stats and stats.size > max_filesize then
-                            return true
-                        end
-                    end,
+                    keymaps = {
+                        init_selection = false,
+                        scope_incremental = false,
+                        node_incremental = "gtn",
+                        node_decremental = "gtm",
+                    },
                 },
             })
+            vim.opt.foldmethod = "expr"
+            vim.cmd("set foldexpr=nvim_treesitter#foldexpr()")
+            vim.opt.foldenable = false
         end
     },
     {
