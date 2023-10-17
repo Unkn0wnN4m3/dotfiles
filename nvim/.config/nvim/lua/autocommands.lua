@@ -1,16 +1,29 @@
--- Set wrap and spell in markdown and gitcommit
-local info_files = vim.api.nvim_create_augroup("infofiles", { clear = true })
+-- spell in files and extra
+local spell_files = vim.api.nvim_create_augroup("spell_files", { clear = true })
 vim.api.nvim_create_autocmd({ "FileType" }, {
-    pattern = { "gitcommit", "markdown", },
-    desc = "Sets wrap text and spell check in markdown and gitcommit filetypes",
-    group = info_files,
-    callback = function()
-        vim.opt_local.conceallevel = 2
-        vim.opt_local.wrap = true
+    pattern = {
+        "lua",
+        "python",
+        "c",
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+        "json",
+        "jsonc",
+        "markdown",
+        "latex"
+    },
+    desc = "Enable spell with selected files",
+    group = spell_files,
+    callback = function(args)
+        vim.treesitter.start(args.buf)
+        vim.bo[args.buf].syntax = 'on'
         vim.opt_local.spell = true
         vim.opt_local.spelllang = "en_us,es_es"
     end,
 })
+
 
 -- Set colorcolumn
 local col_col = vim.api.nvim_create_augroup("curcol", { clear = true })
@@ -24,14 +37,14 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 })
 
 -- Fixes Autocomment
--- local fix_comments = vim.api.nvim_create_augroup("fixcomments", { clear = true })
--- vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
---     desc = "If you are in a comment line, don't add new comment line after <CR>",
---     group = fix_comments,
---     callback = function()
---         vim.cmd("set formatoptions-=cro")
---     end,
--- })
+local fix_comments = vim.api.nvim_create_augroup("fixcomments", { clear = true })
+vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
+    desc = "If you are in a comment line, don't add new comment line after <CR>",
+    group = fix_comments,
+    callback = function()
+        vim.cmd("set formatoptions-=cro")
+    end,
+})
 
 -- Highlight Yanked Text
 local h_yank = vim.api.nvim_create_augroup("hyank", { clear = true })
@@ -68,16 +81,6 @@ augroup END
 ]])
 
 -- Reset to vertical cursor when leave nvim on windws
--- if vim.fn.has 'win32' == 1 then
---     local reset_cursor = vim.api.nvim_create_augroup("resetcursor", { clear = true })
---     vim.api.nvim_create_autocmd("VimLeave", {
---         desc = "Reset cursor from block to beam",
---         group = reset_cursor,
---         callback = function()
---             vim.opt.guicursor = "a:ver10-blinkon1"
---         end
---     })
--- end
 local reset_cursor = vim.api.nvim_create_augroup("resetcursor", { clear = true })
 vim.api.nvim_create_autocmd("VimLeave", {
     desc = "Reset cursor from block to beam",
@@ -89,7 +92,8 @@ vim.api.nvim_create_autocmd("VimLeave", {
 
 -- auto relative numbers
 local auto_rel_numbers = vim.api.nvim_create_augroup("autonumbers", { clear = true })
-vim.api.nvim_create_autocmd("InsertEnter", {
+-- vim.api.nvim_create_autocmd("InsertEnter", {
+vim.api.nvim_create_autocmd({ "BufLeave", "FocusLost", "InsertEnter", "CmdlineEnter", "WinLeave" }, {
     desc = "set relative numbers in normal mode",
     group = auto_rel_numbers,
     callback = function()
@@ -97,7 +101,8 @@ vim.api.nvim_create_autocmd("InsertEnter", {
     end
 })
 
-vim.api.nvim_create_autocmd({ "InsertLeave", "VimEnter", "BufWinEnter", "WinEnter" }, {
+-- vim.api.nvim_create_autocmd({ "InsertLeave", "VimEnter", "BufWinEnter", "WinEnter" }, {
+vim.api.nvim_create_autocmd({ "BufEnter", "FocusGained", "InsertLeave", "CmdlineLeave", "WinEnter" }, {
     desc = "set normal numbers in insert mode",
     group = auto_rel_numbers,
     callback = function()
@@ -107,9 +112,9 @@ vim.api.nvim_create_autocmd({ "InsertLeave", "VimEnter", "BufWinEnter", "WinEnte
 
 -- hide numbers in terminal buffer
 local hide_term_numbers = vim.api.nvim_create_augroup("hide_tnumbers", { clear = true })
-vim.api.nvim_create_autocmd({ "TermOpen", "FileType" }, {
+vim.api.nvim_create_autocmd({ "TermOpen" }, {
     desc = "Hide relative numbers in terminal",
-    pattern = { "toggleterm", "terminal" },
+    pattern = { "*" },
     group = hide_term_numbers,
     callback = function()
         vim.cmd("setlocal nonumber norelativenumber")
