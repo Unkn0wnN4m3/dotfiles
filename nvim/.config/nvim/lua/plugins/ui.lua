@@ -77,7 +77,7 @@ return {
     },
     {
         'nvim-lualine/lualine.nvim',
-        commit = "45e27ca739c7be6c49e5496d14fcf45a303c3a63",
+        commit = "7533b0ead663d80452210c0c089e5105089697e5",
         config = function()
             local function mixedIndent()
                 local space_indent = vim.fn.search([[\v^ +]], "nw") > 0
@@ -89,24 +89,35 @@ return {
             local function showIndent()
                 local width = vim.o.shiftwidth
                 if vim.o.expandtab then
-                    return "spaces: " .. width
+                    return "spc: " .. width
                 else
-                    return "tabs: " .. width
+                    return "tab: " .. width
                 end
             end
 
             require('lualine').setup({
                 options = {
-                    theme = "solarized",
+                    theme = "solarized_dark",
                     section_separators = "",
                     component_separators = ""
                 },
                 sections = {
+                    lualine_b = {
+                        { "diff",        color = { bg = "#073642" } },
+                        { "diagnostics", color = { bg = "#073642" } },
+                    },
                     lualine_c = {
                         { mixedIndent, color = 'red' },
                         { "buffers",   mode = 4 }
                     },
-                    lualine_x = { showIndent, { 'fileformat', symbols = { unix = "lf", dos = "crlf" } }, 'filetype' },
+                    lualine_x = {
+                        showIndent,
+                        {
+                            'fileformat',
+                            symbols = { unix = "lf", dos = "crlf" }
+                        },
+                        'filetype'
+                    },
                 },
                 extensions = {
                     'quickfix',
@@ -114,7 +125,8 @@ return {
                     'man',
                     'fugitive',
                     'lazy',
-                    'trouble'
+                    'trouble',
+                    'mason'
                 }
             })
         end
