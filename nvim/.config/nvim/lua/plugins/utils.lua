@@ -13,6 +13,8 @@ return {
     },
     {
         "folke/trouble.nvim",
+        version = "v2.*",
+        event = "VeryLazy",
         dependencies = {
             {
                 "folke/todo-comments.nvim",
@@ -21,12 +23,9 @@ return {
             },
 
         },
-        version = "v2.*",
-        config = function()
-            require("trouble").setup({
-                use_diagnostic_signs = true
-            })
-        end,
+        opts = {
+            use_diagnostic_signs = true
+        },
         keys = {
             { "<leader>xx", "<CMD>Trouble<CR>" },
             { "<leader>xw", "<CMD>Trouble workspace_diagnostics<CR>" },
@@ -76,10 +75,13 @@ return {
             require('leap').add_default_mappings()
         end
     },
-    { "nvim-tree/nvim-web-devicons" },
+    {
+        "nvim-tree/nvim-web-devicons",
+        lazy = true
+    },
     {
         "nvim-lua/plenary.nvim",
-        version = "v0.*"
+        version = "v0.*",
+        lazy = true
     },
-
 }

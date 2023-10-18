@@ -201,6 +201,7 @@ return {
     {
         "prichrd/netrw.nvim",
         commit = "596435bd2f5b0162b86c97ca8244e2b0862d3a4a",
-        config = true
+        config = true,
+        event = "VeryLazy"
     }
 }
