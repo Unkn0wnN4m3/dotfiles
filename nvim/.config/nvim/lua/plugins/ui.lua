@@ -99,10 +99,12 @@ return {
                 options = {
                     theme = "solarized_dark",
                     section_separators = "",
-                    component_separators = ""
+                    component_separators = "",
+                    icons_enabled = false,
                 },
                 sections = {
                     lualine_b = {
+                        "branch",
                         { "diff",        color = { bg = "#073642" } },
                         { "diagnostics", color = { bg = "#073642" } },
                     },
