@@ -56,8 +56,7 @@ vim.opt.listchars = {
 vim.opt.fillchars = {
     eob = " ",
 }
-vim.go.python3_host_prog = vim.fn.expand("/usr/bin/python3")
--- vim.go.node_host_prog = vim.fn.expand("~/.binaries/neovim-node/node_modules/.bin/neovim-node-host")
+vim.cmd("let g:python3_host_prog = '~/.virtualenvs/provider-python/.venv/bin/python3'")
 vim.cmd("let g:node_host_prog = '~/.binaries/neovim-node/node_modules/.bin/neovim-node-host'")
 vim.cmd("let g:loaded_perl_provider = 0")
 vim.cmd("let g:loaded_ruby_provider = 0")
