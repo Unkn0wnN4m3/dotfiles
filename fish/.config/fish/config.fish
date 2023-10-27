@@ -1,7 +1,11 @@
 if status --is-login
+    # disable prompt
     set -U fish_greeting
-
+    #disable env prompt
     set -gx VIRTUAL_ENV_DISABLE_PROMPT 1
+
+    # prevents installation of packages without a virtual environment
+    set -gx PIP_REQUIRE_VIRTUALENV true
 
     # Terminal
     # set -gx TERM xterm-256color
