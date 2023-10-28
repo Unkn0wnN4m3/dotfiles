@@ -79,7 +79,10 @@ return {
     {
         "mhartington/formatter.nvim",
         commit = "34dcdfa0c75df667743b2a50dd99c84a557376f0",
-        event = "LspAttach",
+        ft = {
+            "python",
+            "c"
+        },
         config = function()
             require("formatter").setup({
                 filetype = {
@@ -92,6 +95,40 @@ return {
                     }
                 }
             })
+        end
+    },
+    {
+        "mfussenegger/nvim-lint",
+        commit = "962a76877a4479a535b935bd7ef35ad41ba308b2",
+        ft = {
+            "python",
+            "javascript",
+            "javascriptreact",
+            "typescript",
+            "typescriptreact",
+        },
+        config = function()
+            require('lint').linters_by_ft = {
+                javascript = { "eslint" },
+                javascriptreact = { "eslint" },
+                typescript = { "eslint" },
+                typescriptreact = { "eslint" },
+                python = { "flake8" }
+            }
+
+            local flake8 = require('lint').linters.flake8
+            flake8.cmd = "./.venv/bin/flake8" or "flake8"
+
+
+            vim.api.nvim_create_autocmd(
+                { "BufWritePost", "InsertLeave" },
+                {
+                    group = vim.api.nvim_create_augroup("linters", { clear = true }),
+                    callback = function()
+                        require("lint").try_lint()
+                    end,
+                }
+            )
         end
     }
 }

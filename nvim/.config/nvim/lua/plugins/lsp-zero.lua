@@ -108,7 +108,6 @@ return {
                 ensure_installed = {
                     "pyright",
                     "tsserver",
-                    "eslint",
                     "html",
                     "cssls",
                     "jsonls",
