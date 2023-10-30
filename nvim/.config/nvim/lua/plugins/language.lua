@@ -24,7 +24,7 @@ return {
                     "html",
                     "css",
                     "json",
-                    "jsonc"
+                    "jsonc",
                 },
                 auto_install = false,
                 highlight = {
@@ -43,7 +43,7 @@ return {
             vim.opt.foldmethod = "expr"
             vim.cmd("set foldexpr=nvim_treesitter#foldexpr()")
             vim.opt.foldenable = false
-        end
+        end,
     },
     {
         "iamcco/markdown-preview.nvim",
@@ -56,7 +56,7 @@ return {
         init = function()
             vim.g.mkdp_filetypes = { "markdown" }
             vim.g.mkdp_echo_preview_url = 1
-        end
+        end,
     },
     {
         "mattn/emmet-vim",
@@ -68,13 +68,13 @@ return {
             "javascriptreact",
             "typescriptreact",
             "javascript",
-            "typescript"
+            "typescript",
         },
         init = function()
             vim.cmd([[
                 let g:user_emmet_leader_key='<C-Z>'
            ]])
-        end
+        end,
     },
     {
         "stevearc/conform.nvim",
@@ -84,13 +84,25 @@ return {
             vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
         end,
         config = function()
-            require("conform").setup({
+            local conform = require("conform")
+            local mason_path = vim.fn.stdpath("data") .. "/mason/"
+            local fmts = { "stylua", "isort", "yapf", "prettier", "prettierd" }
+
+            for _, v in ipairs(fmts) do
+                conform.formatters = {
+                    v = {
+                        cammand = mason_path .. "bin/" .. v,
+                    },
+                }
+            end
+
+            conform.setup({
                 formatters_by_ft = {
                     lua = { "stylua" },
                     python = { "isort", "yapf" },
                     javascript = { { "prettierd", "prettier" } },
                     typescript = { { "prettierd", "prettier" } },
-                    c = { "clang-format" }
+                    c = { "clang-format" },
                 },
             })
 
@@ -105,30 +117,33 @@ return {
                 end
                 require("conform").format({ async = true, lsp_fallback = true, range = range })
             end, { range = true })
-        end
+        end,
     },
     {
         "mfussenegger/nvim-lint",
         commit = "962a76877a4479a535b935bd7ef35ad41ba308b2",
         event = "VeryLazy",
         config = function()
-            require('lint').linters_by_ft = {
+            local mason_path = vim.fn.stdpath("data") .. "/mason/"
+            local lint = require("lint")
+
+            local flake8 = lint.linters.flake8
+            flake8.cmd = mason_path .. "bin/flake8"
+
+            lint.linters_by_ft = {
                 javascript = { "eslint" },
                 javascriptreact = { "eslint" },
                 typescript = { "eslint" },
                 typescriptreact = { "eslint" },
-                python = { "flake8" }
+                python = { "flake8" },
             }
 
-            vim.api.nvim_create_autocmd(
-                { "BufWritePost", "InsertLeave" },
-                {
-                    group = vim.api.nvim_create_augroup("linters", { clear = true }),
-                    callback = function()
-                        require("lint").try_lint()
-                    end,
-                }
-            )
-        end
-    }
+            vim.api.nvim_create_autocmd({ "BufWritePost", "InsertLeave" }, {
+                group = vim.api.nvim_create_augroup("linters", { clear = true }),
+                callback = function()
+                    lint.try_lint()
+                end,
+            })
+        end,
+    },
 }
