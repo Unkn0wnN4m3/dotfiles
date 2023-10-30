@@ -77,36 +77,40 @@ return {
         end
     },
     {
-        "mhartington/formatter.nvim",
-        commit = "34dcdfa0c75df667743b2a50dd99c84a557376f0",
-        ft = {
-            "python",
-            "c"
-        },
+        "stevearc/conform.nvim",
+        version = "v4.0.*",
+        event = { "VeryLazy" },
+        init = function()
+            vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
+        end,
         config = function()
-            require("formatter").setup({
-                filetype = {
-                    python = {
-                        require("formatter.filetypes.python").yapf,
-                        require("formatter.filetypes.python").isort,
-                    },
-                    c = {
-                        require("formatter.filetypes.c").clangformat
-                    }
-                }
+            require("conform").setup({
+                formatters_by_ft = {
+                    lua = { "stylua" },
+                    python = { "isort", "yapf" },
+                    javascript = { { "prettierd", "prettier" } },
+                    typescript = { { "prettierd", "prettier" } },
+                    c = { "clang-format" }
+                },
             })
+
+            vim.api.nvim_create_user_command("Format", function(args)
+                local range = nil
+                if args.count ~= -1 then
+                    local end_line = vim.api.nvim_buf_get_lines(0, args.line2 - 1, args.line2, true)[1]
+                    range = {
+                        start = { args.line1, 0 },
+                        ["end"] = { args.line2, end_line:len() },
+                    }
+                end
+                require("conform").format({ async = true, lsp_fallback = true, range = range })
+            end, { range = true })
         end
     },
     {
         "mfussenegger/nvim-lint",
         commit = "962a76877a4479a535b935bd7ef35ad41ba308b2",
-        ft = {
-            "python",
-            "javascript",
-            "javascriptreact",
-            "typescript",
-            "typescriptreact",
-        },
+        event = "VeryLazy",
         config = function()
             require('lint').linters_by_ft = {
                 javascript = { "eslint" },
@@ -115,10 +119,6 @@ return {
                 typescriptreact = { "eslint" },
                 python = { "flake8" }
             }
-
-            local flake8 = require('lint').linters.flake8
-            flake8.cmd = "./.venv/bin/flake8" or "flake8"
-
 
             vim.api.nvim_create_autocmd(
                 { "BufWritePost", "InsertLeave" },
