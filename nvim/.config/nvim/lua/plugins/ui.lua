@@ -77,7 +77,8 @@ return {
     },
     {
         'nvim-lualine/lualine.nvim',
-        commit = "7533b0ead663d80452210c0c089e5105089697e5",
+        -- commit = "7533b0ead663d80452210c0c089e5105089697e5",
+        tag = "compat-nvim-0.6",
         config = function()
             local function mixedIndent()
                 local space_indent = vim.fn.search([[\v^ +]], "nw") > 0
@@ -128,7 +129,8 @@ return {
                     'fugitive',
                     'lazy',
                     'trouble',
-                    'mason'
+                    'mason',
+                    'nvim-dap-ui'
                 }
             })
         end
