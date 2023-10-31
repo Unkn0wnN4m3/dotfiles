@@ -8,8 +8,8 @@ return {
             {
                 "tpope/vim-fugitive",
                 version = "v3.*",
-            }
-        }
+            },
+        },
     },
     {
         "folke/trouble.nvim",
@@ -21,26 +21,25 @@ return {
                 version = "v1.*",
                 config = true,
             },
-
         },
         opts = {
-            use_diagnostic_signs = true
+            use_diagnostic_signs = true,
         },
         keys = {
             { "<leader>xx", "<CMD>Trouble<CR>" },
             { "<leader>xw", "<CMD>Trouble workspace_diagnostics<CR>" },
             { "<leader>xd", "<CMD>Trouble document_diagnostics<CR>" },
-            { "<leader>xt", "<CMD>TodoTrouble<CR>", },
-            { "gR",         "<CMD>Trouble lsp_references<CR>" },
-        }
+            { "<leader>xt", "<CMD>TodoTrouble<CR>" },
+            { "gR", "<CMD>Trouble lsp_references<CR>" },
+        },
     },
     {
         "numToStr/Comment.nvim",
         version = "v0.*",
         event = "VeryLazy",
         opts = {
-            ignore = '^$'
-        }
+            ignore = "^$",
+        },
     },
     {
         "windwp/nvim-autopairs",
@@ -49,12 +48,12 @@ return {
         event = "InsertEnter",
         opts = {
             fast_wrap = {},
-        }
+        },
     },
     {
         "tpope/vim-surround",
         event = "VeryLazy",
-        version = "v2.*"
+        version = "v2.*",
     },
     {
         "folke/persistence.nvim",
@@ -62,26 +61,32 @@ return {
         event = "VeryLazy",
         config = true,
         keys = {
-            { "qs", "<CMD>lua require('persistence').load()<CR>",                mode = "n" },
+            { "qs", "<CMD>lua require('persistence').load()<CR>", mode = "n" },
             { "ql", "<CMD>lua require('persistence').load({ last = true })<CR>", mode = "n" },
-            { "qd", "<CMD>lua require('persistence').stop()<CR>",                mode = "n" }
-        }
+            { "qd", "<CMD>lua require('persistence').stop()<CR>", mode = "n" },
+        },
     },
     {
         "ggandor/leap.nvim",
         event = "VeryLazy",
         commit = "14b5a65190fe69388a8f59c695ed3394a10d6af8",
         config = function()
-            require('leap').add_default_mappings()
-        end
+            require("leap").add_default_mappings()
+        end,
     },
     {
         "nvim-tree/nvim-web-devicons",
-        lazy = true
+        lazy = true,
     },
     {
         "nvim-lua/plenary.nvim",
         version = "v0.*",
-        lazy = true
+        lazy = true,
+    },
+    {
+        "tiagovla/scope.nvim",
+        commit = "cd27af77ad61a7199af5c28d27013fb956eb0e3e",
+        event = "VeryLazy",
+        config = true,
     },
 }
