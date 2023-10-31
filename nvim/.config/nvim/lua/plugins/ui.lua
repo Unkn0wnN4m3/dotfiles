@@ -7,8 +7,8 @@ return {
         dependencies = {
             {
                 "tjdevries/colorbuddy.nvim",
-                commit = "cdb5b0654d3cafe61d2a845e15b2b4b0e78e752a"
-            }
+                commit = "cdb5b0654d3cafe61d2a845e15b2b4b0e78e752a",
+            },
         },
         config = function()
             local n = require("neosolarized").setup({
@@ -16,10 +16,10 @@ return {
                 background_set = false,
             })
 
-            local cb = require('colorbuddy.init')
+            local cb = require("colorbuddy.init")
             local Color = cb.Color
 
-            Color.new('illmt', '#19404a')
+            Color.new("illmt", "#19404a")
 
             n.Group.new("CursorLineNr", n.colors.yellow, n.colors.none, n.styles.bold)
             n.Group.new("Function", n.colors.blue, n.colors.none, n.styles.bold)
@@ -31,22 +31,6 @@ return {
             n.Group.new("IlluminatedWordRead", n.colors.none, n.colors.illmt, n.styles.none)
             n.Group.new("IlluminatedWordWrite", n.colors.none, n.colors.illmt, n.styles.none)
             n.Group.new("Visual", n.colors.none, n.colors.base03, n.styles.reverse)
-        end
-    },
-    {
-        "akinsho/bufferline.nvim",
-        version = "v4.*",
-        event = "VeryLazy",
-        config = function()
-            require("bufferline").setup({
-                options = {
-                    mode = "tabs",
-                    always_show_bufferline = false,
-                    show_buffer_close_icons = false,
-                    show_close_icon = false,
-                    separator_style = { "|", "|" },
-                },
-            })
         end,
     },
     {
@@ -54,9 +38,9 @@ return {
         version = "v2.*",
         event = "VeryLazy",
         keys = {
-            { "<C-j>",      [[<C-\><C-n><C-W>j]], mode = "t" },
-            { "<C-k>",      [[<C-\><C-n><C-W>k]], mode = "t" },
-            { "<esc><esc>", [[<C-\><C-n>]],       mode = "t" },
+            { "<C-j>", [[<C-\><C-n><C-W>j]], mode = "t" },
+            { "<C-k>", [[<C-\><C-n><C-W>k]], mode = "t" },
+            { "<esc><esc>", [[<C-\><C-n>]], mode = "t" },
         },
         config = function()
             local toggleterm = require("toggleterm")
@@ -71,12 +55,12 @@ return {
                 persist_size = true,
                 direction = "horizontal",
                 close_on_exit = true,
-                shell = vim.o.shell
+                shell = vim.o.shell,
             })
-        end
+        end,
     },
     {
-        'nvim-lualine/lualine.nvim',
+        "nvim-lualine/lualine.nvim",
         -- commit = "7533b0ead663d80452210c0c089e5105089697e5",
         tag = "compat-nvim-0.6",
         config = function()
@@ -96,7 +80,7 @@ return {
                 end
             end
 
-            require('lualine').setup({
+            require("lualine").setup({
                 options = {
                     theme = "solarized_dark",
                     section_separators = "",
@@ -106,34 +90,42 @@ return {
                 sections = {
                     lualine_b = {
                         "branch",
-                        { "diff",        color = { bg = "#073642" } },
+                        { "diff", color = { bg = "#073642" } },
                         { "diagnostics", color = { bg = "#073642" } },
                     },
                     lualine_c = {
-                        { mixedIndent, color = 'red' },
-                        { "buffers",   mode = 4 }
+                        { mixedIndent, color = "red" },
+                        { "buffers", mode = 4 },
                     },
                     lualine_x = {
                         showIndent,
                         {
-                            'fileformat',
-                            symbols = { unix = "lf", dos = "crlf" }
+                            "fileformat",
+                            symbols = { unix = "lf", dos = "crlf" },
                         },
-                        'filetype'
+                        "filetype",
                     },
                 },
+                tabline = {
+                    lualine_a = {},
+                    lualine_b = {},
+                    lualine_c = {},
+                    lualine_x = {},
+                    lualine_y = {},
+                    lualine_z = { "tabs" },
+                },
                 extensions = {
-                    'quickfix',
-                    'toggleterm',
-                    'man',
-                    'fugitive',
-                    'lazy',
-                    'trouble',
-                    'mason',
-                    'nvim-dap-ui'
-                }
+                    "quickfix",
+                    "toggleterm",
+                    "man",
+                    "fugitive",
+                    "lazy",
+                    "trouble",
+                    "mason",
+                    "nvim-dap-ui",
+                },
             })
-        end
+        end,
     },
 
     -- Style
@@ -149,7 +141,7 @@ return {
                 spinner = "dots_pulse",
                 done = "✔",
             },
-        }
+        },
     },
     {
         "utilyre/barbecue.nvim",
@@ -161,8 +153,8 @@ return {
                 "SmiteshP/nvim-navic",
                 commit = "0ffa7ffe6588f3417e680439872f5049e38a24db",
                 opts = {
-                    highlight = true
-                }
+                    highlight = true,
+                },
             },
         },
         config = function()
@@ -173,7 +165,6 @@ return {
                 show_modified = false,
                 show_dirname = true,
                 exclude_filetypes = { "netrw", "toggleterm" },
-
             })
 
             vim.api.nvim_create_autocmd({
@@ -188,19 +179,19 @@ return {
                     require("barbecue.ui").update()
                 end,
             })
-        end
+        end,
     },
     {
         "RRethy/vim-illuminate",
         commit = "3bd2ab64b5d63b29e05691e624927e5ebbf0fb86",
         event = "LspAttach",
         config = function()
-            require('illuminate').configure({
+            require("illuminate").configure({
                 providers = {
-                    'lsp'
+                    "lsp",
                 },
             })
-        end
+        end,
     },
     {
         "lukas-reineke/indent-blankline.nvim",
@@ -212,12 +203,12 @@ return {
                 remove_blankline_trail = true,
             },
             scope = { enabled = false },
-        }
+        },
     },
     {
         "prichrd/netrw.nvim",
         commit = "596435bd2f5b0162b86c97ca8244e2b0862d3a4a",
         config = true,
-        event = "VeryLazy"
-    }
+        event = "VeryLazy",
+    },
 }
