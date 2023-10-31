@@ -82,7 +82,7 @@ return {
     {
         "stevearc/conform.nvim",
         version = "v4.0.*",
-        event = { "VeryLazy" },
+        event = { "LspAttach" },
         init = function()
             vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
         end,
@@ -125,7 +125,7 @@ return {
     {
         "mfussenegger/nvim-lint",
         commit = "962a76877a4479a535b935bd7ef35ad41ba308b2",
-        event = "VeryLazy",
+        event = "LspAttach",
         config = function()
             local mason_path = vim.fn.stdpath("data") .. "/mason/"
             local lint = require("lint")
