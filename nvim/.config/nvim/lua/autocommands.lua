@@ -12,18 +12,19 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
         "json",
         "jsonc",
         "markdown",
-        "latex"
+        "latex",
+        "html",
+        "css",
     },
     desc = "Enable spell with selected files",
     group = spell_files,
     callback = function(args)
         vim.treesitter.start(args.buf)
-        vim.bo[args.buf].syntax = 'on'
+        vim.bo[args.buf].syntax = "on"
         vim.opt_local.spell = true
         vim.opt_local.spelllang = "en_us,es_es"
     end,
 })
-
 
 -- Set colorcolumn
 local col_col = vim.api.nvim_create_augroup("curcol", { clear = true })
@@ -87,7 +88,7 @@ vim.api.nvim_create_autocmd("VimLeave", {
     group = reset_cursor,
     callback = function()
         vim.opt.guicursor = "a:ver10-blinkon1"
-    end
+    end,
 })
 
 -- auto relative numbers
@@ -98,7 +99,7 @@ vim.api.nvim_create_autocmd({ "BufLeave", "FocusLost", "InsertEnter", "CmdlineEn
     group = auto_rel_numbers,
     callback = function()
         vim.opt_local.relativenumber = false
-    end
+    end,
 })
 
 -- vim.api.nvim_create_autocmd({ "InsertLeave", "VimEnter", "BufWinEnter", "WinEnter" }, {
@@ -107,7 +108,7 @@ vim.api.nvim_create_autocmd({ "BufEnter", "FocusGained", "InsertLeave", "Cmdline
     group = auto_rel_numbers,
     callback = function()
         vim.opt_local.relativenumber = true
-    end
+    end,
 })
 
 -- hide numbers in terminal buffer
@@ -116,11 +117,11 @@ vim.api.nvim_create_autocmd({ "TermOpen", "TermEnter" }, {
     desc = "Hide relative numbers in terminal",
     pattern = { "*" },
     group = hide_term_numbers,
-    command = "setlocal nonumber norelativenumber"
+    command = "setlocal nonumber norelativenumber",
 })
 
 -- form devaslife
 vim.api.nvim_create_autocmd("InsertLeave", {
     pattern = "*",
-    command = "set nopaste"
+    command = "set nopaste",
 })
