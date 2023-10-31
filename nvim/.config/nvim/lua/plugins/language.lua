@@ -2,6 +2,9 @@ return {
     {
         "sheerun/vim-polyglot",
         version = "v4.*",
+        init = function()
+            vim.cmd("let g:polyglot_disabled = ['ftdetect']")
+        end,
     },
     {
         "nvim-treesitter/nvim-treesitter",
