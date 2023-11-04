@@ -13,7 +13,11 @@ return {
         "williamboman/mason.nvim",
         version = "v1.8.*",
         lazy = false,
-        config = true,
+        opts = {
+            ui = {
+                border = "rounded",
+            },
+        },
     },
 
     -- Autocompletion
