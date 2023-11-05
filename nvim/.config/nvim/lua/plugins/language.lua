@@ -33,15 +33,6 @@ return {
                 highlight = {
                     enable = false,
                 },
-                incremental_selection = {
-                    enable = true,
-                    keymaps = {
-                        init_selection = false,
-                        scope_incremental = false,
-                        node_incremental = "gtn",
-                        node_decremental = "gtm",
-                    },
-                },
             })
             vim.opt.foldmethod = "expr"
             vim.cmd("set foldexpr=nvim_treesitter#foldexpr()")
