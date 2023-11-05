@@ -1,28 +1,18 @@
--- spell in files and extra
+-- spell in files
 local spell_files = vim.api.nvim_create_augroup("spell_files", { clear = true })
 vim.api.nvim_create_autocmd({ "FileType" }, {
     pattern = {
-        "lua",
         "python",
-        "c",
-        "javascript",
-        "javascriptreact",
-        "typescript",
-        "typescriptreact",
-        "json",
         "jsonc",
         "markdown",
         "latex",
-        "html",
-        "css",
+        "gitcommit",
     },
     desc = "Enable spell with selected files",
     group = spell_files,
-    callback = function(args)
-        vim.treesitter.start(args.buf)
-        vim.bo[args.buf].syntax = "on"
-        vim.opt_local.spell = true
+    callback = function()
         vim.opt_local.spelllang = "en_us,es_es"
+        vim.opt_local.spell = true
     end,
 })
 

@@ -1,39 +1,43 @@
 return {
-    {
-        "sheerun/vim-polyglot",
-        version = "v4.*",
-        init = function()
-            vim.cmd("let g:polyglot_disabled = ['ftdetect']")
-        end,
-    },
+    -- {
+    --     "sheerun/vim-polyglot",
+    --     version = "v4.*",
+    --     init = function()
+    --         vim.cmd("let g:polyglot_disabled = ['ftdetect']")
+    --     end,
+    -- },
     {
         "nvim-treesitter/nvim-treesitter",
         version = "v0.9.*",
         build = ":TSUpdate",
         config = function()
+            local languages_list = {
+                "c",
+                "python",
+                "typescript",
+                "tsx",
+                "javascript",
+                "lua",
+                "vim",
+                "vimdoc",
+                "markdown",
+                "markdown_inline",
+                "latex",
+                "html",
+                "css",
+                "json",
+                "jsonc",
+            }
+
             require("nvim-treesitter.configs").setup({
-                ensure_installed = {
-                    "c",
-                    "python",
-                    "typescript",
-                    "tsx",
-                    "javascript",
-                    "lua",
-                    "vim",
-                    "vimdoc",
-                    "markdown",
-                    "markdown_inline",
-                    "latex",
-                    "html",
-                    "css",
-                    "json",
-                    "jsonc",
-                },
+                ensure_installed = languages_list,
                 auto_install = false,
                 highlight = {
-                    enable = false,
+                    enable = true,
+                    additional_vim_regex_highlighting = languages_list,
                 },
             })
+
             vim.opt.foldmethod = "expr"
             vim.cmd("set foldexpr=nvim_treesitter#foldexpr()")
             vim.opt.foldenable = false
