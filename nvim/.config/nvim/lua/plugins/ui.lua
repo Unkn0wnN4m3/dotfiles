@@ -60,8 +60,15 @@ return {
         end,
     },
     {
+        "SmiteshP/nvim-navic",
+        commit = "0ffa7ffe6588f3417e680439872f5049e38a24db",
+        event = "VeryLazy",
+        opts = {
+            highlight = true,
+        },
+    },
+    {
         "nvim-lualine/lualine.nvim",
-        -- commit = "7533b0ead663d80452210c0c089e5105089697e5",
         tag = "compat-nvim-0.6",
         config = function()
             local function mixedIndent()
@@ -78,6 +85,25 @@ return {
                 else
                     return "tab: " .. width
                 end
+            end
+
+            local function winbarCond()
+                local exclude_types = {
+                    "terminal",
+                    "help",
+                }
+
+                for _, v in ipairs(exclude_types) do
+                    if vim.o.buftype == v then
+                        return false
+                    end
+                end
+
+                if not require("nvim-navic").is_available() then
+                    return false
+                end
+
+                return true
             end
 
             require("lualine").setup({
@@ -99,10 +125,7 @@ return {
                     },
                     lualine_x = {
                         showIndent,
-                        {
-                            "fileformat",
-                            symbols = { unix = "lf", dos = "crlf" },
-                        },
+                        "fileformat",
                         "filetype",
                     },
                 },
@@ -112,7 +135,34 @@ return {
                     lualine_c = {},
                     lualine_x = {},
                     lualine_y = {},
-                    lualine_z = { "tabs" },
+                    lualine_z = { { "tabs", mode = 2 } },
+                },
+                winbar = {
+                    lualine_b = {
+                        {
+                            "filename",
+                            path = 1,
+                            cond = winbarCond,
+                            shorting_target = 60,
+                        },
+                    },
+                    lualine_c = {
+                        {
+                            "navic",
+                            color_correction = nil,
+                            navic_opts = nil,
+                        },
+                    },
+                },
+                inactive_winbar = {
+                    lualine_b = {
+                        {
+                            "filename",
+                            path = 1,
+                            cond = winbarCond,
+                            shorting_target = 60,
+                        },
+                    },
                 },
                 extensions = {
                     "quickfix",
@@ -142,44 +192,6 @@ return {
                 done = "✔",
             },
         },
-    },
-    {
-        "utilyre/barbecue.nvim",
-        name = "barbecue",
-        event = "VeryLazy",
-        version = "v1.2.*",
-        dependencies = {
-            {
-                "SmiteshP/nvim-navic",
-                commit = "0ffa7ffe6588f3417e680439872f5049e38a24db",
-                opts = {
-                    highlight = true,
-                },
-            },
-        },
-        config = function()
-            require("barbecue").setup({
-                -- theme = "catppuccin",
-                create_autocmd = false,
-                attach_navic = false,
-                show_modified = false,
-                show_dirname = true,
-                exclude_filetypes = { "netrw", "toggleterm" },
-            })
-
-            vim.api.nvim_create_autocmd({
-                "WinScrolled",
-                "BufWinEnter",
-                "CursorHold",
-                "InsertLeave",
-                "BufModifiedSet",
-            }, {
-                group = vim.api.nvim_create_augroup("barbecue.updater", {}),
-                callback = function()
-                    require("barbecue.ui").update()
-                end,
-            })
-        end,
     },
     {
         "RRethy/vim-illuminate",
