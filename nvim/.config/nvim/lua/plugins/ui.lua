@@ -133,6 +133,7 @@ return {
                             path = 1,
                             cond = winbarCond,
                             shorting_target = 60,
+                            color = { bg = "None", fg = "text", gui = "bold" },
                         },
                     },
                     lualine_c = {
@@ -140,6 +141,7 @@ return {
                             "navic",
                             color_correction = nil,
                             navic_opts = nil,
+                            color = { bg = "None", fg = "text" },
                         },
                     },
                 },
@@ -150,6 +152,15 @@ return {
                             path = 1,
                             cond = winbarCond,
                             shorting_target = 60,
+                            color = { bg = "None", fg = "text", gui = "bold" },
+                        },
+                    },
+                    lualine_c = {
+                        {
+                            "navic",
+                            color_correction = nil,
+                            navic_opts = nil,
+                            color = { bg = "None", fg = "text" },
                         },
                     },
                 },
