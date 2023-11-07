@@ -1,36 +1,54 @@
 return {
+    -- {
+    --     "svrana/neosolarized.nvim",
+    --     version = "v1.*",
+    --     lazy = false,
+    --     priority = 1000,
+    --     dependencies = {
+    --         {
+    --             "tjdevries/colorbuddy.nvim",
+    --             commit = "cdb5b0654d3cafe61d2a845e15b2b4b0e78e752a",
+    --         },
+    --     },
+    --     config = function()
+    --         local n = require("neosolarized").setup({
+    --             comment_italics = false,
+    --             background_set = false,
+    --         })
+
+    --         local cb = require("colorbuddy.init")
+    --         local Color = cb.Color
+
+    --         Color.new("illmt", "#19404a")
+
+    --         n.Group.new("CursorLineNr", n.colors.yellow, n.colors.none, n.styles.bold)
+    --         n.Group.new("Function", n.colors.blue, n.colors.none, n.styles.bold)
+    --         n.Group.new("Conditional", n.colors.green, n.colors.none, n.styles.italic)
+    --         n.Group.new("Boolean", n.colors.green, n.colors.none, n.styles.italic)
+    --         n.Group.new("IlluminatedWord", n.colors.none, n.colors.illmt, n.styles.none)
+    --         n.Group.new("IlluminatedCurWord", n.colors.none, n.colors.illmt, n.styles.none)
+    --         n.Group.new("IlluminatedWordText", n.colors.none, n.colors.illmt, n.styles.none)
+    --         n.Group.new("IlluminatedWordRead", n.colors.none, n.colors.illmt, n.styles.none)
+    --         n.Group.new("IlluminatedWordWrite", n.colors.none, n.colors.illmt, n.styles.none)
+    --         n.Group.new("Visual", n.colors.none, n.colors.base03, n.styles.reverse)
+    --     end,
+    -- },
     {
-        "svrana/neosolarized.nvim",
-        version = "v1.*",
+        "ellisonleao/gruvbox.nvim",
+        version = "2.*",
         lazy = false,
         priority = 1000,
-        dependencies = {
-            {
-                "tjdevries/colorbuddy.nvim",
-                commit = "cdb5b0654d3cafe61d2a845e15b2b4b0e78e752a",
-            },
-        },
         config = function()
-            local n = require("neosolarized").setup({
-                comment_italics = false,
-                background_set = false,
+            require("gruvbox").setup({
+                terminal_colors = true,
+                invert_selection = true,
+                transparent_mode = true,
+                italic = {
+                    strings = false,
+                },
             })
 
-            local cb = require("colorbuddy.init")
-            local Color = cb.Color
-
-            Color.new("illmt", "#19404a")
-
-            n.Group.new("CursorLineNr", n.colors.yellow, n.colors.none, n.styles.bold)
-            n.Group.new("Function", n.colors.blue, n.colors.none, n.styles.bold)
-            n.Group.new("Conditional", n.colors.green, n.colors.none, n.styles.italic)
-            n.Group.new("Boolean", n.colors.green, n.colors.none, n.styles.italic)
-            n.Group.new("IlluminatedWord", n.colors.none, n.colors.illmt, n.styles.none)
-            n.Group.new("IlluminatedCurWord", n.colors.none, n.colors.illmt, n.styles.none)
-            n.Group.new("IlluminatedWordText", n.colors.none, n.colors.illmt, n.styles.none)
-            n.Group.new("IlluminatedWordRead", n.colors.none, n.colors.illmt, n.styles.none)
-            n.Group.new("IlluminatedWordWrite", n.colors.none, n.colors.illmt, n.styles.none)
-            n.Group.new("Visual", n.colors.none, n.colors.base03, n.styles.reverse)
+            vim.cmd.colorscheme("gruvbox")
         end,
     },
     {
@@ -97,17 +115,11 @@ return {
 
             require("lualine").setup({
                 options = {
-                    theme = "solarized_dark",
                     section_separators = "",
                     component_separators = "",
                     icons_enabled = false,
                 },
                 sections = {
-                    lualine_b = {
-                        "branch",
-                        { "diff", color = { bg = "#073642" } },
-                        { "diagnostics", color = { bg = "#073642" } },
-                    },
                     lualine_c = {
                         { mixedIndent, color = "red" },
                         { "buffers", mode = 4 },
