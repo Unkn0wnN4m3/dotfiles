@@ -88,17 +88,6 @@ return {
             end
 
             local function winbarCond()
-                local exclude_types = {
-                    "terminal",
-                    "help",
-                }
-
-                for _, v in ipairs(exclude_types) do
-                    if vim.o.buftype == v then
-                        return false
-                    end
-                end
-
                 if not require("nvim-navic").is_available() then
                     return false
                 end
