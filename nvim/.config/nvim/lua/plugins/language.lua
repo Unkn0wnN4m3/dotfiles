@@ -9,6 +9,23 @@ return {
     {
         "nvim-treesitter/nvim-treesitter",
         version = "v0.9.*",
+        dependencies = {
+            {
+                "nvim-treesitter/nvim-treesitter-textobjects",
+                commit = "e69a504baf2951d52e1f1fbb05145d43f236cbf1",
+            },
+            {
+                "nvim-treesitter/nvim-treesitter-context",
+                commit = "2806d83e3965017382ce08792ee527e708fa1bd4",
+                opts = {
+                    enable = true,
+                },
+            },
+            {
+                "windwp/nvim-ts-autotag",
+                commit = "6be1192965df35f94b8ea6d323354f7dc7a557e4",
+            },
+        },
         build = ":TSUpdate",
         config = function()
             local languages_list = {
@@ -35,6 +52,34 @@ return {
                 highlight = {
                     enable = true,
                     additional_vim_regex_highlighting = languages_list,
+                },
+                textobjects = {
+                    select = {
+                        enable = true,
+                        keymaps = {
+                            ["af"] = "@function.outer",
+                            ["if"] = "@function.inner",
+                            ["ac"] = "@class.outer",
+                            ["ic"] = "@class.inner",
+                            ["is"] = "@scope.inner",
+                            ["as"] = "@scope.outer",
+                        },
+                    },
+                    move = {
+                        enable = true,
+                        goto_next_start = {
+                            ["]m"] = "@function.outer",
+                            ["]]"] = "@class.outer",
+                            ["]z"] = { query = "@fold", query_group = "folds", desc = "Next fold" },
+                        },
+                        goto_next_end = {
+                            ["]M"] = "@function.outer",
+                            ["]["] = "@class.outer",
+                        },
+                    },
+                },
+                autotag = {
+                    enable = true,
                 },
             })
 
