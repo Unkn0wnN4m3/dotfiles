@@ -174,10 +174,6 @@ return {
             flake8.cmd = mason_path .. "bin/flake8"
 
             lint.linters_by_ft = {
-                javascript = { "eslint" },
-                javascriptreact = { "eslint" },
-                typescript = { "eslint" },
-                typescriptreact = { "eslint" },
                 python = { "flake8" },
             }
 
