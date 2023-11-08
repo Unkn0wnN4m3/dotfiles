@@ -72,6 +72,8 @@ keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 -- keymap("n", "gn", "<CMD>tabnext<CR>", opts)
 -- keymap("n", "gp", "<CMD>tabprevious<CR>", opts)
 keymap("n", "tc", "<CMD>tabclose<CR>", opts)
+keymap("n", "]b", "<CMD>bnext<CR>", opts)
+keymap("n", "[b", "<CMD>bprev<CR>", opts)
 
 -- Better tabing
 keymap("v", "<", "<gv", opts)
