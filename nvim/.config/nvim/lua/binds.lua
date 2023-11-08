@@ -18,6 +18,7 @@ local opts = { noremap = true, silent = true }
 --Remap space as leader key
 keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
 
 -- Modes
 --   normal_mode = "n",
@@ -79,4 +80,4 @@ keymap("v", ">", ">gv", opts)
 -- Clear highlights
 keymap("n", "<leader>h", "<cmd>nohlsearch<CR>", opts)
 
-vim.api.nvim_create_user_command('ShowLocation', 'echo @%', {})
+vim.api.nvim_create_user_command("ShowLocation", "echo @%", {})
