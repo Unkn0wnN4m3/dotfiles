@@ -80,7 +80,7 @@ return {
     {
         "SmiteshP/nvim-navic",
         commit = "0ffa7ffe6588f3417e680439872f5049e38a24db",
-        event = "VeryLazy",
+        lazy = true,
         opts = {
             highlight = true,
         },
