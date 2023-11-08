@@ -8,6 +8,7 @@
 ==================================================================== ]]
 -- General
 
+vim.opt.conceallevel = 2
 vim.opt.backup = false         -- creates a backup file
 -- vim.opt.clipboard = "unnamedplus" -- allows neovim to access the system clipboard
 vim.opt.cmdheight = 2          -- more space in the neovim command line for displaying messages
@@ -27,9 +28,10 @@ vim.opt.undofile = true        -- enable persistent undo
 vim.opt.updatetime = 300       -- faster completion (4000ms default)
 vim.opt.writebackup = false    -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
 vim.opt.expandtab = true       -- convert tabs to spaces
--- vim.opt.shiftwidth = 4         -- the number of spaces inserted for each indentation
--- vim.opt.tabstop = 4            -- insert 4 spaces for a tab
-vim.opt.number = true -- set numbered lines
+vim.opt.shiftwidth = 4         -- the number of spaces inserted for each indentation
+vim.opt.softtabstop = 4        -- insert 4 spaces for a tab
+vim.opt.tabstop = 8
+vim.opt.number = true          -- set numbered lines
 vim.opt.laststatus = 3
 -- vim.opt.showcmd = false
 vim.opt.ruler = false
