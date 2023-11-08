@@ -31,8 +31,8 @@ return {
                 version = "v2.0.*",
             },
             {
-                "onsails/lspkind.nvim",
-                commit = "57610d5ab560c073c465d6faf0c19f200cb67e6e",
+                "hrsh7th/cmp-buffer",
+                commit = "3022dbc9166796b644a841a02de8dd1cc1d311fa",
             },
         },
         config = function()
@@ -45,6 +45,12 @@ return {
             cmp.setup({
                 preselect = "item",
                 formatting = lsp_zero.cmp_format(),
+                sources = {
+                    { name = "nvim_lsp" },
+                    { name = "luasnip" },
+                    { name = "buffer" },
+                    { name = "neorg" },
+                },
                 completion = {
                     completeopt = "menu,menuone,noinsert",
                 },
