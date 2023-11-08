@@ -44,19 +44,13 @@ return {
 
             cmp.setup({
                 preselect = "item",
+                formatting = lsp_zero.cmp_format(),
                 completion = {
                     completeopt = "menu,menuone,noinsert",
                 },
                 window = {
                     completion = cmp.config.window.bordered(),
                     documentation = cmp.config.window.bordered(),
-                },
-                formatting = {
-                    fields = { "abbr", "kind", "menu" },
-                    format = require("lspkind").cmp_format({
-                        maxwidth = 50,
-                        ellipsis_char = "...",
-                    }),
                 },
                 mapping = cmp.mapping.preset.insert({
                     ["<C-u>"] = cmp.mapping.scroll_docs(-4),
