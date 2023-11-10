@@ -194,7 +194,7 @@ return {
     {
         "j-hui/fidget.nvim",
         tag = "legacy",
-        event = "LspAttach",
+        event = "VeryLazy",
         opts = {
             window = {
                 blend = 0,
