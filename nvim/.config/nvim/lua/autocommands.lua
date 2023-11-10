@@ -16,6 +16,17 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
     end,
 })
 
+-- automatic conceal level
+local conceal_ft = vim.api.nvim_create_augroup("conceal_ft", { clear = true })
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "markdown", "latex", "typst" },
+    desc = "'set conceallevel=2' for some filetypes",
+    group = conceal_ft,
+    callback = function()
+        vim.opt_local.conceallevel = 2
+    end,
+})
+
 -- Set colorcolumn
 local col_col = vim.api.nvim_create_augroup("curcol", { clear = true })
 vim.api.nvim_create_autocmd({ "FileType" }, {
