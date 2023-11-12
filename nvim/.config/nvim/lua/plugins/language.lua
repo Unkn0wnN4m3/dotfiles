@@ -188,6 +188,7 @@ return {
         "nvim-neorg/neorg",
         version = "v6.*",
         build = ":Neorg sync-parsers",
+        event = "VeryLazy",
         config = function()
             require("neorg").setup({
                 load = {

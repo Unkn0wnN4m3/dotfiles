@@ -88,6 +88,7 @@ return {
     {
         "nvim-lualine/lualine.nvim",
         tag = "compat-nvim-0.6",
+        event = "VeryLazy",
         config = function()
             local function mixedIndent()
                 local space_indent = vim.fn.search([[\v^ +]], "nw") > 0
