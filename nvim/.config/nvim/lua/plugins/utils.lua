@@ -67,47 +67,6 @@ return {
         },
     },
     {
-        "numToStr/Comment.nvim",
-        version = "v0.*",
-        event = "VeryLazy",
-        opts = {
-            ignore = "^$",
-        },
-    },
-    {
-        "windwp/nvim-autopairs",
-        commit = "59df87a84c80a357ca8d8fe86e451b93ac476ccc",
-        config = true,
-        event = "InsertEnter",
-        opts = {
-            fast_wrap = {},
-        },
-    },
-    {
-        "tpope/vim-surround",
-        event = "VeryLazy",
-        version = "v2.*",
-    },
-    {
-        "folke/persistence.nvim",
-        version = "v1.*",
-        event = "VeryLazy",
-        config = true,
-        keys = {
-            { "qs", "<CMD>lua require('persistence').load()<CR>", mode = "n" },
-            { "ql", "<CMD>lua require('persistence').load({ last = true })<CR>", mode = "n" },
-            { "qd", "<CMD>lua require('persistence').stop()<CR>", mode = "n" },
-        },
-    },
-    {
-        "ggandor/leap.nvim",
-        event = "VeryLazy",
-        commit = "14b5a65190fe69388a8f59c695ed3394a10d6af8",
-        config = function()
-            require("leap").add_default_mappings()
-        end,
-    },
-    {
         "nvim-tree/nvim-web-devicons",
         lazy = true,
     },
@@ -121,5 +80,22 @@ return {
         commit = "cd27af77ad61a7199af5c28d27013fb956eb0e3e",
         event = "VeryLazy",
         config = true,
+    },
+    {
+        "echasnovski/mini.nvim",
+        tag = "v0.10.0",
+        event = "VeryLazy",
+        config = function()
+            require("mini.surround").setup()
+            require("mini.pairs").setup()
+            require("mini.comment").setup()
+            require("mini.jump2d").setup()
+            require("mini.sessions").setup({ autowrite = true })
+        end,
+        keys = {
+            { "<leader>msr", "<CMD>lua MiniSessions.read()<CR>", mode = "n" },
+            { "<leader>msc", "<CMD>lua MiniSessions.write('Session.vim')<CR>", mode = "n" },
+            { "<leader>msd", "<CMD>lua MiniSessions.delete()<CR>", mode = "n" },
+        },
     },
 }
