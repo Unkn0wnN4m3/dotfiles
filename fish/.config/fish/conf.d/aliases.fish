@@ -60,3 +60,7 @@ alias bw-genp="bw generate --passphrase --words 6 --separator -"
 alias bw-genw="bw generate -ulns --length 50"
 
 alias md="mkdir"
+
+if command -s bat > /dev/null
+    alias cat="bat -p"
+end
