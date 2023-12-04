@@ -4,6 +4,7 @@ return {
     -- version = "v6.*",
     build = ":Neorg sync-parsers",
     event = "VeryLazy",
+    dependencies = { "nvim-lua/plenary.nvim", "nvim-treesitter/nvim-treesitter" },
     config = function()
       require("neorg").setup({
         load = {
