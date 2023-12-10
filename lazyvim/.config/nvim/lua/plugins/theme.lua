@@ -1,21 +1,28 @@
 return {
   {
-    "ellisonleao/gruvbox.nvim",
+    "folke/tokyonight.nvim",
     opts = {
-      terminal_colors = true,
-      invert_selection = true,
-      -- transparent_mode = true,
-      italic = { strings = false },
-      overrides = {
-        WinBar = { bg = "None", bold = true },
-        WinBarNC = { bg = "None" },
-      },
+      transparent = true,
     },
   },
-  {
-    "LazyVim/LazyVim",
-    opts = {
-      colorscheme = "gruvbox",
-    },
-  },
+  -- {
+  --   "ellisonleao/gruvbox.nvim",
+  --   lazy = true,
+  --   opts = {
+  --     terminal_colors = true,
+  --     invert_selection = true,
+  --     transparent_mode = true,
+  --     italic = { strings = false },
+  --     overrides = {
+  --       WinBar = { bg = "None", bold = true },
+  --       WinBarNC = { bg = "None" },
+  --     },
+  --   },
+  -- },
+  -- {
+  --   "LazyVim/LazyVim",
+  --   opts = {
+  --     colorscheme = "gruvbox",
+  --   },
+  -- },
 }
