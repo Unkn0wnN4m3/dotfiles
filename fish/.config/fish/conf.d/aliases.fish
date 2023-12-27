@@ -3,12 +3,12 @@
 # ls
 alias ls="ls --group-directories-first"
 
-if command -s exa > /dev/null
-  alias la="exa -lagF --icons --group-directories-first"
-  alias ls="exa -aF --icons --group-directories-first"
+if command -s exa >/dev/null
+    alias la="exa -lagF --icons --group-directories-first"
+    alias ls="exa -F --icons --group-directories-first"
 else
-  alias ls="/usr/bin/ls -AF --color=auto --group-directories-first"
-  alias la="/usr/bin/ls -lhAF --color=auto --group-directories-first"
+    alias ls="/usr/bin/ls -AF --color=auto --group-directories-first"
+    alias la="/usr/bin/ls -lhAF --color=auto --group-directories-first"
 end
 
 # Grep
@@ -61,6 +61,6 @@ alias bw-genw="bw generate -ulns --length 50"
 
 alias md="mkdir"
 
-if command -s bat > /dev/null
+if command -s bat >/dev/null
     alias cat="bat -p"
 end
