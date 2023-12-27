@@ -6,6 +6,8 @@ line-number = "relative"
 color-modes = true
 bufferline = "multiple"
 idle-timeout = 150
+# force true color
+true-color = true
 
 [editor.cursor-shape]
 insert = "bar"
