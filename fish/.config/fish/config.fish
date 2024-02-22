@@ -24,13 +24,7 @@ if status --is-login
     # Other
     set -gx GPG_TTY (tty)
 
-    # Java
-    set -gx JAVA_HOME /opt/jdk-17.0.9+9
-    fish_add_path $JAVA_HOME/bin
-
-    # gradle
-    set -gx GRADLE_HOME /opt/gradle-8.5
-    fish_add_path $GRADLE_HOME/bin
+    # set -gx NVIM_BACKGROUND light
 end
 
 if status --is-interactive
