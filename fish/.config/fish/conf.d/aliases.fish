@@ -7,7 +7,7 @@ if command -s exa >/dev/null
     alias la="exa -lagF --icons --group-directories-first"
     alias ls="exa -F --icons --group-directories-first"
 else
-    alias ls="/usr/bin/ls -AF --color=auto --group-directories-first"
+    alias ls="/usr/bin/ls -F --color=auto --group-directories-first"
     alias la="/usr/bin/ls -lhAF --color=auto --group-directories-first"
 end
 
