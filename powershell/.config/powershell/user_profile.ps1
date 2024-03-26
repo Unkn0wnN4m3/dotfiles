@@ -2,22 +2,9 @@ using namespace System.Management.Automation
 using namespace System.Management.Automation.Language
 
 # Prompt
-oh-my-posh init pwsh --config "~/.config/custom.omp.json" | Invoke-Expression
-
-# if (Get-Command starship -ErrorAction SilentlyContinue) {
-#     function Invoke-Starship-PreCommand {
-#         $host.ui.RawUI.WindowTitle = "$env:USERNAME@$env:COMPUTERNAME`: $pwd `a"
-#     }
-
-#     function Invoke-Starship-TransientFunction {
-#         &starship module character
-#     }
-
-#     # Setting the terminal title
-#     Invoke-Expression (&starship init powershell)
-
-#     Enable-TransientPrompt
-# }
+if (Get-Command oh-my-posh -ErrorAction SilentlyContinue) {
+    oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\star.omp.json" | Invoke-Expression
+}
 
 # Environment variables
 if ( -not ( $env:BAT_THEME ) ) {
@@ -41,13 +28,6 @@ foreach ($PFunction in Get-ChildItem "$CUSTOMPSHOME\\functions") {
     }
 }
 
-# Modules
-[String[]]$PSGalleryModules = "PSReadLine", "posh-git", "Terminal-Icons"
-
-foreach ($PModule in $PSGalleryModules) {
-    Import-Module $PModule -ErrorAction SilentlyContinue
-}
-
 # conf
 foreach ($PConfig in Get-ChildItem "$CUSTOMPSHOME\\conf") {
     if ($PConfig.name -match "\\*.ps1") {
@@ -57,6 +37,8 @@ foreach ($PConfig in Get-ChildItem "$CUSTOMPSHOME\\conf") {
 
 # Alias
 function __SHL { param( $path ) Get-ChildItem -Path $path | Format-Wide -AutoSize }
+function __CUSTOM_BAT { param( $path ) if (Get-Command bat -ErrorAction SilentlyContinue) { bat -p $path }
+else { cat $path } }
 
 Set-Alias -Name ls -Value __SHL
 Set-Alias -Name la -Value Get-ChildItem
@@ -67,3 +49,4 @@ Set-Alias -Name less -Value "C:\Program Files\Git\usr\bin\less.exe"
 Set-Alias -Name n -Value nvim
 Set-Alias -Name jq -Value jq-Win64
 Set-Alias -Name pd -Value podman
+Set-Alias -Name cat -Value __CUSTOM_BAT
