@@ -1,6 +1,7 @@
 theme = "mocha_transparent"
 
 [editor]
+scrolloff = 10
 cursorline = true
 line-number = "relative"
 color-modes = true
@@ -8,6 +9,8 @@ bufferline = "multiple"
 idle-timeout = 150
 # force true color
 true-color = true
+rulers = [80, 120]
+popup-border = "all"
 
 [editor.cursor-shape]
 insert = "bar"
