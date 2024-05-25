@@ -1,18 +1,8 @@
 return {
+  {'VonHeikemen/lsp-zero.nvim', branch = 'v3.x', lazy = true},
   {
-    'VonHeikemen/lsp-zero.nvim',
-    -- event = "BufReadPre",
-    branch = 'v3.x',
-    dependencies = {
-      {'neovim/nvim-lspconfig'},
-      {'hrsh7th/cmp-nvim-lsp'},
-      {'hrsh7th/nvim-cmp'},
-      {'L3MON4D3/LuaSnip'},
-      {
-        "j-hui/fidget.nvim",
-        opts = {},
-      }
-    },
+    'neovim/nvim-lspconfig',
+    ft = {"python", "markdown", "c"},
     config = function()
       local lsp_zero = require('lsp-zero')
       lsp_zero.extend_lspconfig()
@@ -49,5 +39,18 @@ return {
       require('lspconfig').clangd.setup({})
       require('lspconfig').marksman.setup({})
     end
+  },
+  {
+    'hrsh7th/cmp-nvim-lsp',
+    event = "InsertEnter",
+    dependencies = {
+      {'hrsh7th/nvim-cmp'},
+      {'L3MON4D3/LuaSnip'},
+    }
+  },
+  {
+    "j-hui/fidget.nvim",
+    event = "LspAttach",
+    config = true,
   },
 }
