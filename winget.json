@@ -1,70 +1,61 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2023-05-23T21:51:31.691-00:00",
-	"Sources" :
+	"CreationDate" : "2024-05-25T16:35:38.653-00:00",
+	"Sources" : 
 	[
 		{
-			"Packages" :
+			"Packages" : 
 			[
 				{
-					"PackageIdentifier" : "lukehaas.RunJS"
-				},
+					"PackageIdentifier" : "XP8C9QZMS2PC1T"
+				}
+			],
+			"SourceDetails" : 
+			{
+				"Argument" : "https://storeedgefd.dsx.mp.microsoft.com/v9.0",
+				"Identifier" : "StoreEdgeFD",
+				"Name" : "msstore",
+				"Type" : "Microsoft.Rest"
+			}
+		},
+		{
+			"Packages" : 
+			[
 				{
-					"PackageIdentifier" : "Docker.DockerDesktop"
-				},
-				{
-					"PackageIdentifier" : "GeoGebra.CalculatorSuite"
-				},
-				{
-					"PackageIdentifier" : "GitHub.GitHubDesktop"
+					"PackageIdentifier" : "Discord.Discord"
 				},
 				{
 					"PackageIdentifier" : "Git.Git"
 				},
 				{
-					"PackageIdentifier" : "GnuPG.Gpg4win"
-				},
-				{
 					"PackageIdentifier" : "JesseDuffield.lazygit"
 				},
 				{
-					"PackageIdentifier" : "Ookla.Speedtest.CLI"
+					"PackageIdentifier" : "ONLYOFFICE.DesktopEditors"
 				},
 				{
-					"PackageIdentifier" : "UniversalCtags.Ctags"
+					"PackageIdentifier" : "Vercel.Hyper"
 				},
 				{
-					"PackageIdentifier" : "ajeetdsouza.zoxide"
+					"PackageIdentifier" : "Axosoft.GitKraken"
 				},
 				{
-					"PackageIdentifier" : "JannisX11.Blockbench"
+					"PackageIdentifier" : "RedHat.Podman"
 				},
 				{
-					"PackageIdentifier" : "Insomnia.Insomnia"
+					"PackageIdentifier" : "IDRIX.VeraCrypt"
 				},
 				{
-					"PackageIdentifier" : "junegunn.fzf"
+					"PackageIdentifier" : "OpenJS.NodeJS.LTS"
 				},
 				{
-					"PackageIdentifier" : "pnpm.pnpm"
-				},
-				{
-					"PackageIdentifier" : "Google.Drive"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.VisualStudioCode"
-				},
-				{
-					"PackageIdentifier" : "Logitech.OptionsPlus"
-				},
-				{
-					"PackageIdentifier" : "GitHub.cli"
+					"PackageIdentifier" : "Google.QuickShare"
 				},
 				{
 					"PackageIdentifier" : "Cryptomator.Cryptomator"
 				}
 			],
-			"SourceDetails" :
+			"SourceDetails" : 
 			{
 				"Argument" : "https://cdn.winget.microsoft.com/cache",
 				"Identifier" : "Microsoft.Winget.Source_8wekyb3d8bbwe",
@@ -73,5 +64,5 @@
 			}
 		}
 	],
-	"WinGetVersion" : "1.4.10173"
+	"WinGetVersion" : "1.7.11261"
 }
