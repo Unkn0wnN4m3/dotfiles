@@ -30,7 +30,7 @@ return {
         sections = {
           lualine_c = {
             { mixedIndent, color = "red" },
-            { "buffers", mode = 4 },
+            { "buffers",   mode = 4 },
           },
           lualine_x = {
             showIndent,
@@ -93,10 +93,10 @@ return {
       })
     end,
   },
-  { 
-    "lukas-reineke/indent-blankline.nvim", 
+  {
+    "lukas-reineke/indent-blankline.nvim",
     event = "VeryLazy",
-    main = "ibl", 
+    main = "ibl",
     opts = {
       indent = {
         char = "│",
@@ -118,7 +118,7 @@ return {
           "lazyterm",
         },
       },
-    } 
+    }
   },
   {
     "folke/which-key.nvim",
@@ -159,7 +159,31 @@ return {
     event = "VeryLazy",
     dependencies = {
       "MunifTanjim/nui.nvim",
-      "rcarriga/nvim-notify",
+      {
+        "rcarriga/nvim-notify",
+        keys = {
+          {
+            "<leader>un",
+            function()
+              require("notify").dismiss({ silent = true, pending = true })
+            end,
+            desc = "Dismiss All Notifications",
+          },
+        },
+        opts = {
+          stages = "static",
+          timeout = 5000,
+          max_height = function()
+            return math.floor(vim.o.lines * 0.75)
+          end,
+          max_width = function()
+            return math.floor(vim.o.columns * 0.75)
+          end,
+          on_open = function(win)
+            vim.api.nvim_win_set_config(win, { zindex = 100 })
+          end,
+        },
+      },
     },
 
     opts = {
@@ -192,19 +216,19 @@ return {
     },
     -- stylua: ignore
     keys = {
-      { "<S-Enter>", function() require("noice").redirect(vim.fn.getcmdline()) end, mode = "c", desc = "Redirect Cmdline" },
-      { "<leader>snl", function() require("noice").cmd("last") end, desc = "Noice Last Message" },
-      { "<leader>snh", function() require("noice").cmd("history") end, desc = "Noice History" },
-      { "<leader>sna", function() require("noice").cmd("all") end, desc = "Noice All" },
-      { "<leader>snd", function() require("noice").cmd("dismiss") end, desc = "Dismiss All" },
-      { "<leader>snt", function() require("noice").cmd("telescope") end, desc = "Noice Telescope" },
-      { "<c-f>", function() if not require("noice.lsp").scroll(4) then return "<c-f>" end end, silent = true, expr = true, desc = "Scroll Forward", mode = {"i", "n", "s"} },
-      { "<c-b>", function() if not require("noice.lsp").scroll(-4) then return "<c-b>" end end, silent = true, expr = true, desc = "Scroll Backward", mode = {"i", "n", "s"}},
+      { "<S-Enter>",   function() require("noice").redirect(vim.fn.getcmdline()) end,                 mode = "c",                 desc = "Redirect Cmdline" },
+      { "<leader>snl", function() require("noice").cmd("last") end,                                   desc = "Noice Last Message" },
+      { "<leader>snh", function() require("noice").cmd("history") end,                                desc = "Noice History" },
+      { "<leader>sna", function() require("noice").cmd("all") end,                                    desc = "Noice All" },
+      { "<leader>snd", function() require("noice").cmd("dismiss") end,                                desc = "Dismiss All" },
+      { "<leader>snt", function() require("noice").cmd("telescope") end,                              desc = "Noice Telescope" },
+      { "<c-f>",       function() if not require("noice.lsp").scroll(4) then return "<c-f>" end end,  silent = true,              expr = true,              desc = "Scroll Forward",  mode = { "i", "n", "s" } },
+      { "<c-b>",       function() if not require("noice.lsp").scroll(-4) then return "<c-b>" end end, silent = true,              expr = true,              desc = "Scroll Backward", mode = { "i", "n", "s" } },
     },
   },
-  { 
-    "catppuccin/nvim", 
-    name = "catppuccin", 
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
     priority = 1000,
     opts = {
       transparent_background = true, -- disables setting the background color.
@@ -240,5 +264,5 @@ return {
     },
   },
   { "nvim-tree/nvim-web-devicons", lazy = true },
-  { "MunifTanjim/nui.nvim", lazy = true },
+  { "MunifTanjim/nui.nvim",        lazy = true },
 }
