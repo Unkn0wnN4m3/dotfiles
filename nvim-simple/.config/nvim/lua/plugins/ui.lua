@@ -39,46 +39,7 @@ return {
           },
         },
         tabline = {
-          lualine_a = {},
-          lualine_b = {},
-          lualine_c = {},
-          lualine_x = {},
-          lualine_y = {},
           lualine_z = { { "tabs", mode = 2 } },
-        },
-        winbar = {
-          lualine_b = {
-            {
-              "filename",
-              path = 1,
-              shorting_target = 60,
-              color = { bg = "None", fg = "text", gui = "bold" },
-            },
-          },
-          lualine_c = {
-            {
-              color_correction = nil,
-              navic_opts = nil,
-              color = { bg = "None", fg = "text" },
-            },
-          },
-        },
-        inactive_winbar = {
-          lualine_b = {
-            {
-              "filename",
-              path = 1,
-              shorting_target = 60,
-              color = { bg = "None", fg = "text", gui = "bold" },
-            },
-          },
-          lualine_c = {
-            {
-              color_correction = nil,
-              navic_opts = nil,
-              color = { bg = "None", fg = "text" },
-            },
-          },
         },
         extensions = {
           "quickfix",
@@ -92,6 +53,34 @@ return {
         },
       })
     end,
+  },
+  {
+    "b0o/incline.nvim",
+    dependencies = "nvim-tree/nvim-web-devicons",
+    event = "VeryLazy",
+    config = function()
+      local devicons = require 'nvim-web-devicons'
+      require('incline').setup {
+        window = {
+          padding = 0,
+          margin = { horizontal = 0 },
+        },
+        render = function(props)
+          local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ':t')
+          if filename == '' then
+            filename = '[No Name]'
+          end
+          local ft_icon, ft_color = devicons.get_icon_color(filename)
+          local modified = vim.bo[props.buf].modified
+          return {
+            ft_icon and { ' ', ft_icon, ' ', guibg = ft_color } or '',
+            ' ',
+            { filename, gui = modified and 'bold,italic' or 'bold' },
+            ' ',
+          }
+        end,
+      }
+    end
   },
   {
     "lukas-reineke/indent-blankline.nvim",
