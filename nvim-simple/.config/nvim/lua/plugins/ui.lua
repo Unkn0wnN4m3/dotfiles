@@ -57,7 +57,7 @@ return {
   {
     "b0o/incline.nvim",
     dependencies = "nvim-tree/nvim-web-devicons",
-    event = "VeryLazy",
+    event = "BufReadPre",
     config = function()
       local devicons = require 'nvim-web-devicons'
       require('incline').setup {
