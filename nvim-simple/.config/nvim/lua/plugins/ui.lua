@@ -39,7 +39,7 @@ return {
           },
         },
         tabline = {
-          lualine_z = { { "tabs", mode = 2 } },
+          lualine_z = { { "tabs", mode = 0 } },
         },
         extensions = {
           "quickfix",
