@@ -91,5 +91,16 @@ return {
         require('lspconfig').marksman.setup({})
       end
     }
+  },
+  {
+    "j-hui/fidget.nvim",
+    event = "VeryLazy",
+    opts = {
+      notification = {
+        window = {
+          winblend = 0
+        }
+      }
+    }
   }
 }
