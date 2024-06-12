@@ -94,7 +94,7 @@ return {
   },
   {
     "j-hui/fidget.nvim",
-    event = "VeryLazy",
+    event = "BufReadPre",
     opts = {
       notification = {
         window = {
