@@ -1,9 +1,12 @@
 [[language]]
 name = "python"
 language-servers = [ "pyright", "ruff" ]
+formatter = { command = "ruff format", args = ["--stdin-filename"] }
+auto-format = true
 
 [language-server.ruff]
-command = "ruff-lsp"
+command = "ruff"
+args = ["server", "--preview"]
 
 [language-server.ruff.config.settings]
 args = ["--ignore", "E501"]
