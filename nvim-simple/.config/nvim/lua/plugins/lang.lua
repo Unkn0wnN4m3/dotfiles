@@ -16,5 +16,12 @@ return {
     config = function()
       vim.cmd([[do FileType]])
     end,
+  },
+  {
+    "vim-python/python-syntax",
+    ft = "python",
+    init = function()
+      vim.cmd("let g:python_highlight_all = 1")
+    end
   }
 }
