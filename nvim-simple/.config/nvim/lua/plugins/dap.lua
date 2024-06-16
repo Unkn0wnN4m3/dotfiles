@@ -1,9 +1,8 @@
 return {
   {
     "mfussenegger/nvim-dap",
-    recommended = true,
-    desc = "Debugging support. Requires language specific adapters to be configured. (see lang extras)",
-
+    -- recommended = true,
+    desc = "Debugging support. Requires language specific adapters to be configured",
     dependencies = {
 
       -- fancy UI for the debugger
@@ -35,7 +34,8 @@ return {
       -- virtual text for the debugger
       {
         "theHamsta/nvim-dap-virtual-text",
-        opts = {},
+        -- opts = {},
+        config = true
       },
     },
 
