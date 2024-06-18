@@ -1,4 +1,5 @@
 return {
+  { "nvim-tree/nvim-web-devicons", lazy = true },
   {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
@@ -56,7 +57,6 @@ return {
   },
   {
     "b0o/incline.nvim",
-    dependencies = "nvim-tree/nvim-web-devicons",
     event = "BufReadPre",
     config = function()
       local devicons = require 'nvim-web-devicons'
@@ -154,22 +154,26 @@ return {
         dark = "frappe",
       },
     },
-    config = function(_, opts)
-      require("catppuccin").setup(opts)
-      vim.cmd.colorscheme("catppuccin")
-    end
   },
   {
     "ellisonleao/gruvbox.nvim",
     priority = 1000,
-    config = function()
-      require("gruvbox").setup({
-        transparent_mode = true,
-      })
-      -- vim.cmd.colorscheme("gruvbox")
-    end,
+    opts = {
+      transparent_mode = true,
+    },
   },
-  { "nvim-tree/nvim-web-devicons", lazy = true },
+  {
+    "rose-pine/neovim",
+    name = "rose-pine",
+    priority = 1000,
+    opts = {
+      styles = {
+        bold = true,
+        italic = true,
+        transparency = true,
+      },
+    }
+  },
   {
     "prichrd/netrw.nvim",
     config = true,

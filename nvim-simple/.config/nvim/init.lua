@@ -92,6 +92,16 @@ else
   vim.o.background = "dark"
 end
 
+-- choose theme
+local theme = vim.env.NVIM_THEME
+local status, _ = pcall(require, theme)
+
+if not status then
+  vim.cmd.colorscheme("catppuccin")
+else
+  vim.cmd.colorscheme(theme)
+end
+
 -- Shorten function name
 local map = vim.keymap.set
 
