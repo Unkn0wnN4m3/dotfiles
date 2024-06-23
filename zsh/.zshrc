@@ -69,8 +69,8 @@ fi
 command -v nvim >/dev/null && alias n="nvim"
 command -v zellij >/dev/null && alias zj="zellij"
 
-if [ $(command -v eza) ]; then
-  alias ls="eza -F --group-directories-first --icons"
-  alias la="eza -ahlF --group-directories-first --icons"
+if [ $(command -v exa) ]; then
+  alias ls="exa -F --group-directories-first --icons"
+  alias la="exa -ahlF --group-directories-first --icons"
 fi
 
