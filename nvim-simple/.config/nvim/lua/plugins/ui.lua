@@ -13,7 +13,7 @@ return {
       end
     end,
     dependencies = { 'nvim-tree/nvim-web-devicons' },
-    event = "VeryLazy",
+    event = "VimEnter",
     config = function()
       local function mixedIndent()
         local space_indent = vim.fn.search([[\v^ +]], "nw") > 0
