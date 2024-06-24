@@ -4,6 +4,9 @@ export FZF_COMPLETION_TRIGGER='**'
 # Options to fzf command
 export FZF_COMPLETION_OPTS='--height 50% --layout=reverse'
 
+# bat theme
+export BAT_THEME="base16"
+
 # Other Software
 export GPG_TTY="$(tty)"
 
