@@ -54,12 +54,22 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zoxide vi-mode zsh-syntax-highlighting zsh-autopair)
+plugins=(
+  git
+  zsh-autosuggestions
+  zoxide
+  vi-mode
+  zsh-syntax-highlighting
+  zsh-autopair 
+  fnm
+)
 
 source $ZSH/oh-my-zsh.sh
 
 #Star Ship
 eval "$(starship init zsh)"
+
+eval "$(fnm env --use-on-cd)"
 
 # User configuration
 
