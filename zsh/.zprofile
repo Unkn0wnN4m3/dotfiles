@@ -1,3 +1,6 @@
+# always use venv
+export PIP_REQUIRE_VIRTUALENV=true
+
 # Use ** as the trigger sequence
 export FZF_COMPLETION_TRIGGER='**'
 
