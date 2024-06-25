@@ -73,7 +73,8 @@ return {
     event = "BufReadPre",
     config = function()
       local devicons = require 'nvim-web-devicons'
-      require('incline').setup {
+      local incline = require("incline")
+      incline.setup({
         window = {
           padding = 0,
           margin = { horizontal = 0 },
@@ -90,7 +91,11 @@ return {
             { filename, gui = modified and 'bold,italic' or 'bold' },
           }
         end,
-      }
+      })
+
+      vim.api.nvim_create_user_command("InclineToggle", function()
+        require("incline").toggle()
+      end, {})
     end
   },
   {
