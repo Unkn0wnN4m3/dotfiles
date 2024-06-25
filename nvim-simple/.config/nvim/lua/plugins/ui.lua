@@ -12,9 +12,9 @@ return {
         vim.o.laststatus = 0
       end
     end,
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    -- dependencies = { 'nvim-tree/nvim-web-devicons' },
     event = "VimEnter",
-    config = function()
+    opts = function()
       local function mixedIndent()
         local space_indent = vim.fn.search([[\v^ +]], "nw") > 0
         local tab_indent = vim.fn.search([[\v^\t+]], "nw") > 0
@@ -32,7 +32,7 @@ return {
       end
 
 
-      require("lualine").setup({
+      local opts = {
         options = {
           section_separators = "",
           component_separators = "",
@@ -63,7 +63,9 @@ return {
           "mason",
           "nvim-dap-ui",
         },
-      })
+      }
+
+      return opts
     end,
   },
   {
