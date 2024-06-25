@@ -6,33 +6,33 @@ $CUSTOMPSHOME = "$ENV:USERPROFILE\\.config\\powershell"
 
 # Prompt
 if (Get-Command oh-my-posh -ErrorAction SilentlyContinue) {
-    oh-my-posh init pwsh --config "$CUSTOMPSHOME\catppuccin_mod.omp.json" | Invoke-Expression
+  oh-my-posh init pwsh --config "$CUSTOMPSHOME\catppuccin_mod.omp.json" | Invoke-Expression
 }
 
 # Environment variables
 if ( -not ( $env:BAT_THEME ) ) {
-    [Environment]::SetEnvironmentVariable('BAT_THEME', 'base16', 'user')
+  [Environment]::SetEnvironmentVariable('BAT_THEME', 'base16', 'user')
 }
 
 if ( -not ( $Env:FZF_DEFAULT_OPTS ) ) {
-    [Environment]::SetEnvironmentVariable(
-            'FZF_DEFAULT_OPTS',
-            '--height 50% --layout=reverse',
-            'user')
+  [Environment]::SetEnvironmentVariable(
+      'FZF_DEFAULT_OPTS',
+      '--height 50% --layout=reverse',
+      'user')
 }
 
 # Functions
 foreach ($PFunction in Get-ChildItem "$CUSTOMPSHOME\\functions") {
-    if ($PFunction.name -match "\\*.ps1") {
-        . $PFunction
-    }
+  if ($PFunction.name -match "\\*.ps1") {
+    . $PFunction
+  }
 }
 
 # conf
 foreach ($PConfig in Get-ChildItem "$CUSTOMPSHOME\\conf") {
-    if ($PConfig.name -match "\\*.ps1") {
-        . $PConfig
-    }
+  if ($PConfig.name -match "\\*.ps1") {
+    . $PConfig
+  }
 }
 
 # Alias
