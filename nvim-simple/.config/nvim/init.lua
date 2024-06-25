@@ -30,6 +30,12 @@ require("lazy").setup("plugins", {
   },
 })
 
+if not vim.fn.has("win32") then
+  vim.g.python3_host_prog = vim.env.HOME .. "/.virtualenvs/neovim/Scripts/python.exe"
+else
+  vim.g.python3_host_prog = vim.env.HOME .. "/.virtualenvs/neovim/bin/python3"
+end
+
 local opt = vim.opt
 
 opt.completeopt = "menu,menuone,noselect"
