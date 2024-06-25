@@ -8,7 +8,7 @@ Set-PSReadLineOption -EditMode Vi
 
 Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
 Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
-Set-PSReadLineKeyHandler -Chord "Ctrl+f" -Function AcceptSuggestion
+# Set-PSReadLineKeyHandler -Chord "Ctrl+f" -Function AcceptSuggestion
 
 Set-PSReadlineOption -PredictionSource History
 Set-PSReadLineOption -HistorySearchCursorMovesToEnd
@@ -30,7 +30,7 @@ Set-PSReadLineOption -ViModeIndicator Script -ViModeChangeHandler $Function:OnVi
 
 # `ForwardChar` accepts the entire suggestion text when the cursor is at the end of the line.
 # This custom binding makes `RightArrow` behave similarly - accepting the next word instead of the entire suggestion text.
-Set-PSReadLineKeyHandler -Key RightArrow `
+Set-PSReadLineKeyHandler -Key "Ctrl+RightArrow" `
     -BriefDescription ForwardCharAndAcceptNextSuggestionWord `
     -LongDescription "Move cursor one character to the right in the current editing line and accept the next word in suggestion when it's at the end of current editing line" `
     -ScriptBlock {
