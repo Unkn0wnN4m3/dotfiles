@@ -179,15 +179,15 @@ return {
     },
   },
   {
-    "rose-pine/neovim",
-    name = "rose-pine",
+    "EdenEast/nightfox.nvim",
     priority = 1000,
     opts = {
-      styles = {
-        bold = true,
-        italic = true,
-        transparency = true,
-      },
+      options = {
+        transparent = true,
+        inverse = { -- Inverse highlight for different types
+          visual = true,
+        },
+      }
     }
   },
   {
