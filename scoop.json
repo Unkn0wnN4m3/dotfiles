@@ -3,157 +3,185 @@
         {
             "Name": "main",
             "Source": "https://github.com/ScoopInstaller/Main.git",
-            "Updated": "2024-05-25T14:25:11-06:00",
-            "Manifests": 1325
+            "Updated": "2024-06-26T22:29:01-06:00",
+            "Manifests": 1331
         }
     ],
     "apps": [
         {
-            "Version": "24.05",
-            "Updated": "2024-05-20T02:14:23.7180305-06:00",
+            "Name": "7zip",
+            "Updated": "2024-06-19T18:46:31.2468068-06:00",
             "Info": "",
             "Source": "main",
-            "Name": "7zip"
+            "Version": "24.07"
         },
         {
-            "Version": "7.3",
-            "Updated": "2024-05-12T22:52:58.8402216-06:00",
+            "Name": "avrdude",
+            "Updated": "2024-06-05T15:47:54.4105615-06:00",
             "Info": "",
             "Source": "main",
-            "Name": "avrdude"
+            "Version": "7.3"
         },
         {
-            "Version": "0.24.0",
-            "Updated": "2024-05-12T22:54:17.6922923-06:00",
+            "Name": "bat",
+            "Updated": "2024-06-05T15:47:56.5117703-06:00",
             "Info": "",
             "Source": "main",
-            "Name": "bat"
+            "Version": "0.24.0"
         },
         {
-            "Version": "18.1.3",
-            "Updated": "2024-05-12T22:53:07.2808311-06:00",
+            "Name": "clangd",
+            "Updated": "2024-06-05T15:48:03.3816423-06:00",
             "Info": "",
             "Source": "main",
-            "Name": "clangd"
+            "Version": "18.1.3"
         },
         {
-            "Version": "3.14",
-            "Updated": "2024-04-27T18:24:13.4698954-06:00",
+            "Name": "dark",
+            "Updated": "2024-06-05T15:48:05.061808-06:00",
             "Info": "",
             "Source": "main",
-            "Name": "dark"
+            "Version": "3.14"
         },
         {
-            "Version": "2.13.2",
-            "Updated": "2024-05-25T15:42:55.6310813-06:00",
+            "Name": "fastfetch",
+            "Updated": "2024-06-19T18:46:44.8137096-06:00",
             "Info": "",
             "Source": "main",
-            "Name": "fastfetch"
+            "Version": "2.16.0"
         },
         {
-            "Version": "10.1.0",
-            "Updated": "2024-05-12T22:50:27.8309219-06:00",
+            "Name": "fd",
+            "Updated": "2024-06-05T15:48:07.3159323-06:00",
             "Info": "",
             "Source": "main",
-            "Name": "fd"
+            "Version": "10.1.0"
         },
         {
-            "Version": "0.52.1",
-            "Updated": "2024-05-13T20:14:53.7481099-06:00",
+            "Name": "fzf",
+            "Updated": "2024-06-07T13:50:45.7928543-06:00",
             "Info": "",
             "Source": "main",
-            "Name": "fzf"
+            "Version": "0.53.0"
         },
         {
-            "Version": "24.03",
-            "Updated": "2024-05-13T20:18:13.3034108-06:00",
+            "Name": "helix",
+            "Updated": "2024-06-05T15:48:17.2494246-06:00",
             "Info": "",
             "Source": "main",
-            "Name": "helix"
+            "Version": "24.03"
         },
         {
-            "Version": "1.18.0",
-            "Updated": "2024-05-19T17:23:39.5769224-06:00",
+            "Name": "hyperfine",
+            "Updated": "2024-06-05T15:48:18.1243001-06:00",
             "Info": "",
             "Source": "main",
-            "Name": "hyperfine"
+            "Version": "1.18.0"
         },
         {
-            "Version": "1.7.1",
-            "Updated": "2024-05-12T22:56:05.4287915-06:00",
+            "Name": "jq",
+            "Updated": "2024-06-05T15:48:18.850198-06:00",
             "Info": "",
             "Source": "main",
-            "Name": "jq"
+            "Version": "1.7.1"
         },
         {
-            "Version": "643",
-            "Updated": "2024-05-12T23:04:32.1389936-06:00",
+            "Name": "less",
+            "Updated": "2024-06-05T15:48:19.5906292-06:00",
             "Info": "",
             "Source": "main",
-            "Name": "less"
+            "Version": "643"
         },
         {
-            "Version": "3.9.1",
-            "Updated": "2024-05-25T14:43:42.6870968-06:00",
+            "Name": "lua-language-server",
+            "Updated": "2024-06-12T13:35:46.0778535-06:00",
             "Info": "",
             "Source": "main",
-            "Name": "lua-language-server"
+            "Version": "3.9.3"
         },
         {
-            "Version": "2023-12-09",
-            "Updated": "2024-05-25T14:42:16.6666762-06:00",
+            "Name": "luarocks",
+            "Updated": "2024-06-26T18:21:32.2478475-06:00",
             "Info": "",
             "Source": "main",
-            "Name": "marksman"
+            "Version": "3.11.1"
         },
         {
-            "Version": "0.10.0",
-            "Updated": "2024-05-20T16:04:23.1676602-06:00",
+            "Name": "neovim",
+            "Updated": "2024-06-05T15:48:37.1130144-06:00",
             "Info": "",
             "Source": "main",
-            "Name": "neovim"
+            "Version": "0.10.0"
         },
         {
-            "Version": "20.2.0",
-            "Updated": "2024-05-25T15:43:01.4344816-06:00",
+            "Name": "nodejs-lts",
+            "Updated": "2024-06-20T12:40:19.622545-06:00",
             "Info": "",
             "Source": "main",
-            "Name": "oh-my-posh"
+            "Version": "20.15.0"
         },
         {
-            "Version": "1.5.0",
-            "Updated": "2024-04-27T18:41:35.2029353-06:00",
+            "Name": "oh-my-posh",
+            "Updated": "2024-06-27T00:25:11.6541995-06:00",
             "Info": "",
             "Source": "main",
-            "Name": "pipx"
+            "Version": "21.16.2"
         },
         {
-            "Version": "1.8.3",
-            "Updated": "2024-05-11T18:04:02.7432212-06:00",
+            "Name": "pipx",
+            "Updated": "2024-06-05T15:48:45.6886278-06:00",
             "Info": "",
             "Source": "main",
-            "Name": "poetry"
+            "Version": "1.6.0"
         },
         {
-            "Version": "3.12.3",
-            "Updated": "2024-04-27T18:24:52.5127595-06:00",
+            "Name": "poetry",
+            "Updated": "2024-06-05T15:50:05.8653112-06:00",
             "Info": "",
             "Source": "main",
-            "Name": "python"
+            "Version": "1.8.3"
         },
         {
-            "Version": "14.1.0",
-            "Updated": "2024-05-14T14:44:40.6754575-06:00",
+            "Name": "python",
+            "Updated": "2024-06-07T13:51:24.9307108-06:00",
             "Info": "",
             "Source": "main",
-            "Name": "ripgrep"
+            "Version": "3.12.4"
         },
         {
-            "Version": "0.9.4",
-            "Updated": "2024-05-13T20:13:57.2206075-06:00",
+            "Name": "ripgrep",
+            "Updated": "2024-06-05T15:50:07.5717128-06:00",
             "Info": "",
             "Source": "main",
-            "Name": "zoxide"
+            "Version": "14.1.0"
+        },
+        {
+            "Name": "speedtest-cli",
+            "Updated": "2024-06-07T12:00:52.340461-06:00",
+            "Info": "",
+            "Source": "main",
+            "Version": "1.2.0"
+        },
+        {
+            "Name": "sqlite",
+            "Updated": "2024-06-12T19:00:32.2904253-06:00",
+            "Info": "",
+            "Source": "main",
+            "Version": "3.46.0"
+        },
+        {
+            "Name": "starship",
+            "Updated": "2024-06-26T18:22:48.2440859-06:00",
+            "Info": "",
+            "Source": "main",
+            "Version": "1.19.0"
+        },
+        {
+            "Name": "zoxide",
+            "Updated": "2024-06-05T15:50:08.3596077-06:00",
+            "Info": "",
+            "Source": "main",
+            "Version": "0.9.4"
         }
     ]
 }
