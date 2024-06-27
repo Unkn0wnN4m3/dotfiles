@@ -132,10 +132,16 @@ return {
     event = "InsertEnter",
     dependencies = {
       "L3MON4D3/LuaSnip",
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-path",
       "onsails/lspkind.nvim",
+      "saadparwaiz1/cmp_luasnip",
+      "rafamadriz/friendly-snippets",
     },
     config = function()
       local cmp = require('cmp')
+      local luasnip = require("luasnip")
+      require('luasnip.loaders.from_vscode').lazy_load()
 
       cmp.setup({
         preselect = 'item',
@@ -152,28 +158,46 @@ return {
           })
         },
         sources = {
-          { name = 'nvim_lsp' },
+          { name = "luasnip" },
+          { name = "nvim_lsp", group_index = 1, priority = 100 },
+          { name = 'path' },
+          {
+            name = "buffer",
+            group_index = 2,
+            option = {
+              get_bufnrs = function()
+                local buf = vim.api.nvim_get_current_buf()
+                local byte_size = vim.api.nvim_buf_get_offset(buf, vim.api.nvim_buf_line_count(buf))
+                if byte_size > 1024 * 1024 then -- 1 Megabyte max
+                  return {}
+                end
+                return { buf }
+              end
+            }
+          },
         },
         mapping = cmp.mapping.preset.insert({
           ['<C-y>'] = cmp.mapping.confirm({ select = true }),
           ['<C-e>'] = cmp.mapping.abort(),
-          ['<Up>'] = cmp.mapping.select_prev_item({ behavior = 'select' }),
-          ['<Down>'] = cmp.mapping.select_next_item({ behavior = 'select' }),
           -- scroll up and down the documentation window
           ['<C-u>'] = cmp.mapping.scroll_docs(-4),
           ['<C-d>'] = cmp.mapping.scroll_docs(4),
-          ['<C-p>'] = cmp.mapping(function()
+          ['<C-p>'] = cmp.mapping(function(fallback)
             if cmp.visible() then
               cmp.select_prev_item({ behavior = 'insert' })
+            elseif luasnip.jumpable(-1) then
+              luasnip.jump(-1)
             else
-              cmp.complete()
+              fallback()
             end
           end),
-          ['<C-n>'] = cmp.mapping(function()
+          ['<C-n>'] = cmp.mapping(function(fallback)
             if cmp.visible() then
               cmp.select_next_item({ behavior = 'insert' })
+            elseif luasnip.expand_or_jumpable() then
+              luasnip.expand_or_jump()
             else
-              cmp.complete()
+              fallback()
             end
           end),
           -- Ctrl + space triggers completion menu
@@ -181,7 +205,7 @@ return {
         }),
         snippet = {
           expand = function(args)
-            require('luasnip').lsp_expand(args.body)
+            luasnip.lsp_expand(args.body)
           end,
         },
       })
