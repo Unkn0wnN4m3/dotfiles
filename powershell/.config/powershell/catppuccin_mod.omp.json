@@ -18,14 +18,6 @@
           "template": "{{.Icon}} "
         },
         {
-          "type": "session",
-          "style": "diamond",
-          "powerline_symbol": "\ue0b4",
-          "foreground": "p:text",
-          "background": "p:blue",
-          "template": "{{ .UserName }}@{{ .HostName }}"
-        },
-        {
           "type": "path",
           "style": "powerline",
           "powerline_symbol": "\ue0b4",
@@ -50,13 +42,21 @@
             "cherry_pick_icon": "\ue29b ",
             "commit_icon": "\uf417 ",
             "fetch_status": true,
-            "fetch_upstream_icon": true,
+            "fetch_upstream_icon": false,
             "merge_icon": "\ue727 ",
             "no_commits_icon": "\uf0c3 ",
             "rebase_icon": "\ue728 ",
             "revert_icon": "\uf0e2 ",
             "tag_icon": "\uf412 "
           }
+        },
+        {
+          "type": "python",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b4",
+          "foreground": "p:text",
+          "background": "p:blue",
+          "template": "  {{ .Venv }}"
         }
       ]
     }

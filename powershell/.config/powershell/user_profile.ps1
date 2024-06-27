@@ -3,6 +3,7 @@ using namespace System.Management.Automation.Language
 
 # Powershell configuration directory
 $CUSTOMPSHOME = "$ENV:USERPROFILE\\.config\\powershell"
+$env:VIRTUAL_ENV_DISABLE_PROMPT = 1
 
 # Prompt
 if (Get-Command oh-my-posh -ErrorAction SilentlyContinue) {
