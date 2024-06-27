@@ -23,5 +23,10 @@ return {
     init = function()
       vim.cmd("let g:python_highlight_all = 1")
     end
+  },
+  {
+    'linux-cultist/venv-selector.nvim',
+    ft = "python",
+    opts = {}
   }
 }
