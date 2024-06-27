@@ -144,7 +144,7 @@ return {
       require('luasnip.loaders.from_vscode').lazy_load()
 
       cmp.setup({
-        preselect = 'item',
+        -- preselect = 'item',
         window = {
           completion = cmp.config.window.bordered(),
           documentation = cmp.config.window.bordered(),
@@ -157,10 +157,8 @@ return {
             ellipsis_char = '...',
           })
         },
-        sources = {
-          { name = "luasnip" },
-          { name = "nvim_lsp", group_index = 1, priority = 100 },
-          { name = 'path' },
+        sources = cmp.config.sources({
+          { name = "nvim_lsp", group_index = 1 },
           {
             name = "buffer",
             group_index = 2,
@@ -175,7 +173,9 @@ return {
               end
             }
           },
-        },
+          { name = 'path' },
+          { name = "luasnip" },
+        }),
         mapping = cmp.mapping.preset.insert({
           ['<C-y>'] = cmp.mapping.confirm({ select = true }),
           ['<C-e>'] = cmp.mapping.abort(),
