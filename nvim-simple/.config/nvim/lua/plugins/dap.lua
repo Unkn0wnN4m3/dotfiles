@@ -1,41 +1,41 @@
 return {
-  {
-    "mfussenegger/nvim-dap",
-    dependencies = {
+	{
+		"mfussenegger/nvim-dap",
+		dependencies = {
 
-      -- fancy UI for the debugger
-      {
-        "rcarriga/nvim-dap-ui",
-        dependencies = { "nvim-neotest/nvim-nio" },
+			-- fancy UI for the debugger
+			{
+				"rcarriga/nvim-dap-ui",
+				dependencies = { "nvim-neotest/nvim-nio" },
         -- stylua: ignore
         keys = {
           { "<leader>du", function() require("dapui").toggle({}) end, desc = "Dap UI" },
           { "<leader>de", function() require("dapui").eval() end,     desc = "Eval",  mode = { "n", "v" } },
         },
-        opts = {},
-        config = function(_, opts)
-          local dap = require("dap")
-          local dapui = require("dapui")
-          dapui.setup(opts)
-          dap.listeners.after.event_initialized["dapui_config"] = function()
-            dapui.open({})
-          end
-          dap.listeners.before.event_terminated["dapui_config"] = function()
-            dapui.close({})
-          end
-          dap.listeners.before.event_exited["dapui_config"] = function()
-            dapui.close({})
-          end
-        end,
-      },
+				opts = {},
+				config = function(_, opts)
+					local dap = require("dap")
+					local dapui = require("dapui")
+					dapui.setup(opts)
+					dap.listeners.after.event_initialized["dapui_config"] = function()
+						dapui.open({})
+					end
+					dap.listeners.before.event_terminated["dapui_config"] = function()
+						dapui.close({})
+					end
+					dap.listeners.before.event_exited["dapui_config"] = function()
+						dapui.close({})
+					end
+				end,
+			},
 
-      -- virtual text for the debugger
-      {
-        "theHamsta/nvim-dap-virtual-text",
-        -- opts = {},
-        config = true
-      },
-    },
+			-- virtual text for the debugger
+			{
+				"theHamsta/nvim-dap-virtual-text",
+				-- opts = {},
+				config = true,
+			},
+		},
 
     -- stylua: ignore
     keys = {
@@ -59,22 +59,22 @@ return {
       { "<leader>dw", function() require("dap.ui.widgets").hover() end,                                     desc = "Widgets" },
     },
 
-    config = function()
-      vim.api.nvim_set_hl(0, "DapStoppedLine", { default = true, link = "Visual" })
+		config = function()
+			vim.api.nvim_set_hl(0, "DapStoppedLine", { default = true, link = "Visual" })
 
-      -- setup dap config by VsCode launch.json file
-      local vscode = require("dap.ext.vscode")
-      local json = require("plenary.json")
-      vscode.json_decode = function(str)
-        return vim.json.decode(json.json_strip_comments(str))
-      end
-    end,
-  },
-  {
-    "mfussenegger/nvim-dap-python",
-    ft = "python",
-    config = function()
-      require("dap-python").setup(vim.env.HOME .. "\\.virtualenvs\\nvim\\Scripts\\python.exe")
-    end
-  }
+			-- setup dap config by VsCode launch.json file
+			local vscode = require("dap.ext.vscode")
+			local json = require("plenary.json")
+			vscode.json_decode = function(str)
+				return vim.json.decode(json.json_strip_comments(str))
+			end
+		end,
+	},
+	{
+		"mfussenegger/nvim-dap-python",
+		ft = "python",
+		config = function()
+			require("dap-python").setup(vim.env.HOME .. "\\.virtualenvs\\nvim\\Scripts\\python.exe")
+		end,
+	},
 }
