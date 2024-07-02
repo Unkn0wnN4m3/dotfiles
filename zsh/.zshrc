@@ -62,6 +62,10 @@ plugins=(
   zsh-syntax-highlighting
   zsh-autopair 
   fnm
+  poetry
+  python
+  pip
+  npm
 )
 
 source $ZSH/oh-my-zsh.sh
