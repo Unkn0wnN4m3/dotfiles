@@ -33,7 +33,7 @@ return {
 					vim.keymap.set("n", "gr", "<cmd>lua vim.lsp.buf.references()<cr>", opts)
 					vim.keymap.set("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<cr>", opts)
 					vim.keymap.set("n", "<F2>", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
-					vim.keymap.set({ "n", "x" }, "<F3>", "<cmd>lua vim.lsp.buf.format({async = true})<cr>", opts)
+					-- vim.keymap.set({ "n", "x" }, "<F3>", "<cmd>lua vim.lsp.buf.format({async = true})<cr>", opts)
 					vim.keymap.set("n", "<F4>", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
 				end,
 			})
@@ -99,24 +99,24 @@ return {
 									disableOrganizeImports = true,
 								},
 								python = {
-									analysis = {
-										-- Ignore all files for analysis to exclusively use Ruff for linting
-										-- ignore = { '*' },
-									},
+									-- analysis = {
+									-- Ignore all files for analysis to exclusively use Ruff for linting
+									-- ignore = { '*' },
+									-- },
 								},
 							},
 						})
 					end,
-					ruff = function()
-						require("lspconfig").ruff.setup({
-							on_attach = function(client, _)
-								if client.name == "ruff" then
-									-- Disable hover in favor of Pyright
-									client.server_capabilities.hoverProvider = false
-								end
-							end,
-						})
-					end,
+					-- ruff = function()
+					-- 	require("lspconfig").ruff.setup({
+					-- 		on_attach = function(client, _)
+					-- 			if client.name == "ruff" then
+					-- 				-- Disable hover in favor of Pyright
+					-- 				client.server_capabilities.hoverProvider = false
+					-- 			end
+					-- 		end,
+					-- 	})
+					-- end,
 				},
 			})
 		end,
@@ -217,6 +217,59 @@ return {
 				window = {
 					winblend = 0,
 				},
+			},
+		},
+	},
+
+	{
+		"mfussenegger/nvim-lint",
+		-- event = "VeryLazy",
+		evetn = "LspAttach",
+		config = function()
+			local lint = require("lint")
+
+			lint.linters_by_ft = {
+				markdown = { "markdownlint" },
+				python = { "ruff" },
+			}
+
+			local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
+			vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
+				group = lint_augroup,
+				callback = function()
+					lint.try_lint()
+				end,
+			})
+		end,
+	},
+	{
+		"stevearc/conform.nvim",
+		-- event = { "BufReadPre", "BufNewFile" },
+		cmd = "ConformInfo",
+		lazy = true,
+		opts = {
+			formatters_by_ft = {
+				css = { "prettier" },
+				html = { "prettier" },
+				json = { "prettier" },
+				yaml = { "prettier" },
+				lua = { "stylua" },
+				python = { "ruff" },
+			},
+		},
+		keys = {
+			{
+				"<F3>",
+				function()
+					require("conform").format({
+						timeout_ms = 3000,
+						async = false,
+						quiet = false,
+						lsp_format = "fallback",
+					})
+				end,
+				mode = { "n", "v" },
+				desc = "Format Langs",
 			},
 		},
 	},
