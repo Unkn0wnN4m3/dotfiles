@@ -211,7 +211,7 @@ return {
 	-- ui
 	{
 		"j-hui/fidget.nvim",
-		event = "LspAttach",
+		event = { "BufReadPre", "BufNewFile" },
 		opts = {
 			notification = {
 				window = {
@@ -255,7 +255,7 @@ return {
 				json = { "prettier" },
 				yaml = { "prettier" },
 				lua = { "stylua" },
-				python = { "ruff" },
+				python = { "ruff_format", "ruff_organize_imports" },
 			},
 		},
 		keys = {
