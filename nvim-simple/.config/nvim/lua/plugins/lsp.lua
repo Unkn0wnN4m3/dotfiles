@@ -224,7 +224,7 @@ return {
 	{
 		"mfussenegger/nvim-lint",
 		-- event = "VeryLazy",
-		event = "LspAttach",
+		event = { "BufReadPre", "BufNewFile" },
 		config = function()
 			local lint = require("lint")
 
@@ -234,7 +234,7 @@ return {
 			}
 
 			local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
-			vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
+			vim.api.nvim_create_autocmd({ "BufReadPost", "BufWritePost", "InsertLeave" }, {
 				group = lint_augroup,
 				callback = function()
 					lint.try_lint()
@@ -251,6 +251,7 @@ return {
 			formatters_by_ft = {
 				css = { "prettier" },
 				html = { "prettier" },
+				markdown = { "prettier" },
 				json = { "prettier" },
 				yaml = { "prettier" },
 				lua = { "stylua" },
