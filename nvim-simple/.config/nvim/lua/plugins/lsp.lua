@@ -224,7 +224,7 @@ return {
 	{
 		"mfussenegger/nvim-lint",
 		-- event = "VeryLazy",
-		evetn = "LspAttach",
+		event = "LspAttach",
 		config = function()
 			local lint = require("lint")
 
