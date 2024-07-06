@@ -98,11 +98,10 @@ fi
 # Example aliases
 command -v nvim >/dev/null && alias n="nvim"
 command -v zellij >/dev/null && alias zj="zellij"
-command -v batcat >/dev/null && alias cat="batcat -p"
+command -v bat >/dev/null && alias cat="bat -p"
 command -v lazygit >/dev/null && alias lg="lazygit"
 
-if [ $(command -v exa) ]; then
-  alias ls="exa -F --group-directories-first --icons"
-  alias la="exa -ahlF --group-directories-first --icons"
+if [ $(command -v eza) ]; then
+  alias ls="eza -F --group-directories-first --icons"
+  alias la="eza -ahlF --group-directories-first --icons"
 fi
-
