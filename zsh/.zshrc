@@ -98,6 +98,7 @@ fi
 # Example aliases
 command -v nvim >/dev/null && alias n="nvim"
 command -v zellij >/dev/null && alias zj="zellij"
+command -v tmux >/dev/null && alias tm="tmux"
 command -v bat >/dev/null && alias cat="bat -p"
 command -v lazygit >/dev/null && alias lg="lazygit"
 
