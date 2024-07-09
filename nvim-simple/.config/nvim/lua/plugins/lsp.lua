@@ -15,6 +15,7 @@ return {
 		dependencies = {
 			"williamboman/mason-lspconfig.nvim",
 			"hrsh7th/cmp-nvim-lsp",
+			"b0o/schemastore.nvim",
 		},
 		config = function()
 			vim.api.nvim_create_autocmd("LspAttach", {
@@ -68,6 +69,7 @@ return {
 					"ruff",
 					"lua_ls",
 					"marksman",
+					"jsonls",
 				},
 				handlers = {
 					default_setup,
@@ -107,16 +109,16 @@ return {
 							},
 						})
 					end,
-					-- ruff = function()
-					-- 	require("lspconfig").ruff.setup({
-					-- 		on_attach = function(client, _)
-					-- 			if client.name == "ruff" then
-					-- 				-- Disable hover in favor of Pyright
-					-- 				client.server_capabilities.hoverProvider = false
-					-- 			end
-					-- 		end,
-					-- 	})
-					-- end,
+					jsonls = function()
+						require("lspconfig").jsonls.setup({
+							settings = {
+								json = {
+									schemas = require("schemastore").json.schemas(),
+									validate = { enable = true },
+								},
+							},
+						})
+					end,
 				},
 			})
 		end,
