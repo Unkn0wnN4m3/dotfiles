@@ -74,7 +74,11 @@ return {
 		"mfussenegger/nvim-dap-python",
 		ft = "python",
 		config = function()
-			require("dap-python").setup(vim.env.HOME .. "\\.virtualenvs\\nvim\\Scripts\\python.exe")
+			if not vim.fn.has("win32") then
+				require("dap-python").setup(vim.env.HOME .. "/.virtualenvs/neovim/Scripts/python.exe")
+			else
+				require("dap-python").setup(vim.env.HOME .. "/.virtualenvs/neovim/bin/python3")
+			end
 		end,
 	},
 }
