@@ -12,4 +12,5 @@ with import <nixpkgs> {}; [
   zoxide
   ripgrep
   gojq
+  croc
 ]
