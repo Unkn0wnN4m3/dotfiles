@@ -2,18 +2,7 @@ return {
 	{ "nvim-tree/nvim-web-devicons", lazy = true },
 	{
 		"nvim-lualine/lualine.nvim",
-		init = function()
-			vim.g.lualine_laststatus = vim.o.laststatus
-			if vim.fn.argc(-1) > 0 then
-				-- set an empty statusline till lualine loads
-				vim.o.statusline = " "
-			else
-				-- hide the statusline on the starter page
-				vim.o.laststatus = 0
-			end
-		end,
-		-- dependencies = { 'nvim-tree/nvim-web-devicons' },
-		event = "VimEnter",
+		event = "VeryLazy",
 		opts = function()
 			local function mixedIndent()
 				local space_indent = vim.fn.search([[\v^ +]], "nw") > 0
@@ -193,6 +182,30 @@ return {
 		"prichrd/netrw.nvim",
 		config = true,
 		event = "VeryLazy",
+	},
+	{
+		"folke/noice.nvim",
+		event = "VeryLazy",
+		opts = {
+			presets = {
+				bottom_search = true,
+				-- command_palette = true,
+				long_message_to_split = true,
+				inc_rename = false,
+				lsp_doc_border = true,
+			},
+			messages = { enabled = false },
+		},
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+			{
+				"rcarriga/nvim-notify",
+				opts = {
+					background_colour = "#000000",
+					timeout = 15000,
+				},
+			},
+		},
 	},
 	{
 		"nvimdev/dashboard-nvim",
