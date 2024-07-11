@@ -8,8 +8,8 @@ opt.relativenumber = false
 opt.clipboard = "unnamed"
 
 -- providers
-vim.cmd("let g:python3_host_prog = '~/.virtualenvs/provider-python/bin/python3'")
-vim.cmd("let g:node_host_prog = '~/.binaries/provider-node/node_modules/.bin/neovim-node-host'")
+vim.cmd("let g:python3_host_prog = '~/.virtualenvs/neovim/bin/python3'")
+vim.cmd("let g:node_host_prog = '~/.binaries/neovim/node_modules/.bin/neovim-node-host'")
 vim.cmd("let g:loaded_perl_provider = 0")
 vim.cmd("let g:loaded_ruby_provider = 0")
 
