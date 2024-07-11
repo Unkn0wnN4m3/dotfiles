@@ -3,7 +3,7 @@ local opt = vim.opt
 
 opt.path:append({ "**" })
 opt.wildignore:append({ "*/node_modules/*", "*.pyc", "*/__pycache__/*", ".git" })
-opt.colorcolumn = "80"
+opt.colorcolumn = { "80", "120" }
 opt.relativenumber = false
 opt.clipboard = "unnamed"
 
