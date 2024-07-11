@@ -15,11 +15,4 @@ return {
     version = "v3.*",
     event = "VeryLazy",
   },
-  {
-    "NvChad/nvim-colorizer.lua",
-    event = { "BufReadPre", "BufNewFile" },
-    opts = {
-      filetypes = { "*" },
-    },
-  },
 }
