@@ -53,12 +53,6 @@ return {
     },
   },
   {
-    "tiagovla/scope.nvim",
-    commit = "cd27af77ad61a7199af5c28d27013fb956eb0e3e",
-    event = "VeryLazy",
-    config = true,
-  },
-  {
     "rcarriga/nvim-notify",
     opts = {
       timeout = 10000,
