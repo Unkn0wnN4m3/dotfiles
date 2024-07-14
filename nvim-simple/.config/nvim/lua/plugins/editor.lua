@@ -276,4 +276,9 @@ return {
 			"sindrets/diffview.nvim",
 		},
 	},
+	{
+		"NvChad/nvim-colorizer.lua",
+		event = "VeryLazy",
+		config = true,
+	},
 }
