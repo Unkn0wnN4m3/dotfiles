@@ -25,6 +25,9 @@ return {
 	},
 	{
 		"nvim-treesitter/nvim-treesitter",
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter-textobjects",
+		},
 		cond = function()
 			if vim.fn.has("win32") == 1 then
 				return false
@@ -32,7 +35,6 @@ return {
 				return true
 			end
 		end,
-		lazy = false,
 		build = ":TSUpdate",
 		config = function()
 			require("nvim-treesitter.configs").setup({
