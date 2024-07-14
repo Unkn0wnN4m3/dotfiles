@@ -66,7 +66,6 @@ return {
 				ensure_installed = {
 					"clangd",
 					"pyright",
-					"ruff",
 					"lua_ls",
 					"marksman",
 					"jsonls",
@@ -97,14 +96,12 @@ return {
 						require("lspconfig").pyright.setup({
 							settings = {
 								pyright = {
-									-- Using Ruff's import organizer
 									disableOrganizeImports = true,
 								},
 								python = {
-									-- analysis = {
-									-- Ignore all files for analysis to exclusively use Ruff for linting
-									-- ignore = { '*' },
-									-- },
+									analysis = {
+										ignore = { "*" },
+									},
 								},
 							},
 						})
@@ -232,7 +229,7 @@ return {
 
 			lint.linters_by_ft = {
 				markdown = { "markdownlint" },
-				python = { "ruff" },
+				python = { "flake8" },
 			}
 
 			local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
@@ -257,7 +254,7 @@ return {
 				json = { "prettier" },
 				yaml = { "prettier" },
 				lua = { "stylua" },
-				python = { "ruff_format", "ruff_organize_imports" },
+				python = { "isort", "black" },
 			},
 		},
 		keys = {
