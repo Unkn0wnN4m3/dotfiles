@@ -120,31 +120,28 @@ return {
 			vim.o.timeout = true
 			vim.o.timeoutlen = 300
 		end,
-		opts = {
-			plugins = { spelling = true },
-			defaults = {
-				mode = { "n", "v" },
-				["g"] = { name = "+goto" },
-				["gs"] = { name = "+surround" },
-				["z"] = { name = "+fold" },
-				["]"] = { name = "+next" },
-				["["] = { name = "+prev" },
-				["<leader>q"] = { name = "+quit/session" },
-				["<leader>g"] = { name = "+git" },
-				["<leader>gh"] = { name = "+hunks" },
-				["<leader>x"] = { name = "+diagnostics/quickfix" },
-				["<leader>s"] = { name = "+search" },
-				["<leader>f"] = { name = "+file/find" },
-				["<leader>w"] = { name = "+windows" },
-				["<leader>u"] = { name = "+ui" },
-				["<leader>b"] = { name = "+buffer" },
-				["<leader><tab>"] = { name = "+tabs" },
-			},
-		},
-		config = function(_, opts)
+		config = function()
 			local wk = require("which-key")
-			wk.setup(opts)
-			wk.register(opts.defaults)
+			wk.add({
+				{
+					mode = { "n", "v" },
+					{ "g", group = "+goto" },
+					{ "gs", group = "+surround" },
+					{ "z", group = "+fold" },
+					{ "]", group = "+next" },
+					{ "[", group = "+prev" },
+					{ "<leader>q", group = "+quit/session" },
+					{ "<leader>g", group = "+git" },
+					{ "<leader>gh", group = "+hunks" },
+					{ "<leader>x", group = "+diagnostics/quickfix" },
+					{ "<leader>s", group = "+search" },
+					{ "<leader>f", group = "+file/find" },
+					{ "<leader>w", group = "+windows" },
+					{ "<leader>u", group = "+ui" },
+					{ "<leader>b", group = "+buffer" },
+					{ "<leader><tab>", group = "+tabs" },
+				},
+			})
 		end,
 	},
 	{
