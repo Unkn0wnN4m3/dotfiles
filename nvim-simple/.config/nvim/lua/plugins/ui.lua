@@ -2,7 +2,7 @@ return {
 	{ "nvim-tree/nvim-web-devicons", lazy = true },
 	{
 		"nvim-lualine/lualine.nvim",
-		event = "VeryLazy",
+		event = "VimEnter",
 		opts = function()
 			local function mixedIndent()
 				local space_indent = vim.fn.search([[\v^ +]], "nw") > 0

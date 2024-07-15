@@ -35,6 +35,7 @@ return {
 				return true
 			end
 		end,
+		event = { "BufReadPre", "BufNewFile" },
 		build = ":TSUpdate",
 		config = function()
 			require("nvim-treesitter.configs").setup({

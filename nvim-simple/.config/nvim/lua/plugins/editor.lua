@@ -279,6 +279,17 @@ return {
 	{
 		"NvChad/nvim-colorizer.lua",
 		event = "VeryLazy",
-		config = true,
+		opts = {
+			user_default_options = {
+				RGB = true,
+				RRGGBB = true,
+				names = false,
+				mode = "background",
+				tailwind = "lsp",
+				sass = { enable = false, parsers = { "css" } },
+				virtualtext = "■",
+				always_update = false,
+			},
+		},
 	},
 }
