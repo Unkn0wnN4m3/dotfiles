@@ -58,14 +58,19 @@ return {
 	},
 	{
 		"b0o/incline.nvim",
+		version = false,
 		event = "BufReadPre",
 		config = function()
+			local helpers = require("incline.helpers")
 			local devicons = require("nvim-web-devicons")
-			local incline = require("incline")
-			incline.setup({
+			require("incline").setup({
 				window = {
 					padding = 0,
 					margin = { horizontal = 0 },
+				},
+				hide = {
+					cursorline = true,
+					only_win = true,
 				},
 				render = function(props)
 					local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":t")
@@ -75,15 +80,14 @@ return {
 					local ft_icon, ft_color = devicons.get_icon_color(filename)
 					local modified = vim.bo[props.buf].modified
 					return {
-						ft_icon and { " ", ft_icon, " ", guifg = ft_color } or "",
+						ft_icon and { " ", ft_icon, " ", guibg = ft_color, guifg = helpers.contrast_color(ft_color) }
+							or "",
+						" ",
 						{ filename, gui = modified and "bold,italic" or "bold" },
+						" ",
 					}
 				end,
 			})
-
-			vim.api.nvim_create_user_command("InclineToggle", function()
-				require("incline").toggle()
-			end, {})
 		end,
 	},
 	{
@@ -183,10 +187,28 @@ return {
 	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
+		dependencies = {
+			{ "MunifTanjim/nui.nvim" },
+			{
+				"rcarriga/nvim-notify",
+				opts = {
+					background_colour = "#000000",
+					timeout = 15000,
+				},
+			},
+		},
 		opts = {
+			lsp = {
+				-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+				override = {
+					["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+					["vim.lsp.util.stylize_markdown"] = true,
+					["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
+				},
+			},
 			presets = {
 				bottom_search = true,
-				-- command_palette = true,
+				command_palette = true,
 				long_message_to_split = true,
 				inc_rename = false,
 				lsp_doc_border = true,
@@ -200,16 +222,14 @@ return {
 					},
 					opts = { skip = true },
 				},
-			},
-		},
-		dependencies = {
-			"MunifTanjim/nui.nvim",
-			{
-				"rcarriga/nvim-notify",
-				opts = {
-					background_colour = "#000000",
-					timeout = 15000,
-				},
+				-- {
+				-- 	view = "messages",
+				-- 	filter = {
+				-- 		event = "msg_show",
+				-- 		kind = "",
+				-- 		find = "w",
+				-- 	},
+				-- },
 			},
 		},
 	},
