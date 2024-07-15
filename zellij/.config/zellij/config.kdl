@@ -1,7 +1,5 @@
 styled_underlines true
 simplified_ui true
 pane_frames false
-auto_layout true
 mouse_mode true
-default_layout "compact"
 theme "catppuccin-mocha"
