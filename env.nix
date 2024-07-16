@@ -13,4 +13,5 @@ with import <nixpkgs> {}; [
   ripgrep
   gojq
   croc
+  helix
 ]
