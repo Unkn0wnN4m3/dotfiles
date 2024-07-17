@@ -87,6 +87,11 @@ else
   export EDITOR='nvim'
 fi
 
+# "bat" as manpager
+if command -v bat &> /dev/null; then
+  export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+fi
+
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
