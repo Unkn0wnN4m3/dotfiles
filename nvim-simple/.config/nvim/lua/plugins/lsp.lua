@@ -220,7 +220,7 @@ return {
 	-- 	},
 	-- },
 	{
-		'WhoIsSethDaniel/mason-tool-installer.nvim',
+		"WhoIsSethDaniel/mason-tool-installer.nvim",
 		dependencies = "williamboman/mason.nvim",
 		event = { "BufReadPre", "BufNewFile" },
 		opts = {
@@ -230,8 +230,9 @@ return {
 				"black",
 				"markdownlint",
 				"prettier",
-			}
-		}
+				"stylua",
+			},
+		},
 	},
 	{
 		"mfussenegger/nvim-lint",
