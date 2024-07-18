@@ -219,7 +219,20 @@ return {
 	-- 		},
 	-- 	},
 	-- },
-
+	{
+		'WhoIsSethDaniel/mason-tool-installer.nvim',
+		dependencies = "williamboman/mason.nvim",
+		event = { "BufReadPre", "BufNewFile" },
+		opts = {
+			ensure_installed = {
+				"flake8",
+				"isort",
+				"black",
+				"markdownlint",
+				"prettier",
+			}
+		}
+	},
 	{
 		"mfussenegger/nvim-lint",
 		-- event = "VeryLazy",
