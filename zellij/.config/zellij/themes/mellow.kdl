@@ -1,0 +1,15 @@
+themes {
+  mellow {
+    fg "#c9c7cd"
+    bg "#161617"
+    black "#27272a"
+    red "#f5a191"
+    green "#90b99f"
+    yellow "#e6b99d"
+    blue "#aca1cf"
+    magenta "#e29eca"
+    cyan "#ea83a5"
+    white "#c1c0d4"
+    orange "#f0c5a9"
+  }
+}
