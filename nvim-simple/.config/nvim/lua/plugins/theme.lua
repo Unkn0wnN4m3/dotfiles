@@ -41,4 +41,15 @@ return {
 			vim.g.mellow_italic_comments = false
 		end,
 	},
+	{
+		"dgox16/oldworld.nvim",
+		priority = 1000,
+		opts = {
+			styles = {
+				booleans = { italic = true },
+				functions = { bold = true },
+				keywords = { italic = true },
+			},
+		},
+	},
 }
