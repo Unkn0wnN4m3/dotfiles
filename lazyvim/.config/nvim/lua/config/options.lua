@@ -20,3 +20,6 @@ if vim.env.NVIM_BACKGROUND == "light" then
 else
   vim.o.background = "dark"
 end
+
+-- lazyvim
+vim.g.lazyvim_python_lsp = "pyright"

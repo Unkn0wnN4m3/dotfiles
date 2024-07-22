@@ -16,28 +16,19 @@ local function mixedIndent()
   return mixed and "MI" or ""
 end
 
-local actived_venv = function()
-  local venv_name = require("venv-selector").get_active_venv()
-  if venv_name ~= nil then
-    return "[ ON]"
-  else
-    return ""
-  end
-end
-
 return {
   {
     {
       "nvimdev/dashboard-nvim",
       opts = function(_, opts)
         local logo = [[
-        ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗
-        ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║
-        ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║
-        ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║
-        ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║
-        ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝
-      ]]
+██╗  ██╗ █████╗ ██╗  ██╗███╗   ███╗ ██████╗██╗  ██╗███╗   ██╗
+██║  ██║██╔══██╗██║ ██╔╝████╗ ████║██╔════╝██║  ██║████╗  ██║
+███████║███████║█████╔╝ ██╔████╔██║██║     ███████║██╔██╗ ██║
+██╔══██║██╔══██║██╔═██╗ ██║╚██╔╝██║██║     ██╔══██║██║╚██╗██║
+██║  ██║██║  ██║██║  ██╗██║ ╚═╝ ██║╚██████╗██║  ██║██║ ╚████║
+╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝     ╚═╝ ╚═════╝╚═╝  ╚═╝╚═╝  ╚═══╝
+        ]]
 
         logo = string.rep("\n", 8) .. logo .. "\n\n"
         opts.config.header = vim.split(logo, "\n")
@@ -91,7 +82,6 @@ return {
         },
         lualine_y = {
           mixedIndent,
-          actived_venv,
           showIndent,
           "fileformat",
         },
