@@ -1,22 +1,16 @@
 // layout_file.kdl
 
 layout {
-  default_tab_template {
-    // the default zellij tab-bar and status bar plugins
-    pane size=1 borderless=true {
-      plugin location="zellij:tab-bar"
-    }
-    children
-    pane size=2 borderless=true {
-      plugin location="zellij:status-bar"
+  pane split_direction="horizontal" {
+    pane
+    pane split_direction="vertical" {
+      pane
+      pane
+      pane
     }
   }
-  tab split_direction="horizontal" { // the default_tab_template with three vertical panes between the plugins
-    pane
-    pane split_direction="vertical" size="30%" {
-      pane
-      pane
-    }
+  pane size=1 borderless=true {
+    plugin location="zellij:compact-bar"
   }
 }
 
