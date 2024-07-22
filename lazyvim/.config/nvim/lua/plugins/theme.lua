@@ -42,6 +42,26 @@ return {
     name = "catppuccin",
     opts = {
       transparent_background = true,
+      -- no_italic = true,
+      styles = {
+        comments = {},
+        functions = { "bold" },
+        conditionals = { "italic" },
+        keywords = { "italic" },
+      },
+    },
+  },
+  {
+    "craftzdog/solarized-osaka.nvim",
+    lazy = true,
+    opts = {
+      transparent = true,
+      styles = {
+        comments = { italic = false },
+        keywords = { italic = true },
+        conditionals = { italic = true },
+        functions = { bold = true },
+      },
     },
   },
   {
