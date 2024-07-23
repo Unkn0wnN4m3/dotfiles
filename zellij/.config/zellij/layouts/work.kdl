@@ -1,16 +1,16 @@
 // layout_file.kdl
 
 layout {
+  pane size=1 borderless=true {
+    plugin location="zellij:compact-bar"
+  }
   pane split_direction="horizontal" {
-    pane
+    pane size="70%"
     pane split_direction="vertical" {
       pane
       pane
       pane
     }
-  }
-  pane size=1 borderless=true {
-    plugin location="zellij:compact-bar"
   }
 }
 
