@@ -27,7 +27,7 @@ require("lazy").setup("plugins", {
 	},
 	defaults = {
 		lazy = false,
-		version = "*", -- try installing the latest stable version for plugins that support semver
+		version = false, -- try installing the latest stable version for plugins that support semver
 	},
 })
 

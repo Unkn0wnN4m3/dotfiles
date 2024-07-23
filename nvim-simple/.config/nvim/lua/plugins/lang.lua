@@ -2,26 +2,38 @@ return {
 	{
 		"iamcco/markdown-preview.nvim",
 		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+		ft = { "markdown" },
 		build = function()
 			vim.fn["mkdp#util#install"]()
 		end,
-		keys = {
-			{
-				"<leader>cp",
-				ft = "markdown",
-				"<cmd>MarkdownPreviewToggle<cr>",
-				desc = "Markdown Preview",
-			},
-		},
-		config = function()
-			vim.cmd([[do FileType]])
-		end,
+	},
+	{
+		"MeanderingProgrammer/markdown.nvim",
+		ft = { "markdown" },
+		main = "render-markdown",
+		name = "render-markdown", -- Only needed if you have another plugin named markdown.nvim
+		dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" }, -- if you prefer nvim-web-devicons
+		opts = {},
 	},
 	{
 		"linux-cultist/venv-selector.nvim",
 		branch = "regexp",
 		ft = "python",
 		config = true,
+	},
+	{
+		"vim-python/python-syntax",
+		ft = "python",
+		init = function()
+			vim.cmd("let g:python_highlight_all = 1")
+		end,
+		cond = function()
+			if not vim.fn.has("win32") == 1 then
+				return false
+			else
+				return true
+			end
+		end,
 	},
 	{
 		"nvim-treesitter/nvim-treesitter",
