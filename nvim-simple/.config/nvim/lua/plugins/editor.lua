@@ -296,6 +296,7 @@ return {
 		"akinsho/toggleterm.nvim",
 		config = true,
 		opts = { winbar = { enabled = true } },
+		cmd = { "ToggleTerm", "ToggleTermToggleAll" },
 		keys = {
 			{ "<c-\\>", mode = { "t", "n" }, "<cmd>ToggleTerm<cr>", desc = "Toggle terminal" },
 		},
