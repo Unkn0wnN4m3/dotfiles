@@ -1,25 +1,13 @@
 return {
 	{
-		"iamcco/markdown-preview.nvim",
-		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-		ft = { "markdown" },
-		build = function()
-			vim.fn["mkdp#util#install"]()
-		end,
-	},
-	{
-		"MeanderingProgrammer/markdown.nvim",
-		ft = { "markdown" },
-		main = "render-markdown",
-		name = "render-markdown", -- Only needed if you have another plugin named markdown.nvim
-		dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" }, -- if you prefer nvim-web-devicons
-		opts = {},
-	},
-	{
 		"linux-cultist/venv-selector.nvim",
 		branch = "regexp",
 		ft = "python",
-		config = true,
+		opts = {
+			auto_refresh = true,
+			notify_user_on_activate = true,
+		},
+		cmd = { "VenvSelect", "VenvSelectCached" },
 	},
 	{
 		"vim-python/python-syntax",
@@ -34,6 +22,22 @@ return {
 				return true
 			end
 		end,
+	},
+	{
+		"iamcco/markdown-preview.nvim",
+		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+		ft = { "markdown" },
+		build = function()
+			vim.fn["mkdp#util#install"]()
+		end,
+	},
+	{
+		"MeanderingProgrammer/markdown.nvim",
+		ft = { "markdown" },
+		main = "render-markdown",
+		name = "render-markdown", -- Only needed if you have another plugin named markdown.nvim
+		dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" }, -- if you prefer nvim-web-devicons
+		opts = {},
 	},
 	{
 		"nvim-treesitter/nvim-treesitter",
