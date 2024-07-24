@@ -6,8 +6,25 @@ $CUSTOMPSHOME = "$ENV:USERPROFILE\\.config\\powershell"
 $env:VIRTUAL_ENV_DISABLE_PROMPT = 1
 
 # Prompt
-if (Get-Command oh-my-posh -ErrorAction SilentlyContinue) {
-  oh-my-posh init pwsh --config "$CUSTOMPSHOME\catppuccin_mod.omp.json" | Invoke-Expression
+# if (Get-Command oh-my-posh -ErrorAction SilentlyContinue) {
+#   oh-my-posh init pwsh --config "$CUSTOMPSHOME\catppuccin_mod.omp.json" | Invoke-Expression
+# }
+if (Get-Command starship -ErrorAction SilentlyContinue) {
+  function Invoke-Starship-PreCommand {
+    $host.ui.RawUI.WindowTitle = "$env:USERNAME@$env:COMPUTERNAME`: $pwd `a"
+
+    $loc = $executionContext.SessionState.Path.CurrentLocation;
+    $prompt = "$([char]27)]9;12$([char]7)"
+
+    if ($loc.Provider.Name -eq "FileSystem")
+    {
+      $prompt += "$([char]27)]9;9;`"$($loc.ProviderPath)`"$([char]27)\"
+    }
+
+    $host.ui.Write($prompt)
+  }
+
+  Invoke-Expression (&starship init powershell)
 }
 
 # Environment variables
@@ -53,7 +70,6 @@ if (Get-Command eza -ErrorAction SilentlyContinue) {
 Set-Alias -Name which -Value Get-Command
 Set-Alias -Name open -Value Invoke-Item
 Set-Alias -Name n -Value nvim
-Set-Alias -Name jq -Value jq-Win64
 Set-Alias -Name pd -Value podman
 Set-Alias -Name lg -Value lazygit
 Set-Alias -Name cat -Value __CUSTOM_BAT
