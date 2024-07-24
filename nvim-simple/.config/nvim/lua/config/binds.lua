@@ -55,3 +55,10 @@ map("n", "<leader>bD", "<cmd>:bd<cr>", { desc = "Delete Buffer and Window" })
 map("n", "gl", "<cmd>lua vim.diagnostic.open_float()<cr>")
 map("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<cr>")
 map("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<cr>")
+
+-- terminal
+-- Terminal Mappings
+map("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Enter Normal Mode" })
+
+-- Clear search with <esc>
+map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and Clear hlsearch" })
