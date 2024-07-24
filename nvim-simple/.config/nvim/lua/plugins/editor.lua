@@ -277,28 +277,16 @@ return {
 		},
 	},
 	{
-		"NvChad/nvim-colorizer.lua",
+		"echasnovski/mini.hipatterns",
 		event = "VeryLazy",
-		opts = {
-			user_default_options = {
-				RGB = true,
-				RRGGBB = true,
-				names = false,
-				mode = "background",
-				tailwind = "lsp",
-				sass = { enable = false, parsers = { "css" } },
-				virtualtext = "■",
-				always_update = false,
-			},
-		},
-	},
-	{
-		"akinsho/toggleterm.nvim",
-		config = true,
-		opts = { winbar = { enabled = true } },
-		cmd = { "ToggleTerm", "ToggleTermToggleAll" },
-		keys = {
-			{ "<c-\\>", mode = { "t", "n" }, "<cmd>ToggleTerm<cr>", desc = "Toggle terminal" },
-		},
+		config = function()
+			local hipatterns = require("mini.hipatterns")
+
+			hipatterns.setup({
+				highlighters = {
+					hex_color = hipatterns.gen_highlighter.hex_color(),
+				},
+			})
+		end,
 	},
 }
