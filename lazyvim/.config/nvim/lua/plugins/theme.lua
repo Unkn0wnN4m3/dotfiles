@@ -26,17 +26,6 @@ return {
     },
   },
   {
-    "dgox16/oldworld.nvim",
-    lazy = true,
-    opts = {
-      styles = {
-        booleans = { italic = true },
-        functions = { bold = true },
-        keywords = { italic = true },
-      },
-    },
-  },
-  {
     "catppuccin/nvim",
     lazy = true,
     name = "catppuccin",
@@ -63,6 +52,17 @@ return {
         functions = { bold = true },
       },
     },
+  },
+  {
+    "mellow-theme/mellow.nvim",
+    priority = 1000,
+    init = function()
+      vim.g.mellow_bold_functions = true
+      vim.g.mellow_italic_keywords = true
+      vim.g.mellow_italic_booleans = true
+      vim.g.mellow_transparent = true
+      vim.g.mellow_italic_comments = false
+    end,
   },
   {
     "LazyVim/LazyVim",
