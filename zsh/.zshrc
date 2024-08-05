@@ -66,6 +66,7 @@ plugins=(
   python
   pip
   npm
+  brew
 )
 
 source $ZSH/oh-my-zsh.sh
