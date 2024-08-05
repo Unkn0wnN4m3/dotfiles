@@ -55,7 +55,7 @@ return {
   },
   {
     "mellow-theme/mellow.nvim",
-    priority = 1000,
+    lazy = true,
     init = function()
       vim.g.mellow_bold_functions = true
       vim.g.mellow_italic_keywords = true
