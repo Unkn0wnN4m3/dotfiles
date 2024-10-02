@@ -84,6 +84,7 @@ return {
           mixedIndent,
           showIndent,
           "fileformat",
+          "filetype",
         },
         lualine_z = {
           { "progress", separator = " ", padding = { left = 1, right = 0 } },
