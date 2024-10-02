@@ -1,49 +1,61 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2024-06-27T00:50:26.576-00:00",
+	"CreationDate" : "2024-10-02T15:33:39.987-00:00",
 	"Sources" : 
 	[
 		{
 			"Packages" : 
 			[
 				{
-					"PackageIdentifier" : "Brave.Brave"
-				},
-				{
-					"PackageIdentifier" : "Discord.Discord"
+					"PackageIdentifier" : "Docker.DockerDesktop"
 				},
 				{
 					"PackageIdentifier" : "Git.Git"
 				},
 				{
-					"PackageIdentifier" : "JesseDuffield.lazygit"
-				},
-				{
 					"PackageIdentifier" : "Mozilla.Thunderbird"
 				},
 				{
-					"PackageIdentifier" : "ONLYOFFICE.DesktopEditors"
-				},
-				{
-					"PackageIdentifier" : "RedHat.Podman"
+					"PackageIdentifier" : "AnalogDevices.LTspice"
 				},
 				{
 					"PackageIdentifier" : "KeePassXCTeam.KeePassXC"
 				},
 				{
-					"PackageIdentifier" : "Cryptomator.Cryptomator"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.VisualStudioCode"
-				},
-				{
-					"PackageIdentifier" : "IDRIX.VeraCrypt"
+					"PackageIdentifier" : "GitHub.cli"
 				},
 				{
 					"PackageIdentifier" : "Google.QuickShare"
 				},
 				{
+					"PackageIdentifier" : "IDRIX.VeraCrypt"
+				},
+				{
+					"PackageIdentifier" : "Logitech.OptionsPlus"
+				},
+				{
+					"PackageIdentifier" : "WinFsp.WinFsp"
+				},
+				{
+					"PackageIdentifier" : "Cryptomator.Cryptomator"
+				},
+				{
+					"PackageIdentifier" : "SimulIDE.SimulIDE"
+				},
+				{
+					"PackageIdentifier" : "Vivaldi.Vivaldi"
+				},
+				{
+					"PackageIdentifier" : "Obsidian.Obsidian"
+				},
+				{
 					"PackageIdentifier" : "Microsoft.PowerToys"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.VisualStudioCode"
+				},
+				{
+					"PackageIdentifier" : "Proton.ProtonDrive"
 				}
 			],
 			"SourceDetails" : 
@@ -55,5 +67,5 @@
 			}
 		}
 	],
-	"WinGetVersion" : "1.7.11261"
+	"WinGetVersion" : "1.8.1911"
 }
