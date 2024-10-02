@@ -28,3 +28,5 @@ _darcs
 ^/pkglist-*
 
 /fonts
+/nvim-simple
+/packages
