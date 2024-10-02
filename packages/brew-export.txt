@@ -1,0 +1,14 @@
+bat
+bun
+croc
+eza
+fd
+fnm
+fzf
+gojq
+helix
+lazygit
+neovim
+ripgrep
+starship
+zellij
