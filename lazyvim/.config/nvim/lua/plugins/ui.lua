@@ -18,22 +18,24 @@ end
 
 return {
   {
-    {
-      "nvimdev/dashboard-nvim",
-      opts = function(_, opts)
-        local logo = [[
-██╗  ██╗ █████╗ ██╗  ██╗███╗   ███╗ ██████╗██╗  ██╗███╗   ██╗
-██║  ██║██╔══██╗██║ ██╔╝████╗ ████║██╔════╝██║  ██║████╗  ██║
-███████║███████║█████╔╝ ██╔████╔██║██║     ███████║██╔██╗ ██║
-██╔══██║██╔══██║██╔═██╗ ██║╚██╔╝██║██║     ██╔══██║██║╚██╗██║
-██║  ██║██║  ██║██║  ██╗██║ ╚═╝ ██║╚██████╗██║  ██║██║ ╚████║
-╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝     ╚═╝ ╚═════╝╚═╝  ╚═╝╚═╝  ╚═══╝
+    "folke/snacks.nvim",
+    opts = function(_, opts)
+      opts.dashboard.preset.header = [[
+   ██╗  ██╗ █████╗ ██╗  ██╗███╗   ███╗ ██████╗██╗  ██╗███╗   ██╗
+   ██║  ██║██╔══██╗██║ ██╔╝████╗ ████║██╔════╝██║  ██║████╗  ██║
+   ███████║███████║█████╔╝ ██╔████╔██║██║     ███████║██╔██╗ ██║
+   ██╔══██║██╔══██║██╔═██╗ ██║╚██╔╝██║██║     ██╔══██║██║╚██╗██║
+   ██║  ██║██║  ██║██║  ██╗██║ ╚═╝ ██║╚██████╗██║  ██║██║ ╚████║
+   ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝     ╚═╝ ╚═════╝╚═╝  ╚═╝╚═╝  ╚═══╝
         ]]
-
-        logo = string.rep("\n", 8) .. logo .. "\n\n"
-        opts.config.header = vim.split(logo, "\n")
-      end,
-    },
+      opts.dashboard.sections = {
+        { section = "header" },
+        { section = "keys", gap = 1 },
+        { icon = " ", title = "Recent Files", section = "recent_files", indent = 2, padding = { 2, 2 } },
+        { icon = " ", title = "Projects", section = "projects", indent = 2, padding = 2 },
+        { section = "startup" },
+      }
+    end,
   },
   {
     "akinsho/bufferline.nvim",
@@ -58,7 +60,7 @@ return {
         component_separators = "",
         theme = "auto",
         globalstatus = true,
-        disabled_filetypes = { statusline = { "dashboard", "alpha", "starter" } },
+        disabled_filetypes = { statusline = { "snacks_dashboard" } },
       },
       sections = {
         lualine_c = {
