@@ -18,7 +18,7 @@ return {
     lazy = true,
     opts = {
       options = {
-        transparent = true,
+        transparent = false,
         inverse = { -- Inverse highlight for different types
           visual = true,
         },
@@ -30,7 +30,7 @@ return {
     lazy = true,
     name = "catppuccin",
     opts = {
-      transparent_background = true,
+      transparent_background = false,
       -- no_italic = true,
       styles = {
         comments = {},
@@ -44,7 +44,7 @@ return {
     "craftzdog/solarized-osaka.nvim",
     lazy = true,
     opts = {
-      transparent = true,
+      transparent = false,
       styles = {
         comments = { italic = false },
         keywords = { italic = true },
