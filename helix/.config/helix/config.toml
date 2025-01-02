@@ -1,4 +1,4 @@
-theme = "mocha_transparent"
+theme = "rose_pine_moon"
 
 [editor]
 scrolloff = 10
@@ -28,6 +28,7 @@ right = ["spinner", "spacer" ,"diagnostics", "file-encoding", "file-line-ending"
 [editor.whitespace.render]
 tab = "all"
 newline = "all"
+space = "all"
 
 [editor.indent-guides]
 render = true

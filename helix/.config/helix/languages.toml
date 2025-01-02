@@ -6,7 +6,7 @@ auto-format = false
 [language-server.pylsp.config.pylsp.plugins]
 flake8 = { enabled = true, ignore = ["E501"], maxLineLength = 79 }
 pycodestyle = { maxLineLength = 79 }
-yapf = { enabled = true }
+# yapf = { enabled = true }
 
 [language.formatter]
 command = "black"
