@@ -62,6 +62,14 @@ return {
       vim.g.mellow_italic_booleans = true
       vim.g.mellow_transparent = true
       vim.g.mellow_italic_comments = false
+
+      vim.g.mellow_highlight_overrides = {
+        ["LspReferenceText"] = { link = "IlluminatedWordText" },
+        ["LspReferenceRead"] = { link = "IlluminatedWordRead" },
+        ["LspReferenceWrite"] = { link = "IlluminatedWordWrite" },
+        ["Visual"] = { link = "IlluminatedWordText" },
+        ["VisualNOS"] = { link = "IlluminatedWordText" },
+      }
     end,
   },
   {

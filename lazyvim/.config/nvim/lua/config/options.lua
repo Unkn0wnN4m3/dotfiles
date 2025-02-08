@@ -1,3 +1,11 @@
+-- providers
+-- vim.cmd("let g:python3_host_prog = '~/.virtualenvs/neovim/bin/python3'")
+-- vim.cmd("let g:node_host_prog = '~/.binaries/neovim/node_modules/.bin/neovim-node-host'")
+vim.cmd("let g:loaded_python3_provider = 0")
+vim.cmd("let g:loaded_node_provider = 0")
+vim.cmd("let g:loaded_perl_provider = 0")
+vim.cmd("let g:loaded_ruby_provider = 0")
+
 -- general options
 local opt = vim.opt
 
@@ -9,12 +17,6 @@ opt.clipboard = "unnamed"
 
 vim.g.autoformat = false
 vim.g.snacks_animate = false
-
--- providers
--- vim.cmd("let g:python3_host_prog = '~/.virtualenvs/neovim/bin/python3'")
--- vim.cmd("let g:node_host_prog = '~/.binaries/neovim/node_modules/.bin/neovim-node-host'")
-vim.cmd("let g:loaded_perl_provider = 0")
-vim.cmd("let g:loaded_ruby_provider = 0")
 
 -- theme
 -- set dark or light background theme
