@@ -1,12 +1,12 @@
 return {
   {
     "nvim-lualine/lualine.nvim",
-    opts = function(_, opts)
-      opts.options = {
+    opts = {
+      options = {
         component_separators = "",
         section_separators = "",
-      }
-    end,
+      },
+    },
   },
   {
     "folke/snacks.nvim",
