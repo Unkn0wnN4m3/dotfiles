@@ -28,6 +28,7 @@ end
 
 -- lazyvim
 vim.g.lazyvim_python_lsp = "pyright"
+vim.g.lazyvim_picker = "telescope"
 
 vim.cmd([[
 		let &shell = executable('pwsh') ? 'pwsh' : 'powershell'

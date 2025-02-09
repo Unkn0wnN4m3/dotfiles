@@ -1,19 +1,5 @@
 return {
   {
-    "ellisonleao/gruvbox.nvim",
-    lazy = true,
-    opts = {
-      terminal_colors = true,
-      invert_selection = true,
-      transparent_mode = false,
-      italic = { strings = false },
-      overrides = {
-        WinBar = { bg = "None", bold = true },
-        WinBarNC = { bg = "None" },
-      },
-    },
-  },
-  {
     "EdenEast/nightfox.nvim",
     lazy = true,
     opts = {
@@ -60,7 +46,7 @@ return {
       vim.g.mellow_bold_functions = true
       vim.g.mellow_italic_keywords = true
       vim.g.mellow_italic_booleans = true
-      vim.g.mellow_transparent = true
+      vim.g.mellow_transparent = false
       vim.g.mellow_italic_comments = false
 
       vim.g.mellow_highlight_overrides = {
