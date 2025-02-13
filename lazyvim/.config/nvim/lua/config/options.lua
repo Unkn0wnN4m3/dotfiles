@@ -30,10 +30,22 @@ else
 end
 
 -- terminal
-vim.cmd([[
+if vim.fn.has("win32") or vim.fn.has("win64") then
+  vim.cmd([[
 		let &shell = executable('pwsh') ? 'pwsh' : 'powershell'
 		let &shellcmdflag = '-nol -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new();$PSDefaultParameterValues[''Out-File:Encoding'']=''utf8'';Remove-Alias -Force -ErrorAction SilentlyContinue tee;'
 		let &shellredir = '2>&1 | %%{ "$_" } | Out-File %s; exit $LastExitCode'
 		let &shellpipe  = '2>&1 | %%{ "$_" } | tee %s; exit $LastExitCode'
 		set shellquote= shellxquote=
-]])
+  ]])
+end
+
+if vim.g.neovide then
+  vim.o.guifont = "Maple Mono NF,JetBrainsMono Nerd Font Mono:h12:h12"
+  vim.g.neovide_transparency = 1.0
+  vim.g.neovide_normal_opacity = 1.0
+  vim.g.neovide_window_blurred = true
+  vim.g.neovide_remember_window_size = false
+  vim.g.neovide_hide_mouse_when_typing = true
+  vim.g.neovide_cursor_vfx_mode = "sonicboom"
+end
