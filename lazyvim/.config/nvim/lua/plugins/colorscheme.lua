@@ -17,6 +17,10 @@ return {
     name = "catppuccin",
     opts = {
       transparent_background = false,
+      background = { -- :h background
+        light = "latte",
+        dark = "macchiato",
+      },
       -- no_italic = true,
       styles = {
         comments = {},
