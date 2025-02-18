@@ -11,6 +11,12 @@ idle-timeout = 150
 true-color = true
 rulers = [80, 120]
 popup-border = "all"
+end-of-line-diagnostics = "warning"
+
+[editor.inline-diagnostics]
+# Minimum severity to show a diagnostic on the primary cursor's line.
+# Note that `cursor-line` diagnostics are hidden in insert mode.
+cursor-line = "error"
 
 [editor.cursor-shape]
 insert = "bar"

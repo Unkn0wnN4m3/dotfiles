@@ -2,12 +2,12 @@
 name = "python"
 language-servers = ["pylsp"]
 auto-format = false
+scope = "source.python"
+injection-regex = "py(thon)?"
+file-types = ["py", "pyi", "py3", "pyw", "ptl", "rpy", "cpy", "ipy", "pyt", { glob = ".python_history" }, { glob = ".pythonstartup" }, { glob = ".pythonrc" }, { glob = "SConstruct" }, { glob = "SConscript" }]
+shebangs = ["python", "uv"]
+roots = ["pyproject.toml", "setup.py", "poetry.lock", "pyrightconfig.json", "git"]
+comment-token = "#"
 
 [language-server.pylsp.config.pylsp.plugins]
-flake8 = { enabled = true, ignore = ["E501"], maxLineLength = 79 }
-pycodestyle = { maxLineLength = 79 }
-# yapf = { enabled = true }
-
-[language.formatter]
-command = "black"
-args = ["--line-length", "79", "--quiet", "-"]
+ruff = { enabled = true, formatEnabled = true, format = ["I"] }
