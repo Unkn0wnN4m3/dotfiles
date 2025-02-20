@@ -51,6 +51,9 @@ return {
   },
   {
     "b0o/incline.nvim",
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+    },
     event = "VeryLazy",
     config = function()
       local helpers = require("incline.helpers")
