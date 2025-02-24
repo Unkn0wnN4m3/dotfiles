@@ -12,8 +12,7 @@ vim.cmd("let g:loaded_ruby_provider = 0")
 local opt = vim.opt
 
 opt.path:append({ "**" })
-opt.wildignore:append({ "*/node_modules/*", "*.pyc", "*/__pycache__/*", ".git" })
-opt.colorcolumn = { "80", "120" }
+opt.wildignore:append({ "*/node_modules/*", "*.pyc", "*/__pycache__/*", ".git", "*/.ruff_cache/*" })
 opt.relativenumber = false
 opt.clipboard = "unnamed"
 

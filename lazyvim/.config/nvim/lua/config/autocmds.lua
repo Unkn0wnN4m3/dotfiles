@@ -9,30 +9,73 @@
 
 -- Only highlight current line for active window.
 -- see http://vim.wikia.com/wiki/Highlight_current_line
-vim.cmd([[
-  augroup CursorLine
-    au!
-    au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
-    au WinLeave * setlocal nocursorline
-  augroup END
-]])
 
--- Reset to vertical cursor when leave nvim on windws
-local reset_cursor = vim.api.nvim_create_augroup("resetcursor", { clear = true })
-vim.api.nvim_create_autocmd("VimLeave", {
-  desc = "Reset cursor from block to beam",
-  group = reset_cursor,
+-- set cursorline when entering a buffer
+local userAU_cursorline = vim.api.nvim_create_augroup("userUa_cursorLine", { clear = true })
+vim.api.nvim_create_autocmd({ "VimEnter", "WinEnter", "BufWinEnter" }, {
+  desc = "Only highlight current line for active window",
+  group = userAU_cursorline,
   callback = function()
-    vim.opt.guicursor = "a:ver10-blinkon1"
+    vim.api.nvim_set_option_value("cursorline", true, { scope = "local" })
+  end,
+})
+vim.api.nvim_create_autocmd("WinLeave", {
+  desc = "Only highlight current line for active window",
+  group = userAU_cursorline,
+  callback = function()
+    vim.api.nvim_set_option_value("cursorline", false, { scope = "local" })
   end,
 })
 
--- Fixes auto comment when <C-o>
-local fix_comments = vim.api.nvim_create_augroup("fixcomments", { clear = true })
-vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
-  desc = "If you are in a comment line, don't add new comment line after <C-o>",
-  group = fix_comments,
+-- Reset to vertical cursor when leave nvim on windws
+local userAU_resetcursor = vim.api.nvim_create_augroup("userAU_resetcursor", { clear = true })
+vim.api.nvim_create_autocmd("VimLeave", {
+  desc = "Reset cursor from block to beam",
+  group = userAU_resetcursor,
   callback = function()
-    vim.cmd("set formatoptions-=o")
+    -- vim.opt.guicursor = "a:ver10-blinkon1"
+    vim.api.nvim_set_option_value("guicursor", "a:ver10-blinkon1", { scope = "local" })
+  end,
+})
+
+-- set colorcolumn to {"80", "120"} for specific filetypes
+local userAU_colorcolumn = vim.api.nvim_create_augroup("userAU_colorcolumn", { clear = true })
+vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
+  desc = "Set colorcolumn to 80 and 120 on specific filetypes",
+  pattern = { "*.lua", "*.py", "*.c", "*.h", "*.ino", "*.cpp", "*.js", "*.ts" },
+  group = userAU_colorcolumn,
+  callback = function()
+    vim.api.nvim_set_option_value("colorcolumn", "80,120", { scope = "local" })
+  end,
+})
+
+-- Set relativenumber when entering insert mode
+local userAU_relativenu = vim.api.nvim_create_augroup("userAU_relativenu", { clear = true })
+vim.api.nvim_create_autocmd({ "InsertEnter" }, {
+  desc = "Set relativenumber",
+  group = userAU_relativenu,
+  callback = function()
+    if vim.api.nvim_get_option_value("number", { scope = "local" }) then
+      vim.api.nvim_set_option_value("relativenumber", false, { scope = "local" })
+    end
+  end,
+})
+vim.api.nvim_create_autocmd({ "InsertLeave", "VimEnter", "WinEnter", "BufWinEnter" }, {
+  desc = "Set relativenumber",
+  group = userAU_relativenu,
+  callback = function()
+    if vim.api.nvim_get_option_value("number", { scope = "local" }) then
+      vim.api.nvim_set_option_value("relativenumber", true, { scope = "local" })
+    end
+  end,
+})
+
+-- Disable auto comments when pressing o in normal mode
+local userUA_fixcomment = vim.api.nvim_create_augroup("userUA_fixcomment", { clear = true })
+vim.api.nvim_create_autocmd({ "InsertLeave" }, {
+  desc = "disable auto comments when pressing o in normal mode",
+  group = userUA_fixcomment,
+  callback = function()
+    vim.api.nvim_set_option_value("formatoptions", "jncrql", { scope = "local" })
   end,
 })
