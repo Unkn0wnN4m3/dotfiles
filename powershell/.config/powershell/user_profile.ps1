@@ -42,14 +42,14 @@ if ( -not ( $Env:FZF_DEFAULT_OPTS ) ) {
 
 # Functions
 foreach ($PFunction in Get-ChildItem "$CUSTOMPSHOME\functions") {
-  if ($PFunction.name -match "\*.ps1") {
+  if ($PFunction.name -match "\\*.ps1") {
     . $PFunction
   }
 }
 
 # conf
 foreach ($PConfig in Get-ChildItem "$CUSTOMPSHOME\conf") {
-  if ($PConfig.name -match "\*.ps1") {
+  if ($PConfig.name -match "\\*.ps1") {
     . $PConfig
   }
 }
