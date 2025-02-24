@@ -1,235 +1,16 @@
 {
-    "apps": [
-        {
-            "Version": "24.09",
-            "Updated": "2024-12-07T13:10:03.9247703-06:00",
-            "Source": "main",
-            "Info": "",
-            "Name": "7zip"
-        },
-        {
-            "Version": "0.25.0",
-            "Updated": "2025-01-09T20:20:20.6929758-06:00",
-            "Source": "main",
-            "Info": "",
-            "Name": "bat"
-        },
-        {
-            "Version": "1.0.4",
-            "Updated": "2024-08-09T16:48:09.52566-06:00",
-            "Source": "main",
-            "Info": "",
-            "Name": "btop"
-        },
-        {
-            "Version": "10.2.1",
-            "Updated": "2024-12-31T17:05:01.9172866-06:00",
-            "Source": "main",
-            "Info": "",
-            "Name": "croc"
-        },
-        {
-            "Version": "3.14",
-            "Updated": "2024-06-05T15:48:05.061808-06:00",
-            "Source": "main",
-            "Info": "",
-            "Name": "dark"
-        },
-        {
-            "Version": "13.19",
-            "Updated": "2025-02-16T14:33:19.0849382-06:00",
-            "Source": "main",
-            "Info": "",
-            "Name": "exiftool"
-        },
-        {
-            "Version": "0.20.21",
-            "Updated": "2025-02-16T14:33:21.0681727-06:00",
-            "Source": "main",
-            "Info": "",
-            "Name": "eza"
-        },
-        {
-            "Version": "2.36.1",
-            "Updated": "2025-02-16T14:33:23.6682325-06:00",
-            "Source": "main",
-            "Info": "",
-            "Name": "fastfetch"
-        },
-        {
-            "Version": "10.2.0",
-            "Updated": "2024-08-26T17:54:34.1316362-06:00",
-            "Source": "main",
-            "Info": "",
-            "Name": "fd"
-        },
-        {
-            "Version": "0.60.0",
-            "Updated": "2025-02-16T14:33:25.4516136-06:00",
-            "Source": "main",
-            "Info": "",
-            "Name": "fzf"
-        },
-        {
-            "Version": "25.01.1",
-            "Updated": "2025-01-23T17:18:21.2527345-06:00",
-            "Source": "main",
-            "Info": "",
-            "Name": "helix"
-        },
-        {
-            "Version": "1.19.0",
-            "Updated": "2024-11-16T12:48:42.4681591-06:00",
-            "Source": "main",
-            "Info": "",
-            "Name": "hyperfine"
-        },
-        {
-            "Version": "2.64.1",
-            "Updated": "2025-02-07T19:49:43.1399271-06:00",
-            "Source": "main",
-            "Info": "",
-            "Name": "innounp"
-        },
-        {
-            "Version": "3.3.0",
-            "Updated": "2024-11-21T13:57:52.7885531-06:00",
-            "Source": "nerd-fonts",
-            "Info": "",
-            "Name": "JetBrainsMono-NF-Mono"
-        },
-        {
-            "Version": "1.7.1",
-            "Updated": "2024-06-05T15:48:18.850198-06:00",
-            "Source": "main",
-            "Info": "",
-            "Name": "jq"
-        },
-        {
-            "Version": "0.46.0",
-            "Updated": "2025-02-16T14:33:28.3991115-06:00",
-            "Source": "extras",
-            "Info": "",
-            "Name": "lazygit"
-        },
-        {
-            "Version": "668",
-            "Updated": "2024-10-19T14:10:36.9322708-06:00",
-            "Source": "main",
-            "Info": "",
-            "Name": "less"
-        },
-        {
-            "Version": "5.1.5-52",
-            "Updated": "2025-02-07T20:48:23.3585826-06:00",
-            "Source": "main",
-            "Info": "",
-            "Name": "lua-for-windows"
-        },
-        {
-            "Version": "6.4",
-            "Updated": "2025-02-09T00:05:14.9873352-06:00",
-            "Source": "nerd-fonts",
-            "Info": "",
-            "Name": "Maple-Mono-NF"
-        },
-        {
-            "Version": "3.3.0",
-            "Updated": "2025-02-09T00:00:50.5156187-06:00",
-            "Source": "nerd-fonts",
-            "Info": "",
-            "Name": "Monaspace-NF"
-        },
-        {
-            "Version": "0.14.0",
-            "Updated": "2025-02-11T17:46:25.8020206-06:00",
-            "Source": "extras",
-            "Info": "",
-            "Name": "neovide"
-        },
-        {
-            "Version": "0.10.4",
-            "Updated": "2025-01-30T19:28:05.5388608-06:00",
-            "Source": "main",
-            "Info": "",
-            "Name": "neovim"
-        },
-        {
-            "Version": "22.14.0",
-            "Updated": "2025-02-16T14:33:44.1596288-06:00",
-            "Source": "main",
-            "Info": "",
-            "Name": "nodejs-lts"
-        },
-        {
-            "Version": "2.23.1",
-            "Updated": "2025-01-09T20:25:05.394621-06:00",
-            "Source": "extras",
-            "Info": "",
-            "Name": "onefetch"
-        },
-        {
-            "Version": "3.13.2",
-            "Updated": "2025-02-07T19:50:45.4149293-06:00",
-            "Source": "main",
-            "Info": "",
-            "Name": "python"
-        },
-        {
-            "Version": "14.1.1",
-            "Updated": "2024-09-11T12:23:48.8827537-06:00",
-            "Source": "main",
-            "Info": "",
-            "Name": "ripgrep"
-        },
-        {
-            "Version": "1.22.1",
-            "Updated": "2025-01-12T00:45:48.1719522-06:00",
-            "Source": "main",
-            "Info": "",
-            "Name": "starship"
-        },
-        {
-            "Version": "21.0.6-7.0.LTS",
-            "Updated": "2025-01-23T17:19:10.1350435-06:00",
-            "Source": "java",
-            "Info": "",
-            "Name": "temurin-lts-jre"
-        },
-        {
-            "Version": "0.6.0",
-            "Updated": "2025-02-16T14:33:49.3658559-06:00",
-            "Source": "main",
-            "Info": "",
-            "Name": "uv"
-        },
-        {
-            "Version": "0.13.0",
-            "Updated": "2025-01-03T23:26:11.1191796-06:00",
-            "Source": "main",
-            "Info": "",
-            "Name": "zig"
-        },
-        {
-            "Version": "0.9.7",
-            "Updated": "2025-02-16T14:33:50.4678687-06:00",
-            "Source": "main",
-            "Info": "",
-            "Name": "zoxide"
-        }
-    ],
     "buckets": [
         {
             "Name": "main",
             "Source": "https://github.com/ScoopInstaller/Main.git",
-            "Updated": "2025-02-16T14:26:52-06:00",
+            "Updated": "2025-02-23T14:27:35-06:00",
             "Manifests": 1382
         },
         {
             "Name": "extras",
             "Source": "https://github.com/ScoopInstaller/Extras",
-            "Updated": "2025-02-16T14:29:34-06:00",
-            "Manifests": 2128
+            "Updated": "2025-02-23T16:52:37-06:00",
+            "Manifests": 2130
         },
         {
             "Name": "nerd-fonts",
@@ -240,8 +21,248 @@
         {
             "Name": "java",
             "Source": "https://github.com/ScoopInstaller/Java",
-            "Updated": "2025-02-10T19:19:23-06:00",
+            "Updated": "2025-02-23T02:21:29-06:00",
             "Manifests": 296
+        }
+    ],
+    "apps": [
+        {
+            "Info": "",
+            "Updated": "2024-12-07T13:10:03.9247703-06:00",
+            "Source": "main",
+            "Name": "7zip",
+            "Version": "24.09"
+        },
+        {
+            "Info": "",
+            "Updated": "2025-01-09T20:20:20.6929758-06:00",
+            "Source": "main",
+            "Name": "bat",
+            "Version": "0.25.0"
+        },
+        {
+            "Info": "",
+            "Updated": "2024-08-09T16:48:09.52566-06:00",
+            "Source": "main",
+            "Name": "btop",
+            "Version": "1.0.4"
+        },
+        {
+            "Info": "",
+            "Updated": "2024-12-31T17:05:01.9172866-06:00",
+            "Source": "main",
+            "Name": "croc",
+            "Version": "10.2.1"
+        },
+        {
+            "Info": "",
+            "Updated": "2024-06-05T15:48:05.061808-06:00",
+            "Source": "main",
+            "Name": "dark",
+            "Version": "3.14"
+        },
+        {
+            "Info": "",
+            "Updated": "2025-02-23T18:28:44.9439754-06:00",
+            "Source": "main",
+            "Name": "exiftool",
+            "Version": "13.21"
+        },
+        {
+            "Info": "",
+            "Updated": "2025-02-23T18:28:56.6920045-06:00",
+            "Source": "main",
+            "Name": "eza",
+            "Version": "0.20.22"
+        },
+        {
+            "Info": "",
+            "Updated": "2025-02-23T18:28:58.6349913-06:00",
+            "Source": "main",
+            "Name": "fastfetch",
+            "Version": "2.37.0"
+        },
+        {
+            "Info": "",
+            "Updated": "2024-08-26T17:54:34.1316362-06:00",
+            "Source": "main",
+            "Name": "fd",
+            "Version": "10.2.0"
+        },
+        {
+            "Info": "",
+            "Updated": "2025-02-23T18:29:00.1883452-06:00",
+            "Source": "main",
+            "Name": "fzf",
+            "Version": "0.60.2"
+        },
+        {
+            "Info": "",
+            "Updated": "2025-01-23T17:18:21.2527345-06:00",
+            "Source": "main",
+            "Name": "helix",
+            "Version": "25.01.1"
+        },
+        {
+            "Info": "",
+            "Updated": "2024-11-16T12:48:42.4681591-06:00",
+            "Source": "main",
+            "Name": "hyperfine",
+            "Version": "1.19.0"
+        },
+        {
+            "Info": "",
+            "Updated": "2025-02-07T19:49:43.1399271-06:00",
+            "Source": "main",
+            "Name": "innounp",
+            "Version": "2.64.1"
+        },
+        {
+            "Info": "",
+            "Updated": "2024-11-21T13:57:52.7885531-06:00",
+            "Source": "nerd-fonts",
+            "Name": "JetBrainsMono-NF-Mono",
+            "Version": "3.3.0"
+        },
+        {
+            "Info": "",
+            "Updated": "2024-06-05T15:48:18.850198-06:00",
+            "Source": "main",
+            "Name": "jq",
+            "Version": "1.7.1"
+        },
+        {
+            "Info": "",
+            "Updated": "2025-02-23T18:29:03.6522759-06:00",
+            "Source": "extras",
+            "Name": "lazygit",
+            "Version": "0.47.1"
+        },
+        {
+            "Info": "",
+            "Updated": "2024-10-19T14:10:36.9322708-06:00",
+            "Source": "main",
+            "Name": "less",
+            "Version": "668"
+        },
+        {
+            "Info": "",
+            "Updated": "2025-02-07T20:48:23.3585826-06:00",
+            "Source": "main",
+            "Name": "lua-for-windows",
+            "Version": "5.1.5-52"
+        },
+        {
+            "Info": "",
+            "Updated": "2025-02-09T00:05:14.9873352-06:00",
+            "Source": "nerd-fonts",
+            "Name": "Maple-Mono-NF",
+            "Version": "6.4"
+        },
+        {
+            "Info": "",
+            "Updated": "2025-02-09T00:00:50.5156187-06:00",
+            "Source": "nerd-fonts",
+            "Name": "Monaspace-NF",
+            "Version": "3.3.0"
+        },
+        {
+            "Info": "",
+            "Updated": "2025-02-23T18:29:09.2415774-06:00",
+            "Source": "extras",
+            "Name": "neovide",
+            "Version": "0.14.1"
+        },
+        {
+            "Info": "",
+            "Updated": "2025-01-30T19:28:05.5388608-06:00",
+            "Source": "main",
+            "Name": "neovim",
+            "Version": "0.10.4"
+        },
+        {
+            "Info": "",
+            "Updated": "2025-02-16T14:33:44.1596288-06:00",
+            "Source": "main",
+            "Name": "nodejs-lts",
+            "Version": "22.14.0"
+        },
+        {
+            "Info": "",
+            "Updated": "2025-02-23T17:21:25.8140634-06:00",
+            "Source": "main",
+            "Name": "oh-my-posh",
+            "Version": "24.19.0"
+        },
+        {
+            "Info": "",
+            "Updated": "2025-01-09T20:25:05.394621-06:00",
+            "Source": "extras",
+            "Name": "onefetch",
+            "Version": "2.23.1"
+        },
+        {
+            "Info": "",
+            "Updated": "2025-02-07T19:50:45.4149293-06:00",
+            "Source": "main",
+            "Name": "python",
+            "Version": "3.13.2"
+        },
+        {
+            "Info": "",
+            "Updated": "2024-09-11T12:23:48.8827537-06:00",
+            "Source": "main",
+            "Name": "ripgrep",
+            "Version": "14.1.1"
+        },
+        {
+            "Info": "",
+            "Updated": "2025-02-22T20:19:28.1876272-06:00",
+            "Source": "main",
+            "Name": "sqlite",
+            "Version": "3.49.1"
+        },
+        {
+            "Info": "",
+            "Updated": "2025-01-12T00:45:48.1719522-06:00",
+            "Source": "main",
+            "Name": "starship",
+            "Version": "1.22.1"
+        },
+        {
+            "Info": "",
+            "Updated": "2025-02-18T15:52:22.0766939-06:00",
+            "Source": "main",
+            "Name": "taplo",
+            "Version": "0.9.3"
+        },
+        {
+            "Info": "",
+            "Updated": "2025-01-23T17:19:10.1350435-06:00",
+            "Source": "java",
+            "Name": "temurin-lts-jre",
+            "Version": "21.0.6-7.0.LTS"
+        },
+        {
+            "Info": "",
+            "Updated": "2025-02-23T18:29:15.2614545-06:00",
+            "Source": "main",
+            "Name": "uv",
+            "Version": "0.6.2"
+        },
+        {
+            "Info": "",
+            "Updated": "2025-01-03T23:26:11.1191796-06:00",
+            "Source": "main",
+            "Name": "zig",
+            "Version": "0.13.0"
+        },
+        {
+            "Info": "",
+            "Updated": "2025-02-16T14:33:50.4678687-06:00",
+            "Source": "main",
+            "Name": "zoxide",
+            "Version": "0.9.7"
         }
     ]
 }
