@@ -1,14 +1,11 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2025-02-16T19:25:26.716-00:00",
+	"CreationDate" : "2025-02-23T18:32:04.973-00:00",
 	"Sources" : 
 	[
 		{
 			"Packages" : 
 			[
-				{
-					"PackageIdentifier" : "Docker.DockerDesktop"
-				},
 				{
 					"PackageIdentifier" : "Git.Git"
 				},
@@ -19,13 +16,7 @@
 					"PackageIdentifier" : "SublimeHQ.SublimeText.4"
 				},
 				{
-					"PackageIdentifier" : "IDRIX.VeraCrypt"
-				},
-				{
 					"PackageIdentifier" : "GitHub.cli"
-				},
-				{
-					"PackageIdentifier" : "AnalogDevices.LTspice"
 				},
 				{
 					"PackageIdentifier" : "KeePassXCTeam.KeePassXC"
@@ -43,16 +34,19 @@
 					"PackageIdentifier" : "PuTTY.PuTTY"
 				},
 				{
+					"PackageIdentifier" : "AnalogDevices.LTspice"
+				},
+				{
 					"PackageIdentifier" : "Brave.Brave"
 				},
 				{
 					"PackageIdentifier" : "Cryptomator.Cryptomator"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x64"
+					"PackageIdentifier" : "WinFsp.WinFsp"
 				},
 				{
-					"PackageIdentifier" : "WinFsp.WinFsp"
+					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x64"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x86"
@@ -70,6 +64,9 @@
 					"PackageIdentifier" : "Vivaldi.Vivaldi"
 				},
 				{
+					"PackageIdentifier" : "RedHat.Podman-Desktop"
+				},
+				{
 					"PackageIdentifier" : "Obsidian.Obsidian"
 				},
 				{
@@ -80,7 +77,7 @@
 				},
 				{
 					"PackageIdentifier" : "Microsoft.PowerToys"
-				},
+				}
 			],
 			"SourceDetails" : 
 			{
