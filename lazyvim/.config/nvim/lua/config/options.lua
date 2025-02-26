@@ -14,7 +14,7 @@ local opt = vim.opt
 opt.path:append({ "**" })
 opt.wildignore:append({ "*/node_modules/*", "*.pyc", "*/__pycache__/*", ".git", "*/.ruff_cache/*" })
 opt.relativenumber = false
-opt.clipboard = "unnamed"
+opt.spelllang = { "en", "es" }
 
 -- lazyvim
 vim.g.autoformat = false
