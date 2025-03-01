@@ -2,6 +2,9 @@ if ( -not ( Get-Module PSReadLine -ErrorAction SilentlyContinue ) ) {
     return
 }
 
+# using namespace System.Management.Automation
+# using namespace System.Management.Automation.Language
+
 ### Beginning PSReadline configuration
 
 Set-PSReadLineOption -EditMode Vi
