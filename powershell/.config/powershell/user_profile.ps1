@@ -55,11 +55,12 @@ foreach ($PConfig in Get-ChildItem "$CUSTOMPSHOME\conf") {
 }
 
 # Alias
-function __SHL { param( $path ) Get-ChildItem -Path $path | Format-Wide -AutoSize }
+function __TOUCH { param([Parameter(ValueFromRemainingArguments=$true)]$args) Get-ChildItem -Path $args | Format-Wide -AutoSize }
 function __CUSTOM_BAT { param( $path ) if (Get-Command bat -ErrorAction SilentlyContinue) { bat -p $path } else { cat $path } }
-function __TOUCH { param($path) New-Item -ItemType File -Path $path }
-function __EXALS { param( $path ) eza -F --icons --group-directories-first $path }
-function __EXALA { param( $path ) eza -lahF --icons --group-directories-first $path }
+function __TOUCH { param([Parameter(ValueFromRemainingArguments=$true)]$args) & New-Item -ItemType File -Path $args }
+function __EXALS { param([Parameter(ValueFromRemainingArguments=$true)]$args) & eza -F --icons --group-directories-first $args }
+function __EXALA { param([Parameter(ValueFromRemainingArguments=$true)]$args) & eza -lahF --icons --group-directories-first $args }
+function __NE { param([Parameter(ValueFromRemainingArguments=$true)]$args) & neovide --size=1480x850 $args }
 
 if (Get-Command eza -ErrorAction SilentlyContinue) {
   Set-Alias -Name ls -Value __EXALS
@@ -76,4 +77,4 @@ Set-Alias -Name lg -Value lazygit
 Set-Alias -Name cat -Value __CUSTOM_BAT
 Set-Alias -Name touch -Value __TOUCH
 Set-Alias -Name subl -Value 'C:\Program Files\Sublime Text\subl.exe'
-Set-Alias -Name ne -Value neovide
+Set-Alias -Name ne -Value __NE
