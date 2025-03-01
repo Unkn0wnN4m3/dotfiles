@@ -1,268 +1,282 @@
 {
-    "buckets": [
-        {
-            "Name": "main",
-            "Source": "https://github.com/ScoopInstaller/Main.git",
-            "Updated": "2025-02-23T14:27:35-06:00",
-            "Manifests": 1382
-        },
-        {
-            "Name": "extras",
-            "Source": "https://github.com/ScoopInstaller/Extras",
-            "Updated": "2025-02-23T16:52:37-06:00",
-            "Manifests": 2130
-        },
-        {
-            "Name": "nerd-fonts",
-            "Source": "https://github.com/matthewjberger/scoop-nerd-fonts",
-            "Updated": "2025-02-12T04:55:42-06:00",
-            "Manifests": 360
-        },
-        {
-            "Name": "java",
-            "Source": "https://github.com/ScoopInstaller/Java",
-            "Updated": "2025-02-23T02:21:29-06:00",
-            "Manifests": 296
-        }
-    ],
     "apps": [
         {
             "Info": "",
             "Updated": "2024-12-07T13:10:03.9247703-06:00",
-            "Source": "main",
             "Name": "7zip",
+            "Source": "main",
             "Version": "24.09"
         },
         {
             "Info": "",
             "Updated": "2025-01-09T20:20:20.6929758-06:00",
-            "Source": "main",
             "Name": "bat",
+            "Source": "main",
             "Version": "0.25.0"
         },
         {
             "Info": "",
             "Updated": "2024-08-09T16:48:09.52566-06:00",
-            "Source": "main",
             "Name": "btop",
+            "Source": "main",
             "Version": "1.0.4"
         },
         {
             "Info": "",
             "Updated": "2024-12-31T17:05:01.9172866-06:00",
-            "Source": "main",
             "Name": "croc",
+            "Source": "main",
             "Version": "10.2.1"
         },
         {
             "Info": "",
             "Updated": "2024-06-05T15:48:05.061808-06:00",
-            "Source": "main",
             "Name": "dark",
+            "Source": "main",
             "Version": "3.14"
         },
         {
             "Info": "",
             "Updated": "2025-02-23T18:28:44.9439754-06:00",
-            "Source": "main",
             "Name": "exiftool",
+            "Source": "main",
             "Version": "13.21"
         },
         {
             "Info": "",
-            "Updated": "2025-02-23T18:28:56.6920045-06:00",
-            "Source": "main",
+            "Updated": "2025-02-27T15:47:39.6177277-06:00",
             "Name": "eza",
-            "Version": "0.20.22"
+            "Source": "main",
+            "Version": "0.20.23"
         },
         {
             "Info": "",
             "Updated": "2025-02-23T18:28:58.6349913-06:00",
-            "Source": "main",
             "Name": "fastfetch",
+            "Source": "main",
             "Version": "2.37.0"
         },
         {
             "Info": "",
             "Updated": "2024-08-26T17:54:34.1316362-06:00",
-            "Source": "main",
             "Name": "fd",
+            "Source": "main",
             "Version": "10.2.0"
         },
         {
             "Info": "",
             "Updated": "2025-02-23T18:29:00.1883452-06:00",
-            "Source": "main",
             "Name": "fzf",
+            "Source": "main",
             "Version": "0.60.2"
         },
         {
             "Info": "",
-            "Updated": "2025-01-23T17:18:21.2527345-06:00",
+            "Updated": "2025-02-27T08:24:33.0656298-06:00",
+            "Name": "go-sqlcmd",
             "Source": "main",
+            "Version": "1.6.0"
+        },
+        {
+            "Info": "",
+            "Updated": "2025-01-23T17:18:21.2527345-06:00",
             "Name": "helix",
+            "Source": "main",
             "Version": "25.01.1"
         },
         {
             "Info": "",
             "Updated": "2024-11-16T12:48:42.4681591-06:00",
-            "Source": "main",
             "Name": "hyperfine",
+            "Source": "main",
             "Version": "1.19.0"
         },
         {
             "Info": "",
-            "Updated": "2025-02-07T19:49:43.1399271-06:00",
-            "Source": "main",
+            "Updated": "2025-02-27T15:47:43.7909312-06:00",
             "Name": "innounp",
-            "Version": "2.64.1"
+            "Source": "main",
+            "Version": "2.64.2"
         },
         {
             "Info": "",
             "Updated": "2024-11-21T13:57:52.7885531-06:00",
-            "Source": "nerd-fonts",
             "Name": "JetBrainsMono-NF-Mono",
+            "Source": "nerd-fonts",
             "Version": "3.3.0"
         },
         {
             "Info": "",
             "Updated": "2024-06-05T15:48:18.850198-06:00",
-            "Source": "main",
             "Name": "jq",
+            "Source": "main",
             "Version": "1.7.1"
         },
         {
             "Info": "",
-            "Updated": "2025-02-23T18:29:03.6522759-06:00",
-            "Source": "extras",
+            "Updated": "2025-02-25T21:31:15.3112944-06:00",
             "Name": "lazygit",
-            "Version": "0.47.1"
+            "Source": "extras",
+            "Version": "0.47.2"
         },
         {
             "Info": "",
             "Updated": "2024-10-19T14:10:36.9322708-06:00",
-            "Source": "main",
             "Name": "less",
+            "Source": "main",
             "Version": "668"
         },
         {
             "Info": "",
             "Updated": "2025-02-07T20:48:23.3585826-06:00",
-            "Source": "main",
             "Name": "lua-for-windows",
+            "Source": "main",
             "Version": "5.1.5-52"
         },
         {
             "Info": "",
             "Updated": "2025-02-09T00:05:14.9873352-06:00",
-            "Source": "nerd-fonts",
             "Name": "Maple-Mono-NF",
+            "Source": "nerd-fonts",
             "Version": "6.4"
         },
         {
             "Info": "",
             "Updated": "2025-02-09T00:00:50.5156187-06:00",
-            "Source": "nerd-fonts",
             "Name": "Monaspace-NF",
+            "Source": "nerd-fonts",
             "Version": "3.3.0"
         },
         {
             "Info": "",
             "Updated": "2025-02-23T18:29:09.2415774-06:00",
-            "Source": "extras",
             "Name": "neovide",
+            "Source": "extras",
             "Version": "0.14.1"
         },
         {
             "Info": "",
             "Updated": "2025-01-30T19:28:05.5388608-06:00",
-            "Source": "main",
             "Name": "neovim",
+            "Source": "main",
             "Version": "0.10.4"
         },
         {
             "Info": "",
             "Updated": "2025-02-16T14:33:44.1596288-06:00",
-            "Source": "main",
             "Name": "nodejs-lts",
+            "Source": "main",
             "Version": "22.14.0"
         },
         {
-            "Info": "",
-            "Updated": "2025-02-23T17:21:25.8140634-06:00",
-            "Source": "main",
+            "Info": "Held package",
+            "Updated": "2025-02-27T15:48:19.5055288-06:00",
             "Name": "oh-my-posh",
-            "Version": "24.19.0"
+            "Source": "main",
+            "Version": "25.0.0"
         },
         {
             "Info": "",
             "Updated": "2025-01-09T20:25:05.394621-06:00",
-            "Source": "extras",
             "Name": "onefetch",
+            "Source": "extras",
             "Version": "2.23.1"
         },
         {
             "Info": "",
             "Updated": "2025-02-07T19:50:45.4149293-06:00",
-            "Source": "main",
             "Name": "python",
+            "Source": "main",
             "Version": "3.13.2"
         },
         {
             "Info": "",
             "Updated": "2024-09-11T12:23:48.8827537-06:00",
-            "Source": "main",
             "Name": "ripgrep",
+            "Source": "main",
             "Version": "14.1.1"
         },
         {
             "Info": "",
             "Updated": "2025-02-22T20:19:28.1876272-06:00",
-            "Source": "main",
             "Name": "sqlite",
+            "Source": "main",
             "Version": "3.49.1"
         },
         {
             "Info": "",
             "Updated": "2025-01-12T00:45:48.1719522-06:00",
-            "Source": "main",
             "Name": "starship",
+            "Source": "main",
             "Version": "1.22.1"
         },
         {
             "Info": "",
             "Updated": "2025-02-18T15:52:22.0766939-06:00",
-            "Source": "main",
             "Name": "taplo",
+            "Source": "main",
             "Version": "0.9.3"
         },
         {
             "Info": "",
-            "Updated": "2025-01-23T17:19:10.1350435-06:00",
-            "Source": "java",
+            "Updated": "2025-02-27T08:19:41.2945894-06:00",
             "Name": "temurin-lts-jre",
+            "Source": "java",
             "Version": "21.0.6-7.0.LTS"
         },
         {
             "Info": "",
-            "Updated": "2025-02-23T18:29:15.2614545-06:00",
-            "Source": "main",
+            "Updated": "2025-02-25T21:31:19.2887825-06:00",
             "Name": "uv",
-            "Version": "0.6.2"
+            "Source": "main",
+            "Version": "0.6.3"
+        },
+        {
+            "Info": "",
+            "Updated": "2025-02-27T15:48:40.3520066-06:00",
+            "Name": "wezterm",
+            "Source": "extras",
+            "Version": "20240203-110809-5046fc22"
         },
         {
             "Info": "",
             "Updated": "2025-01-03T23:26:11.1191796-06:00",
-            "Source": "main",
             "Name": "zig",
+            "Source": "main",
             "Version": "0.13.0"
         },
         {
             "Info": "",
             "Updated": "2025-02-16T14:33:50.4678687-06:00",
-            "Source": "main",
             "Name": "zoxide",
+            "Source": "main",
             "Version": "0.9.7"
+        }
+    ],
+    "buckets": [
+        {
+            "Name": "main",
+            "Source": "https://github.com/ScoopInstaller/Main.git",
+            "Updated": "2025-02-28T22:30:12-06:00",
+            "Manifests": 1383
+        },
+        {
+            "Name": "extras",
+            "Source": "https://github.com/ScoopInstaller/Extras",
+            "Updated": "2025-02-28T22:31:59-06:00",
+            "Manifests": 2132
+        },
+        {
+            "Name": "nerd-fonts",
+            "Source": "https://github.com/matthewjberger/scoop-nerd-fonts",
+            "Updated": "2025-02-25T04:23:58-06:00",
+            "Manifests": 360
+        },
+        {
+            "Name": "java",
+            "Source": "https://github.com/ScoopInstaller/Java",
+            "Updated": "2025-02-27T19:22:16-06:00",
+            "Manifests": 296
         }
     ]
 }
