@@ -1,17 +1,5 @@
 return {
   {
-    "EdenEast/nightfox.nvim",
-    lazy = true,
-    opts = {
-      options = {
-        transparent = false,
-        inverse = { -- Inverse highlight for different types
-          visual = true,
-        },
-      },
-    },
-  },
-  {
     "catppuccin/nvim",
     lazy = true,
     name = "catppuccin",
@@ -44,21 +32,29 @@ return {
     },
   },
   {
-    "dgox16/oldworld.nvim",
+    "rose-pine/neovim",
     lazy = true,
+    name = "rose-pine",
     opts = {
-      styles = {
-        keywords = { italic = true },
-        functions = { bold = true },
-        booleans = { italic = true },
-      },
-      highlight_overrides = {
-        LspReferenceText = { link = "IlluminatedWordText" },
-        LspReferenceRead = { link = "IlluminatedWordRead" },
-        LspReferenceWrite = { link = "IlluminatedWordWrite" },
-      },
+      dark_variant = "moon",
     },
   },
+  -- {
+  --   "dgox16/oldworld.nvim",
+  --   lazy = true,
+  --   opts = {
+  --     styles = {
+  --       keywords = { italic = true },
+  --       functions = { bold = true },
+  --       booleans = { italic = true },
+  --     },
+  --     highlight_overrides = {
+  --       LspReferenceText = { link = "IlluminatedWordText" },
+  --       LspReferenceRead = { link = "IlluminatedWordRead" },
+  --       LspReferenceWrite = { link = "IlluminatedWordWrite" },
+  --     },
+  --   },
+  -- },
   -- {
   --   "mellow-theme/mellow.nvim",
   --   lazy = true,

@@ -42,7 +42,7 @@ end
 if vim.g.neovide then
   vim.o.guifont = "Maple Mono NF,JetBrainsMono Nerd Font Mono:h12:h12"
   vim.g.neovide_transparency = 1.0
-  vim.g.neovide_normal_opacity = 1.0
+  -- vim.g.neovide_normal_opacity = 0.95
   vim.g.neovide_window_blurred = true
   vim.g.neovide_remember_window_size = false
   vim.g.neovide_hide_mouse_when_typing = true
