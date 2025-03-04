@@ -27,7 +27,7 @@ function M.apply_to_config(config)
 	config.disable_default_key_bindings = true
 	config.use_fancy_tab_bar = false
 	config.tab_bar_at_bottom = true
-	config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1000 }
+	config.leader = { key = "b", mods = "CTRL", timeout_milliseconds = 1000 }
 	config.adjust_window_size_when_changing_font_size = false
 	config.enable_kitty_graphics = true
 	-- config.window_background_opacity = 0.95

@@ -82,8 +82,8 @@ return {
 		action = wezterm.action.ToggleFullScreen,
 	},
 	{
-		key = "mapped:a",
+		key = "mapped:b",
 		mods = "LEADER|CTRL",
-		action = act.SendKey({ key = "a", mods = "CTRL" }),
+		action = act.SendKey({ key = "b", mods = "CTRL" }),
 	},
 }
