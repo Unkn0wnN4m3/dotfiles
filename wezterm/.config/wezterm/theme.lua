@@ -16,7 +16,7 @@ function M.apply_to_config(config)
 		if color_scheme == "catppuccin" then
 			catppuccin.apply_to_config(config, {
 				sync = false,
-				flavor = "macciato",
+				flavor = "macchiato",
 			})
 		elseif color_scheme == "rose-pine" then
 			config.colors = rose_pine.moon.colors()
