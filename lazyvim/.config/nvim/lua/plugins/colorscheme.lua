@@ -37,6 +37,7 @@ return {
     name = "rose-pine",
     opts = {
       dark_variant = "moon",
+      dim_inactive_windows = true,
     },
   },
   -- {
@@ -76,22 +77,8 @@ return {
   -- },
   {
     "LazyVim/LazyVim",
-    opts = function()
-      local t = vim.env.NVIM_THEME
-      local status, _ = pcall(require, t)
-      local theme
-
-      if not status then
-        theme = "catppuccin"
-      else
-        theme = t
-      end
-
-      local opts = {
-        colorscheme = theme,
-      }
-
-      return opts
-    end,
+    opts = {
+      colorscheme = vim.env.NVIM_THEME or "catppuccin",
+    },
   },
 }
