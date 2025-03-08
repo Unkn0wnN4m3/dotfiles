@@ -4,6 +4,7 @@ local M = {}
 
 function M.apply_to_config(config)
 	-- Basic configuration
+	config.automatically_reload_config = true
 
 	if wezterm.target_triple == "x86_64-pc-windows-msvc" then
 		config.default_prog = { "pwsh.exe", "-NoLogo" }
