@@ -18,8 +18,8 @@ return {
 		mods = "LEADER|SHIFT",
 		action = act.CloseCurrentTab({ confirm = true }),
 	},
-	{ key = "mapped:}", mods = "LEADER|SHIFT", action = act.ActivateTabRelative(-1) },
-	{ key = "mapped:{", mods = "LEADER|SHIFT", action = act.ActivateTabRelative(1) },
+	{ key = "mapped:p", mods = "LEADER", action = act.ActivateTabRelative(-1) },
+	{ key = "mapped:n", mods = "LEADER", action = act.ActivateTabRelative(1) },
 	{
 		key = "mapped:|",
 		mods = "LEADER|SHIFT",
