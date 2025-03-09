@@ -1,53 +1,72 @@
+local function check_indentation()
+  -- from Copilot
+  local space_indent = false
+  local tab_indent = false
+  local tabstop_size = vim.api.nvim_get_option_value("tabstop", { buf = 0 })
+
+  for _, line in ipairs(vim.api.nvim_buf_get_lines(0, 0, -1, false)) do
+    if line:find("^%s") then
+      if line:find("^\t") then
+        tab_indent = true
+      elseif line:find("^ +") then
+        space_indent = true
+      end
+    end
+    if space_indent and tab_indent then
+      break
+    end
+  end
+
+  if space_indent and tab_indent then
+    return "mixed"
+  elseif space_indent then
+    return "spc:" .. tabstop_size
+  elseif tab_indent then
+    return "tab:" .. tabstop_size
+  else
+    return ""
+  end
+end
+
 return {
   {
     "nvim-lualine/lualine.nvim",
-    opts = {
-      options = {
-        component_separators = "",
-        section_separators = "",
-      },
-    },
+    opts = function(_, opts)
+      opts.options.component_separators = ""
+      opts.options.section_separators = ""
+      opts.sections.lualine_y = {
+        { check_indentation, padding = { left = 1, right = 1 } },
+        { "progress", padding = { left = 0, right = 1 } },
+      }
+      opts.sections.lualine_z = { { "location", padding = { left = 1, right = 1 } } }
+    end,
   },
   {
     "folke/snacks.nvim",
-    opts = {
-      dashboard = {
-        preset = {
-          header = [[
+    opts = function(_, opts)
+      opts.dashboard.preset.header = [[
+
    ██╗  ██╗ █████╗ ██╗  ██╗███╗   ███╗ ██████╗██╗  ██╗███╗   ██╗
    ██║  ██║██╔══██╗██║ ██╔╝████╗ ████║██╔════╝██║  ██║████╗  ██║
    ███████║███████║█████╔╝ ██╔████╔██║██║     ███████║██╔██╗ ██║
    ██╔══██║██╔══██║██╔═██╗ ██║╚██╔╝██║██║     ██╔══██║██║╚██╗██║
    ██║  ██║██║  ██║██║  ██╗██║ ╚═╝ ██║╚██████╗██║  ██║██║ ╚████║
    ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝     ╚═╝ ╚═════╝╚═╝  ╚═╝╚═╝  ╚═══╝
-        ]],
-        },
-        sections = {
-          { section = "header" },
-          { icon = " ", title = "Keymaps", section = "keys", indent = 2, padding = 1 },
-          { icon = " ", title = "Recent Files", section = "recent_files", indent = 2, padding = 1 },
-          { icon = " ", title = "Projects", section = "projects", indent = 2, padding = 1 },
-          { section = "startup" },
-        },
-      },
-    },
-  },
-  {
-    "rcarriga/nvim-notify",
-    opts = {
-      timeout = 10000,
-    },
+      ]]
+      opts.dashboard.sections = {
+        { section = "header" },
+        { icon = " ", title = "Keymaps", section = "keys", indent = 2, padding = 1 },
+        { icon = " ", title = "Recent Files", section = "recent_files", indent = 2, padding = 1 },
+        { icon = " ", title = "Projects", section = "projects", indent = 2, padding = 1 },
+        { section = "startup" },
+      }
+    end,
   },
   {
     "folke/noice.nvim",
-    opts = {
-      presets = {
-        bottom_search = true,
-        command_palette = true,
-        long_message_to_split = true,
-        lsp_doc_border = true,
-      },
-    },
+    opts = function(_, opts)
+      opts.presets.lsp_doc_border = true
+    end,
   },
   {
     "b0o/incline.nvim",

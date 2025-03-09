@@ -1,11 +1,9 @@
 return {
   {
     "saghen/blink.cmp",
-    opts = {
-      keymap = {
-        preset = "default",
-      },
-    },
+    opts = function(_, opts)
+      opts.keymap.preset = "default"
+    end,
   },
   {
     "tpope/vim-fugitive",

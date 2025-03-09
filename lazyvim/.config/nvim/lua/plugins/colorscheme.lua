@@ -38,6 +38,12 @@ return {
     opts = {
       dark_variant = "moon",
       dim_inactive_windows = true,
+      styles = {
+        italic = false,
+      },
+      highlight_groups = {
+        Boolean = { italic = true },
+      },
     },
   },
   -- {
