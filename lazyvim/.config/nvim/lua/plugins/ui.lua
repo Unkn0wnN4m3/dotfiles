@@ -4,7 +4,11 @@ local function check_indentation()
   local tab_indent = false
   local tabstop_size = vim.api.nvim_get_option_value("tabstop", { buf = 0 })
 
-  for _, line in ipairs(vim.api.nvim_buf_get_lines(0, 0, -1, false)) do
+  -- limits to the first 500 lines for better performance
+  local max_lines = 500
+  local lines = vim.api.nvim_buf_get_lines(0, 0, max_lines, false)
+
+  for _, line in ipairs(lines) do
     if line:find("^%s") then
       if line:find("^\t") then
         tab_indent = true
@@ -24,7 +28,7 @@ local function check_indentation()
   elseif tab_indent then
     return "tab:" .. tabstop_size
   else
-    return ""
+    return "none"
   end
 end
 
