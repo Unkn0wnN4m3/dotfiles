@@ -7,13 +7,24 @@ function M.apply_to_config(config)
 	config.automatically_reload_config = true
 
 	if wezterm.target_triple == "x86_64-pc-windows-msvc" then
-		config.default_prog = { "pwsh.exe", "-NoLogo" }
+		local success, _ = wezterm.run_child_process({ "where", "pwsh" })
+		if success then
+			config.default_prog = { "pwsh", "-NoLogo" }
+		end
+	elseif wezterm.target_triple == "x86_64-unknown-linux-gnu" then
+		local success, _ = wezterm.run_child_process({ "which", "zsh" })
+		if success then
+			config.default_prog = { "zsh" }
+		end
 	end
 
 	config.font = wezterm.font_with_fallback({
 		"Maple Mono NF",
 		"JetBrainsMono Nerd Font Mono",
 		"Consolas",
+		"Ubuntu",
+		"DejaVu Sans Mono",
+		"Liberation Mono",
 	})
 	config.font_size = 12
 	config.text_background_opacity = 1.0
