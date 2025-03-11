@@ -2,11 +2,14 @@
 -- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
 -- Add any additional options here
 
+-- lazyvim
+vim.g.autoformat = false
+vim.g.snacks_animate = false
+
 -- providers
-vim.cmd("let g:loaded_python3_provider = 0")
-vim.cmd("let g:loaded_node_provider = 0")
-vim.cmd("let g:loaded_perl_provider = 0")
-vim.cmd("let g:loaded_ruby_provider = 0")
+vim.g.loaded_node_provider = 0
+vim.g.loaded_ruby_provider = 0
+vim.g.loaded_perl_provider = 0
 
 -- general options
 local opt = vim.opt
@@ -16,20 +19,12 @@ opt.wildignore:append({ "*/node_modules/*", "*.pyc", "*/__pycache__/*", ".git", 
 opt.relativenumber = false
 opt.spelllang = { "en", "es" }
 
--- lazyvim
-vim.g.autoformat = false
-vim.g.snacks_animate = false
-
--- theme
--- set dark or light background theme
-if vim.env.NVIM_BACKGROUND == "light" then
-  opt.background = "light"
-else
-  opt.background = "dark"
-end
-
--- terminal
+-- windows config
 if vim.fn.has("win32") or vim.fn.has("win64") then
+  -- providers
+  vim.g.python3_host_prog = vim.env.HOME .. "/.virtualenvs/nvim_provider/Scripts/python.exe"
+
+  -- terminal
   vim.cmd([[
 		let &shell = executable('pwsh') ? 'pwsh' : 'powershell'
 		let &shellcmdflag = '-nol -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new();$PSDefaultParameterValues[''Out-File:Encoding'']=''utf8'';Remove-Alias -Force -ErrorAction SilentlyContinue tee;'
@@ -37,8 +32,11 @@ if vim.fn.has("win32") or vim.fn.has("win64") then
 		let &shellpipe  = '2>&1 | %%{ "$_" } | tee %s; exit $LastExitCode'
 		set shellquote= shellxquote=
   ]])
+else
+  vim.g.python3_host_prog = vim.env.HOME .. "/.virtualenvs/nvim_provider/bin/python3"
 end
 
+-- neovide config
 if vim.g.neovide then
   vim.o.guifont = "Maple Mono NF,JetBrainsMono Nerd Font Mono:h12:h12"
   -- vim.g.neovide_transparency = 0.9
