@@ -83,8 +83,12 @@ return {
   -- },
   {
     "LazyVim/LazyVim",
-    opts = {
-      colorscheme = vim.env.NVIM_THEME or "catppuccin",
-    },
+    -- opts = {
+    --   colorscheme = vim.env.NVIM_THEME or "catppuccin",
+    -- },
+    opts = function(_, opts)
+      vim.opt.background = vim.env.NVIM_BACKGROUND == "light" and "light" or "dark"
+      opts.colorscheme = vim.env.NVIM_THEME or "catppuccin"
+    end,
   },
 }
