@@ -1,9 +1,5 @@
 local wezterm = require("wezterm")
 
--- remote plugins
-local rose_pine = wezterm.plugin.require("https://github.com/neapsix/wezterm")
-local catppuccin = wezterm.plugin.require("https://github.com/catppuccin/wezterm")
-
 local M = {}
 
 function M.apply_to_config(config)
@@ -13,17 +9,16 @@ function M.apply_to_config(config)
 	local is_dark = appearance:find("Dark")
 	local background = is_dark and "dark" or "light"
 
-	local catppuccin_variant = is_dark and "macchiato" or "latte"
-	local rose_pine_variant = is_dark and "moon" or "dawn"
+	local catppuccin = is_dark and "Catppuccin Macchiato" or "Catppuccin Latte"
+	local rose_pine = is_dark and "rose-pine-moon" or "rose-pine-dawn"
+	local solarized = is_dark and "Solarized (dark) (terminal.sexy)" or "Solarized (light) (terminal.sexy)"
 
-	if color_scheme == "rose-pine" then
-		config.colors = rose_pine[rose_pine_variant].colors()
-		config.window_frame = rose_pine[rose_pine_variant].window_frame()
+	if color_scheme == "solarized-osaka" then
+		config.color_scheme = solarized
+	elseif color_scheme == "rose-pine" then
+		config.color_scheme = rose_pine
 	else
-		catppuccin.apply_to_config(config, {
-			sync = false,
-			flavor = catppuccin_variant,
-		})
+		config.color_scheme = catppuccin
 	end
 
 	config.set_environment_variables = {
