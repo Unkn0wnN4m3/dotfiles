@@ -4,7 +4,7 @@ local M = {}
 
 function M.apply_to_config(config)
 	local appearance = wezterm.gui.get_appearance()
-	local color_scheme = os.getenv("NVIM_THEME") or "catppuccin"
+	local color_scheme = os.getenv("NVIM_THEME")
 
 	local is_dark = appearance:find("Dark")
 	local background = is_dark and "dark" or "light"
@@ -12,14 +12,16 @@ function M.apply_to_config(config)
 	local catppuccin = is_dark and "Catppuccin Macchiato" or "Catppuccin Latte"
 	local rose_pine = is_dark and "rose-pine-moon" or "rose-pine-dawn"
 	local solarized = is_dark and "Solarized (dark) (terminal.sexy)" or "Solarized (light) (terminal.sexy)"
+  local tokyonight = is_dark and "tokyonight_storm" or "tokyonight_day"
 
-	if color_scheme == "solarized-osaka" then
-		config.color_scheme = solarized
-	elseif color_scheme == "rose-pine" then
-		config.color_scheme = rose_pine
-	else
-		config.color_scheme = catppuccin
-	end
+	local schemes = {
+		["solarized-osaka"] = solarized,
+		["rose-pine"] = rose_pine,
+		["catppuccin"] = catppuccin,
+    ["tokyonight"] = tokyonight,
+	}
+
+	config.color_scheme = schemes[color_scheme] or catppuccin
 
 	config.set_environment_variables = {
 		NVIM_BACKGROUND = background,
