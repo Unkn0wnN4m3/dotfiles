@@ -5,6 +5,6 @@ return {
 	{
 		event = { Up = { streak = 1, button = "Left" } },
 		mods = "CTRL",
-		action = wezterm.action.OpenLinkAtMouseCursor,
+		action = act.OpenLinkAtMouseCursor,
 	},
 }
