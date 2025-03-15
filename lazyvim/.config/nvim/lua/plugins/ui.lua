@@ -91,16 +91,23 @@ return {
           margin = { horizontal = 0 },
         },
         render = function(props)
-          local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":t")
+          local buf_number = props.buf
+          local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(buf_number), ":t")
           if filename == "" then
             filename = "[No Name]"
           end
           local ft_icon, ft_color = devicons.get_icon_color(filename)
-          local modified = vim.bo[props.buf].modified
+          local modified = vim.bo[buf_number].modified
           return {
             ft_icon and { " ", ft_icon, " ", guibg = ft_color, guifg = helpers.contrast_color(ft_color) } or "",
             " ",
-            { filename, gui = modified and "bold,italic" or "bold" },
+            {
+              filename,
+              guifg = modified and Snacks.util.color("WarningMsg") or nil,
+              gui = modified and "italic,bold" or "bold",
+            },
+            "|",
+            { buf_number, gui = "bold" },
             " ",
           }
         end,
