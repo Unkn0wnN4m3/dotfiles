@@ -5,7 +5,7 @@ local M = {}
 
 local function leader(window)
 	if window:leader_is_active() then
-		return " " .. wezterm.nerdfonts.fa_rocket
+		return " " .. wezterm.nerdfonts.fa_rocket .. " LDR "
 	else
 		return ""
 	end
@@ -16,7 +16,6 @@ function M.apply_to_config(config)
 
 	local opts = {
 		options = {
-			-- theme = "rose-pine-dawn",
 			theme = config.color_scheme,
 			section_separators = {
 				left = "",
@@ -32,12 +31,18 @@ function M.apply_to_config(config)
 			},
 		},
 		sections = {
-			tabline_a = { leader, "workspace" },
+			tabline_a = { "workspace" },
 			tabline_b = { "hostname" },
 			tabline_c = { " " },
 			tab_active = { "index", "tab", { "zoomed", padding = 0 } },
 			tab_inactive = { "index", { "process", padding = { left = 0, right = 1 } } },
-			tabline_x = { " " },
+			tabline_x = {
+				" ",
+				{ Foreground = { Color = "White" } },
+				{ Background = { AnsiColor = "Purple" } },
+				leader,
+				"ResetAttributes",
+			},
 			tabline_y = { "datetime" },
 			tabline_z = { "domain" },
 		},
