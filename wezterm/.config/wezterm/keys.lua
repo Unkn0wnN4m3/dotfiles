@@ -37,7 +37,7 @@ function M.apply_to_config(config)
 					{ Foreground = { AnsiColor = "Fuchsia" } },
 					{ Text = "Renaming Tab Title...:" },
 				}),
-				action = wezterm.action_callback(function(window, pane, line)
+				action = wezterm.action_callback(function(window, _, line)
 					if line then
 						window:active_tab():set_title(line)
 					end
