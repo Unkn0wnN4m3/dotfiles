@@ -107,7 +107,11 @@ return {
               gui = modified and "italic,bold" or "bold",
             },
             "|",
-            { buf_number, gui = "bold" },
+            {
+              buf_number,
+              guifg = modified and Snacks.util.color("WarningMsg") or nil,
+              gui = "bold",
+            },
             " ",
           }
         end,
