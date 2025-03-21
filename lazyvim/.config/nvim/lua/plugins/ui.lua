@@ -32,6 +32,14 @@ local function check_indentation()
   end
 end
 
+local function open_tabs()
+  if vim.fn.tabpagenr("$") > 1 then
+    return " "
+  else
+    return ""
+  end
+end
+
 return {
   {
     "nvim-lualine/lualine.nvim",
@@ -41,6 +49,7 @@ return {
       opts.sections.lualine_y = {
         { check_indentation, padding = { left = 1, right = 1 } },
         { "progress", padding = { left = 0, right = 1 } },
+        { open_tabs, padding = { left = 0, right = 1 } },
       }
       opts.sections.lualine_z = { { "location", padding = { left = 1, right = 1 } } }
     end,
@@ -64,6 +73,11 @@ return {
         { icon = " ", title = "Projects", section = "projects", indent = 2, padding = 1 },
         { section = "startup" },
       }
+      table.insert(
+        opts.dashboard.preset.keys,
+        2,
+        { icon = "󰤇 ", key = "z", desc = "Zoxide Jump", action = ":FzfLua zoxide" }
+      )
     end,
   },
   {
