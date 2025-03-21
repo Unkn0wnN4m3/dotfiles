@@ -1,5 +1,8 @@
 local wezterm = require("wezterm")
-local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabline.wez")
+local tabline = wezterm.plugin.require(
+	"https://github.com/michaelbrusegard/tabline.wez",
+	{ ref = "6022b9f9ec68c9a4dd50f40ceba3a7b9b9d1684a" }
+)
 
 local M = {}
 
@@ -12,8 +15,6 @@ local function leader(window)
 end
 
 function M.apply_to_config(config)
-	config.tab_bar_at_bottom = false
-
 	local opts = {
 		options = {
 			theme = config.color_scheme,
@@ -52,6 +53,8 @@ function M.apply_to_config(config)
 
 	-- https://github.com/michaelbrusegard/tabline.wez/discussions/3
 	tabline.apply_to_config(config)
+
+	config.tab_bar_at_bottom = false
 
 	return config
 end
