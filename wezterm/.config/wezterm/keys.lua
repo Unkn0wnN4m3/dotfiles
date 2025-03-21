@@ -7,6 +7,7 @@ local act = wezterm.action
 local M = {}
 
 function M.apply_to_config(config)
+	config.leader = { key = "b", mods = "CTRL", timeout_milliseconds = 1000 }
 	config.keys = {
 		{ key = "mapped::", mods = "LEADER|SHIFT", action = act.ActivateCommandPalette },
 		{ key = "mapped:V", mods = "CTRL", action = act.PasteFrom("Clipboard") },
