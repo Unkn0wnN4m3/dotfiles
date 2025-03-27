@@ -7,6 +7,6 @@ return {
   },
   {
     "tpope/vim-fugitive",
-    event = "LazyFile",
+    event = "VeryLazy",
   },
 }
