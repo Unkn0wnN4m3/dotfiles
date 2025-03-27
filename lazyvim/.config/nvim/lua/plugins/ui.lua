@@ -88,9 +88,9 @@ return {
   },
   {
     "b0o/incline.nvim",
-    dependencies = {
-      "nvim-tree/nvim-web-devicons",
-    },
+    -- dependencies = {
+    --   "nvim-tree/nvim-web-devicons",
+    -- },
     event = "VeryLazy",
     config = function()
       local helpers = require("incline.helpers")
@@ -112,19 +112,22 @@ return {
           end
           local ft_icon, ft_color = devicons.get_icon_color(filename)
           local modified = vim.bo[buf_number].modified
+          local guifg_style = modified and Snacks.util.color("WarningMsg") or nil
+          local gui_style = modified and "italic,bold" or "bold"
+
           return {
             ft_icon and { " ", ft_icon, " ", guibg = ft_color, guifg = helpers.contrast_color(ft_color) } or "",
             " ",
             {
               filename,
-              guifg = modified and Snacks.util.color("WarningMsg") or nil,
-              gui = modified and "italic,bold" or "bold",
+              guifg = guifg_style,
+              gui = gui_style,
             },
             "|",
             {
               buf_number,
-              guifg = modified and Snacks.util.color("WarningMsg") or nil,
-              gui = "bold",
+              guifg = guifg_style,
+              gui = gui_style,
             },
             " ",
           }
