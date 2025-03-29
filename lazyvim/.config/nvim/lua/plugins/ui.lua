@@ -123,7 +123,7 @@ return {
               guifg = guifg_style,
               gui = gui_style,
             },
-            "|",
+            { "|", guifg = guifg_style },
             {
               buf_number,
               guifg = guifg_style,
