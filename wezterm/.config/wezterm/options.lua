@@ -35,12 +35,12 @@ function M.apply_to_config(config)
 	config.initial_cols = 120
 	config.initial_rows = 30
 	config.default_cursor_style = "BlinkingBar"
-	config.disable_default_key_bindings = true
 	config.tab_bar_at_bottom = true
 	config.adjust_window_size_when_changing_font_size = false
 	config.enable_kitty_graphics = true
 	config.scrollback_lines = 3000
 	config.default_workspace = "main"
+	config.canonicalize_pasted_newlines = "CarriageReturnAndLineFeed"
 	-- config.window_background_opacity = 0.95
 	-- config.window_background_image = wezterm.home_dir .. "/.config/wezterm/background.png"
 	-- config.window_background_image_hsb = {

@@ -7,6 +7,7 @@ local act = wezterm.action
 local M = {}
 
 function M.apply_to_config(config)
+  config.disable_default_key_bindings = true
 	config.leader = { key = "b", mods = "CTRL", timeout_milliseconds = 1000 }
 	config.keys = {
 		{ key = "mapped::", mods = "LEADER|SHIFT", action = act.ActivateCommandPalette },
