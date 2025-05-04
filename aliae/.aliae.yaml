@@ -34,6 +34,8 @@ env:
     value: 'catppuccin'
   - name: NEOVIDE_OPENGL
     value: 1
+  - name: PIP_REQUIRE_VIRTUALENV
+    value: 'true'
 script:
   # config
   - value: |
