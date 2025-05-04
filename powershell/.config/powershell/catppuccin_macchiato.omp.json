@@ -1,11 +1,17 @@
 {
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "transient_prompt": {
+    "background": "transparent",
+    "foreground": "#ffffff",
+    "template": "> "
+  },
   "palette": {
     "os": "#ACB0BE",
     "closer": "p:os",
     "pink": "#F5BDE6",
     "lavender": "#B7BDF8",
-    "blue": "#8AADF4"
+    "blue": "#8AADF4",
+    "python": "#FFD343"
   },
   "pwd": "osc99",
   "console_title_template": "{{.UserName}}@{{.HostName}} {{.Shell}} in {{.PWD}}",
@@ -26,15 +32,35 @@
           "type": "session"
         },
         {
+          "style": "plain",
+          "foreground": "p:closer",
+          "template": "\uf105",
+          "type": "text"
+        }
+      ],
+      "type": "prompt"
+    },
+    {
+      "type": "rprompt",
+      "alignment": "right",
+      "segments": [
+        {
           "foreground": "p:pink",
           "properties": {
             "folder_icon": "..\ue5fe..",
             "home_icon": "~",
-            "style": "agnoster_short"
+            "style": "agnoster_short",
+            "max_depth": 3
           },
           "style": "plain",
           "template": "{{ .Path }} ",
           "type": "path"
+        },
+        {
+          "type": "python",
+          "style": "plain",
+          "foreground": "p:python",
+          "template": "  {{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}({{ .Venv }}) {{ end }}{{ .Full }}{{ end }} "
         },
         {
           "foreground": "p:lavender",
@@ -50,18 +76,11 @@
             "revert_icon": "\uf0e2 ",
             "tag_icon": "\uf412 "
           },
-          "template": "{{ .UpstreamIcon }}{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }}  {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }}  {{ .StashCount }}{{ end }}",
+          "template": "{{ .UpstreamIcon }}{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }}  {{ .StashCount }}{{ end }}",
           "style": "plain",
           "type": "git"
-        },
-        {
-          "style": "plain",
-          "foreground": "p:closer",
-          "template": "\uf105",
-          "type": "text"
         }
-      ],
-      "type": "prompt"
+      ]
     }
   ],
   "final_space": true,
