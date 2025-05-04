@@ -1,0 +1,99 @@
+alias:
+  - name: n
+    value: nvim
+    if: hasCommand "nvim"
+  - name: lg
+    value: lazygit
+    if: hasCommand "lazygit"
+  - name: ld
+    value: lazydocker
+    if: hasCommand "lazydocker"
+  - name: pd
+    value: podman
+    if: hasCommand "podman"
+  - name: which
+    value: Get-Command
+    if: match .Shell "pwsh"
+  - name: open
+    value: Invoke-Item
+    if: match .Shell "pwsh"
+env:
+  - name: EDITOR
+    value: 'nvim'
+  - name: BAT_THEME
+    value: 'base16'
+  - name: FZF_DEFAULT_OPTS
+    value: '--height 50% --layout=reverse'
+  - name: VIRTUAL_ENV_DISABLE_PROMPT
+    value: 1
+  - name: CUSTOMPSHOME
+    value: '{{ .Home }}\.config\powershell'
+  - name: NVIM_BACKGROUND
+    value: 'dark'
+  - name: NVIM_THEME
+    value: 'catppuccin'
+  - name: NEOVIDE_OPENGL
+    value: 1
+script:
+  # config
+  - value: |
+      mkdir ($nu.data-dir | path join "vendor/autoload")
+      starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
+    if: match .Shell "nu"
+  - value: |
+      zoxide init nushell | save -f ~/.zoxide.nu
+      source ~/.zoxide.nu
+    if: match .Shell "nu"
+  - value: |
+      oh-my-posh init pwsh --config "$env:CUSTOMPSHOME\catppuccin_macchiato.omp.json" | Invoke-Expression
+    if: match .Shell "pwsh"
+  - value: |
+      foreach ($PFunction in Get-ChildItem "$env:CUSTOMPSHOME\functions") {
+        if ($PFunction.name -match "\\*.ps1") {
+          . $PFunction
+        }
+      }
+
+      # conf
+      foreach ($PConfig in Get-ChildItem "$env:CUSTOMPSHOME\conf") {
+        if ($PConfig.name -match "\\*.ps1") {
+          . $PConfig
+        }
+      }
+    if: match .Shell "pwsh"
+
+    # Aliases that require arguments
+  - value: |
+      def la [path: path = ".", ...args] {
+        ls $path ...$args | sort-by type name -i | grid -c
+      }
+
+      def ne [...args] {
+        ^neovide --grid=120x30 ...$args
+      }
+
+      def cat [...args] {
+        ^bat -p ...$args
+      }
+    if: match .Shell "nu"
+  - value: |
+      function __TOUCH { param([Parameter(ValueFromRemainingArguments=$true)]$args) Get-ChildItem -Path $args | Format-Wide -AutoSize }
+      function __CUSTOM_BAT { param( $path ) if (Get-Command bat -ErrorAction SilentlyContinue) { bat -p $path } else { cat $path } }
+      function __TOUCH { param([Parameter(ValueFromRemainingArguments=$true)]$args) & New-Item -ItemType File -Path $args }
+      function __EXALS { param([Parameter(ValueFromRemainingArguments=$true)]$args) & eza -F --icons --group-directories-first $args }
+      function __EXALA { param([Parameter(ValueFromRemainingArguments=$true)]$args) & eza -lahF --icons --group-directories-first $args }
+      function __NE { param([Parameter(ValueFromRemainingArguments=$true)]$args) & neovide --grid=120x30 $args }
+      function __IMGCAT { param([Parameter(ValueFromRemainingArguments=$true)]$args) & chafa -f sixels $args }
+
+      if (Get-Command eza -ErrorAction SilentlyContinue) {
+        Set-Alias -Name ls -Value __EXALS
+        Set-Alias -Name la -Value __EXALA
+      } else {
+        Set-Alias -Name ls -Value __SHL
+        Set-Alias -Name la -Value Get-ChildItem
+      }
+      Set-Alias -Name cat -Value __CUSTOM_BAT
+      Set-Alias -Name touch -Value __TOUCH
+      Set-Alias -Name ne -Value __NE
+      Set-Alias -Name icat -Value __IMGCAT
+    if: match .Shell "pwsh"
