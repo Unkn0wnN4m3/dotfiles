@@ -46,22 +46,22 @@ return {
       },
     },
   },
-  -- {
-  --   "dgox16/oldworld.nvim",
-  --   lazy = true,
-  --   opts = {
-  --     styles = {
-  --       keywords = { italic = true },
-  --       functions = { bold = true },
-  --       booleans = { italic = true },
-  --     },
-  --     highlight_overrides = {
-  --       LspReferenceText = { link = "IlluminatedWordText" },
-  --       LspReferenceRead = { link = "IlluminatedWordRead" },
-  --       LspReferenceWrite = { link = "IlluminatedWordWrite" },
-  --     },
-  --   },
-  -- },
+  {
+    "dgox16/oldworld.nvim",
+    lazy = true,
+    opts = {
+      styles = {
+        keywords = { italic = true },
+        functions = { bold = true },
+        booleans = { italic = true },
+      },
+      highlight_overrides = {
+        LspReferenceText = { link = "IlluminatedWordText" },
+        LspReferenceRead = { link = "IlluminatedWordRead" },
+        LspReferenceWrite = { link = "IlluminatedWordWrite" },
+      },
+    },
+  },
   -- {
   --   "mellow-theme/mellow.nvim",
   --   lazy = true,
@@ -85,7 +85,7 @@ return {
     "LazyVim/LazyVim",
     opts = function(_, opts)
       local theme = vim.env.NVIM_THEME or "tokyonight"
-      local valid_themes = { "tokyonight", "catppuccin", "solarized-osaka", "rose-pine" }
+      local valid_themes = { "tokyonight", "catppuccin", "solarized-osaka", "rose-pine", "oldworld" }
 
       if vim.tbl_contains(valid_themes, theme) then
         opts.colorscheme = theme
