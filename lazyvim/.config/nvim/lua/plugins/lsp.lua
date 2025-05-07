@@ -1,11 +1,8 @@
 return {
   {
     "neovim/nvim-lspconfig",
-    opts = function(_, opts)
-      -- opts.diagnostics.virtual_text = { prefix = "󰆦" }
-      -- opts.diagnostics.virtual_lines = { current_line = true }
-
-      table.insert(opts.servers, {
+    opts = {
+      servers = {
         tinymist = {
           settings = {
             formatterMode = "typstyle",
@@ -13,7 +10,7 @@ return {
             semanticTokens = "disable",
           },
         },
-      })
-    end,
+      },
+    },
   },
 }
