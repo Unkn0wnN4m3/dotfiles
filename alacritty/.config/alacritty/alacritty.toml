@@ -1,0 +1,34 @@
+# [env]
+# TERM = "xterm-256color"
+
+[terminal.shell]
+# program = "pwsh.exe"
+# args = ["-nol", "-WorkingDirectory", "~"]
+# program = "nu.exe"
+# program = "zsh"
+
+[window]
+dimensions = { columns = 130, lines = 30 }
+position = { x = 5, y = 5 }
+opacity = 0.95
+blur = true
+dynamic_title = true
+decorations_theme_variant = "Dark"
+resize_increments = true
+padding = { x = 2, y = 2 }
+
+[font]
+normal = { family = "Maple Mono NF", style = "Regular" }
+size = 11.5
+
+[cursor]
+style = { shape = "Beam", blinking = "On" }
+
+[mouse]
+hide_when_typing = true
+
+[keyboard]
+bindings = [{ key = "N", mods = "Control|Shift", action = "CreateNewWindow" }]
+
+[general]
+import = ["./themes/oldworld.toml"]
