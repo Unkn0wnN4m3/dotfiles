@@ -13,4 +13,6 @@ return {
       },
     },
   },
+  { "mason-org/mason.nvim", version = "v1.*" },
+  { "mason-org/mason-lspconfig.nvim", version = "v1.*" },
 }
