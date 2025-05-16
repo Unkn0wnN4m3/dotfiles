@@ -66,8 +66,8 @@ script:
 
     # Aliases that require arguments
   - value: |
-      def la [path: path = ".", ...args] {
-        ls $path ...$args | sort-by type name -i | grid -c
+      def la [...args] {
+        ^eza -F -A --icons=always --group-directories-first ...$args
       }
 
       def ne [...args] {
@@ -83,16 +83,12 @@ script:
       function __CUSTOM_BAT { param( $path ) if (Get-Command bat -ErrorAction SilentlyContinue) { bat -p $path } else { cat $path } }
       function __TOUCH { param([Parameter(ValueFromRemainingArguments=$true)]$args) & New-Item -ItemType File -Path $args }
       function __EXALS { param([Parameter(ValueFromRemainingArguments=$true)]$args) & eza -F --icons --group-directories-first $args }
-      function __EXALA { param([Parameter(ValueFromRemainingArguments=$true)]$args) & eza -lahF --icons --group-directories-first $args }
+      function __EXALA { param([Parameter(ValueFromRemainingArguments=$true)]$args) & eza -A -F --icons --group-directories-first $args }
       function __NE { param([Parameter(ValueFromRemainingArguments=$true)]$args) & neovide --grid=120x30 $args }
       function __IMGCAT { param([Parameter(ValueFromRemainingArguments=$true)]$args) & chafa -f sixels $args }
 
       if (Get-Command eza -ErrorAction SilentlyContinue) {
-        Set-Alias -Name ls -Value __EXALS
         Set-Alias -Name la -Value __EXALA
-      } else {
-        Set-Alias -Name ls -Value __SHL
-        Set-Alias -Name la -Value Get-ChildItem
       }
       Set-Alias -Name cat -Value __CUSTOM_BAT
       Set-Alias -Name touch -Value __TOUCH
