@@ -4,7 +4,7 @@ return {
     lazy = true,
     name = "catppuccin",
     opts = {
-      transparent_background = false,
+      transparent_background = true,
       background = { -- :h background
         light = "latte",
         dark = "macchiato",
@@ -46,46 +46,46 @@ return {
       },
     },
   },
-  {
-    "dgox16/oldworld.nvim",
-    lazy = true,
-    opts = {
-      styles = {
-        keywords = { italic = true },
-        functions = { bold = true },
-        booleans = { italic = true },
-      },
-      highlight_overrides = {
-        LspReferenceText = { link = "IlluminatedWordText" },
-        LspReferenceRead = { link = "IlluminatedWordRead" },
-        LspReferenceWrite = { link = "IlluminatedWordWrite" },
-      },
-    },
-  },
   -- {
-  --   "mellow-theme/mellow.nvim",
+  --   "dgox16/oldworld.nvim",
   --   lazy = true,
-  --   init = function()
-  --     vim.g.mellow_bold_functions = true
-  --     vim.g.mellow_italic_keywords = true
-  --     vim.g.mellow_italic_booleans = true
-  --     vim.g.mellow_transparent = false
-  --     vim.g.mellow_italic_comments = false
-  --
-  --     vim.g.mellow_highlight_overrides = {
-  --       ["LspReferenceText"] = { link = "IlluminatedWordText" },
-  --       ["LspReferenceRead"] = { link = "IlluminatedWordRead" },
-  --       ["LspReferenceWrite"] = { link = "IlluminatedWordWrite" },
-  --       ["Visual"] = { link = "IlluminatedWordText" },
-  --       ["VisualNOS"] = { link = "IlluminatedWordText" },
-  --     }
-  --   end,
+  --   opts = {
+  --     styles = {
+  --       keywords = { italic = true },
+  --       functions = { bold = true },
+  --       booleans = { italic = true },
+  --     },
+  --     highlight_overrides = {
+  --       LspReferenceText = { link = "IlluminatedWordText" },
+  --       LspReferenceRead = { link = "IlluminatedWordRead" },
+  --       LspReferenceWrite = { link = "IlluminatedWordWrite" },
+  --     },
+  --   },
   -- },
+  {
+    "mellow-theme/mellow.nvim",
+    lazy = true,
+    init = function()
+      vim.g.mellow_bold_functions = true
+      vim.g.mellow_italic_keywords = true
+      vim.g.mellow_italic_booleans = true
+      vim.g.mellow_transparent = false
+      vim.g.mellow_italic_comments = false
+
+      vim.g.mellow_highlight_overrides = {
+        ["LspReferenceText"] = { link = "IlluminatedWordText" },
+        ["LspReferenceRead"] = { link = "IlluminatedWordRead" },
+        ["LspReferenceWrite"] = { link = "IlluminatedWordWrite" },
+        ["Visual"] = { link = "IlluminatedWordText" },
+        ["VisualNOS"] = { link = "IlluminatedWordText" },
+      }
+    end,
+  },
   {
     "LazyVim/LazyVim",
     opts = function(_, opts)
       local theme = vim.env.NVIM_THEME or "tokyonight"
-      local valid_themes = { "tokyonight", "catppuccin", "solarized-osaka", "rose-pine", "oldworld" }
+      local valid_themes = { "tokyonight", "catppuccin", "solarized-osaka", "rose-pine", "mellow" }
 
       if vim.tbl_contains(valid_themes, theme) then
         opts.colorscheme = theme
