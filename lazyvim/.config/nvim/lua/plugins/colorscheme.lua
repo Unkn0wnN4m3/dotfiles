@@ -4,7 +4,7 @@ return {
     lazy = true,
     name = "catppuccin",
     opts = {
-      transparent_background = true,
+      transparent_background = false,
       background = { -- :h background
         light = "latte",
         dark = "macchiato",
@@ -40,6 +40,8 @@ return {
       dim_inactive_windows = true,
       styles = {
         italic = false,
+        bold = true,
+        transparency = false,
       },
       highlight_groups = {
         Boolean = { italic = true },
