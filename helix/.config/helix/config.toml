@@ -1,4 +1,4 @@
-theme = "rose_pine_moon"
+theme = "mellow"
 
 [editor]
 scrolloff = 10
@@ -27,9 +27,18 @@ select = "underline"
 hidden = false
 
 [editor.statusline]
-left = ["mode", "spacer" ,"version-control"]
+left = ["mode", "spacer", "version-control"]
 center = ["file-name", "file-modification-indicator"]
-right = ["spinner", "spacer" ,"diagnostics", "file-encoding", "file-line-ending", "file-type", "position-percentage", "position"]
+right = [
+  "spinner",
+  "spacer",
+  "diagnostics",
+  "file-encoding",
+  "file-line-ending",
+  "file-type",
+  "position-percentage",
+  "position",
+]
 
 [editor.whitespace.render]
 tab = "all"
@@ -45,3 +54,7 @@ display-messages = true
 [keys.insert]
 j = { k = "normal_mode" }
 k = { j = "normal_mode" }
+
+[keys.normal.space.q]
+q = ":quit-all"
+w = ":write-quit-all"
