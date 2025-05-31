@@ -19,23 +19,25 @@ alias:
     if: match .Shell "pwsh"
 env:
   - name: EDITOR
-    value: 'nvim'
+    value: "nvim"
   - name: BAT_THEME
-    value: 'base16'
+    value: "base16"
+  - name: BAT_PAGER
+    value: "less -RF"
   - name: FZF_DEFAULT_OPTS
-    value: '--height 50% --layout=reverse'
+    value: "--height 50% --layout=reverse"
   - name: VIRTUAL_ENV_DISABLE_PROMPT
     value: 1
   - name: CUSTOMPSHOME
     value: '{{ .Home }}\.config\powershell'
   - name: NVIM_BACKGROUND
-    value: 'dark'
+    value: "dark"
   - name: NVIM_THEME
-    value: 'catppuccin'
+    value: "catppuccin"
   - name: NEOVIDE_OPENGL
     value: 1
   - name: PIP_REQUIRE_VIRTUALENV
-    value: 'true'
+    value: "true"
 script:
   # config
   - value: |
