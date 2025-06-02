@@ -1,6 +1,6 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2025-02-23T18:32:04.973-00:00",
+	"CreationDate" : "2025-06-01T19:28:18.382-00:00",
 	"Sources" : 
 	[
 		{
@@ -13,7 +13,28 @@
 					"PackageIdentifier" : "Mozilla.Thunderbird.es-MX"
 				},
 				{
-					"PackageIdentifier" : "SublimeHQ.SublimeText.4"
+					"PackageIdentifier" : "ONLYOFFICE.DesktopEditors"
+				},
+				{
+					"PackageIdentifier" : "Proton.ProtonVPN"
+				},
+				{
+					"PackageIdentifier" : "IDRIX.VeraCrypt"
+				},
+				{
+					"PackageIdentifier" : "ArduinoSA.CLI"
+				},
+				{
+					"PackageIdentifier" : "RedHat.Podman"
+				},
+				{
+					"PackageIdentifier" : "Logitech.OptionsPlus"
+				},
+				{
+					"PackageIdentifier" : "AnalogDevices.LTspice"
+				},
+				{
+					"PackageIdentifier" : "Google.QuickShare"
 				},
 				{
 					"PackageIdentifier" : "GitHub.cli"
@@ -22,25 +43,16 @@
 					"PackageIdentifier" : "KeePassXCTeam.KeePassXC"
 				},
 				{
-					"PackageIdentifier" : "Logitech.OptionsPlus"
-				},
-				{
-					"PackageIdentifier" : "ArduinoSA.CLI"
-				},
-				{
-					"PackageIdentifier" : "Nushell.Nushell"
-				},
-				{
-					"PackageIdentifier" : "PuTTY.PuTTY"
-				},
-				{
-					"PackageIdentifier" : "AnalogDevices.LTspice"
-				},
-				{
 					"PackageIdentifier" : "Brave.Brave"
 				},
 				{
+					"PackageIdentifier" : "Valve.Steam"
+				},
+				{
 					"PackageIdentifier" : "Cryptomator.Cryptomator"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x86"
 				},
 				{
 					"PackageIdentifier" : "WinFsp.WinFsp"
@@ -49,19 +61,13 @@
 					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x64"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x86"
+					"PackageIdentifier" : "DBeaver.DBeaver.Community"
 				},
 				{
-					"PackageIdentifier" : "dbeaver.dbeaver"
+					"PackageIdentifier" : "Microsoft.Edit"
 				},
 				{
-					"PackageIdentifier" : "GIMP.GIMP"
-				},
-				{
-					"PackageIdentifier" : "SimulIDE.SimulIDE"
-				},
-				{
-					"PackageIdentifier" : "Vivaldi.Vivaldi"
+					"PackageIdentifier" : "JanDeDobbeleer.Aliae"
 				},
 				{
 					"PackageIdentifier" : "RedHat.Podman-Desktop"
@@ -73,10 +79,10 @@
 					"PackageIdentifier" : "ElementLabs.LMStudio"
 				},
 				{
-					"PackageIdentifier" : "Proton.ProtonDrive"
+					"PackageIdentifier" : "Microsoft.PowerToys"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.PowerToys"
+					"PackageIdentifier" : "Proton.ProtonDrive"
 				}
 			],
 			"SourceDetails" : 
@@ -103,5 +109,5 @@
 			}
 		}
 	],
-	"WinGetVersion" : "1.9.25200"
+	"WinGetVersion" : "1.10.390"
 }
