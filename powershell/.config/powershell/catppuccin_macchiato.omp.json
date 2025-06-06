@@ -8,10 +8,12 @@
   "palette": {
     "os": "#ACB0BE",
     "closer": "p:os",
+    "red": "#ed8796",
     "pink": "#F5BDE6",
     "lavender": "#B7BDF8",
     "blue": "#8AADF4",
-    "python": "#FFD343"
+    "python": "#FFD343",
+    "node": "#6CA35E"
   },
   "pwd": "osc99",
   "console_title_template": "{{.UserName}}@{{.HostName}} {{.Shell}} in {{.PWD}}",
@@ -20,22 +22,14 @@
       "alignment": "left",
       "segments": [
         {
-          "foreground": "p:os",
-          "style": "plain",
-          "template": "{{.Icon}} ",
-          "type": "os"
-        },
-        {
-          "foreground": "p:blue",
-          "style": "plain",
-          "template": "{{ .UserName }}@{{ .HostName }} ",
-          "type": "session"
-        },
-        {
+          "type": "status",
           "style": "plain",
           "foreground": "p:closer",
-          "template": "\uf105",
-          "type": "text"
+          "foreground_templates": ["{{ if .Error }}p:red{{ end }}"],
+          "template": " ",
+          "properties": {
+            "always_enabled": true
+          }
         }
       ],
       "type": "prompt"
@@ -50,17 +44,15 @@
             "folder_icon": "..\ue5fe..",
             "home_icon": "~",
             "style": "agnoster_short",
-            "max_depth": 3
+            "max_depth": 3,
+            "mapped_locations": {
+              "~/Documents/Projects/Personal/*": "󰉌 ",
+              "~/Documents/Projects/3rd-party/*": " "
+            }
           },
           "style": "plain",
           "template": "{{ .Path }} ",
           "type": "path"
-        },
-        {
-          "type": "python",
-          "style": "plain",
-          "foreground": "p:python",
-          "template": "  {{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}({{ .Venv }}) {{ end }}{{ .Full }}{{ end }} "
         },
         {
           "foreground": "p:lavender",
@@ -76,9 +68,21 @@
             "revert_icon": "\uf0e2 ",
             "tag_icon": "\uf412 "
           },
-          "template": "{{ .UpstreamIcon }}{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }}  {{ .StashCount }}{{ end }}",
+          "template": "{{ .UpstreamIcon }}{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }}  {{ .StashCount }}{{ end }} ",
           "style": "plain",
           "type": "git"
+        },
+        {
+          "type": "python",
+          "style": "plain",
+          "foreground": "p:python",
+          "template": " {{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}({{ .Venv }}) {{ end }}{{ .Full }}{{ end }} "
+        },
+        {
+          "type": "node",
+          "style": "plain",
+          "foreground": "p:node",
+          "template": " {{ if .Mismatch }}{{ .Expected }}=!{{ end }}{{ .Full }} "
         }
       ]
     }
