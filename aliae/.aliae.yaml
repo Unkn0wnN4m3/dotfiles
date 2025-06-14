@@ -30,12 +30,16 @@ env:
     value: 1
   - name: CUSTOMPSHOME
     value: '{{ .Home }}\.config\powershell'
+    if: eq .OS "windows"
   - name: NVIM_BACKGROUND
     value: "dark"
   - name: NVIM_THEME
     value: "catppuccin"
+    persist: true
   - name: NEOVIDE_OPENGL
     value: 1
+    persist: true
+    if: eq .OS "windows"
   - name: PIP_REQUIRE_VIRTUALENV
     value: "true"
 script:
