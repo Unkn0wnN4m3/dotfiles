@@ -46,8 +46,8 @@
             "style": "agnoster_short",
             "max_depth": 3,
             "mapped_locations": {
-              "~/Documents/Projects/Personal/*": "󰉌 ",
-              "~/Documents/Projects/3rd-party/*": " "
+              "~/Documents/Projects/Personal/*": "..󰉌 ",
+              "~/Documents/Projects/3rd-party/*": ".. "
             }
           },
           "style": "plain",
