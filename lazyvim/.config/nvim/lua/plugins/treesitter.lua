@@ -5,6 +5,8 @@ return {
       "typst",
       "nu",
       "powershell",
+      "css",
+      "latex",
     })
   end,
 }
