@@ -36,7 +36,7 @@ vim.api.nvim_create_autocmd("WinLeave", {
 local userAU_colorcolumn = vim.api.nvim_create_augroup("userAU_colorcolumn", { clear = true })
 vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
   desc = "Set colorcolumn to 80 and 120 on specific filetypes",
-  pattern = { "*.lua", "*.py", "*.c", "*.h", "*.ino", "*.cpp", "*.js", "*.ts" },
+  pattern = { "*.lua", "*.py", "*.c", "*.h", "*.ino", "*.cpp", "*.js", "*.ts", "*.tsx", "*.jsx" },
   group = userAU_colorcolumn,
   callback = function()
     vim.api.nvim_set_option_value("colorcolumn", "80,120", { scope = "local" })
