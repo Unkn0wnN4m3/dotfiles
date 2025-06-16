@@ -78,6 +78,7 @@ return {
         2,
         { icon = "󰤇 ", key = "z", desc = "Zoxide Jump", action = ":FzfLua zoxide" }
       )
+      opts.notifier.timeout = 10000
     end,
   },
   {
