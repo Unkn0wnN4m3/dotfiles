@@ -5,6 +5,6 @@ vim.api.nvim_create_autocmd("VimLeavePre", {
   group = userAU_resetcursor,
   callback = function()
     -- vim.opt.guicursor = "a:ver10-blinkon1"
-    vim.api.nvim_set_option_value("guicursor", "a:ver10-blinkon1", { scope = "local" })
+    vim.api.nvim_set_option_value("guicursor", "a:ver10-blinkon1", { scope = "global" })
   end,
 })
