@@ -17,6 +17,21 @@ alias:
   - name: open
     value: Invoke-Item
     if: match .Shell "pwsh"
+  - name: o
+    value: ollama
+    if: hasCommand "ollama"
+  - name: w
+    value: wormhole-rs
+    if: hasCommand "wormhole-rs"
+  - name: st
+    value: status
+    type: git
+  - name: logp
+    value: log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit --date=relative
+    type: git
+path:
+  - value: |
+      {{ .Home }}/.local/bin
 env:
   - name: EDITOR
     value: "nvim"
