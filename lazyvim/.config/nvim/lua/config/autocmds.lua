@@ -75,3 +75,12 @@ vim.api.nvim_create_autocmd({ "InsertLeave" }, {
     vim.api.nvim_set_option_value("formatoptions", "jncrql", { scope = "local" })
   end,
 })
+
+local userUA_extra_conceal = vim.api.nvim_create_augroup("userUA_extra_conceal", { clear = true })
+vim.api.nvim_create_autocmd({ "BufEnter" }, {
+  group = userUA_extra_conceal,
+  pattern = { "copilot-*" },
+  callback = function()
+    vim.opt_local.conceallevel = 0
+  end,
+})
