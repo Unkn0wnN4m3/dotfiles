@@ -1,4 +1,4 @@
-vim.o.guifont = "Maple Mono NF,JetBrainsMono Nerd Font Mono:h12:h12"
+vim.o.guifont = "Cascadia Code,MonaspiceNe Nerd Font Propo:h12"
 vim.g.neovide_opacity = 0.9
 vim.g.neovide_show_border = true
 vim.g.neovide_window_blurred = true
