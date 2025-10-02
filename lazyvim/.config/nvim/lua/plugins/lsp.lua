@@ -10,6 +10,20 @@ return {
             semanticTokens = "disable",
           },
         },
+        texlab = {
+          settings = {
+            texlab = {
+              forwardSearch = {
+                executable = "okular",
+                args = { "--unique", "file:%p#src:%l%f" },
+              },
+              chktex = {
+                onEdit = false,
+                onOpenAndSave = true,
+              },
+            },
+          },
+        },
       },
     },
   },
