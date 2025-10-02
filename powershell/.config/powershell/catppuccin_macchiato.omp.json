@@ -6,14 +6,14 @@
     "template": "> "
   },
   "palette": {
-    "os": "#ACB0BE",
+    "os": "#7c7f93",
     "closer": "p:os",
     "red": "#ed8796",
-    "pink": "#F5BDE6",
-    "lavender": "#B7BDF8",
-    "blue": "#8AADF4",
-    "python": "#FFD343",
-    "node": "#6CA35E"
+    "pink": "#f5bde6",
+    "lavender": "#b7bdf8",
+    "blue": "#8aadf4",
+    "python": "#eed49f",
+    "node": "#a6da95"
   },
   "pwd": "osc99",
   "console_title_template": "{{.UserName}}@{{.HostName}} {{.Shell}} in {{.PWD}}",
