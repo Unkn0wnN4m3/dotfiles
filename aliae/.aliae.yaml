@@ -21,8 +21,8 @@ alias:
     value: ollama
     if: hasCommand "ollama"
   - name: w
-    value: wormhole-rs
-    if: hasCommand "wormhole-rs"
+    value: wormhole
+    if: hasCommand "wormhole"
   - name: st
     value: status
     type: git
@@ -47,7 +47,7 @@ env:
     value: '{{ .Home }}\.config\powershell'
     if: eq .OS "windows"
   - name: NVIM_BACKGROUND
-    value: "dark"
+    value: "light"
   - name: NVIM_THEME
     value: "catppuccin"
     persist: true
@@ -92,7 +92,7 @@ script:
       }
 
       def ne [...args] {
-        ^neovide --grid=120x30 ...$args
+        ^neovide --grid=120x35 ...$args
       }
 
       def cat [...args] {
@@ -105,7 +105,7 @@ script:
       function __TOUCH { param([Parameter(ValueFromRemainingArguments=$true)]$args) & New-Item -ItemType File -Path $args }
       function __EXALS { param([Parameter(ValueFromRemainingArguments=$true)]$args) & eza -F --icons --group-directories-first $args }
       function __EXALA { param([Parameter(ValueFromRemainingArguments=$true)]$args) & eza -A -F --icons --group-directories-first $args }
-      function __NE { param([Parameter(ValueFromRemainingArguments=$true)]$args) & neovide --grid=120x30 $args }
+      function __NE { param([Parameter(ValueFromRemainingArguments=$true)]$args) & neovide --grid=120x35 $args }
       function __IMGCAT { param([Parameter(ValueFromRemainingArguments=$true)]$args) & chafa -f sixels $args }
 
       if (Get-Command eza -ErrorAction SilentlyContinue) {
