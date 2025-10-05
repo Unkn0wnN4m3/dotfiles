@@ -23,6 +23,12 @@ alias:
   - name: w
     value: wormhole
     if: hasCommand "wormhole"
+  - name: zj
+    value: zellij
+    if: hasCommand "zellij"
+  - name: tm
+    value: tmux
+    if: hasCommand "tmux"
   - name: st
     value: status
     type: git
@@ -41,6 +47,8 @@ env:
     value: "less -RF"
   - name: FZF_DEFAULT_OPTS
     value: "--height 50% --layout=reverse"
+  - name: FZF_COMPLETION_TRIGGER
+    value: "**"
   - name: VIRTUAL_ENV_DISABLE_PROMPT
     value: 1
   - name: CUSTOMPSHOME
@@ -59,6 +67,26 @@ env:
     value: "true"
 script:
   # config
+  - value: |
+      command -v bat >/dev/null && alias cat="bat -p"
+
+      if [ $(command -v eza) ]; then
+        alias ls="eza -F --group-directories-first --icons"
+        alias la="eza -ahlF --group-directories-first --icons"
+      fi
+    if: match .Shell zsh
+  - value: |
+      # starship
+      eval "$(starship init zsh)"
+
+      # fnm
+      eval "$(fnm env --use-on-cd)"
+
+      # ${UserConfigDir}/zsh/.zshrc
+      export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
+      zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
+      source <(carapace _carapace)
+    if: match .Shell zsh
   - value: |
       mkdir ($nu.data-dir | path join "vendor/autoload")
       starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
