@@ -71,10 +71,8 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-#Star Ship
-eval "$(starship init zsh)"
-
-eval "$(fnm env --use-on-cd)"
+# aliae
+eval "$(aliae init zsh)"
 
 # User configuration
 
@@ -89,9 +87,9 @@ else
 fi
 
 # "bat" as manpager
-if command -v bat &> /dev/null; then
-  export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-fi
+# if command -v bat &> /dev/null; then
+#   export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+# fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -100,15 +98,3 @@ fi
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-#
-# Example aliases
-command -v nvim >/dev/null && alias n="nvim"
-command -v zellij >/dev/null && alias zj="zellij"
-command -v tmux >/dev/null && alias tm="tmux"
-command -v bat >/dev/null && alias cat="bat -p"
-command -v lazygit >/dev/null && alias lg="lazygit"
-
-if [ $(command -v eza) ]; then
-  alias ls="eza -F --group-directories-first --icons"
-  alias la="eza -ahlF --group-directories-first --icons"
-fi
