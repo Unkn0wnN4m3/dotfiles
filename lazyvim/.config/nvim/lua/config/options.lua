@@ -22,7 +22,7 @@ opt.background = vim.env.NVIM_BACKGROUND == "light" and "light" or "dark"
 -- opt.winborder = "rounded"
 
 -- Windows config
-if vim.fn.has("win32") or vim.fn.has("win64") then
+if vim.fn.has("win32") == 1 then
   require("windows.options")
 end
 
