@@ -8,6 +8,16 @@ return {
             formatterMode = "typstyle",
             exportPdf = "onSave",
             semanticTokens = "disable",
+            lint = {
+              enabled = true,
+              when = "onSave",
+            },
+            preview = {
+              background = {
+                enabled = true,
+                args = { "--data-plane-host=127.0.0.1:23635", "--invert-colors=never", "--open" },
+              },
+            },
           },
         },
         texlab = {
