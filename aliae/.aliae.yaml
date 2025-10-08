@@ -73,8 +73,7 @@ script:
       command -v bat >/dev/null && alias cat="bat -p"
 
       if [ $(command -v eza) ]; then
-        alias ls="eza -F --group-directories-first --icons"
-        alias la="eza -ahlF --group-directories-first --icons"
+        alias la="eza -aF --group-directories-first --icons"
       fi
     if: match .Shell zsh
   - value: |
