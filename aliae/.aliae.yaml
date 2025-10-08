@@ -39,6 +39,8 @@ path:
   - value: |
       {{ .Home }}/.local/bin
 env:
+  - name: MANPAGER
+    value: "nvim +Man!"
   - name: EDITOR
     value: "nvim"
   - name: BAT_THEME
