@@ -29,6 +29,9 @@ alias:
   - name: tm
     value: tmux
     if: hasCommand "tmux"
+  - name: zj
+    value: zellij
+    if: hasCommand "zellij"
   - name: st
     value: status
     type: git
