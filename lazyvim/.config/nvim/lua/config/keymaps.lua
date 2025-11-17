@@ -7,7 +7,7 @@ if vim.g.neovide then
   require("neovide.keymaps")
 end
 
-local map = vim.keymap
-
-map.set("i", "jk", "<ESC>", { noremap = true, silent = true })
-map.set("i", "kj", "<ESC>", { noremap = true, silent = true })
+-- local map = vim.keymap
+--
+-- map.set("i", "jk", "<ESC>", { noremap = true, silent = true })
+-- map.set("i", "kj", "<ESC>", { noremap = true, silent = true })
