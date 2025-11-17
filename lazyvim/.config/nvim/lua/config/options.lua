@@ -19,7 +19,7 @@ opt.wildignore:append({ "*/node_modules/*", "*.pyc", "*/__pycache__/*", ".git", 
 opt.relativenumber = false
 opt.spelllang = { "en", "es" }
 opt.background = vim.env.NVIM_BACKGROUND == "light" and "light" or "dark"
--- opt.winborder = "rounded"
+opt.winborder = "rounded"
 
 -- Windows config
 if vim.fn.has("win32") == 1 then
@@ -29,4 +29,9 @@ end
 -- neovide config
 if vim.g.neovide then
   require("neovide.options")
+end
+
+-- wsl config
+if vim.fn.has("wsl") == 1 then
+  require("wsl.options")
 end
