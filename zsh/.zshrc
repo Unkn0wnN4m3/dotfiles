@@ -61,7 +61,6 @@ plugins=(
   vi-mode
   zsh-syntax-highlighting
   zsh-autopair 
-  fnm
   poetry
   python
   pip
