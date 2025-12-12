@@ -100,14 +100,14 @@ script:
     if: match .Shell "pwsh"
   - value: |
       foreach ($PFunction in Get-ChildItem "$env:CUSTOMPSHOME\functions") {
-        if ($PFunction.name -match "\\*.ps1") {
+        if ($PFunction.name -like "*.ps1") {
           . $PFunction
         }
       }
 
       # conf
       foreach ($PConfig in Get-ChildItem "$env:CUSTOMPSHOME\conf") {
-        if ($PConfig.name -match "\\*.ps1") {
+        if ($PConfig.name -like "*.ps1") {
           . $PConfig
         }
       }
