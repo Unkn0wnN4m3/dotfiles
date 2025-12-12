@@ -77,7 +77,7 @@ script:
       if [ $(command -v eza) ]; then
         alias la="eza -aF --group-directories-first --icons"
       fi
-    if: match .Shell zsh
+    if: match .Shell "zsh"
   - value: |
       # starship
       eval "$(starship init zsh)"
@@ -86,7 +86,7 @@ script:
       export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
       zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
       source <(carapace _carapace)
-    if: match .Shell zsh
+    if: match .Shell "zsh"
   - value: |
       mkdir ($nu.data-dir | path join "vendor/autoload")
       starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
