@@ -73,7 +73,6 @@ env:
 script:
   - value: |
       command -v bat >/dev/null && alias cat="bat -p"
-
       if [ $(command -v eza) ]; then
         alias la="eza -aF --group-directories-first --icons"
       fi
@@ -121,6 +120,16 @@ script:
       Set-PSReadLineOption -Colors @{ "Selection" = "`e[7m" }
       Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
       carapace _carapace | Out-String | Invoke-Expression
+    if: match .Shell "pwsh"
+  - value: |
+      if ( -not ( Get-Command mise -ErrorAction SilentlyContinue ) ) {
+          return
+      }
+
+      $shimPath = "$env:USERPROFILE\AppData\Local\mise\shims"
+      $currentPath = [Environment]::GetEnvironmentVariable('Path', 'User')
+      $newPath = $currentPath + ";" + $shimPath
+      [Environment]::SetEnvironmentVariable('Path', $newPath, 'User')
     if: match .Shell "pwsh"
     # Aliases that require arguments
   - value: |
