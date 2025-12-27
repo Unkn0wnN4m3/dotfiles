@@ -38,9 +38,6 @@ alias:
   - name: logp
     value: log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit --date=relative
     type: git
-path:
-  - value: |
-      {{ .Home }}/.local/bin
 env:
   - name: MANPAGER
     value: "nvim +Man!"
@@ -87,14 +84,6 @@ script:
       source <(carapace _carapace)
     if: match .Shell "zsh"
   - value: |
-      mkdir ($nu.data-dir | path join "vendor/autoload")
-      starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
-    if: match .Shell "nu"
-  - value: |
-      zoxide init nushell | save -f ~/.zoxide.nu
-      source ~/.zoxide.nu
-    if: match .Shell "nu"
-  - value: |
       oh-my-posh init pwsh --config "$env:CUSTOMPSHOME\catppuccin_macchiato.omp.json" | Invoke-Expression
     if: match .Shell "pwsh"
   - value: |
@@ -121,30 +110,8 @@ script:
       Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
       carapace _carapace | Out-String | Invoke-Expression
     if: match .Shell "pwsh"
-  - value: |
-      if ( -not ( Get-Command mise -ErrorAction SilentlyContinue ) ) {
-          return
-      }
 
-      $shimPath = "$env:USERPROFILE\AppData\Local\mise\shims"
-      $currentPath = [Environment]::GetEnvironmentVariable('Path', 'User')
-      $newPath = $currentPath + ";" + $shimPath
-      [Environment]::SetEnvironmentVariable('Path', $newPath, 'User')
-    if: match .Shell "pwsh"
     # Aliases that require arguments
-  - value: |
-      def la [...args] {
-        ^eza -F -A --icons=always --group-directories-first ...$args
-      }
-
-      def ne [...args] {
-        ^neovide --grid=120x35 ...$args
-      }
-
-      def cat [...args] {
-        ^bat -p ...$args
-      }
-    if: match .Shell "nu"
   - value: |
       function __TOUCH { param([Parameter(ValueFromRemainingArguments=$true)]$args) Get-ChildItem -Path $args | Format-Wide -AutoSize }
       function __CUSTOM_BAT { param( $path ) if (Get-Command bat -ErrorAction SilentlyContinue) { bat -p $path } else { cat $path } }
