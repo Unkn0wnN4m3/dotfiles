@@ -1,6 +1,6 @@
 [[language]]
 name = "python"
-language-servers = ["pylsp", "pyrefly"]
+language-servers = ["basedpyright", "ruff"]
 auto-format = false
 scope = "source.python"
 injection-regex = "py(thon)?"
@@ -30,9 +30,47 @@ roots = [
 ]
 comment-token = "#"
 
-[language-server.pylsp.config.pylsp.plugins]
-ruff = { enabled = true, formatEnabled = true, format = ["I"] }
+[[language]]
+name = "typst"
+file-types = ["typ"]
+scope = "source.typst"
+language-servers = ["tinymist", "codebook"]
+comment-token = "//"
+indent = { tab-width = 2, unit = "  " }
+formatter = { command = "typstyle" }
+auto-format = true
 
-[language-server.pyrefly]
-command = "pyrefly"
-args = ["lsp"]
+[[language]]
+name = "markdown"
+language-servers = ["marksman", "markdown-oxide", "codebook"]
+file-types = ["md"]
+formatter = { command = "dx", args = ["prettier", "--parser", "markdown"] }
+auto-format = true
+
+[[language]]
+name = "toml"
+auto-format = true
+language-servers = ["tombi"]
+
+[language-server.codebook]
+command = "codebook-lsp"
+args = ["serve"]
+
+[language-server.tinymist]
+command = "tinymist"
+config = { preview.background.enabled = true, preview.background.args = [
+  "--data-plane-host=127.0.0.1:23635",
+  "--invert-colors=never"
+], lint.enabled = true, lint.when = "onSave", formatterMode = "disable", fontPaths = [
+  "${workspaceFolder}/fonts"
+] }
+
+[language-server.ruff.config.settings]
+lineLength = 80
+
+[language-server.ruff.config.settings.lint]
+select = ["E4", "E7"]
+preview = false
+
+[language-server.ruff.config.settings.format]
+preview = true
