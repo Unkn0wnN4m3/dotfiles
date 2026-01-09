@@ -1,3 +1,6 @@
+path:
+  - value: |
+      {{ .Home }}/.local/bin
 alias:
   - name: n
     value: nvim
@@ -32,6 +35,9 @@ alias:
   - name: zj
     value: zellij
     if: hasCommand "zellij"
+  - name: btop
+    value: btop4win
+    if: hasCommand "btop4win"
   - name: st
     value: status
     type: git
@@ -67,6 +73,8 @@ env:
     if: eq .OS "windows"
   - name: PIP_REQUIRE_VIRTUALENV
     value: "true"
+  - name: TYPST_PREVIEW
+    value: "http://127.0.0.1:23635"
 script:
   - value: |
       command -v bat >/dev/null && alias cat="bat -p"
@@ -84,7 +92,23 @@ script:
       source <(carapace _carapace)
     if: match .Shell "zsh"
   - value: |
-      oh-my-posh init pwsh --config "$env:CUSTOMPSHOME\catppuccin_macchiato.omp.json" | Invoke-Expression
+      if (Get-Command starship -ErrorAction SilentlyContinue) {
+        function Invoke-Starship-PreCommand {
+          $host.ui.RawUI.WindowTitle = "$env:USERNAME@$env:COMPUTERNAME`: $pwd `a"
+
+          $loc = $executionContext.SessionState.Path.CurrentLocation;
+          $prompt = "$([char]27)]9;12$([char]7)"
+          
+          if ($loc.Provider.Name -eq "FileSystem")
+          {
+            $prompt += "$([char]27)]9;9;`"$($loc.ProviderPath)`"$([char]27)\"
+          }
+
+          $host.ui.Write($prompt)
+        }
+
+        Invoke-Expression (&starship init powershell)
+      }      
     if: match .Shell "pwsh"
   - value: |
       foreach ($PFunction in Get-ChildItem "$env:CUSTOMPSHOME\functions") {
