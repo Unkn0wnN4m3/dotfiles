@@ -10,3 +10,6 @@ opt.scrolloff = 8
 opt.sidescrolloff = 12
 -- opt.shortmess:append({ W = true, I = true, c = true, C = true })
 opt.spelllang = { "en", "es" }
+opt.wildmode = "longest:full,full"
+opt.wrap = false
+opt.virtualedit = "block"
