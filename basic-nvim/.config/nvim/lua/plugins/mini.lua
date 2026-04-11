@@ -28,11 +28,11 @@ return {
     },
     {
         "nvim-mini/mini.statusline",
-        version = "*",
         config = true,
         dependencies = {
-            { "nvim-mini/mini-git",  version = "*" },
-            { "nvim-mini/mini.diff", version = "*" }
+            "nvim-mini/mini-git",
+            "nvim-mini/mini.diff",
+
         }
     },
     {
@@ -108,11 +108,7 @@ return {
         "nvim-mini/mini.pick",
         version = "*",
         dependencies = {
-            {
-                "nvim-mini/mini.extra",
-                version = "*",
-                config = true,
-            }
+            "nvim-mini/mini.extra",
         },
         keys = {
             { "<leader>ff", "<cmd>Pick files<cr>",                      desc = "Mini Pick files" },
@@ -139,6 +135,23 @@ return {
                 end
             }
         }
+    },
+    {
+        "nvim-mini/mini.diff",
+        lazy = true,
+        config = true,
+    },
+    {
+        "nvim-mini/mini-git",
+        lazy = true,
+        config = function()
+            require('mini.git').setup()
+        end
+    },
+    {
+        "nvim-mini/mini.extra",
+        lazy = true,
+        config = true,
     },
     {
         "nvim-mini/mini.clue",
