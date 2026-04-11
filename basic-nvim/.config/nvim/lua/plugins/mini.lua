@@ -17,11 +17,6 @@ return {
         }
     },
     {
-        "nvim-mini/mini.cmdline",
-        version = "*",
-        config = true,
-    },
-    {
         "nvim-mini/mini.statusline",
         config = true,
         dependencies = {
