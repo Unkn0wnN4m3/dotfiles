@@ -7,5 +7,8 @@ return {
             tinymist = "tinymist",
             websocat = nil
         },
-    }
+    },
+    keys = {
+        { "<leader>cp", "<cmd>TypstPreviewToggle<cr>", desc = "Toggle Typst Preview" },
+    },
 }
