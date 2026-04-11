@@ -42,7 +42,6 @@ return {
     },
     {
         "nvim-mini/mini.notify",
-        version = "*",
         event = "VimEnter",
         keys = {
             { "<leader>un", "<cmd>lua MiniNotify.show_history()<cr>", desc = "Mini Notify show notifications history" },
