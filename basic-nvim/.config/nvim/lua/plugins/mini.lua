@@ -1,7 +1,7 @@
 return {
     {
         "nvim-mini/mini.basics",
-        version = "*",
+        priority = 1000,
         opts = {
             options = {
                 basic = true,
@@ -27,12 +27,15 @@ return {
         dependencies = {
             "nvim-mini/mini-git",
             "nvim-mini/mini.diff",
+            "nvim-mini/mini.icons",
 
         }
     },
     {
         "nvim-mini/mini.tabline",
-        version = "*",
+        dependencies = {
+            "nvim-mini/mini.icons",
+        },
         config = true,
     },
     {
@@ -59,39 +62,34 @@ return {
     },
     {
         "nvim-mini/mini.cursorword",
-        version = "*",
         event = "BufReadPre",
         config = true,
     },
     {
         "nvim-mini/mini.indentscope",
-        version = "*",
         event = "BufReadPre",
         config = true
     },
     {
         "nvim-mini/mini.trailspace",
-        version = "*",
         event = "BufReadPre",
         config = true,
     },
     {
         "nvim-mini/mini.bufremove",
-        version = "*",
         event = "BufReadPre",
         config = true,
     },
     {
         "nvim-mini/mini.jump",
-        version = "*",
         event = "BufReadPre",
         config = true,
     },
     {
         "nvim-mini/mini.pick",
-        version = "*",
         dependencies = {
             "nvim-mini/mini.extra",
+            "nvim-mini/mini.icons",
         },
         keys = {
             { "<leader>ff", "<cmd>Pick files<cr>",                      desc = "Mini Pick files" },
