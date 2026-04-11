@@ -1,10 +1,5 @@
 return {
     {
-        "nvim-mini/mini.icons",
-        version = "*",
-        config = true
-    },
-    {
         "nvim-mini/mini.basics",
         version = "*",
         opts = {
@@ -140,6 +135,11 @@ return {
         "nvim-mini/mini.extra",
         lazy = true,
         config = true,
+    },
+    {
+        "nvim-mini/mini.icons",
+        config = true,
+        lazy = true,
     },
     {
         "nvim-mini/mini.clue",
