@@ -56,17 +56,6 @@ return {
         }
     },
     {
-        "nvim-mini/mini.completion",
-        event = "InsertEnter",
-        config = true,
-    },
-    {
-        "nvim-mini/mini.snippets",
-        version = "*",
-        event = "InsertEnter",
-        config = true,
-    },
-    {
         "nvim-mini/mini.pairs",
         event = "InsertEnter",
         opts = {
