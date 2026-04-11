@@ -77,31 +77,31 @@ return {
     {
         "nvim-mini/mini.cursorword",
         version = "*",
-        event = "VeryLazy",
+        event = "BufReadPre",
         config = true,
     },
     {
         "nvim-mini/mini.indentscope",
         version = "*",
-        event = "VeryLazy",
+        event = "BufReadPre",
         config = true
     },
     {
         "nvim-mini/mini.trailspace",
         version = "*",
-        event = "VeryLazy",
+        event = "BufReadPre",
         config = true,
     },
     {
         "nvim-mini/mini.bufremove",
         version = "*",
-        event = "VeryLazy",
+        event = "BufReadPre",
         config = true,
     },
     {
         "nvim-mini/mini.jump",
         version = "*",
-        event = "VeryLazy",
+        event = "BufReadPre",
         config = true,
     },
     {
