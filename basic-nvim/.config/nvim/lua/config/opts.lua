@@ -18,3 +18,16 @@ vim.g.loaded_node_provider = 0
 vim.g.loaded_perl_provider = 0
 vim.g.loaded_ruby_provider = 0
 
+if vim.fn.has("win32") == 1 then
+    vim.cmd([[
+    set noshelltemp
+    let &shell = 'pwsh'
+    let &shellcmdflag = '-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command '
+    let &shellcmdflag .= '[Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new();'
+    let &shellcmdflag .= '$PSDefaultParameterValues[''Out-File:Encoding'']=''utf8'';'
+    let &shellcmdflag .= '$PSStyle.OutputRendering = ''PlainText'';'
+    let &shellpipe  = '> %s 2>&1'
+    let $__SuppressAnsiEscapeSequences = 1
+    set shellquote= shellxquote=
+    ]])
+end
