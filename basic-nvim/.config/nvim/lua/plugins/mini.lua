@@ -28,6 +28,7 @@ return {
     },
     {
         "nvim-mini/mini.tabline",
+        event = "BufReadPre",
         dependencies = {
             "nvim-mini/mini.icons",
         },
@@ -55,11 +56,11 @@ return {
             modes = { insert = true, command = true, terminal = false },
         }
     },
-    {
-        "nvim-mini/mini.cursorword",
-        event = "BufReadPre",
-        config = true,
-    },
+    -- {
+    --     "nvim-mini/mini.cursorword",
+    --     event = "BufReadPre",
+    --     config = true,
+    -- },
     {
         "nvim-mini/mini.indentscope",
         event = "BufReadPre",
