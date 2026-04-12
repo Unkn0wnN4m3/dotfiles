@@ -1,31 +1,3 @@
-local lsp_grp = vim.api.nvim_create_augroup("copilot-keymaps", { clear = true })
-
-vim.api.nvim_create_autocmd("LspAttach", {
-    group = lsp_grp,
-    callback = function(args)
-        local bufnr = args.buf
-        local client = vim.lsp.get_client_by_id(args.data.client_id)
-
-        if client and client.name == "copilot" then
-            -- Enable inline completion for Copilot
-            vim.lsp.inline_completion.enable()
-
-            vim.keymap.set(
-                'i',
-                '<C-F>',
-                vim.lsp.inline_completion.get,
-                { desc = 'LSP: accept inline completion', buffer = bufnr }
-            )
-            vim.keymap.set(
-                'i',
-                '<C-G>',
-                vim.lsp.inline_completion.select,
-                { desc = 'LSP: switch inline completion', buffer = bufnr }
-            )
-        end
-    end,
-})
-
 local function sign_in(bufnr, client)
     client:request(
     ---@diagnostic disable-next-line: param-type-mismatch
@@ -92,8 +64,24 @@ return {
         vim.api.nvim_buf_create_user_command(bufnr, 'LspCopilotSignIn', function()
             sign_in(bufnr, client)
         end, { desc = 'Sign in Copilot with GitHub' })
+
         vim.api.nvim_buf_create_user_command(bufnr, 'LspCopilotSignOut', function()
             sign_out(bufnr, client)
         end, { desc = 'Sign out Copilot with GitHub' })
+
+        vim.lsp.inline_completion.enable()
+
+        vim.keymap.set(
+            'i',
+            '<C-F>',
+            vim.lsp.inline_completion.get,
+            { desc = 'LSP: accept inline completion', buffer = bufnr }
+        )
+        vim.keymap.set(
+            'i',
+            '<C-G>',
+            vim.lsp.inline_completion.select,
+            { desc = 'LSP: switch inline completion', buffer = bufnr }
+        )
     end,
 }
