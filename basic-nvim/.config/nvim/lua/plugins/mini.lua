@@ -51,10 +51,19 @@ return {
     },
     {
         "nvim-mini/mini.pairs",
-        event = "InsertEnter",
-        opts = {
-            modes = { insert = true, command = true, terminal = false },
-        }
+        event = { "InsertEnter", "CmdlineEnter" },
+        opts = function()
+            vim.api.nvim_create_autocmd('InsertEnter', {
+                group = vim.api.nvim_create_augroup('MiniPairsTex', { clear = true }),
+                pattern = "*.typ",
+                callback = function()
+                    MiniPairs.map_buf(0, 'i', '$', { action = 'closeopen', pair = '$$' })
+                end
+            })
+            return {
+                modes = { insert = true, command = true, terminal = false },
+            }
+        end,
     },
     -- {
     --     "nvim-mini/mini.cursorword",
