@@ -65,11 +65,6 @@ return {
             }
         end,
     },
-    -- {
-    --     "nvim-mini/mini.cursorword",
-    --     event = "BufReadPre",
-    --     config = true,
-    -- },
     {
         "nvim-mini/mini.indentscope",
         event = "BufReadPre",
