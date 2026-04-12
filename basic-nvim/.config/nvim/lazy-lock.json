@@ -8,7 +8,6 @@
   "mini.basics": { "branch": "main", "commit": "30b9d5c026965bbf6cfedc0d30ee66273f6c4084" },
   "mini.bufremove": { "branch": "main", "commit": "8603490905fdfa31943cf2ede7ef4475e3dbac9a" },
   "mini.clue": { "branch": "main", "commit": "f8a11789cf34a7bae396dc0f828d06cdb5066793" },
-  "mini.cursorword": { "branch": "main", "commit": "a7e606208197ca5d1c5288750d5163429b4c74da" },
   "mini.diff": { "branch": "main", "commit": "ab11575a6c147ecfba894d676d0c93e855021d34" },
   "mini.extra": { "branch": "main", "commit": "bc4e872500fd6d2ce252604e0ffa100f64f02280" },
   "mini.icons": { "branch": "main", "commit": "7fdae2443a0e2910015ca39ad74b50524ee682d3" },
