@@ -8,7 +8,6 @@ vim.lsp.config[languages[1]] = {
         formatterMode = "typstyle",
         formatterProseWrap = true,
         formatterPrintWidth = 80,
-        formatterIndentSize = 4,
     }
 }
 
