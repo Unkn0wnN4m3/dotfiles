@@ -19,6 +19,25 @@ vim.g.loaded_node_provider = 0
 vim.g.loaded_perl_provider = 0
 vim.g.loaded_ruby_provider = 0
 
+vim.diagnostic.config({
+    signs = {
+        text = {
+            [vim.diagnostic.severity.ERROR] = "",
+            [vim.diagnostic.severity.WARN] = "",
+            [vim.diagnostic.severity.HINT] = "󱧡",
+            [vim.diagnostic.severity.INFO] = "",
+        },
+    },
+    virtual_text = {
+        prefix = "",
+        severity = vim.diagnostic.severity.WARN,
+        source = "if_many",
+    },
+    severity_sort = true,
+    jump = { float = true },
+})
+
+
 if vim.fn.has("win32") == 1 then
     vim.cmd([[
     set noshelltemp

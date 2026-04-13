@@ -1,13 +1,5 @@
 local languages = { "tinymist", "lua_ls", "copilot" }
 
-vim.diagnostic.config(
-    {
-        virtual_text = true,
-        severity_sort = true,
-        jump = { float = true },
-    }
-)
-
 vim.lsp.config[languages[1]] = {
     cmd = { "tinymist" },
     filetypes = { "typst" },
