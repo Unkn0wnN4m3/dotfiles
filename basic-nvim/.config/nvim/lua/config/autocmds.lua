@@ -26,9 +26,12 @@ vim.api.nvim_create_autocmd("FileType", {
     end,
 })
 
+local spell_ft = require("spell_filetypes")
+
 vim.api.nvim_create_autocmd("FileType", {
     group = augroup("wrap_spell"),
-    pattern = { "text", "plaintex", "typst", "gitcommit", "markdown" },
+    -- pattern = { "text", "plaintex", "typst", "gitcommit", "markdown" },
+    pattern = spell_ft.filetypes,
     callback = function()
         vim.opt_local.wrap = true
         vim.opt_local.spell = true
