@@ -115,7 +115,7 @@ return {
                     }
                 end
             }
-        }
+        },
     },
     {
         "nvim-mini/mini.diff",
