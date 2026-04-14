@@ -7,7 +7,7 @@ return {
             function()
                 require("conform").format({ async = true })
             end,
-            mode = "",
+            mode = "n",
             desc = "Format buffer",
         },
     },
@@ -17,8 +17,8 @@ return {
     opts = {
         formatters_by_ft = {
             lua = { "stylua" },
-            typst = { "typstyle" },
-            python = { "ruff" },
+            typst = { "typstyle", lsp_format = "last" },
+            python = { "ruff", lsp_format = "never" },
         },
         default_format_opts = {
             lsp_format = "fallback",
