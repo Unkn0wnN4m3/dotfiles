@@ -3,10 +3,15 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
         { "mason-org/mason.nvim", opts = {} },
-        "neovim/nvim-lspconfig",
         {
             "mason-org/mason-lspconfig.nvim",
             opts = { automatic_enable = { exclude = { "ruff", "stylua" } } },
+        },
+        {
+            "neovim/nvim-lspconfig",
+            config = function()
+                vim.lsp.config("copilot", { settings = { telemetry = { telemetryLevel = "off" } } })
+            end,
         },
     },
     opts = {
