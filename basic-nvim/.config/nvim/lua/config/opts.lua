@@ -30,13 +30,21 @@ vim.diagnostic.config({
     },
     virtual_text = {
         prefix = "",
-        severity = vim.diagnostic.severity.WARN,
+        severity = {
+            min = vim.diagnostic.severity.WARN,
+            max = vim.diagnostic.severity.ERROR,
+        },
         source = "if_many",
     },
     severity_sort = true,
-    jump = { float = true },
+    jump = {
+        on_jump = function(diagnostic)
+            if diagnostic.severity == vim.diagnostic.severity.ERROR then
+                vim.diagnostic.open_float({ scope = "cursor", focus = false })
+            end
+        end,
+    },
 })
-
 
 if vim.fn.has("win32") == 1 then
     vim.cmd([[
