@@ -18,9 +18,10 @@ return {
         formatters_by_ft = {
             lua = { "stylua" },
             typst = { "typstyle" },
+            python = { "ruff" },
         },
         default_format_opts = {
             lsp_format = "fallback",
         },
-    }
+    },
 }
