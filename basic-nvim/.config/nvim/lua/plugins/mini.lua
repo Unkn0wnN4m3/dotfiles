@@ -26,14 +26,6 @@ return {
         },
     },
     {
-        "nvim-mini/mini.tabline",
-        event = "BufReadPre",
-        dependencies = {
-            "nvim-mini/mini.icons",
-        },
-        config = true,
-    },
-    {
         "nvim-mini/mini.notify",
         event = "VimEnter",
         keys = {
@@ -65,6 +57,14 @@ return {
         end,
     },
     {
+        "nvim-mini/mini.tabline",
+        event = "BufReadPre",
+        dependencies = {
+            "nvim-mini/mini.icons",
+        },
+        config = true,
+    },
+    {
         "nvim-mini/mini.indentscope",
         event = "BufReadPre",
         config = true,
@@ -81,6 +81,11 @@ return {
     },
     {
         "nvim-mini/mini.jump",
+        event = "BufReadPre",
+        config = true,
+    },
+    {
+        "nvim-mini/mini.surround",
         event = "BufReadPre",
         config = true,
     },
