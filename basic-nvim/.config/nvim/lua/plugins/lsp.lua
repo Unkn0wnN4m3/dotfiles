@@ -6,7 +6,7 @@ return {
         "neovim/nvim-lspconfig",
         {
             "mason-org/mason-lspconfig.nvim",
-            opts = { automatic_enable = { exclude = { "ruff" } } },
+            opts = { automatic_enable = { exclude = { "ruff", "stylua" } } },
         },
     },
     opts = {
@@ -14,7 +14,6 @@ return {
             "lua_ls",
             "stylua",
             "tinymist",
-            "typstyle",
             "copilot",
             "basedpyright",
             "ruff",
