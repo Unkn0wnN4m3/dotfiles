@@ -7,17 +7,18 @@ local custom_cmd = function()
 end
 
 return {
-    'chomosuke/typst-preview.nvim',
+    "chomosuke/typst-preview.nvim",
     ft = "typst",
-    version = '1.*',
-    opts = {
-        open_cmd = custom_cmd(),
-        dependencies_bin = {
-            tinymist = "tinymist",
-            websocat = nil
-        },
-    },
-    keys = {
-        { "<leader>cp", "<cmd>TypstPreviewToggle<cr>", desc = "Toggle Typst Preview" },
-    },
+    version = "1.*",
+    opts = function()
+        vim.keymap.set("n", "<leader>cp", "<cmd>TypstPreviewToggle<cr>", { desc = "Toggle Typst preview" })
+
+        return {
+            open_cmd = custom_cmd(),
+            dependencies_bin = {
+                tinymist = "tinymist",
+                websocat = nil,
+            },
+        }
+    end,
 }
