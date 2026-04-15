@@ -38,10 +38,8 @@ vim.diagnostic.config({
     },
     severity_sort = true,
     jump = {
-        on_jump = function(diagnostic)
-            if diagnostic.severity == vim.diagnostic.severity.ERROR then
-                vim.diagnostic.open_float({ scope = "cursor", focus = false })
-            end
+        on_jump = function()
+            vim.diagnostic.open_float({ scope = "cursor", focus = false })
         end,
     },
 })
