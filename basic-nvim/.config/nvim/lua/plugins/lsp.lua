@@ -10,7 +10,10 @@ return {
         {
             "neovim/nvim-lspconfig",
             config = function()
-                vim.lsp.config("copilot", { settings = { telemetry = { telemetryLevel = "off" } } })
+                vim.lsp.config(
+                    "copilot",
+                    { settings = { telemetry = { telemetryLevel = "off" } } }
+                )
             end,
         },
     },

@@ -1,202 +1,202 @@
 return {
-    {
-        "nvim-mini/mini.basics",
-        priority = 1000,
-        opts = {
-            options = {
-                basic = true,
-                extra_ui = true,
-            },
-            mappings = {
-                basic = true,
-            },
-            autocommands = {
-                basic = true,
-                relnum_in_visual_mode = true,
-            },
-        },
-    },
-    {
-        "nvim-mini/mini.statusline",
-        config = true,
-        dependencies = {
-            "nvim-mini/mini-git",
-            "nvim-mini/mini.diff",
-            "nvim-mini/mini.icons",
-        },
-    },
-    {
-        "nvim-mini/mini.notify",
-        event = "VimEnter",
-        keys = {
-            { "<leader>un", "<cmd>lua MiniNotify.show_history()<cr>", desc = "Mini Notify show notifications history" },
-            { "<leader>ur", "<cmd>lua MiniNotify.remove()<cr>", desc = "Mini Notify remove notifications" },
-        },
-        opts = {
-            lsp_progress = {
-                enable = true,
-                level = "INFO",
-                duration_last = 1000,
-            },
-        },
-    },
-    {
-        "nvim-mini/mini.pairs",
-        event = { "InsertEnter", "CmdlineEnter" },
-        opts = function()
-            vim.api.nvim_create_autocmd("InsertEnter", {
-                group = vim.api.nvim_create_augroup("MiniPairsTex", { clear = true }),
-                pattern = "*.typ",
-                callback = function()
-                    MiniPairs.map_buf(0, "i", "$", { action = "closeopen", pair = "$$" })
-                end,
-            })
-            return {
-                modes = { insert = true, command = true, terminal = false },
-            }
-        end,
-    },
-    {
-        "nvim-mini/mini.tabline",
-        event = "BufReadPre",
-        dependencies = {
-            "nvim-mini/mini.icons",
-        },
-        config = true,
-    },
-    {
-        "nvim-mini/mini.indentscope",
-        event = "BufReadPre",
-        config = true,
-    },
-    {
-        "nvim-mini/mini.trailspace",
-        event = "BufReadPre",
-        config = true,
-    },
-    {
-        "nvim-mini/mini.bufremove",
-        event = "BufReadPre",
-        config = true,
-    },
-    {
-        "nvim-mini/mini.jump",
-        event = "BufReadPre",
-        config = true,
-    },
-    {
-        "nvim-mini/mini.surround",
-        event = "BufReadPre",
-        config = true,
-    },
-    {
-        "nvim-mini/mini.pick",
-        dependencies = {
-            "nvim-mini/mini.extra",
-            "nvim-mini/mini.icons",
-        },
-        keys = {
-            { "<leader>ff", "<cmd>Pick files<cr>", desc = "Mini Pick files" },
-            { "<leader>fg", "<cmd>Pick files tool='git'<cr>", desc = "Mini Pick git files" },
-            { "<leader>fG", "<cmd>Pick grep_live<cr>", desc = "Mini Pick live grep" },
-            { "<leader>fh", "<cmd>Pick help<cr>", desc = "Mini Pick help tags" },
-            { "<leader>fb", "<cmd>Pick buffers<cr>", desc = "Mini Pick buffers" },
-            { "<leader>fd", "<cmd>Pick diagnostic scope='current'<cr>", desc = "Mini Pick buffer diagnostics" },
-            { "<leader>fD", "<cmd>Pick diagnostic scope='all'<cr>", desc = "Mini Pick all diagnostics" },
-            { "<leader>fk", "<cmd>Pick keymaps<cr>", desc = "Mini Pick keymaps" },
-        },
-        opts = {
-            window = {
-                config = function()
-                    local height = math.floor(0.618 * vim.o.lines)
-                    local width = math.floor(0.618 * vim.o.columns)
-                    return {
-                        anchor = "NW",
-                        height = height,
-                        width = width,
-                        row = math.floor(0.5 * (vim.o.lines - height)),
-                        col = math.floor(0.5 * (vim.o.columns - width)),
-                    }
-                end,
-            },
-        },
-    },
-    {
-        "nvim-mini/mini.diff",
-        lazy = true,
-        config = true,
-    },
-    {
-        "nvim-mini/mini-git",
-        lazy = true,
-        config = function()
-            require("mini.git").setup()
-        end,
-    },
-    {
-        "nvim-mini/mini.extra",
-        lazy = true,
-        config = true,
-    },
-    {
-        "nvim-mini/mini.icons",
-        config = true,
-        lazy = true,
-    },
-    {
-        "nvim-mini/mini.clue",
-        event = "VeryLazy",
-        config = function()
-            local miniclue = require("mini.clue")
-            miniclue.setup({
-                triggers = {
-                    -- Leader triggers
-                    { mode = { "n", "x" }, keys = "<Leader>" },
+	{
+		"nvim-mini/mini.basics",
+		priority = 1000,
+		opts = {
+			options = {
+				basic = true,
+				extra_ui = true,
+			},
+			mappings = {
+				basic = true,
+			},
+			autocommands = {
+				basic = true,
+				relnum_in_visual_mode = true,
+			},
+		},
+	},
+	{
+		"nvim-mini/mini.statusline",
+		config = true,
+		dependencies = {
+			"nvim-mini/mini-git",
+			"nvim-mini/mini.diff",
+			"nvim-mini/mini.icons",
+		},
+	},
+	{
+		"nvim-mini/mini.notify",
+		lazy = false,
+		keys = {
+			{ "<leader>un", "<cmd>lua MiniNotify.show_history()<cr>", desc = "Mini Notify show notifications history" },
+			{ "<leader>ur", "<cmd>lua MiniNotify.remove()<cr>", desc = "Mini Notify remove notifications" },
+		},
+		opts = {
+			lsp_progress = {
+				enable = true,
+				level = "INFO",
+				duration_last = 1000,
+			},
+		},
+	},
+	{
+		"nvim-mini/mini.pairs",
+		event = { "InsertEnter", "CmdlineEnter" },
+		opts = function()
+			vim.api.nvim_create_autocmd("InsertEnter", {
+				group = vim.api.nvim_create_augroup("MiniPairsTex", { clear = true }),
+				pattern = "*.typ",
+				callback = function()
+					MiniPairs.map_buf(0, "i", "$", { action = "closeopen", pair = "$$" })
+				end,
+			})
+			return {
+				modes = { insert = true, command = true, terminal = false },
+			}
+		end,
+	},
+	{
+		"nvim-mini/mini.tabline",
+		event = "BufReadPre",
+		dependencies = {
+			"nvim-mini/mini.icons",
+		},
+		config = true,
+	},
+	{
+		"nvim-mini/mini.indentscope",
+		event = "BufReadPre",
+		config = true,
+	},
+	{
+		"nvim-mini/mini.trailspace",
+		event = "BufReadPre",
+		config = true,
+	},
+	{
+		"nvim-mini/mini.bufremove",
+		event = "BufReadPre",
+		config = true,
+	},
+	{
+		"nvim-mini/mini.jump",
+		event = "BufReadPre",
+		config = true,
+	},
+	{
+		"nvim-mini/mini.surround",
+		event = "BufReadPre",
+		config = true,
+	},
+	{
+		"nvim-mini/mini.pick",
+		dependencies = {
+			"nvim-mini/mini.extra",
+			"nvim-mini/mini.icons",
+		},
+		keys = {
+			{ "<leader>ff", "<cmd>Pick files<cr>", desc = "Mini Pick files" },
+			{ "<leader>fg", "<cmd>Pick files tool='git'<cr>", desc = "Mini Pick git files" },
+			{ "<leader>fG", "<cmd>Pick grep_live<cr>", desc = "Mini Pick live grep" },
+			{ "<leader>fh", "<cmd>Pick help<cr>", desc = "Mini Pick help tags" },
+			{ "<leader>fb", "<cmd>Pick buffers<cr>", desc = "Mini Pick buffers" },
+			{ "<leader>fd", "<cmd>Pick diagnostic scope='current'<cr>", desc = "Mini Pick buffer diagnostics" },
+			{ "<leader>fD", "<cmd>Pick diagnostic scope='all'<cr>", desc = "Mini Pick all diagnostics" },
+			{ "<leader>fk", "<cmd>Pick keymaps<cr>", desc = "Mini Pick keymaps" },
+		},
+		opts = {
+			window = {
+				config = function()
+					local height = math.floor(0.618 * vim.o.lines)
+					local width = math.floor(0.618 * vim.o.columns)
+					return {
+						anchor = "NW",
+						height = height,
+						width = width,
+						row = math.floor(0.5 * (vim.o.lines - height)),
+						col = math.floor(0.5 * (vim.o.columns - width)),
+					}
+				end,
+			},
+		},
+	},
+	{
+		"nvim-mini/mini.diff",
+		lazy = true,
+		config = true,
+	},
+	{
+		"nvim-mini/mini-git",
+		lazy = true,
+		config = function()
+			require("mini.git").setup()
+		end,
+	},
+	{
+		"nvim-mini/mini.extra",
+		lazy = true,
+		config = true,
+	},
+	{
+		"nvim-mini/mini.icons",
+		config = true,
+		lazy = true,
+	},
+	{
+		"nvim-mini/mini.clue",
+		event = "VeryLazy",
+		config = function()
+			local miniclue = require("mini.clue")
+			miniclue.setup({
+				triggers = {
+					-- Leader triggers
+					{ mode = { "n", "x" }, keys = "<Leader>" },
 
-                    -- `[` and `]` keys
-                    { mode = "n", keys = "[" },
-                    { mode = "n", keys = "]" },
+					-- `[` and `]` keys
+					{ mode = "n", keys = "[" },
+					{ mode = "n", keys = "]" },
 
-                    -- Built-in completion
-                    { mode = "i", keys = "<C-x>" },
+					-- Built-in completion
+					{ mode = "i", keys = "<C-x>" },
 
-                    -- `g` key
-                    { mode = { "n", "x" }, keys = "g" },
+					-- `g` key
+					{ mode = { "n", "x" }, keys = "g" },
 
-                    -- Marks
-                    { mode = { "n", "x" }, keys = "'" },
-                    { mode = { "n", "x" }, keys = "`" },
+					-- Marks
+					{ mode = { "n", "x" }, keys = "'" },
+					{ mode = { "n", "x" }, keys = "`" },
 
-                    -- Registers
-                    { mode = { "n", "x" }, keys = '"' },
-                    { mode = { "i", "c" }, keys = "<C-r>" },
+					-- Registers
+					{ mode = { "n", "x" }, keys = '"' },
+					{ mode = { "i", "c" }, keys = "<C-r>" },
 
-                    -- Window commands
-                    { mode = "n", keys = "<C-w>" },
+					-- Window commands
+					{ mode = "n", keys = "<C-w>" },
 
-                    -- `z` key
-                    { mode = { "n", "x" }, keys = "z" },
-                },
+					-- `z` key
+					{ mode = { "n", "x" }, keys = "z" },
+				},
 
-                clues = {
-                    -- Enhance this by adding descriptions for <Leader> mapping groups
-                    miniclue.gen_clues.square_brackets(),
-                    miniclue.gen_clues.builtin_completion(),
-                    miniclue.gen_clues.g(),
-                    miniclue.gen_clues.marks(),
-                    miniclue.gen_clues.registers(),
-                    miniclue.gen_clues.windows(),
-                    miniclue.gen_clues.z(),
-                },
-                window = {
-                    config = {
-                        width = "auto",
-                    },
-                    delay = 300,
-                    scroll_down = "<C-d>",
-                    scroll_up = "<C-u>",
-                },
-            })
-        end,
-    },
+				clues = {
+					-- Enhance this by adding descriptions for <Leader> mapping groups
+					miniclue.gen_clues.square_brackets(),
+					miniclue.gen_clues.builtin_completion(),
+					miniclue.gen_clues.g(),
+					miniclue.gen_clues.marks(),
+					miniclue.gen_clues.registers(),
+					miniclue.gen_clues.windows(),
+					miniclue.gen_clues.z(),
+				},
+				window = {
+					config = {
+						width = "auto",
+					},
+					delay = 300,
+					scroll_down = "<C-d>",
+					scroll_up = "<C-u>",
+				},
+			})
+		end,
+	},
 }
