@@ -14,6 +14,14 @@ return {
                     "copilot",
                     { settings = { telemetry = { telemetryLevel = "off" } } }
                 )
+                vim.lsp.config("tinymist", {
+                    settings = {
+                        formatterMode = "typstyle",
+                        formatterProseWrap = true,
+                        formatterPrintWidth = 80,
+                        formatterIndentSize = 4,
+                    },
+                })
             end,
         },
     },

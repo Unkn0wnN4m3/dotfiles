@@ -17,7 +17,7 @@ return {
     opts = {
         formatters_by_ft = {
             lua = { "stylua" },
-            typst = { "typstyle", lsp_format = "last" },
+            typst = { "typstyle", lsp_format = "first" },
             python = { "ruff", lsp_format = "never" },
         },
         default_format_opts = {
