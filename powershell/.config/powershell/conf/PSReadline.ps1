@@ -16,7 +16,7 @@ Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
 Set-PSReadlineOption -PredictionSource History
 Set-PSReadLineOption -HistorySearchCursorMovesToEnd
 
-Set-PSReadLineOption -Colors @{ "InLinePrediction" = "DarkCyan" }
+# Set-PSReadLineOption -Colors @{ "InLinePrediction" = "DarkCyan" }
 
 # This example emits a cursor change VT escape in response to a Vi mode change
 function OnViModeChange {
