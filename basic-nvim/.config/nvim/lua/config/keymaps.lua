@@ -34,6 +34,17 @@ vim.keymap.set(
     { desc = "Previous Tab" }
 )
 
+vim.keymap.set("n", "<leader>us", function()
+    vim.opt_local.spell = not vim.opt_local.spell:get()
+end, {
+    desc = "Toggle spell check",
+})
+
+vim.keymap.set({ "i", "n", "s" }, "<esc>", function()
+    vim.cmd("noh")
+    return "<esc>"
+end, { expr = true, desc = "Escape and Clear hlsearch" })
+
 local lsp_keys_group =
     vim.api.nvim_create_augroup("user_lsp_keys", { clear = true })
 vim.api.nvim_create_autocmd("LspAttach", {
