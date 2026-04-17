@@ -1,6 +1,9 @@
 path:
   - value: |
       {{ .Home }}/.local/bin
+  - value: |
+      {{ .Home }}\AppData\Local\Programs\neovim\bin
+    if: eq .OS "windows"
 alias:
   - name: n
     value: nvim
@@ -44,9 +47,17 @@ alias:
   - name: logp
     value: log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit --date=relative
     type: git
+  - name: cat
+    value: bat
+  - name: la
+    value: eza -aF --group-directories-first --icons
+    if: hasCommand "eza"
 env:
+  - name: CARAPACE_BRIDGES
+    value: "zsh,fish,bash,inshellisense"
   - name: MANPAGER
     value: "nvim +Man!"
+    if: eq .OS "linux"
   - name: EDITOR
     value: "nvim"
   - name: BAT_THEME
@@ -77,17 +88,20 @@ env:
     value: "http://127.0.0.1:23635"
 script:
   - value: |
-      command -v bat >/dev/null && alias cat="bat -p"
-      if [ $(command -v eza) ]; then
-        alias la="eza -aF --group-directories-first --icons"
-      fi
-    if: match .Shell "zsh"
+      $env.config.edit_mode = "vi"
+      $env.config.buffer_editor = ["code", "-w"]
+    if: match .Shell "nu"
+  - value: |
+      source ~/.zoxide.nu
+    if: match .Shell "nu"
+  - value: |
+      source $"($nu.cache-dir)/carapace.nu"
+    if: match .Shell "nu"
   - value: |
       # starship
       eval "$(starship init zsh)"
 
       # ${UserConfigDir}/zsh/.zshrc
-      export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
       zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
       source <(carapace _carapace)
     if: match .Shell "zsh"
@@ -98,7 +112,7 @@ script:
 
           $loc = $executionContext.SessionState.Path.CurrentLocation;
           $prompt = "$([char]27)]9;12$([char]7)"
-          
+
           if ($loc.Provider.Name -eq "FileSystem")
           {
             $prompt += "$([char]27)]9;9;`"$($loc.ProviderPath)`"$([char]27)\"
@@ -108,7 +122,7 @@ script:
         }
 
         Invoke-Expression (&starship init powershell)
-      }      
+      }
     if: match .Shell "pwsh"
   - value: |
       foreach ($PFunction in Get-ChildItem "$env:CUSTOMPSHOME\functions") {
@@ -129,7 +143,6 @@ script:
           return
       }
 
-      $env:CARAPACE_BRIDGES = 'zsh,fish,bash,inshellisense' # optional
       Set-PSReadLineOption -Colors @{ "Selection" = "`e[7m" }
       Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
       carapace _carapace | Out-String | Invoke-Expression
@@ -138,18 +151,9 @@ script:
     # Aliases that require arguments
   - value: |
       function __TOUCH { param([Parameter(ValueFromRemainingArguments=$true)]$args) Get-ChildItem -Path $args | Format-Wide -AutoSize }
-      function __CUSTOM_BAT { param( $path ) if (Get-Command bat -ErrorAction SilentlyContinue) { bat -p $path } else { cat $path } }
       function __TOUCH { param([Parameter(ValueFromRemainingArguments=$true)]$args) & New-Item -ItemType File -Path $args }
-      function __EXALS { param([Parameter(ValueFromRemainingArguments=$true)]$args) & eza -F --icons --group-directories-first $args }
-      function __EXALA { param([Parameter(ValueFromRemainingArguments=$true)]$args) & eza -A -F --icons --group-directories-first $args }
-      function __NE { param([Parameter(ValueFromRemainingArguments=$true)]$args) & neovide --grid=120x35 $args }
       function __IMGCAT { param([Parameter(ValueFromRemainingArguments=$true)]$args) & chafa -f sixels $args }
 
-      if (Get-Command eza -ErrorAction SilentlyContinue) {
-        Set-Alias -Name la -Value __EXALA
-      }
-      Set-Alias -Name cat -Value __CUSTOM_BAT
       Set-Alias -Name touch -Value __TOUCH
-      Set-Alias -Name ne -Value __NE
       Set-Alias -Name icat -Value __IMGCAT
     if: match .Shell "pwsh"
