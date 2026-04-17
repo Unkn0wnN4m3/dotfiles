@@ -19,6 +19,7 @@ return {
             lua = { "stylua" },
             typst = { "typstyle", lsp_format = "first" },
             python = { "ruff", lsp_format = "never" },
+            markdown = { "mdformat" },
         },
         default_format_opts = {
             lsp_format = "fallback",

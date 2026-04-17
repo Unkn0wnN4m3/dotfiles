@@ -33,6 +33,7 @@ return {
             "copilot",
             "basedpyright",
             "ruff",
+            "mdformat",
         },
     },
 }
