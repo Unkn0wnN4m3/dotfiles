@@ -18,7 +18,6 @@ opt.path:append({ "**" })
 opt.wildignore:append({ "*/node_modules/*", "*.pyc", "*/__pycache__/*", ".git", "*/.ruff_cache/*" })
 opt.relativenumber = false
 opt.spelllang = { "en", "es" }
-opt.background = vim.env.NVIM_BACKGROUND == "light" and "light" or "dark"
 opt.winborder = "rounded"
 
 -- Windows config
