@@ -1,70 +1,73 @@
-local function check_indentation()
-  -- from Copilot
-  local space_indent = false
-  local tab_indent = false
-  local tabstop_size = vim.api.nvim_get_option_value("tabstop", { buf = 0 })
-
-  -- limits to the first 500 lines for better performance
-  local max_lines = 500
-  local lines = vim.api.nvim_buf_get_lines(0, 0, max_lines, false)
-
-  for _, line in ipairs(lines) do
-    if line:find("^%s") then
-      if line:find("^\t") then
-        tab_indent = true
-      elseif line:find("^ +") then
-        space_indent = true
-      end
-    end
-    if space_indent and tab_indent then
-      break
-    end
-  end
-
-  if space_indent and tab_indent then
-    return "mixed"
-  elseif space_indent then
-    return "spc:" .. tabstop_size
-  elseif tab_indent then
-    return "tab:" .. tabstop_size
-  else
-    return "none"
-  end
-end
-
-local function open_tabs()
-  if vim.fn.tabpagenr("$") > 1 then
-    return " "
-  else
-    return ""
-  end
-end
-
-local function venv_component()
-  if vim.bo[0].filetype ~= "python" then
-    return ""
-  end
-
-  local venv_path = require("venv-selector").venv()
-  if not venv_path or venv_path == "" then
-    return ""
-  end
-
-  local venv_name = vim.fn.fnamemodify(venv_path, ":t")
-  if not venv_name then
-    return ""
-  end
-
-  local output = "🐍 " .. venv_name
-  return output
-end
-
 return {
   {
     "nvim-lualine/lualine.nvim",
     opts = function(_, opts)
+      local function check_indentation()
+        -- from Copilot
+        local space_indent = false
+        local tab_indent = false
+        local tabstop_size = vim.api.nvim_get_option_value("tabstop", { buf = 0 })
+
+        -- limits to the first 500 lines for better performance
+        local max_lines = 500
+        local lines = vim.api.nvim_buf_get_lines(0, 0, max_lines, false)
+
+        for _, line in ipairs(lines) do
+          if line:find("^%s") then
+            if line:find("^\t") then
+              tab_indent = true
+            elseif line:find("^ +") then
+              space_indent = true
+            end
+          end
+          if space_indent and tab_indent then
+            break
+          end
+        end
+
+        if space_indent and tab_indent then
+          return "mixed"
+        elseif space_indent then
+          return "spc:" .. tabstop_size
+        elseif tab_indent then
+          return "tab:" .. tabstop_size
+        else
+          return "none"
+        end
+      end
+
+      local function open_tabs()
+        if vim.fn.tabpagenr("$") > 1 then
+          return " "
+        else
+          return ""
+        end
+      end
+
+      local function venv_component()
+        if vim.bo[0].filetype ~= "python" then
+          return ""
+        end
+
+        local venv_path = require("venv-selector").venv()
+        if not venv_path or venv_path == "" then
+          return ""
+        end
+
+        local venv_name = vim.fn.fnamemodify(venv_path, ":t")
+        if not venv_name then
+          return ""
+        end
+
+        local output = "🐍 " .. venv_name
+        return output
+      end
       opts.options.component_separators = ""
       opts.options.section_separators = ""
+      -- remove 3 and 4 position
+      for _ = 1, 2 do
+        table.remove(opts.sections.lualine_c, 3)
+      end
       table.insert(opts.sections.lualine_x, 1, venv_component)
       opts.sections.lualine_y = {
         { check_indentation, padding = { left = 1, right = 1 } },
