@@ -20,6 +20,9 @@ return {
             typst = { "typstyle", lsp_format = "first" },
             python = { "ruff", "ruff_organize_imports", lsp_format = "never" },
             markdown = { "mdformat" },
+            json = { "biome" },
+            jsonc = { "biome" },
+            ["*"] = { "trim_whitespace" },
         },
         default_format_opts = {
             lsp_format = "fallback",

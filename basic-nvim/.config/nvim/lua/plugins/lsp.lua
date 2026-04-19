@@ -41,6 +41,7 @@ return {
                 "basedpyright",
                 "ruff",
                 "mdformat",
+                "biome",
             },
         },
     },
