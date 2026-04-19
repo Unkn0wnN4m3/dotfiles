@@ -15,6 +15,7 @@ opt.wrap = false
 opt.virtualedit = "block"
 opt.updatetime = 200
 opt.winborder = "rounded"
+
 vim.g.loaded_node_provider = 0
 vim.g.loaded_perl_provider = 0
 vim.g.loaded_ruby_provider = 0
