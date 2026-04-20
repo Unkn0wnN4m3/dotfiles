@@ -34,6 +34,26 @@ vim.keymap.set(
     { desc = "Previous Tab" }
 )
 
+vim.keymap.set(
+    "n",
+    "<leader>bb",
+    "<cmd>e #<cr>",
+    { desc = "Switch to Other Buffer" }
+)
+vim.keymap.set(
+    "n",
+    "<leader>bd",
+    "<cmd>bdelete<cr>",
+    { desc = "Delete Buffer" }
+)
+vim.keymap.set(
+    "n",
+    "<leader>bp",
+    "<cmd>bprevious<cr>",
+    { desc = "Prev Buffer" }
+)
+vim.keymap.set("n", "<leader>bn", "<cmd>bnext<cr>", { desc = "Next Buffer" })
+
 vim.keymap.set("n", "<leader>us", function()
     vim.opt_local.spell = not vim.opt_local.spell:get()
 end, {
