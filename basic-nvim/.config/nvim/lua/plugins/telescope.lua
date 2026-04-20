@@ -24,23 +24,37 @@ return {
         keys = {
             {
                 "<leader>ff",
-                require("telescope.builtin").find_files,
+                function()
+                    require("telescope.builtin").find_files()
+                end,
                 desc = "Find files",
             },
             {
                 "<leader>fG",
-                require("telescope.builtin").git_files,
+                function()
+                    require("telescope.builtin").git_files()
+                end,
                 desc = "Git files",
             },
             {
                 "<leader>fg",
-                require("telescope.builtin").live_grep,
+                function()
+                    require("telescope.builtin").live_grep()
+                end,
                 desc = "Live grep",
             },
-            { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
+            {
+                "<leader>fb",
+                function()
+                    require("telescope.builtin").buffers()
+                end,
+                desc = "Buffers",
+            },
             {
                 "<leader>fh",
-                require("telescope.builtin").help_tags,
+                function()
+                    require("telescope.builtin").help_tags()
+                end,
                 desc = "Help tags",
             },
             {
@@ -54,12 +68,16 @@ return {
             },
             {
                 "<leader>fO",
-                require("telescope.builtin").oldfiles,
+                function()
+                    require("telescope.builtin").oldfiles()
+                end,
                 desc = "Old files (all)",
             },
             {
                 "<leader>fd",
-                require("telescope.builtin").diagnostics,
+                function()
+                    require("telescope.builtin").diagnostics()
+                end,
                 desc = "Diagnostics (buffer)",
             },
             {
@@ -73,27 +91,37 @@ return {
             },
             {
                 "<leader>fR",
-                require("telescope.builtin").lsp_references,
+                function()
+                    require("telescope.builtin").lsp_references()
+                end,
                 desc = "LSP references",
             },
             {
                 "<leader>fS",
-                require("telescope.builtin").lsp_document_symbols,
+                function()
+                    require("telescope.builtin").lsp_document_symbols()
+                end,
                 desc = "LSP document symbols",
             },
             {
                 "<leader>fW",
-                require("telescope.builtin").lsp_dynamic_workspace_symbols,
+                function()
+                    require("telescope.builtin").lsp_dynamic_workspace_symbols()
+                end,
                 desc = "LSP workspace symbols",
             },
             {
                 "<leader>fI",
-                require("telescope.builtin").lsp_implementations,
+                function()
+                    require("telescope.builtin").lsp_implementations()
+                end,
                 desc = "LSP implementations",
             },
             {
                 "<leader>fk",
-                require("telescope.builtin").keymaps,
+                function()
+                    require("telescope.builtin").keymaps()
+                end,
                 desc = "Keymaps",
             },
         },
