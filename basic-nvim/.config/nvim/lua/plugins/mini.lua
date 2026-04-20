@@ -76,15 +76,15 @@ return {
             },
         },
     },
-    {
-        "nvim-mini/mini.statusline",
-        config = true,
-        dependencies = {
-            "nvim-mini/mini-git",
-            "nvim-mini/mini.diff",
-            "nvim-mini/mini.icons",
-        },
-    },
+    -- {
+    --     "nvim-mini/mini.statusline",
+    --     config = true,
+    --     dependencies = {
+    --         "nvim-mini/mini-git",
+    --         "nvim-mini/mini.diff",
+    --         "nvim-mini/mini.icons",
+    --     },
+    -- },
     {
         "nvim-mini/mini.notify",
         lazy = false,
