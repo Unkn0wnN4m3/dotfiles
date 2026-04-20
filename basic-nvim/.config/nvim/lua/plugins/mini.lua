@@ -87,7 +87,7 @@ return {
     -- },
     {
         "nvim-mini/mini.notify",
-        lazy = false,
+        event = "VeryLazy",
         keys = {
             {
                 "<leader>un",
@@ -102,7 +102,7 @@ return {
         },
         opts = {
             lsp_progress = {
-                enable = true,
+                enable = false,
                 level = "INFO",
                 duration_last = 1000,
             },
@@ -134,7 +134,7 @@ return {
     },
     {
         "nvim-mini/mini.tabline",
-        event = "BufReadPre",
+        event = "VeryLazy",
         dependencies = {
             "nvim-mini/mini.icons",
         },
@@ -142,32 +142,32 @@ return {
     },
     {
         "nvim-mini/mini.indentscope",
-        event = "BufReadPre",
+        event = "VeryLazy",
         config = true,
     },
     {
         "nvim-mini/mini.trailspace",
-        event = "BufReadPre",
+        event = "VeryLazy",
         config = true,
     },
     {
         "nvim-mini/mini.bufremove",
-        event = "BufReadPre",
+        event = "VeryLazy",
         config = true,
     },
     {
         "nvim-mini/mini.jump",
-        event = "BufReadPre",
+        event = "VeryLazy",
         config = true,
     },
     {
         "nvim-mini/mini.surround",
-        event = "BufReadPre",
+        event = "VeryLazy",
         config = true,
     },
     {
         "nvim-mini/mini.hipatterns",
-        event = "BufReadPre",
+        event = "VeryLazy",
         opts = function()
             local hipatterns = require("mini.hipatterns")
 
@@ -216,20 +216,15 @@ return {
     },
     {
         "nvim-mini/mini.diff",
-        lazy = true,
+        event = "VeryLazy",
         config = true,
     },
     {
         "nvim-mini/mini-git",
-        lazy = true,
+        event = "VeryLazy",
         config = function()
             require("mini.git").setup()
         end,
-    },
-    {
-        "nvim-mini/mini.extra",
-        lazy = true,
-        config = true,
     },
     {
         "nvim-mini/mini.icons",
