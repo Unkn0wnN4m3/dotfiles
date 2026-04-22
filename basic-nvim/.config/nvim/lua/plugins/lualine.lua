@@ -1,10 +1,10 @@
 return {
     {
         "nvim-lualine/lualine.nvim",
-        event = "UIEnter",
-        dependencies = {
-            "nvim-mini/mini.icons",
-        },
+        event = "VeryLazy",
+        -- dependencies = {
+        --     "nvim-mini/mini.icons",
+        -- },
         opts = function()
             -- global statusline
             vim.opt.laststatus = 3
