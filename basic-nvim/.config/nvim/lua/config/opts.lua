@@ -1,5 +1,16 @@
-vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
+local colorscheme = vim.env.NVIM_THEME
+local valid_colorschemes = {
+    "catppuccin-nvim",
+    "tokyonight",
+    "rose-pine",
+    "solarized-osaka",
+}
+
+if vim.tbl_contains(valid_colorschemes, colorscheme) then
+    vim.cmd.colorscheme(colorscheme)
+else
+    vim.cmd.colorscheme("catppuccin-nvim")
+end
 
 local opt = vim.opt
 
@@ -10,7 +21,7 @@ opt.scrolloff = 8
 opt.sidescrolloff = 12
 -- opt.shortmess:append({ W = true, I = true, c = true, C = true })
 opt.spelllang = { "en", "es" }
-opt.wildmode = "longest:full,full"
+-- opt.wildmode = "longest:full,full"
 opt.wrap = false
 opt.virtualedit = "block"
 opt.updatetime = 200
