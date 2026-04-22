@@ -1,67 +1,67 @@
 return {
-    {
-        "nvim-mini/mini.starter",
-        dependencies = {
-            "nvim-telescope/telescope.nvim",
-        },
-        event = "VimEnter",
-        opts = function()
-            local wellcome_msg = "Wellcome back "
-            local logo = table.concat({
-                "██  ██ ▄████▄ ██ ▄█▀ ██▄  ▄██ ▄█████ ██  ██ ███  ██",
-                "██████ ██▄▄██ ████   ██ ▀▀ ██ ██     ██████ ██ ▀▄██",
-                "██  ██ ██  ██ ██ ▀█▄ ██    ██ ▀█████ ██  ██ ██   ██",
-                " ",
-                vim.env.USERNAME and (wellcome_msg .. vim.env.USERNAME)
-                    or vim.env.USER and (wellcome_msg .. vim.env.USER)
-                    or "Welcome to Neovim!",
-            }, "\n")
-
-            local new_section = function(name, action, section)
-                return { name = name, action = action, section = section }
-            end
-
-            local starter = require("mini.starter")
-            local opts = {
-                evaluate_single = true,
-                header = logo,
-                items = {
-                    new_section(
-                        "Find file",
-                        "Telescope find_files",
-                        "Telescope"
-                    ),
-                    new_section("New file", "ene | startinsert", "Built-in"),
-                    new_section(
-                        "Recent files",
-                        "Telescope oldfiles only_cwd=true",
-                        "Telescope"
-                    ),
-                    new_section(
-                        "Find text",
-                        "Telescope live_grep",
-                        "Telescope"
-                    ),
-                    new_section(
-                        "Restore session",
-                        [[lua require("persistence").load()]],
-                        "Session"
-                    ),
-                    new_section("Lazy", "Lazy", "Config"),
-                    new_section("Quit", "qa", "Built-in"),
-                },
-                footer = "",
-                content_hooks = {
-                    starter.gen_hook.adding_bullet("░ ", false),
-                    starter.gen_hook.aligning("center", "center"),
-                },
-            }
-            return opts
-        end,
-    },
+    -- {
+    --     "nvim-mini/mini.starter",
+    --     dependencies = {
+    --         "nvim-telescope/telescope.nvim",
+    --     },
+    --     event = "VimEnter",
+    --     opts = function()
+    --         local wellcome_msg = "Wellcome back "
+    --         local logo = table.concat({
+    --             "██  ██ ▄████▄ ██ ▄█▀ ██▄  ▄██ ▄█████ ██  ██ ███  ██",
+    --             "██████ ██▄▄██ ████   ██ ▀▀ ██ ██     ██████ ██ ▀▄██",
+    --             "██  ██ ██  ██ ██ ▀█▄ ██    ██ ▀█████ ██  ██ ██   ██",
+    --             " ",
+    --             vim.env.USERNAME and (wellcome_msg .. vim.env.USERNAME)
+    --                 or vim.env.USER and (wellcome_msg .. vim.env.USER)
+    --                 or "Welcome to Neovim!",
+    --         }, "\n")
+    --
+    --         local new_section = function(name, action, section)
+    --             return { name = name, action = action, section = section }
+    --         end
+    --
+    --         local starter = require("mini.starter")
+    --         local opts = {
+    --             evaluate_single = true,
+    --             header = logo,
+    --             items = {
+    --                 new_section(
+    --                     "Find file",
+    --                     "Telescope find_files",
+    --                     "Telescope"
+    --                 ),
+    --                 new_section("New file", "ene | startinsert", "Built-in"),
+    --                 new_section(
+    --                     "Recent files",
+    --                     "Telescope oldfiles only_cwd=true",
+    --                     "Telescope"
+    --                 ),
+    --                 new_section(
+    --                     "Find text",
+    --                     "Telescope live_grep",
+    --                     "Telescope"
+    --                 ),
+    --                 new_section(
+    --                     "Restore session",
+    --                     [[lua require("persistence").load()]],
+    --                     "Session"
+    --                 ),
+    --                 new_section("Lazy", "Lazy", "Config"),
+    --                 new_section("Quit", "qa", "Built-in"),
+    --             },
+    --             footer = "",
+    --             content_hooks = {
+    --                 starter.gen_hook.adding_bullet("░ ", false),
+    --                 starter.gen_hook.aligning("center", "center"),
+    --             },
+    --         }
+    --         return opts
+    --     end,
+    -- },
     {
         "nvim-mini/mini.basics",
-        priority = 1000,
+        -- priority = 1000,
         opts = {
             options = {
                 basic = true,
@@ -76,15 +76,6 @@ return {
             },
         },
     },
-    -- {
-    --     "nvim-mini/mini.statusline",
-    --     config = true,
-    --     dependencies = {
-    --         "nvim-mini/mini-git",
-    --         "nvim-mini/mini.diff",
-    --         "nvim-mini/mini.icons",
-    --     },
-    -- },
     {
         "nvim-mini/mini.notify",
         event = "VeryLazy",
