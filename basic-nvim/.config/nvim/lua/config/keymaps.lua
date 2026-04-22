@@ -65,6 +65,13 @@ vim.keymap.set({ "i", "n", "s" }, "<esc>", function()
     return "<esc>"
 end, { expr = true, desc = "Escape and Clear hlsearch" })
 
+vim.keymap.set(
+    "n",
+    "<leader>e",
+    "<cmd>Lexplore<cr>",
+    { desc = "File Explorer" }
+)
+
 local lsp_keys_group =
     vim.api.nvim_create_augroup("user_lsp_keys", { clear = true })
 vim.api.nvim_create_autocmd("LspAttach", {
