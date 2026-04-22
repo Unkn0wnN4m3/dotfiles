@@ -151,11 +151,6 @@ return {
         config = true,
     },
     {
-        "nvim-mini/mini.bufremove",
-        event = "VeryLazy",
-        config = true,
-    },
-    {
         "nvim-mini/mini.jump",
         event = "VeryLazy",
         config = true,
