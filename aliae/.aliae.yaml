@@ -4,6 +4,9 @@ path:
   - value: |
       {{ .Home }}\AppData\Local\Programs\neovim\bin
     if: eq .OS "windows"
+  - value: |
+      {{ .Home }}\AppData\Local\mise\shims
+    if: hasCommand "mise" && eq .OS "windows"
 alias:
   - name: n
     value: nvim
@@ -73,28 +76,19 @@ env:
   - name: CUSTOMPSHOME
     value: '{{ .Home }}\.config\powershell'
     if: eq .OS "windows"
-  - name: NVIM_BACKGROUND
-    value: "light"
   - name: NVIM_THEME
-    value: "catppuccin"
-    persist: true
+    value: "catppuccin-nvim"
   - name: NEOVIDE_OPENGL
     value: 1
     persist: true
     if: eq .OS "windows"
   - name: PIP_REQUIRE_VIRTUALENV
     value: "true"
-  - name: TYPST_PREVIEW
-    value: "http://127.0.0.1:23635"
 script:
   - value: |
       $env.config.edit_mode = "vi"
-      $env.config.buffer_editor = ["code", "-w"]
-    if: match .Shell "nu"
-  - value: |
+
       source ~/.zoxide.nu
-    if: match .Shell "nu"
-  - value: |
       source $"($nu.cache-dir)/carapace.nu"
     if: match .Shell "nu"
   - value: |
@@ -106,6 +100,8 @@ script:
       source <(carapace _carapace)
     if: match .Shell "zsh"
   - value: |
+      . "$env:CUSTOMPSHOME\PSReadline.ps1"
+
       if (Get-Command starship -ErrorAction SilentlyContinue) {
         function Invoke-Starship-PreCommand {
           $host.ui.RawUI.WindowTitle = "$env:USERNAME@$env:COMPUTERNAME`: $pwd `a"
@@ -123,37 +119,18 @@ script:
 
         Invoke-Expression (&starship init powershell)
       }
-    if: match .Shell "pwsh"
-  - value: |
-      foreach ($PFunction in Get-ChildItem "$env:CUSTOMPSHOME\functions") {
-        if ($PFunction.name -like "*.ps1") {
-          . $PFunction
-        }
+
+      if ( Get-Command mise -ErrorAction SilentlyContinue ) {
+        (&mise activate pwsh) | Out-String | Invoke-Expression
       }
 
-      # conf
-      foreach ($PConfig in Get-ChildItem "$env:CUSTOMPSHOME\conf") {
-        if ($PConfig.name -like "*.ps1") {
-          . $PConfig
-        }
-      }
-    if: match .Shell "pwsh"
-  - value: |
-      if ( -not ( Get-Command carapace -ErrorAction SilentlyContinue ) ) {
-          return
+      if ( Get-Command zoxide -ErrorAction SilentlyContinue ) {
+        Invoke-Expression (& { (zoxide init powershell | Out-String) })
       }
 
-      Set-PSReadLineOption -Colors @{ "Selection" = "`e[7m" }
-      Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
-      carapace _carapace | Out-String | Invoke-Expression
-    if: match .Shell "pwsh"
-
-    # Aliases that require arguments
-  - value: |
-      function __TOUCH { param([Parameter(ValueFromRemainingArguments=$true)]$args) Get-ChildItem -Path $args | Format-Wide -AutoSize }
-      function __TOUCH { param([Parameter(ValueFromRemainingArguments=$true)]$args) & New-Item -ItemType File -Path $args }
-      function __IMGCAT { param([Parameter(ValueFromRemainingArguments=$true)]$args) & chafa -f sixels $args }
-
-      Set-Alias -Name touch -Value __TOUCH
-      Set-Alias -Name icat -Value __IMGCAT
+      if ( Get-Command carapace -ErrorAction SilentlyContinue ) {
+        Set-PSReadLineOption -Colors @{ "Selection" = "`e[7m" }
+        Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
+        carapace _carapace | Out-String | Invoke-Expression
+      }
     if: match .Shell "pwsh"
