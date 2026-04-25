@@ -2,34 +2,21 @@ if ( -not ( Get-Module PSReadLine -ErrorAction SilentlyContinue ) ) {
     return
 }
 
-# using namespace System.Management.Automation
-# using namespace System.Management.Automation.Language
-
-### Beginning PSReadline configuration
-
-Set-PSReadLineOption -EditMode Vi
-
-Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
-Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
-# Set-PSReadLineKeyHandler -Chord "Ctrl+f" -Function AcceptSuggestion
-
-Set-PSReadlineOption -PredictionSource History
-Set-PSReadLineOption -HistorySearchCursorMovesToEnd
-
-# Set-PSReadLineOption -Colors @{ "InLinePrediction" = "DarkCyan" }
+# Set-PSReadLineOption -EditMode Vi
 
 # This example emits a cursor change VT escape in response to a Vi mode change
-function OnViModeChange {
-    if ($args[0] -eq 'Command') {
-        # Set the cursor to a blinking block.
-        Write-Host -NoNewLine "`e[1 q"
-    }
-    else {
-        # Set the cursor to a blinking line.
-        Write-Host -NoNewLine "`e[5 q"
-    }
-}
-Set-PSReadLineOption -ViModeIndicator Script -ViModeChangeHandler $Function:OnViModeChange
+# function OnViModeChange {
+#     if ($args[0] -eq 'Command') {
+#         # Set the cursor to a blinking block.
+#         Write-Host -NoNewLine "`e[1 q"
+#     }
+#     else {
+#         # Set the cursor to a blinking line.
+#         Write-Host -NoNewLine "`e[5 q"
+#     }
+# }
+#
+# Set-PSReadLineOption -ViModeIndicator Script -ViModeChangeHandler $Function:OnViModeChange
 
 # `ForwardChar` accepts the entire suggestion text when the cursor is at the end of the line.
 # This custom binding makes `RightArrow` behave similarly - accepting the next word instead of the entire suggestion text.
@@ -51,9 +38,6 @@ Set-PSReadLineKeyHandler -Key "Ctrl+RightArrow" `
     }
 }
 
-# CaptureScreen is good for blog posts or email showing a transaction
-# of what you did when asking for help or demonstrating a technique.
-Set-PSReadLineKeyHandler -Chord 'Ctrl+d,Ctrl+c' -Function CaptureScreen
 
 #region Smart Insert/Delete
 
