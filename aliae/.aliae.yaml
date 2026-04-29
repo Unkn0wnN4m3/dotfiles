@@ -1,12 +1,10 @@
 path:
   - value: |
       {{ .Home }}/.local/bin
-  - value: |
-      {{ .Home }}\AppData\Local\Programs\neovim\bin
-    if: eq .OS "windows"
+    if: eq .OS "linux"
   - value: |
       {{ .Home }}\AppData\Local\mise\shims
-    if: hasCommand "mise" && eq .OS "windows"
+    if: and (eq .OS "windows") (hasCommand "mise")
 alias:
   - name: n
     value: nvim
