@@ -50,10 +50,13 @@ alias:
     type: git
   - name: cat
     value: bat
-  - name: la
-    value: eza -aF --group-directories-first --icons
+    if: hasCommand "bat"
+  - name: e
+    value: eza
     if: hasCommand "eza"
 env:
+  - name: EZA_ICONS_AUTO
+    value: "always"
   - name: CARAPACE_BRIDGES
     value: "zsh,fish,bash,inshellisense"
   - name: MANPAGER
@@ -83,52 +86,60 @@ env:
   - name: PIP_REQUIRE_VIRTUALENV
     value: "true"
 script:
+  # Nushell
   - value: |
       $env.config.edit_mode = "vi"
-
-      source ~/.zoxide.nu
-      source $"($nu.cache-dir)/carapace.nu"
+      $env.config.cursor_shape = {
+        vi_insert: line,
+        vi_normal: block,
+      }
     if: match .Shell "nu"
   - value: |
-      # starship
-      eval "$(starship init zsh)"
+      source ~/.zoxide.nu
+    if: and (match .Shell "nu") (hasCommand "zoxide")
+  - value: |
+      source $"($nu.cache-dir)/carapace.nu"
+    if: and (match .Shell "nu") (hasCommand "carapace")
 
+  # Zsh
+  - value: |
+      eval "$(starship init zsh)"
+    if: and (match .Shell "zsh") (hasCommand "starship")
+  - value: |
       # ${UserConfigDir}/zsh/.zshrc
       zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
       source <(carapace _carapace)
-    if: match .Shell "zsh"
+    if: and (match .Shell "zsh") (hasCommand "carapace")
+
+  # Powershell
   - value: |
       . "$env:CUSTOMPSHOME\PSReadline.ps1"
+    if: match .Shell "pwsh"
+  - value: |
+      function Invoke-Starship-PreCommand {
+        $host.ui.RawUI.WindowTitle = "$env:USERNAME@$env:COMPUTERNAME`: $pwd `a"
 
-      if (Get-Command starship -ErrorAction SilentlyContinue) {
-        function Invoke-Starship-PreCommand {
-          $host.ui.RawUI.WindowTitle = "$env:USERNAME@$env:COMPUTERNAME`: $pwd `a"
+        $loc = $executionContext.SessionState.Path.CurrentLocation;
+        $prompt = "$([char]27)]9;12$([char]7)"
 
-          $loc = $executionContext.SessionState.Path.CurrentLocation;
-          $prompt = "$([char]27)]9;12$([char]7)"
-
-          if ($loc.Provider.Name -eq "FileSystem")
-          {
-            $prompt += "$([char]27)]9;9;`"$($loc.ProviderPath)`"$([char]27)\"
-          }
-
-          $host.ui.Write($prompt)
+        if ($loc.Provider.Name -eq "FileSystem")
+        {
+          $prompt += "$([char]27)]9;9;`"$($loc.ProviderPath)`"$([char]27)\"
         }
 
-        Invoke-Expression (&starship init powershell)
+        $host.ui.Write($prompt)
       }
 
-      if ( Get-Command mise -ErrorAction SilentlyContinue ) {
-        (&mise activate pwsh) | Out-String | Invoke-Expression
-      }
-
-      if ( Get-Command zoxide -ErrorAction SilentlyContinue ) {
-        Invoke-Expression (& { (zoxide init powershell | Out-String) })
-      }
-
-      if ( Get-Command carapace -ErrorAction SilentlyContinue ) {
-        Set-PSReadLineOption -Colors @{ "Selection" = "`e[7m" }
-        Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
-        carapace _carapace | Out-String | Invoke-Expression
-      }
-    if: match .Shell "pwsh"
+      Invoke-Expression (&starship init powershell)
+    if: and (match .Shell "pwsh") (hasCommand "starship")
+  - value: |
+      (&mise activate pwsh) | Out-String | Invoke-Expression
+    if: and (match .Shell "pwsh") (hasCommand "mise")
+  - value: |
+      Invoke-Expression (& { (zoxide init powershell | Out-String) })
+    if: and (match .Shell "pwsh") (hasCommand "zoxide")
+  - value: |
+      Set-PSReadLineOption -Colors @{ "Selection" = "`e[7m" }
+      Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
+      carapace _carapace | Out-String | Invoke-Expression
+    if: and (match .Shell "pwsh") (hasCommand "carapace")
