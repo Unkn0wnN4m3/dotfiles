@@ -134,7 +134,14 @@ return {
     {
         "nvim-mini/mini.indentscope",
         event = "VeryLazy",
-        config = true,
+        opts = function()
+            local miniindentscope = require("mini.indentscope")
+            return {
+                draw = {
+                    animation = miniindentscope.gen_animation.none(),
+                },
+            }
+        end,
     },
     {
         "nvim-mini/mini.trailspace",
