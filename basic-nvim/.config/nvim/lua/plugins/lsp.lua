@@ -9,11 +9,11 @@ return {
         "neovim/nvim-lspconfig",
         lazy = true,
         config = function()
-            vim.lsp.config("copilot", {
-                settings = {
-                    telemetry = { telemetryLevel = "off" },
-                },
-            })
+            -- vim.lsp.config("copilot", {
+            --     settings = {
+            --         telemetry = { telemetryLevel = "off" },
+            --     },
+            -- })
             vim.lsp.config("tinymist", {
                 settings = {
                     formatterMode = "typstyle",
@@ -37,8 +37,9 @@ return {
                 "lua_ls",
                 "stylua",
                 "tinymist",
-                "copilot",
+                -- "copilot",
                 "basedpyright",
+                -- "pyright",
                 "ruff",
                 "mdformat",
                 "biome",
