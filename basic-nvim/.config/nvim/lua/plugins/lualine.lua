@@ -32,6 +32,7 @@ return {
                     lualine_b = { "branch", "diff", "diagnostics" },
                     lualine_c = { "lsp_status" },
                     lualine_x = {
+                        "venv-selector",
                         "encoding",
                         "fileformat",
                         "filetype",
