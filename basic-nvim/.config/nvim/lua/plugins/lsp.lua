@@ -27,6 +27,10 @@ return {
     {
         "WhoIsSethDaniel/mason-tool-installer.nvim",
         event = { "BufReadPre", "BufNewFile" },
+        cond = function()
+            local helpers = require("helpers")
+            return helpers.is_node_installed() and helpers.is_python_installed()
+        end,
         dependencies = {
             "mason-org/mason.nvim",
             "mason-org/mason-lspconfig.nvim",

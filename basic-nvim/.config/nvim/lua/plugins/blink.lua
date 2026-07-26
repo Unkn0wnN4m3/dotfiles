@@ -2,6 +2,10 @@ return {
     {
         "saghen/blink.cmp",
         event = { "InsertEnter", "CmdlineEnter" },
+        cond = function()
+            local helpers = require("helpers")
+            return helpers.is_node_installed() and helpers.is_python_installed()
+        end,
         dependencies = {
             "rafamadriz/friendly-snippets",
             "disrupted/blink-cmp-conventional-commits",
