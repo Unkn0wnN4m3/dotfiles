@@ -44,7 +44,7 @@ return {
     "LazyVim/LazyVim",
     opts = function(_, opts)
       local theme = vim.env.NVIM_THEME or "tokyonight"
-      local valid_themes = { "tokyonight", "catppuccin", "solarized-osaka", "rose-pine", "mellow" }
+      local valid_themes = { "tokyonight", "catppuccin-nvim", "solarized-osaka", "rose-pine", "mellow" }
 
       if vim.tbl_contains(valid_themes, theme) then
         opts.colorscheme = theme

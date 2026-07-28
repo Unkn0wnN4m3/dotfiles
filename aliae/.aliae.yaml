@@ -1,7 +1,7 @@
 path:
-  - value: |
-      {{ .Home }}/.local/bin
-    if: eq .OS "linux"
+  # - value: |
+  #     {{ .Home }}/.local/bin
+  #   if: eq .OS "linux"
   - value: |
       {{ .Home }}\AppData\Local\mise\shims
     if: and (eq .OS "windows") (hasCommand "mise")
@@ -51,6 +51,9 @@ alias:
   - name: cat
     value: bat
     if: hasCommand "bat"
+  - name: cat
+    value: batcat
+    if: hasCommand "batcat"
   - name: e
     value: eza
     if: hasCommand "eza"
