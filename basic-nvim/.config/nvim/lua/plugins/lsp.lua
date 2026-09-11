@@ -27,27 +27,39 @@ return {
     {
         "WhoIsSethDaniel/mason-tool-installer.nvim",
         event = { "BufReadPre", "BufNewFile" },
-        cond = function()
-            local helpers = require("helpers")
-            return helpers.is_node_installed() and helpers.is_python_installed()
-        end,
+        -- cond = function()
+        --     local helpers = require("helpers")
+        --     return helpers.is_node_installed() and helpers.is_python_installed()
+        -- end,
         dependencies = {
             "mason-org/mason.nvim",
             "mason-org/mason-lspconfig.nvim",
             "neovim/nvim-lspconfig",
         },
-        opts = {
-            ensure_installed = {
+        opts = function()
+            local helpers = require("helpers")
+
+            local ensure_installed = {
                 "lua_ls",
                 "stylua",
                 "tinymist",
-                -- "copilot",
-                "basedpyright",
-                -- "pyright",
-                "ruff",
-                "mdformat",
-                "biome",
-            },
-        },
+            }
+
+            if helpers.is_python_installed() then
+                vim.list_extend(ensure_installed, {
+                    "ruff",
+                    "mdformat",
+                })
+            end
+
+            if helpers.is_node_installed() then
+                vim.list_extend(ensure_installed, {
+                    "basedpyright",
+                    "biome",
+                })
+            end
+
+            return { ensure_installed = ensure_installed }
+        end,
     },
 }
