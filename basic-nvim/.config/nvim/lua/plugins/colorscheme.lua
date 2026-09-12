@@ -39,7 +39,15 @@ return {
         lazy = false,
         priority = 1000,
         opts = {
-            transparent = false,
+            transparent = true,
         },
     },
+    {
+        "neanias/everforest-nvim",
+        name = "everforest",
+        version = false,
+        lazy = false,
+        priority = 1000,
+        opts = {},
+    }
 }
