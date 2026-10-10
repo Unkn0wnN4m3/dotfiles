@@ -2,7 +2,7 @@ return {
     {
         "catppuccin/nvim",
         name = "catppuccin",
-        priority = 1000,
+        lazy = true,
         opts = {
             background = {
                 light = "latte",
@@ -18,8 +18,7 @@ return {
     },
     {
         "folke/tokyonight.nvim",
-        lazy = false,
-        priority = 1000,
+        lazy = true,
         opts = {
             style = "storm",
             light_style = "day",
@@ -27,8 +26,7 @@ return {
     },
     {
         "rose-pine/neovim",
-        lazy = false,
-        priority = 1000,
+        lazy = true,
         name = "rose-pine",
         opts = {
             dark_variant = "moon",
@@ -36,8 +34,7 @@ return {
     },
     {
         "craftzdog/solarized-osaka.nvim",
-        lazy = false,
-        priority = 1000,
+        lazy = true,
         opts = {
             transparent = true,
         },
@@ -46,8 +43,7 @@ return {
         "neanias/everforest-nvim",
         name = "everforest",
         version = false,
-        lazy = false,
-        priority = 1000,
+        lazy = true,
         opts = {},
-    }
+    },
 }
