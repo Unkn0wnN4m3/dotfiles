@@ -39,27 +39,25 @@ return {
         opts = function()
             local helpers = require("helpers")
 
-            local ensure_installed = {
-                "lua_ls",
-                "stylua",
-                "tinymist",
-            }
+            local ensure_installed = { "lua_ls", "stylua", "tinymist" }
+            local python_bins = { "ruff", "mdformat" }
+            local node_bins = { "basedpyright", "biome" }
 
-            if helpers.is_python_installed() then
-                vim.list_extend(ensure_installed, {
-                    "ruff",
-                    "mdformat",
-                })
+            local function set_binaries()
+                local bins = vim.deepcopy(ensure_installed)
+
+                if helpers.is_installed("python") then
+                    bins = vim.list_extend(bins, python_bins)
+                end
+
+                if helpers.is_installed("node") then
+                    bins = vim.list_extend(bins, node_bins)
+                end
+
+                return bins
             end
 
-            if helpers.is_node_installed() then
-                vim.list_extend(ensure_installed, {
-                    "basedpyright",
-                    "biome",
-                })
-            end
-
-            return { ensure_installed = ensure_installed }
+            return { ensure_installed = set_binaries() }
         end,
     },
 }
