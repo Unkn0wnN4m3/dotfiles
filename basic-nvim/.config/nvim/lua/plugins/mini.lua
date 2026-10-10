@@ -60,6 +60,11 @@ return {
     --     end,
     -- },
     {
+        "nvim-mini/mini.icons",
+        config = true,
+        lazy = false,
+    },
+    {
         "nvim-mini/mini.basics",
         -- priority = 1000,
         opts = {
@@ -78,7 +83,7 @@ return {
     },
     {
         "nvim-mini/mini.notify",
-        event = "VeryLazy",
+        lazy = false,
         keys = {
             {
                 "<leader>un",
@@ -98,6 +103,14 @@ return {
                 duration_last = 1000,
             },
         },
+        config = function(_, opts)
+            local notify = require("mini.notify")
+            notify.setup(opts)
+            vim.notify = notify.make_notify({
+                WARN = { duration = 10000 },
+                ERROR = { duration = 10000 },
+            })
+        end,
     },
     {
         "nvim-mini/mini.pairs",
@@ -218,11 +231,6 @@ return {
         config = function()
             require("mini.git").setup()
         end,
-    },
-    {
-        "nvim-mini/mini.icons",
-        config = true,
-        lazy = true,
     },
     {
         "nvim-mini/mini.clue",
