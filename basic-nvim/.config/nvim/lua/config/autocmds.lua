@@ -2,6 +2,21 @@ local function augroup(name)
     return vim.api.nvim_create_augroup("user_" .. name, { clear = true })
 end
 
+local helpers = require("helpers")
+
+vim.api.nvim_create_autocmd("VimEnter", {
+    once = true,
+    callback = function()
+        local missing = helpers.check_binaries()
+        if #missing > 0 then
+            vim.notify(
+                "Missing binaries: " .. table.concat(missing, ", "),
+                vim.log.levels.WARN
+            )
+        end
+    end,
+})
+
 vim.api.nvim_create_autocmd("BufReadPost", {
     group = augroup("last_loc"),
     callback = function(event)
