@@ -4,7 +4,7 @@ local valid_colorschemes = {
     "tokyonight",
     "rose-pine",
     "solarized-osaka",
-    "everforest"
+    "everforest",
 }
 
 if vim.tbl_contains(valid_colorschemes, colorscheme) then

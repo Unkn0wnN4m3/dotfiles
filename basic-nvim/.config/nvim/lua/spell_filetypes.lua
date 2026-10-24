@@ -5,7 +5,7 @@ M.filetypes = {
     "plaintex",
     "typst",
     "gitcommit",
-    "markdown"
+    "markdown",
 }
 
 return M
