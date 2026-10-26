@@ -49,7 +49,10 @@ return {
       if vim.tbl_contains(valid_themes, theme) then
         opts.colorscheme = theme
       else
-        vim.notify("Invalid theme: " .. theme .. ". Falling back to 'tokyonight'.", vim.log.levels.WARN)
+        vim.notify(
+          "Unable to read theme from environment\nvariable or invalid theme.\nFalling back to 'tokyonight'.",
+          vim.log.levels.WARN
+        )
         opts.colorscheme = "tokyonight"
       end
     end,
