@@ -44,31 +44,12 @@ return {
         end
       end
 
-      local function venv_component()
-        if vim.bo[0].filetype ~= "python" then
-          return ""
-        end
-
-        local venv_path = require("venv-selector").venv()
-        if not venv_path or venv_path == "" then
-          return ""
-        end
-
-        local venv_name = vim.fn.fnamemodify(venv_path, ":t")
-        if not venv_name then
-          return ""
-        end
-
-        local output = "🐍 " .. venv_name
-        return output
-      end
       opts.options.component_separators = ""
       opts.options.section_separators = ""
       -- remove 3 and 4 position
       for _ = 1, 2 do
         table.remove(opts.sections.lualine_c, 3)
       end
-      table.insert(opts.sections.lualine_x, 1, venv_component)
       opts.sections.lualine_y = {
         { check_indentation, padding = { left = 1, right = 1 } },
         { "progress", padding = { left = 0, right = 1 } },
