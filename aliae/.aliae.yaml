@@ -119,6 +119,9 @@ script:
   - value: |
       eval "$(zoxide init zsh)"
     if: and (match .Shell "zsh") (hasCommand "zoxide")
+  - value: |
+      eval "$(~/.local/bin/mise activate zsh)"
+    if: and (match .Shell "zsh") (hasCommand "mise")
 
   # Powershell
   - value: |
