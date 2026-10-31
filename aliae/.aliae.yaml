@@ -36,9 +36,6 @@ alias:
   - name: tm
     value: tmux
     if: hasCommand "tmux"
-  - name: zj
-    value: zellij
-    if: hasCommand "zellij"
   - name: btop
     value: btop4win
     if: hasCommand "btop4win"
@@ -51,9 +48,6 @@ alias:
   - name: cat
     value: bat
     if: hasCommand "bat"
-  - name: cat
-    value: batcat
-    if: hasCommand "batcat"
   - name: e
     value: eza
     if: hasCommand "eza"
@@ -63,8 +57,6 @@ alias:
 env:
   - name: EZA_ICONS_AUTO
     value: "always"
-  - name: CARAPACE_BRIDGES
-    value: "zsh,fish,bash,inshellisense"
   - name: MANPAGER
     value: "nvim +Man!"
     if: eq .OS "linux"
