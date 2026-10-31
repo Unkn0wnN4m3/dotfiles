@@ -122,6 +122,9 @@ script:
   - value: |
       eval "$(~/.local/bin/mise activate zsh)"
     if: and (match .Shell "zsh") (hasCommand "mise")
+  - value: |
+      source <(fzf --zsh)
+    if: and (match .Shell "zsh") (hasCommand "fzf")
 
   # Powershell
   - value: |
