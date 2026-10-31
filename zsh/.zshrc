@@ -1,3 +1,6 @@
+# PATH fix the duplicates
+typeset -U path
+
 # Hist
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
