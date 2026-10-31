@@ -109,22 +109,21 @@ script:
 
   # Zsh
   - value: |
-      eval "$(starship init zsh)"
-    if: and (match .Shell "zsh") (hasCommand "starship")
-  - value: |
-      # ${UserConfigDir}/zsh/.zshrc
-      zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
-      source <(carapace _carapace)
-    if: and (match .Shell "zsh") (hasCommand "carapace")
+      eval "$(~/.local/bin/mise activate zsh)"
+    if: and (match .Shell "zsh") (hasCommand "mise")
   - value: |
       eval "$(zoxide init zsh)"
     if: and (match .Shell "zsh") (hasCommand "zoxide")
   - value: |
-      eval "$(~/.local/bin/mise activate zsh)"
-    if: and (match .Shell "zsh") (hasCommand "mise")
-  - value: |
       source <(fzf --zsh)
     if: and (match .Shell "zsh") (hasCommand "fzf")
+  - value: |
+      zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
+      source <(carapace _carapace)
+    if: and (match .Shell "zsh") (hasCommand "carapace")
+  - value: |
+      eval "$(starship init zsh)"
+    if: and (match .Shell "zsh") (hasCommand "starship")
 
   # Powershell
   - value: |
