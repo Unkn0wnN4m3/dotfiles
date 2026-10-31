@@ -57,6 +57,9 @@ alias:
   - name: e
     value: eza
     if: hasCommand "eza"
+  - name: ls
+    value: ls --color=auto
+    if: eq .OS "linux"
 env:
   - name: EZA_ICONS_AUTO
     value: "always"
