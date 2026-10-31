@@ -113,6 +113,9 @@ script:
       zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
       source <(carapace _carapace)
     if: and (match .Shell "zsh") (hasCommand "carapace")
+  - value: |
+      eval "$(zoxide init zsh)"
+    if: and (match .Shell "zsh") (hasCommand "zoxide")
 
   # Powershell
   - value: |
