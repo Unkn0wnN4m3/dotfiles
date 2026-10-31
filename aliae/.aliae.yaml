@@ -84,21 +84,6 @@ env:
   - name: PIP_REQUIRE_VIRTUALENV
     value: "true"
 script:
-  # Nushell
-  - value: |
-      $env.config.edit_mode = "vi"
-      $env.config.cursor_shape = {
-        vi_insert: line,
-        vi_normal: block,
-      }
-    if: match .Shell "nu"
-  - value: |
-      source ~/.zoxide.nu
-    if: and (match .Shell "nu") (hasCommand "zoxide")
-  - value: |
-      source $"($nu.cache-dir)/carapace.nu"
-    if: and (match .Shell "nu") (hasCommand "carapace")
-
   # Zsh
   - value: |
       eval "$(~/.local/bin/mise activate zsh)"
