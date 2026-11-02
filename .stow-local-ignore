@@ -27,6 +27,6 @@ _darcs
 
 ^/pkglist-*
 
-/fonts
-/nvim-simple
-/packages
+basic-nvim
+powershell
+
