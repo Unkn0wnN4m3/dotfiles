@@ -110,9 +110,6 @@ script:
       (&mise activate pwsh) | Out-String | Invoke-Expression
     if: and (match .Shell "pwsh") (hasCommand "mise")
   - value: |
-      Invoke-Expression (& { (zoxide init powershell | Out-String) })
-    if: and (match .Shell "pwsh") (hasCommand "zoxide")
-  - value: |
       Set-PSReadLineOption -Colors @{ "Selection" = "`e[7m" }
       Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
       carapace _carapace | Out-String | Invoke-Expression
@@ -134,3 +131,6 @@ script:
 
       Invoke-Expression (&starship init powershell)
     if: and (match .Shell "pwsh") (hasCommand "starship")
+  - value: |
+      Invoke-Expression (& { (zoxide init powershell | Out-String) })
+    if: and (match .Shell "pwsh") (hasCommand "zoxide")
