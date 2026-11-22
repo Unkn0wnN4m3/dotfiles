@@ -76,7 +76,9 @@ return {
             {
                 "<leader>fd",
                 function()
-                    require("telescope.builtin").diagnostics()
+                    require("telescope.builtin").diagnostics({
+                        bufnr = 0,
+                    })
                 end,
                 desc = "Diagnostics (buffer)",
             },
