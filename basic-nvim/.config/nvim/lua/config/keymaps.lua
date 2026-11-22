@@ -67,12 +67,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
         --     )
         -- end
 
-        if client.name == "tinymist" then
-            map("n", "<leader>ce", function()
-                vim.cmd("LspTinymistExportPdf")
-            end, { buffer = bufnr, desc = "Export document to PDF" })
-        end
-
         if
             client:supports_method(
                 vim.lsp.protocol.Methods.textDocument_inlayHint,
