@@ -2,7 +2,7 @@ local M = {}
 
 M.filetypes = {
     "text",
-    "plaintex",
+    "plaintext",
     "typst",
     "gitcommit",
     "markdown",
